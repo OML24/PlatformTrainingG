@@ -1,0 +1,2374 @@
+﻿[
+    {
+        "sha256":  "DC7FA773F635E70E479CE1BE175796A4FB2CD82069A6A1C6C175D05270620F19",
+        "path":  "src\\ZuLms.Application\\Class1.cs"
+    },
+    {
+        "sha256":  "23BD52E51CB784730ECE9DCE7E0BAADBFC12846504201C1D604DF9847A82E342",
+        "path":  "src\\ZuLms.Application\\ZuLms.Application.csproj"
+    },
+    {
+        "sha256":  "6FC5BF9589533B48303FD1BC718248B6784101EFA7560AE3C9B39C465FEBFAA5",
+        "path":  "src\\ZuLms.Application\\Common\\Abstractions\\IAppDbContext.cs"
+    },
+    {
+        "sha256":  "F1F9403C9C369D944515ADEF4B1858C8842D6AB4AC391E3C7BB5A6BBBD99C102",
+        "path":  "src\\ZuLms.Application\\Common\\Abstractions\\IAuditLogger.cs"
+    },
+    {
+        "sha256":  "4770A572BE77317AB766A065CFCB9C3B513A127273D618AAC866511D91E5B618",
+        "path":  "src\\ZuLms.Application\\Common\\Abstractions\\ICertificatePdfRenderer.cs"
+    },
+    {
+        "sha256":  "6205AA75CF74A4E41A6337AB4D48475D0C2E6ECF779047CA811C4FDE79ECA129",
+        "path":  "src\\ZuLms.Application\\Common\\Abstractions\\IClock.cs"
+    },
+    {
+        "sha256":  "FDFBE514392989DAB892C7EDA152A7F914834E2E3CAD7429A6BBB5863AE82A04",
+        "path":  "src\\ZuLms.Application\\Common\\Abstractions\\ICredentialReauthCache.cs"
+    },
+    {
+        "sha256":  "EBCB135CFF3364836CA2DA8A56B1E0C7D5D2F01E2D1B1403458CEAAE37EDA9D3",
+        "path":  "src\\ZuLms.Application\\Common\\Abstractions\\ICurrentUser.cs"
+    },
+    {
+        "sha256":  "5C17EFD1355A2ED42CBEA2E3AB75ECC75407E1090BF4DF3DAA1E5E4222F11AAD",
+        "path":  "src\\ZuLms.Application\\Common\\Abstractions\\IEmailContentBuilder.cs"
+    },
+    {
+        "sha256":  "931FF0A75A9BEAD2DBFF2E3B7091553F623FB9E5551EC7B0DD56F767AC813A24",
+        "path":  "src\\ZuLms.Application\\Common\\Abstractions\\IEncryptionService.cs"
+    },
+    {
+        "sha256":  "E52030D0AB5AB4EEDDBE84E086468387203F376A53EF0BE506470CCD7941EEF1",
+        "path":  "src\\ZuLms.Application\\Common\\Abstractions\\IFileStorage.cs"
+    },
+    {
+        "sha256":  "4122BD30BC29DBA87C52A379CACDA40496853CC6D9F4BF10F95DF8E3B201313A",
+        "path":  "src\\ZuLms.Application\\Common\\Abstractions\\IPasswordHasher.cs"
+    },
+    {
+        "sha256":  "FBBF99B46C31AA5FDC75DE9A6200F9A657495F1BD5F79737DF4FB61CDE88CEDA",
+        "path":  "src\\ZuLms.Application\\Common\\Abstractions\\IPermissionService.cs"
+    },
+    {
+        "sha256":  "08559D9490C93605657C409FF841D8750796A381CB7FEA605349BD72312C26FA",
+        "path":  "src\\ZuLms.Application\\Common\\Abstractions\\IQrCodeService.cs"
+    },
+    {
+        "sha256":  "DC6D215F4E47E68B5AE932695B0900C45EDD28D970A4EF0D16546F83B78BF977",
+        "path":  "src\\ZuLms.Application\\Common\\Abstractions\\ISettingsService.cs"
+    },
+    {
+        "sha256":  "6800D5495BE8F7B2BFC2C79431F64B69E37F9761F0A6D582C351D537D142FCAB",
+        "path":  "src\\ZuLms.Application\\Common\\Abstractions\\ITokenService.cs"
+    },
+    {
+        "sha256":  "AA53B8DC6E8A2132791F468537481DFAE37B5255992637EDD68C886A07CAE90D",
+        "path":  "src\\ZuLms.Application\\Common\\Abstractions\\IUniversityApiClient.cs"
+    },
+    {
+        "sha256":  "42754C8BCB11C19E0CAE81580F3CB618C5DE65558635DFD52845204F181E99FF",
+        "path":  "src\\ZuLms.Application\\Common\\Abstractions\\IUserStateCache.cs"
+    },
+    {
+        "sha256":  "0E47EAC956C9D6F2F4D3D385ECFE1D5CC0A9B78A95837CC3D56316B1967054AE",
+        "path":  "src\\ZuLms.Application\\Common\\Results\\Error.cs"
+    },
+    {
+        "sha256":  "F1D30F7A0805023C942BDE1A27F8F282A8B4942671A8114FF5BAA53FA1052A58",
+        "path":  "src\\ZuLms.Application\\Common\\Results\\Result.cs"
+    },
+    {
+        "sha256":  "4D0BA61CA5B7517968CA715BDFB773A614611699A1707F290D14F1FA38D2CCB9",
+        "path":  "src\\ZuLms.Application\\Common\\Security\\ScopeGuard.cs"
+    },
+    {
+        "sha256":  "150D9CE5AAF9480FCE2064A620EB6EB9A7957AF4BE2FB700DC5AABA63980848E",
+        "path":  "src\\ZuLms.Application\\Common\\Serialization\\AmmanDateTimeOffsetConverter.cs"
+    },
+    {
+        "sha256":  "1A92C52506B10B4783039D4DFD7FF96397E919B9E305B8A50B3198FACAA1FDBB",
+        "path":  "src\\ZuLms.Application\\Features\\Audit\\AuditQueryService.cs"
+    },
+    {
+        "sha256":  "E33FC3754EC15AFEDF5ACFBB09F8ABB2A8004CB2DD67560AEB98CD3B693B0F2F",
+        "path":  "src\\ZuLms.Application\\Features\\Auth\\AuthService.cs"
+    },
+    {
+        "sha256":  "4C45AE8DF67EA9202C114CBC9348624654C5128DF1A6D112C5421BEC742799FA",
+        "path":  "src\\ZuLms.Application\\Features\\Auth\\AuthSessionRules.cs"
+    },
+    {
+        "sha256":  "48769EADA5F1B0E23D1325D6C635E2D2A5B341218574F2C2D975C53EF80774C9",
+        "path":  "src\\ZuLms.Application\\Features\\Auth\\IAuthService.cs"
+    },
+    {
+        "sha256":  "A289E7EA243FC1122410F9A3F8A0DE0F4298811DF47AB4863EF9916381D1EFA6",
+        "path":  "src\\ZuLms.Application\\Features\\Certificates\\CertificateService.cs"
+    },
+    {
+        "sha256":  "353FB43FCD25562B48B94D85F27190699CDE24270A517B590B65874E4B6F1A92",
+        "path":  "src\\ZuLms.Application\\Features\\Certificates\\CertificateTemplateService.cs"
+    },
+    {
+        "sha256":  "A59418292693841DDF7D0DE1003355BA0E49668F9029BD1B5AB98E0B2CE7D98A",
+        "path":  "src\\ZuLms.Application\\Features\\Certificates\\ICertificateService.cs"
+    },
+    {
+        "sha256":  "0F0A20C1F9DA8108662D80864DCB02CEBF426A5D10B516C25C48A377C6725B45",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\AdminCourseLifecycleService.cs"
+    },
+    {
+        "sha256":  "B0D30CA7578D0718BD8D874D4E601DFA6903846B40EF6A1D60D9A89520EAB4ED",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\AttendanceCodeService.cs"
+    },
+    {
+        "sha256":  "147769628838A904FBBBB79B51A91524AFB655FFC4BDF10A22D5DE1D5F4AA340",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\CourseAttendanceThresholdService.cs"
+    },
+    {
+        "sha256":  "9283B66D83796D75AACC23EB8C85BB22DBC43C1478D7D915F7960EE82AAA079A",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\CourseCancellationService.cs"
+    },
+    {
+        "sha256":  "E12FD7DF25D0444F44C233025907C245097490AC01D17E6F61B7E1AB3597907E",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\CourseCommonEditService.cs"
+    },
+    {
+        "sha256":  "71608A376F5E699F389DC9DBE60DE9481467F393F1D6D737758355C73B2AFC09",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\CourseDirectoryService.cs"
+    },
+    {
+        "sha256":  "079EBFFB7AB53BEF35C6AC69610315C09D417FA5EB7FE65FEAA0B3B0CD74FCC0",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\CourseFinishService.cs"
+    },
+    {
+        "sha256":  "CAE30F0F37300D973FF9F9BBF1824EA279A84EE6F2520FCC39A08D6E07872E9F",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\CourseForceStatusService.cs"
+    },
+    {
+        "sha256":  "3F498FB639EBA5B444512DCF684FF32EB9A01F1B6C1A23A9104877A6699C01F4",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\CourseInstructorEditService.cs"
+    },
+    {
+        "sha256":  "D2EF87C75418EF11CD429CD96E4A32727EC28E5E327CA8BD85CCC46905CF954E",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\CourseProgressService.cs"
+    },
+    {
+        "sha256":  "D9B46301B319A41C3D01FF3B67C65DCCAF0943B93BCF2D7DBA5F980E9CC4EEFE",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\CourseProposalQueryService.cs"
+    },
+    {
+        "sha256":  "C8A2CDC765491E4A720B92FDF65F90C203BE71BB11CF83263F670B669AE9B06B",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\CourseProposalService.cs"
+    },
+    {
+        "sha256":  "BED72AB5E83581EC1DB23C8471968A5DA19BA13658792A51E1B59916A89CEC16",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\DirectCourseService.cs"
+    },
+    {
+        "sha256":  "F5094193057C3D6D1FF14A729099EA3D73682A91AD178C5620875AA8A16A8DF4",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\EligibilityRecalculationService.cs"
+    },
+    {
+        "sha256":  "AB759645ABBBCF6F907C21DCE2807214F021C806FF6CAAD3FB760E4A8DC14C66",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\EligibilitySnapshotService.cs"
+    },
+    {
+        "sha256":  "8A8B46299622E6444F951F2953A33FB2AE815EF408FF155162E3DCEC9F57B48D",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\EvaluationAggregateService.cs"
+    },
+    {
+        "sha256":  "C141AD9C399C98457AA6B61F4471706935E4EA6A6950ECE4A07D627D0B715FED",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\EvaluationFormAdminService.cs"
+    },
+    {
+        "sha256":  "71D35129F1BC6609DC53856C073A7FD86C4D0DE2170CBB715BACD8CE0F8E8684",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\EvaluationPinningService.cs"
+    },
+    {
+        "sha256":  "02501062794C57ADDE8F79816AD52644F5EC9FFC06D7F4BD1993734F44565F7A",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\EvaluationQueryService.cs"
+    },
+    {
+        "sha256":  "9753BD425319068EFE1C002BF777C8CC4D117FA558629894F5A83F49A184534A",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\EvaluationService.cs"
+    },
+    {
+        "sha256":  "B9114284405E1AC1176F052363066BE7E899263521FF977AE3E40928AF8FA57E",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\ExamRequirementService.cs"
+    },
+    {
+        "sha256":  "614952590B127FC3D1922458531D4B48477E8FCF5E809A445E3712EEF0F896E8",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\ExamService.cs"
+    },
+    {
+        "sha256":  "0818ADEADD1275118B0B46B142320C3EE22703F466549562C044BDDEAFFF5E9A",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\ExternalInstructorAccountService.cs"
+    },
+    {
+        "sha256":  "7BCE392B72735A479A35430E835F1591F7825359E7F76C44784513924A8FAF2E",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\IAdminCourseLifecycleService.cs"
+    },
+    {
+        "sha256":  "F33B0D1B4CF182C993B9D9C47CBA02BFDC78016D1D107DD685B1AC8F3D6C3316",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\IAttendanceCodeService.cs"
+    },
+    {
+        "sha256":  "3C3751442BBB31D7094C83E715838FAACEDA5DF30D048081EA803777C0378766",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\ICourseCancellationService.cs"
+    },
+    {
+        "sha256":  "D3AA693C294963D47C7FD057F7C21828925ABD4DE8F2143730FDFF3601AB9170",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\ICourseDirectoryService.cs"
+    },
+    {
+        "sha256":  "61D5F8210B80BAB4FAA0E01C280C909CAEE54ECAA887516D64E6A4159B14BD66",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\ICourseFinishService.cs"
+    },
+    {
+        "sha256":  "FCB48D39E07006DBD857527B83B5832629450A5FCFBD03C77B2E3DA7F7051BC3",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\ICourseProgressService.cs"
+    },
+    {
+        "sha256":  "DBF060B580DD373F34FEFEC0AC9E9A39E1A168336321E91DA458803E8036FE84",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\ICourseProposalQueryService.cs"
+    },
+    {
+        "sha256":  "2C8AD38835A939124E06E9673A26B81865167E2D58F1FB36A1738968A16A25F4",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\ICourseProposalService.cs"
+    },
+    {
+        "sha256":  "3FC3F685D2ADB506F48BF6CD438B4904B1C8D6B72696237803C490A0B7446E10",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\IDirectCourseService.cs"
+    },
+    {
+        "sha256":  "76C87A87CA38B47CA2F51C57F6E08DFE7A7392301808383041A2DB610EAB1220",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\IEligibilityRecalculationService.cs"
+    },
+    {
+        "sha256":  "5D6B0A34D2D0A7C3E989E5F771AB1A07983C56540C1C21664B54B983C44A8A06",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\IEligibilitySnapshotService.cs"
+    },
+    {
+        "sha256":  "433D92741FD7F10F22ECED86607E83C81B50F8C2DF013D0A71C84D5B9F871F0E",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\IEvaluationFormAdminService.cs"
+    },
+    {
+        "sha256":  "FB311F7A40847001513395DCC7BB258B7CEFD5A2BD1FC19D96B9D3190A4412A4",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\IEvaluationPinningService.cs"
+    },
+    {
+        "sha256":  "5B9A59158D9B83B691A132B7A5A2532268F93170813799981AA2EC0FA70A81F4",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\IEvaluationService.cs"
+    },
+    {
+        "sha256":  "C4F47745DA48C4F25AEC4966FCA225FCAE6A8FC638237DB4B26DD6907F26BC1D",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\IExamRequirementService.cs"
+    },
+    {
+        "sha256":  "C8536E22A15D376B630E420406BAD091C321AB24C04ED159C0E6B14E700E37E1",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\IExamService.cs"
+    },
+    {
+        "sha256":  "7C7741BF35C786DAD22F238C30F9AD2D0CC27D1687997F8D71688A3F616E6BEC",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\IExternalInstructorAccountService.cs"
+    },
+    {
+        "sha256":  "725BED26B3A3B38CFED5261621E7DD24BDEF866A6C5E3577D7DAD8DB94FC7B9D",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\IImpactService.cs"
+    },
+    {
+        "sha256":  "20685410F74F8FAF4F9B41F952E9DC523C7F540098D1D1F568E18DB7570F0C2C",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\ILectureDeactivationService.cs"
+    },
+    {
+        "sha256":  "6518C2A104D7C35751311682A7FCFEDCA6E01EBE1ED81F46B47CD595427B68B0",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\ILectureMaterialService.cs"
+    },
+    {
+        "sha256":  "F9D7D145595D1F4A9189B801A50E346CB84FA61E54B0506F66F47D052AA85D61",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\ILectureService.cs"
+    },
+    {
+        "sha256":  "0BDA93C2DF65FBC2C240CFB48B0BD4A1384206784F5F32542B8F9279C3F31FB3",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\IManualAttendanceService.cs"
+    },
+    {
+        "sha256":  "9D02DFA5185D41A2735F9DF4982C6784A1988CD71652A77B813B6C18DCED64B8",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\IManualParticipantService.cs"
+    },
+    {
+        "sha256":  "720D1D124CCD0F50D4A8283E4541576E4297F54A52953C7A67FB4FA1D2B62693",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\ImpactService.cs"
+    },
+    {
+        "sha256":  "4B51AA286DAC2618A1080EBDCBFE682CCDF1D22BEBC13BEF6719E1FA2AB5FB2C",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\ISelfRegistrationService.cs"
+    },
+    {
+        "sha256":  "0C514AC6D5E5CFC18020051B1A7CC8DBFA243F3197EF78D4AF437301F9574EA5",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\LectureDeactivationService.cs"
+    },
+    {
+        "sha256":  "AE8005460247E37C87D7C49634D85B80AA2AA1416D34EE18C4EAE836922A5070",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\LectureMaterialService.cs"
+    },
+    {
+        "sha256":  "2CB55C65DB98B64EDE3B9BCC430295A400C38574A908445183F49A197DE31211",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\LectureService.cs"
+    },
+    {
+        "sha256":  "0CBCD56EBA65567F43854AE127D09E17C9D8BA45F64A52D65366FC750CDACA9E",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\ManualAttendanceService.cs"
+    },
+    {
+        "sha256":  "99D10465F6B518C2F502896B72F43BF684CDDABA9038BBFE97E973A106EAA730",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\ManualParticipantService.cs"
+    },
+    {
+        "sha256":  "4C412141443222BA77A1746C46AA5215145C7AE8C8A1ED5E0516FF81CCF81847",
+        "path":  "src\\ZuLms.Application\\Features\\Courses\\SelfRegistrationService.cs"
+    },
+    {
+        "sha256":  "33EBE0348CB905AAA0608B76DEC570FD4FAD9D941DDD04B78701EBA155700A03",
+        "path":  "src\\ZuLms.Application\\Features\\Credentials\\CredentialService.cs"
+    },
+    {
+        "sha256":  "4BCF1452809639EE0C7A528F45D2343C9FC7A0CFD2DEEBC46E03EF07DF59C6D1",
+        "path":  "src\\ZuLms.Application\\Features\\Credentials\\ICredentialService.cs"
+    },
+    {
+        "sha256":  "7640019AD896CE6FC99B8DBE49BC4F61B6FD423EEF3B15C589E34BA28C313923",
+        "path":  "src\\ZuLms.Application\\Features\\Files\\FileUploadService.cs"
+    },
+    {
+        "sha256":  "507A9461FA5DA6A373BAC3CBFA2511725298C97CB17310EE20F96092914792A7",
+        "path":  "src\\ZuLms.Application\\Features\\Files\\IFileUploadService.cs"
+    },
+    {
+        "sha256":  "C600701FE7E60EDA1D3A039BEC23DA65F623891EC3C8A376B717F89D21033C4F",
+        "path":  "src\\ZuLms.Application\\Features\\Hints\\HintService.cs"
+    },
+    {
+        "sha256":  "E2BEB84C7623F7E816B1CD8F30E327D69DF8D3CDB65FE163C12B1B6972587EC0",
+        "path":  "src\\ZuLms.Application\\Features\\Hints\\IHintService.cs"
+    },
+    {
+        "sha256":  "8F2A85B0C5FD55EA64F745CF247E3710FB2340C54BEFC5A875878EBE51BA2A79",
+        "path":  "src\\ZuLms.Application\\Features\\Needs\\INeedService.cs"
+    },
+    {
+        "sha256":  "84F89019474FAADCE6F1ECDCADF45002BE7B1A91F23466F3FD18DDBD6E34181B",
+        "path":  "src\\ZuLms.Application\\Features\\Needs\\NeedService.cs"
+    },
+    {
+        "sha256":  "4DC06B100E78006ABAA90BE269BCFCC262AA45BE4C158E36BA5327DA81A5C9E3",
+        "path":  "src\\ZuLms.Application\\Features\\Notifications\\NotificationService.cs"
+    },
+    {
+        "sha256":  "7B15AC0D97B5AD84BF4FDC9B3804A020251F491BCDDF2AB63E7536C4884CA8DF",
+        "path":  "src\\ZuLms.Application\\Features\\Permissions\\PermissionService.cs"
+    },
+    {
+        "sha256":  "419E020BEF92079D9B6F1C9962746A9DBCCE9C3680F0B64603A676ACAE9C3AC3",
+        "path":  "src\\ZuLms.Application\\Features\\Permissions\\PermissionSetRules.cs"
+    },
+    {
+        "sha256":  "99624743381EC320080E44D87AC9C38BDEA6A5BC38D8020718D1A0820D5C007E",
+        "path":  "src\\ZuLms.Application\\Features\\ProCerts\\IProCertService.cs"
+    },
+    {
+        "sha256":  "F5845E5ADB3D91FC809789991430E19E99D2908020818E2DDAD611D23CA2A9E5",
+        "path":  "src\\ZuLms.Application\\Features\\ProCerts\\ProCertService.cs"
+    },
+    {
+        "sha256":  "8D94571E717D245BBBD1F19B45E02057559DE56D70F9719854C718A939ACF4F9",
+        "path":  "src\\ZuLms.Application\\Features\\Profiles\\ProfileService.cs"
+    },
+    {
+        "sha256":  "054A13B2D7AC97601EDB955570498A7ECFC30227945D77737FF8971E55F21452",
+        "path":  "src\\ZuLms.Application\\Features\\Settings\\IPasswordPolicyService.cs"
+    },
+    {
+        "sha256":  "4BD499FAB565F11D83D6F47090C01F4FA2D5712E66A5C7D276403BAD12319A6A",
+        "path":  "src\\ZuLms.Application\\Features\\Settings\\PasswordPolicyService.cs"
+    },
+    {
+        "sha256":  "E99AD3AB38B01FA837F6624A4051CC91F35AB8BCAC919A15BA5097C74DCCA480",
+        "path":  "src\\ZuLms.Application\\Features\\Settings\\SettingsService.cs"
+    },
+    {
+        "sha256":  "78E462B19836C9187B1454C3691F1FC3E14BCF2D3B04E2382CE49E62247B08AD",
+        "path":  "src\\ZuLms.Application\\Features\\Sync\\CenterAdminService.cs"
+    },
+    {
+        "sha256":  "76557F1BB70DC704207D7812FE73CF0323B99031DD222452F92A8F6D700E4468",
+        "path":  "src\\ZuLms.Application\\Features\\Sync\\ICenterAdminService.cs"
+    },
+    {
+        "sha256":  "FA23F9ACF945657C23E87B78A7B0F6D8CA781057F03933A60B97685C4E4317FA",
+        "path":  "src\\ZuLms.Application\\Features\\Sync\\IUniversitySyncAdminService.cs"
+    },
+    {
+        "sha256":  "2B47829303DA129A1B1002DC27F9CA1836D90A6B8DF6A55996D08C27B710AFB9",
+        "path":  "src\\ZuLms.Application\\Features\\Sync\\IUniversitySyncService.cs"
+    },
+    {
+        "sha256":  "1E7CF1A52703828F406AA62A1569C7FEE68889319FE5DDF622A9413DCD61ABA9",
+        "path":  "src\\ZuLms.Application\\Features\\Sync\\UniversityMergeService.cs"
+    },
+    {
+        "sha256":  "4C1F44AB13DB91EF9C36E01C837E063EB3EDCD8BA24FC40FBD4A8F480B45EE90",
+        "path":  "src\\ZuLms.Application\\Features\\Sync\\UniversityProvisioningService.cs"
+    },
+    {
+        "sha256":  "F8338FB9752C4F853095AB41E88D5AE17D230B4EC359076DD8DF3EDBC807331A",
+        "path":  "src\\ZuLms.Application\\Features\\Sync\\UniversitySourceMapper.cs"
+    },
+    {
+        "sha256":  "719C4240DA53CC94DE4B825D92D04A5FE178B2EF4C514B19D3D1B2CE622201FF",
+        "path":  "src\\ZuLms.Application\\Features\\Sync\\UniversitySyncAdminService.cs"
+    },
+    {
+        "sha256":  "8A718AA84055B53BCD42F7356F97F82B1170BDB6FD8A49C95AD25D2D901B268A",
+        "path":  "src\\ZuLms.Application\\Features\\Tracks\\TrackAdminService.cs"
+    },
+    {
+        "sha256":  "9849F20BF1B1B62D97859BB4CC048B5041435AD687B16E08A9463526C1163B34",
+        "path":  "src\\ZuLms.Application\\Features\\Users\\IUserService.cs"
+    },
+    {
+        "sha256":  "ABFC4E95BBBA7BC7B298BF7EEAB272494FE0500BC825B14D056FC5040F92CF93",
+        "path":  "src\\ZuLms.Application\\Features\\Users\\UserService.cs"
+    },
+    {
+        "sha256":  "CA0E808D676DB8DF18C843A5A7A919F56078C366C629B5D7AE6F51F41F1B3D68",
+        "path":  "src\\ZuLms.Application\\Features\\Users\\Dtos\\UserDetailsDto.cs"
+    },
+    {
+        "sha256":  "9DDF56AA5E80225BDB4E5B3CF946B253D63D7F3338CF7B7BD5C7436BA8770A90",
+        "path":  "src\\ZuLms.Application\\Features\\Vault\\VaultService.cs"
+    },
+    {
+        "sha256":  "4B1811FE7E22BFF93525C4D42B542141B140E67E61934C1CE4B9BC32A8EC0483",
+        "path":  "src\\ZuLms.Domain\\GlobalUsings.cs"
+    },
+    {
+        "sha256":  "61E3F2D043E37F0DB4BE1D8083DD31BEBBFBB8FDE2CF027327DB2556C16BC385",
+        "path":  "src\\ZuLms.Domain\\ZuLms.Domain.csproj"
+    },
+    {
+        "sha256":  "6E67585E256963549F81DEA1CEAC6E62F03061A1CE75256FFC1978B3471F735A",
+        "path":  "src\\ZuLms.Domain\\Common\\BaseEntity.cs"
+    },
+    {
+        "sha256":  "9C3C9A281426A443AB0E1E51913C942DF2A84602B2649C997DD2A00DFB093E6E",
+        "path":  "src\\ZuLms.Domain\\Common\\DomainException.cs"
+    },
+    {
+        "sha256":  "5D4CB9B1F08B5C002D44DFA9531F8757CD55F99BEEA91779E97FA9FF296458E8",
+        "path":  "src\\ZuLms.Domain\\Common\\IArchivable.cs"
+    },
+    {
+        "sha256":  "D51AA5F9C81B836CB6F112879E491419C07B960E78A5BFD6ED124FE871AA63B9",
+        "path":  "src\\ZuLms.Domain\\Common\\ISoftDeletable.cs"
+    },
+    {
+        "sha256":  "6AF15D9DF84873E70B8AD3A0C33DA8FEF78EC78A014FFDD2F6195BD4C82B59F3",
+        "path":  "src\\ZuLms.Domain\\Entities\\Audit\\AuditLog.cs"
+    },
+    {
+        "sha256":  "A307D9362DDD14950DD6C3238BC1FA9645D7F9521F823C0ECB056BDD51C79AD2",
+        "path":  "src\\ZuLms.Domain\\Entities\\Certificates\\Certificate.cs"
+    },
+    {
+        "sha256":  "2421D7891D40EC3AC56B78F67C0E4FEF511A4141ABE48523131BBDA29DEB5ED0",
+        "path":  "src\\ZuLms.Domain\\Entities\\Certificates\\CertificateTemplate.cs"
+    },
+    {
+        "sha256":  "C762F42B99006525DB9BC4F91CD7EBD65E1419847636D4FF356F70DE95AEBC51",
+        "path":  "src\\ZuLms.Domain\\Entities\\Config\\FieldHint.cs"
+    },
+    {
+        "sha256":  "D326DE20D5C18FB0CFEFDCEA78F4D580C1A3599703D696B606EBFEF3553DB2D1",
+        "path":  "src\\ZuLms.Domain\\Entities\\Config\\NumberSequence.cs"
+    },
+    {
+        "sha256":  "485EFED93BE4F338536BEB7234DF76631567EF9E90E7EADFA5DE4D6145FC4921",
+        "path":  "src\\ZuLms.Domain\\Entities\\Config\\SystemSetting.cs"
+    },
+    {
+        "sha256":  "401BC71E788027EA5E85ACF411C0DB2D8835ED895DEA6BA20CF7E06C5B3F65F4",
+        "path":  "src\\ZuLms.Domain\\Entities\\Evaluation\\EvaluationAnswer.cs"
+    },
+    {
+        "sha256":  "B71115E8B7472CF7A72558D48D4CE3A6641F395CD4A0ABEA1563D03C442572F5",
+        "path":  "src\\ZuLms.Domain\\Entities\\Evaluation\\EvaluationFormVersion.cs"
+    },
+    {
+        "sha256":  "2C7485AE7F78714E805AADFE4646B667C62F1217B4F0B7C81D266F83977395A9",
+        "path":  "src\\ZuLms.Domain\\Entities\\Evaluation\\EvaluationOption.cs"
+    },
+    {
+        "sha256":  "162F91B89AFC355AD2BD489AD5EB45A0F563B229A51B6E90E3E6DCDF55DA40A9",
+        "path":  "src\\ZuLms.Domain\\Entities\\Evaluation\\EvaluationQuestion.cs"
+    },
+    {
+        "sha256":  "EEA611E42AE87A1038BE0D17F942E7A6D6F0AA959501907B179F2C239DFC23AE",
+        "path":  "src\\ZuLms.Domain\\Entities\\Evaluation\\EvaluationResponse.cs"
+    },
+    {
+        "sha256":  "7D8F6CC45E0A8FE6C124221DC12A336B72AD6DD987077416ED34317B7FA25265",
+        "path":  "src\\ZuLms.Domain\\Entities\\Files\\StoredFile.cs"
+    },
+    {
+        "sha256":  "D549A0707C62E79CA5C88CD245D26AC7530A16B2D16A09EFA12168BD759B2BCB",
+        "path":  "src\\ZuLms.Domain\\Entities\\Files\\VaultDocument.cs"
+    },
+    {
+        "sha256":  "4E16DD3A2FE00F974E77B3EDBF5C86299FD13222B61DA63AD1C4B84FCB7F500B",
+        "path":  "src\\ZuLms.Domain\\Entities\\Identity\\BlockedPassword.cs"
+    },
+    {
+        "sha256":  "194818DFE727B5036B48E1451B86CE4A04CDD4768DAEA73AE78461C09D655FDE",
+        "path":  "src\\ZuLms.Domain\\Entities\\Identity\\ExternalInstructorProfile.cs"
+    },
+    {
+        "sha256":  "0912591F8E22D746BDE5CDEFEF908DDDF1AC289445403EF3EBF9520E9B3FABC7",
+        "path":  "src\\ZuLms.Domain\\Entities\\Identity\\ForgotPasswordAttempt.cs"
+    },
+    {
+        "sha256":  "5BD967590B26FF3B3126BE450CF6C368AB8C6053CFC875EBCB95575B991B1AFC",
+        "path":  "src\\ZuLms.Domain\\Entities\\Identity\\PasswordPolicy.cs"
+    },
+    {
+        "sha256":  "3307B6014DE968C84905AFDB5E2F4ABBF9E1961219FF528718C861BB38C6E182",
+        "path":  "src\\ZuLms.Domain\\Entities\\Identity\\Permission.cs"
+    },
+    {
+        "sha256":  "ADF0D71F8121498AB1866C2D1325E99824A196266D46EC670ECAE71A903484C3",
+        "path":  "src\\ZuLms.Domain\\Entities\\Identity\\RefreshToken.cs"
+    },
+    {
+        "sha256":  "6062EB3D427DF8A00F35AFDA58CC4C3AA889C223EF3093812877468F696B5D2D",
+        "path":  "src\\ZuLms.Domain\\Entities\\Identity\\Role.cs"
+    },
+    {
+        "sha256":  "FB0C71C4EB1BA82853F994C7CEE400E8B89A4CFEBAAE127B0B3E7F2EA5B8CC08",
+        "path":  "src\\ZuLms.Domain\\Entities\\Identity\\RolePermission.cs"
+    },
+    {
+        "sha256":  "CBB83268A524CA4A670B4D0B3BD9FB69409F9AC961C0E1A69203E1EC79A2E48F",
+        "path":  "src\\ZuLms.Domain\\Entities\\Identity\\User.cs"
+    },
+    {
+        "sha256":  "6023F6F46C0FD27C404828A49ADE8EE7FF3448C695FD3A86BE14C03B3EECD502",
+        "path":  "src\\ZuLms.Domain\\Entities\\Identity\\UserPermissionOverride.cs"
+    },
+    {
+        "sha256":  "03C2D71370A546576BDF5248F2389894C4808059EB1F5237455757EE2891A861",
+        "path":  "src\\ZuLms.Domain\\Entities\\Identity\\UserRole.cs"
+    },
+    {
+        "sha256":  "61B1E53A69980CA3220A8A06A3F4D2472B63A5CE404ADB31BA95A6A9E94148B1",
+        "path":  "src\\ZuLms.Domain\\Entities\\Needs\\TrainingNeed.cs"
+    },
+    {
+        "sha256":  "FF69FA33DA82DAE514ECAEC76391DA1AFCA3DE1B16232856A079160E551F8DC6",
+        "path":  "src\\ZuLms.Domain\\Entities\\Needs\\TrainingNeedEvent.cs"
+    },
+    {
+        "sha256":  "04905BF3B08BA1CDBAECC1CF3011F9DD753F86AAFFA730C6C6D035E176901617",
+        "path":  "src\\ZuLms.Domain\\Entities\\Notify\\EmailOutbox.cs"
+    },
+    {
+        "sha256":  "3B5DA3FCCA6EDFCCFB2927FDE244002C1F7BB2E9D511F32FE3AED820A1B24CA4",
+        "path":  "src\\ZuLms.Domain\\Entities\\Notify\\Notification.cs"
+    },
+    {
+        "sha256":  "BF1E92A8C50F23000FDC0AE90A87B638A38FA844A15F88A34B8BD5E76FEB1274",
+        "path":  "src\\ZuLms.Domain\\Entities\\Org\\Center.cs"
+    },
+    {
+        "sha256":  "40583B725CA7D5D44DE368E0CE7A48EF4A5E12F06BD230DABC9636C6CBB6B047",
+        "path":  "src\\ZuLms.Domain\\Entities\\Org\\Department.cs"
+    },
+    {
+        "sha256":  "47A1D3548136E46282C8863FA3C0AB0DB92D751C937968866A8F30193BB4103D",
+        "path":  "src\\ZuLms.Domain\\Entities\\Org\\Employee.cs"
+    },
+    {
+        "sha256":  "F80E675F5843D525E0102C940A909665412D55EB5AC5E111D52A69EFBFC87C61",
+        "path":  "src\\ZuLms.Domain\\Entities\\Org\\UniversitySide.cs"
+    },
+    {
+        "sha256":  "CCDD3691B2DE6EF33B14272FA91DD4711C9124B2583F61B3B2F2F7B4D3DC5C06",
+        "path":  "src\\ZuLms.Domain\\Entities\\Profiles\\MemberProfile.cs"
+    },
+    {
+        "sha256":  "6BAD02DF80A754AE91D0CF2E77FA0CED8636D265BAEB4DD54D05CCD689D7F8A3",
+        "path":  "src\\ZuLms.Domain\\Entities\\Profiles\\ProfessionalCertCategory.cs"
+    },
+    {
+        "sha256":  "1A353CE9BD60C335DAD9725D744165B763241F603F9EE2F0D7FCCA661F036D1B",
+        "path":  "src\\ZuLms.Domain\\Entities\\Profiles\\ProfessionalCertEvent.cs"
+    },
+    {
+        "sha256":  "3C7D4F7B859474983FF11D6D5E2C34CEBCF9C6F2654470DA81FCEE6CF43212FA",
+        "path":  "src\\ZuLms.Domain\\Entities\\Profiles\\ProfessionalCertification.cs"
+    },
+    {
+        "sha256":  "C45C6F6538C4AC1BC90D713837F3871A86E424BC90F33748C419ABCA13E00689",
+        "path":  "src\\ZuLms.Domain\\Entities\\Sync\\SyncReviewItem.cs"
+    },
+    {
+        "sha256":  "3CE52E34A756C22F583C88DF8EDD0E62A47F9A3C0F27E672094B2984000BAF98",
+        "path":  "src\\ZuLms.Domain\\Entities\\Sync\\SyncRun.cs"
+    },
+    {
+        "sha256":  "941D9B7384A4F4C95F9A7508A4CCC37B057B70A657501577BD8F62F37F36630E",
+        "path":  "src\\ZuLms.Domain\\Entities\\Training\\AttendanceChange.cs"
+    },
+    {
+        "sha256":  "3089C126C3D1ECE297CCECA007EE561ECD596771F3DCFBE1068B0589DD3725BB",
+        "path":  "src\\ZuLms.Domain\\Entities\\Training\\AttendanceCodeAttempt.cs"
+    },
+    {
+        "sha256":  "0DF6BB518ED746122394B9AD8ED34D9DC62C52C8B6965C6297829FF496FF28E9",
+        "path":  "src\\ZuLms.Domain\\Entities\\Training\\AttendanceRecord.cs"
+    },
+    {
+        "sha256":  "6B3CEE4436A5F96F05F4588E82EBA0659265C70A92EF18559B55D2CA71AE247A",
+        "path":  "src\\ZuLms.Domain\\Entities\\Training\\Course.cs"
+    },
+    {
+        "sha256":  "D453AC3EF530B0270C2CF820CECCFA045675D6447DA4DF6CB535374F6FB4F5A6",
+        "path":  "src\\ZuLms.Domain\\Entities\\Training\\CourseCancellationRequest.cs"
+    },
+    {
+        "sha256":  "4D8D385BA908E624F7E6D8CCCE0CC7DE1C90545F525E486F7A13A8E624B919EA",
+        "path":  "src\\ZuLms.Domain\\Entities\\Training\\CourseExam.cs"
+    },
+    {
+        "sha256":  "7D64525BB8062FFA676E3566839E3F59868351D83F471EE34883D6462C3387DC",
+        "path":  "src\\ZuLms.Domain\\Entities\\Training\\CourseFile.cs"
+    },
+    {
+        "sha256":  "754ED4042FDDCF2DEB881712046F4F816D7D092A3E0513B77AC0D9FBA0E07DD6",
+        "path":  "src\\ZuLms.Domain\\Entities\\Training\\CourseParticipant.cs"
+    },
+    {
+        "sha256":  "C009CA8C47FB3980773BE65061DC9662A3D091858D80ED3750DCA0DBAB293889",
+        "path":  "src\\ZuLms.Domain\\Entities\\Training\\CourseProposalRevision.cs"
+    },
+    {
+        "sha256":  "13F8108D34037D2F5AA8E2D7DADA5EA4D2AFC7EC1867E5A83ACBDD709D717CBD",
+        "path":  "src\\ZuLms.Domain\\Entities\\Training\\CourseStatusHistory.cs"
+    },
+    {
+        "sha256":  "4D07EEA9447536D8AA3135274CC1DE3B4CB5A29EFACEE95741FD741443272D1E",
+        "path":  "src\\ZuLms.Domain\\Entities\\Training\\ExamResult.cs"
+    },
+    {
+        "sha256":  "5D37BC62DA190144D09AF564FF38E1ACBAFA75A3E2E422661D53D7D640A3DEA1",
+        "path":  "src\\ZuLms.Domain\\Entities\\Training\\ExamResultHistory.cs"
+    },
+    {
+        "sha256":  "E1D8488D963B109B2D8FC6BCCFBD397541CC2BEDFEBC8356FD688CCD28F880C8",
+        "path":  "src\\ZuLms.Domain\\Entities\\Training\\ExternalInstructorAccountRequest.cs"
+    },
+    {
+        "sha256":  "28449CABA282A950666BCCED8A38FC2A520BC308E54270A451AD0C1FE08261CA",
+        "path":  "src\\ZuLms.Domain\\Entities\\Training\\ImpactSubmission.cs"
+    },
+    {
+        "sha256":  "4CC963D074FE9D17A409114A41FDFB9E8CD762C9B0A096C6F23D0C1705BACF59",
+        "path":  "src\\ZuLms.Domain\\Entities\\Training\\Lecture.cs"
+    },
+    {
+        "sha256":  "0A50ABBA4E3AFBABAA4EAD9063C7DD36BE8154D3FBBA47193E807B9D494E37ED",
+        "path":  "src\\ZuLms.Domain\\Entities\\Training\\TrainingTrack.cs"
+    },
+    {
+        "sha256":  "52A7EDDE2A3005B454CB0BEA1803A33D36927FC334E72EF0D3B50C4DCFF2EFEE",
+        "path":  "src\\ZuLms.Domain\\Enums\\AccountType.cs"
+    },
+    {
+        "sha256":  "9B31E728E714081FB8D76FE442AF5D066410755FFBE9397A9957753957A0913A",
+        "path":  "src\\ZuLms.Domain\\Enums\\AttendanceSource.cs"
+    },
+    {
+        "sha256":  "DF6E80A4A891963FFE6F898E2A79602921F1D85A5B3DD257F0733198FC452EF4",
+        "path":  "src\\ZuLms.Domain\\Enums\\AudienceType.cs"
+    },
+    {
+        "sha256":  "72917B847D0C8DF624D81E15CCA7CC5775744045761396A57F4C8D0423EAF6BB",
+        "path":  "src\\ZuLms.Domain\\Enums\\AuditCategory.cs"
+    },
+    {
+        "sha256":  "60273C2C4CDD44B00B10B8D9191C4E7BE8B022E03DFAAD8F22AFEC548EAB81C3",
+        "path":  "src\\ZuLms.Domain\\Enums\\CertificateRevokeReason.cs"
+    },
+    {
+        "sha256":  "001D7CB6815F348D6E90C82F0F585B103F77433EABBA7CD6062B66B3ED65B81E",
+        "path":  "src\\ZuLms.Domain\\Enums\\CertificateStatus.cs"
+    },
+    {
+        "sha256":  "52E203537038D78C083F651A124DF1E59055923E52C04715A91425EFD98947DC",
+        "path":  "src\\ZuLms.Domain\\Enums\\CourseOrigin.cs"
+    },
+    {
+        "sha256":  "1320120072775A1B7571D538DCB7ED1A8987ADCBE92EC3AD54C52CAB259F85FE",
+        "path":  "src\\ZuLms.Domain\\Enums\\CourseStatus.cs"
+    },
+    {
+        "sha256":  "3244D66AC0CFAD48AA5E34AA6CA060A935CFA9B8EB5682A64609259844CB1EFF",
+        "path":  "src\\ZuLms.Domain\\Enums\\CredentialsEmailStatus.cs"
+    },
+    {
+        "sha256":  "54EB4472675FB4FECBE0C73CFDFDF3EF8CB0BA571D52376FE4694D7E1BC39510",
+        "path":  "src\\ZuLms.Domain\\Enums\\DeliveryMode.cs"
+    },
+    {
+        "sha256":  "80A269F9AE1764B41757032E32C32775A602B550C5882D641B87529F157D0A0C",
+        "path":  "src\\ZuLms.Domain\\Enums\\EmailKind.cs"
+    },
+    {
+        "sha256":  "A0BC9C55A7F87CB0279502B6CB9A903E5FF351254524D35933E2DE081B00B664",
+        "path":  "src\\ZuLms.Domain\\Enums\\ExamOutcome.cs"
+    },
+    {
+        "sha256":  "ABB3C6D3F6497E6D8C0CC9DB4EA7BA5CB595EE48F50C98C7E28CDF515EA9C265",
+        "path":  "src\\ZuLms.Domain\\Enums\\ExternalAccountRequestStatus.cs"
+    },
+    {
+        "sha256":  "0891A501578DD81DA137BE9484EE322A62FFAADBD728AE5F30A906406FB06E5A",
+        "path":  "src\\ZuLms.Domain\\Enums\\FileKind.cs"
+    },
+    {
+        "sha256":  "73FEB502B5D1AA4F83C9E7040C8653F226A96D2E7FC1DA96051DF94044ED56ED",
+        "path":  "src\\ZuLms.Domain\\Enums\\FormVersionStatus.cs"
+    },
+    {
+        "sha256":  "1712B86D99497369E2392D44B8EC087E81F74FB9E1437C5EBE49DBD187546E45",
+        "path":  "src\\ZuLms.Domain\\Enums\\ImpactStatus.cs"
+    },
+    {
+        "sha256":  "0EE9A04881F8BD2892883A35F66AC91D6D7D22B188994EA88B8F4A81E234E8BA",
+        "path":  "src\\ZuLms.Domain\\Enums\\ImpactType.cs"
+    },
+    {
+        "sha256":  "087B423E02602BB180F20A60B37827CE4ADDC04B40CBFEB97BC6610AB05AD67E",
+        "path":  "src\\ZuLms.Domain\\Enums\\InstructorKind.cs"
+    },
+    {
+        "sha256":  "8DC71BE56D833ECBA662071422B7C4E89487282BC3C58861242E55445220EBD8",
+        "path":  "src\\ZuLms.Domain\\Enums\\LectureMode.cs"
+    },
+    {
+        "sha256":  "6A982DBAD4BD80599179AF024880AAF0D43B6B7B2258F67E32C7A8E68E6D45B3",
+        "path":  "src\\ZuLms.Domain\\Enums\\NeedStatus.cs"
+    },
+    {
+        "sha256":  "1FCDB9B005AD0344E95B98F42B81C2BA97774C8E285C0FD11B8924CDE61E3BF9",
+        "path":  "src\\ZuLms.Domain\\Enums\\NotificationType.cs"
+    },
+    {
+        "sha256":  "C2AFEE12EC003CA7D447A31849A00C4317D10EC3B5B91175D83F5B262E958832",
+        "path":  "src\\ZuLms.Domain\\Enums\\OutboxStatus.cs"
+    },
+    {
+        "sha256":  "3ADF1B8446C44436F79377404BF5DCBA03E9C243B5AA9D8D637578E5993376DE",
+        "path":  "src\\ZuLms.Domain\\Enums\\OverrideMode.cs"
+    },
+    {
+        "sha256":  "909BF4C6A6D474710E106347556C5781045EFE5F52482FD39C8B48032DDB539A",
+        "path":  "src\\ZuLms.Domain\\Enums\\ParticipantSource.cs"
+    },
+    {
+        "sha256":  "47A7D34EC4327CFD69C1B7FA997F0248DA22064286BE8ABFBDA2075C774CBB4A",
+        "path":  "src\\ZuLms.Domain\\Enums\\PermissionKind.cs"
+    },
+    {
+        "sha256":  "D9D4FE5F400CA4F7859A472DE43C6BF2B6B259E91E2CD8190228AC1A774488A2",
+        "path":  "src\\ZuLms.Domain\\Enums\\PermissionScope.cs"
+    },
+    {
+        "sha256":  "7AB6060E405B4CE00C128566D24651125D2E67346C7E2D0B3E89058F7534A9B8",
+        "path":  "src\\ZuLms.Domain\\Enums\\ProCertStatus.cs"
+    },
+    {
+        "sha256":  "780A3EFAB2946AAD65617DD2753F5F0027DA2D3C8CA843E29082B61BA0527651",
+        "path":  "src\\ZuLms.Domain\\Enums\\ProposalDecision.cs"
+    },
+    {
+        "sha256":  "83FC328F498270C2F64B98CA332C087184964FEEBF708DCA833ED210EB36DC03",
+        "path":  "src\\ZuLms.Domain\\Enums\\RequestStatus.cs"
+    },
+    {
+        "sha256":  "F24E46FC85F6DB9EFA9422BA91A4B222B4A16A540AB962DE163A4E2B512AE218",
+        "path":  "src\\ZuLms.Domain\\Enums\\RoleCode.cs"
+    },
+    {
+        "sha256":  "61B7C435BC357C2E73B6A80CDD849B1DE39C32DF3F456ED9FEFADEE6A47ED8EC",
+        "path":  "src\\ZuLms.Domain\\Enums\\SettingValueType.cs"
+    },
+    {
+        "sha256":  "53C5C01E710DAC549C4CE81BC695EC7F64915211648083C641EB569594A7D972",
+        "path":  "src\\ZuLms.Domain\\Enums\\SyncReviewOrigin.cs"
+    },
+    {
+        "sha256":  "6066277549CC56E15D843CC2EA3F2C2AF3C774FDACCF6B93EA9274787AEBD160",
+        "path":  "src\\ZuLms.Domain\\Enums\\SyncReviewReason.cs"
+    },
+    {
+        "sha256":  "6CD32FF2B84383F1A6B025F8536421D75FE9EF9BD3EAE3079486EA9297F1EAC5",
+        "path":  "src\\ZuLms.Domain\\Enums\\SyncReviewResolution.cs"
+    },
+    {
+        "sha256":  "0B3ED0DBAF76A821BBAEE041CA2328950102C53C3184B82B50FC33633D2AC7B8",
+        "path":  "src\\ZuLms.Domain\\Enums\\SyncStatus.cs"
+    },
+    {
+        "sha256":  "843FDE98CF766C0C026AFBB828F9735334C24D3CBBAA3DF03CB50D2DDD456D73",
+        "path":  "src\\ZuLms.Domain\\Enums\\UiLanguage.cs"
+    },
+    {
+        "sha256":  "E18E6067BAF3604962B45CA6143D91522BDF2F1B24486318674968BBCA561A77",
+        "path":  "src\\ZuLms.Domain\\Rules\\ArabicSearchNormalizer.cs"
+    },
+    {
+        "sha256":  "25D04B30C46EAB22B57D6287DB23AA19D79C849062D133E0051DB9633918EEAF",
+        "path":  "src\\ZuLms.Domain\\Rules\\AttendanceRules.cs"
+    },
+    {
+        "sha256":  "912C0DD833644A3C101E8605E9D4BA1C7AD2927C5F7B6D19C6F0BDA96CF41412",
+        "path":  "src\\ZuLms.Domain\\Rules\\CertificateReference.cs"
+    },
+    {
+        "sha256":  "B1E1C958FFA7F3FF77E538BCF396863DE0DC4C4C7459BDA4DAF5EB41723F6B9B",
+        "path":  "src\\ZuLms.Domain\\Rules\\CourseStateMachine.cs"
+    },
+    {
+        "sha256":  "E4A9371C1119BB27D4C5DDE4EABF56180419967A2930EA0A2BA58BB6A91550CD",
+        "path":  "src\\ZuLms.Domain\\Rules\\EligibilityRules.cs"
+    },
+    {
+        "sha256":  "19B4FA5B313AE720E2760F56FEDCA786128A6EF790A0790287C250DFD1EB9DAA",
+        "path":  "src\\ZuLms.Domain\\Rules\\FileRules.cs"
+    },
+    {
+        "sha256":  "B34420C6D6CEE460FB5766889365560DF10C74361922B979973CB994A699EB39",
+        "path":  "src\\ZuLms.Domain\\Rules\\InitialPasswordRules.cs"
+    },
+    {
+        "sha256":  "3D9861995F46E5C73FA6ECC0EB4AF4F70931BF7FF726898D488EC67A3DD7C72B",
+        "path":  "src\\ZuLms.Domain\\Rules\\LoginNameRules.cs"
+    },
+    {
+        "sha256":  "05E32B3E2DA771366026F14CCD1A9D19C9D16D2ED1BC9D8A0F35C0F56C85451D",
+        "path":  "src\\ZuLms.Domain\\Rules\\NameRules.cs"
+    },
+    {
+        "sha256":  "A841FF8CC6D469969FD1EADB6BD3D02D12A095C1B00DD44B90D3BD8C56701B00",
+        "path":  "src\\ZuLms.Domain\\Rules\\PasswordPolicyRules.cs"
+    },
+    {
+        "sha256":  "0391F055A9747941CEBA614543A1172301DF8F62AA6D6286EFB48ADF8BF64A7C",
+        "path":  "src\\ZuLms.Domain\\Rules\\PasswordRotationRules.cs"
+    },
+    {
+        "sha256":  "095879D97A0AFAE1F12F63944B91C3558B26C8CE0FA5A2E48E5EF4E138FFD3C2",
+        "path":  "src\\ZuLms.Infrastructure\\Class1.cs"
+    },
+    {
+        "sha256":  "2D5FD7D9A2AFB76B746B2C0DE81BCFCCC3A091778CCC8515AD5D6B6D9040B127",
+        "path":  "src\\ZuLms.Infrastructure\\DependencyInjection.cs"
+    },
+    {
+        "sha256":  "9D82EC9E39801AEDFD7A0CA8A132B2EA47816A15FFB3F393C48BAEBA4689438B",
+        "path":  "src\\ZuLms.Infrastructure\\GlobalUsings.cs"
+    },
+    {
+        "sha256":  "6B41BF088EC68713DFDC2F687B165EBDBC9CEFAFA8F16C54F2D66038E1D6A362",
+        "path":  "src\\ZuLms.Infrastructure\\ZuLms.Infrastructure.csproj"
+    },
+    {
+        "sha256":  "0342AB6B74B6BD1B4B5BF7BEDA45A9734A2B3147A31E8A3A45B6A3417A52D9D7",
+        "path":  "src\\ZuLms.Infrastructure\\Assets\\Fonts\\Tajawal-Bold.ttf"
+    },
+    {
+        "sha256":  "6882892DA3E03527D5DB2BBAB3B48BDE6EF2E878A43F522D1A4EEBDA90010A19",
+        "path":  "src\\ZuLms.Infrastructure\\Assets\\Fonts\\Tajawal-Regular.ttf"
+    },
+    {
+        "sha256":  "5FF1D9591ABE4C2D6FB508BDEE7AAD6A91D7630B6520731577DFBAA4C56C3750",
+        "path":  "src\\ZuLms.Infrastructure\\Background\\EmailOutboxWorker.cs"
+    },
+    {
+        "sha256":  "BBCA6D82CF06351F48D6E07EA8C01D490626D7212CEB7E43B82191913E9CCBA4",
+        "path":  "src\\ZuLms.Infrastructure\\Email\\MailKitEmailSender.cs"
+    },
+    {
+        "sha256":  "AC0A1733098D7970C92A961438D8417360DCF62AB6C4192C716046C0FDD728BE",
+        "path":  "src\\ZuLms.Infrastructure\\Files\\DiskFileStorage.cs"
+    },
+    {
+        "sha256":  "20DEEEEFA68A6F14A03E8DABD29E1D2AEF52C8F3AE571708828730D0D83C28FB",
+        "path":  "src\\ZuLms.Infrastructure\\Pdf\\QuestPdfCertificateRenderer.cs"
+    },
+    {
+        "sha256":  "F8F9234433E5EFE326DE1B5FC52346661D583ED3FA087A45DBEEFCB8639A4AA9",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\AppDbContext.cs"
+    },
+    {
+        "sha256":  "D89F510D4601E2E9439275692F8426A088F65153005B858E69F150C8F2CFAB1E",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\AppDbContextFactory.cs"
+    },
+    {
+        "sha256":  "C95E806D7A99D826794C25A12AE4D451DBA267292A07DEFDEDADB86267432D0A",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\EfAuditLogger.cs"
+    },
+    {
+        "sha256":  "705BD5B044EA76BC6B00DD4A35ADB353986FCEECE5EE3A02846B67BA140CAAE3",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\AttendanceChangeConfiguration.cs"
+    },
+    {
+        "sha256":  "BBAC86AD0887484E1C7478876716811386F3DD80D5F0EB9575159FBD77A1F1C2",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\AttendanceCodeAttemptConfiguration.cs"
+    },
+    {
+        "sha256":  "A9B8F3A0D107C758A46846D30F8680C5832681494325973AAE878B71979B99C3",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\AttendanceRecordConfiguration.cs"
+    },
+    {
+        "sha256":  "C584B50375F06AA788EAEE7372607F709D240194F82042E2D7AD8E56AB3B41BD",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\AuditLogConfiguration.cs"
+    },
+    {
+        "sha256":  "0B9F027B1F585E87431EB4DA32519CB5FC787A2701547DB267EE014ADDA73D2B",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\BlockedPasswordConfiguration.cs"
+    },
+    {
+        "sha256":  "C9A7C3A36B9330D4D41B06FCA4485A174B4C315A55647D435D86230E641C2ACF",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\CenterConfiguration.cs"
+    },
+    {
+        "sha256":  "1A2C185FFE193A8047EB7804E1CD3747F5D8B4BC35BA6EAFD8B2D2A2CBCA5C3F",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\CertificateConfiguration.cs"
+    },
+    {
+        "sha256":  "27169533A587653F74F6A8AB71763E3744DC4739B51B377DBC893E9CAFCA28FB",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\CertificateTemplateConfiguration.cs"
+    },
+    {
+        "sha256":  "B71630BC1463A1C172EEAC929A2A2AA6939B1AF864BFEF858164B90F2198361E",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\CourseCancellationRequestConfiguration.cs"
+    },
+    {
+        "sha256":  "1CD75C6287FC0571367DF9E7218133E514D69878962A6AA2AF1FBED276C3D8D2",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\CourseConfiguration.cs"
+    },
+    {
+        "sha256":  "C8121828D82229EA0C479DC1477124362E5CD238E0C5E23573E7294D65E9538E",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\CourseExamConfiguration.cs"
+    },
+    {
+        "sha256":  "EEE640ADAB13F0D087F5C527388ED989E6C15E06048AC7955A08EC080C9497AB",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\CourseFileConfiguration.cs"
+    },
+    {
+        "sha256":  "3DBF853A7DE8A509293FD049BF40A35C58CC43B0583D3C710CAA27AD64A3CF78",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\CourseParticipantConfiguration.cs"
+    },
+    {
+        "sha256":  "FB1FD86C5AB16D5865FC7EEEC5D7AF839A31800F23B76233D03A36647E94335A",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\CourseProposalRevisionConfiguration.cs"
+    },
+    {
+        "sha256":  "DA4E4DDB79CBD300063AD05564404655FB4C13E41CD494B9D0BB1EACCE4008C6",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\CourseStatusHistoryConfiguration.cs"
+    },
+    {
+        "sha256":  "D25A3C36336C83E7F42AA6365CC1F89998AB3EB70A403A5955791A2D7BEAEC61",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\DepartmentConfiguration.cs"
+    },
+    {
+        "sha256":  "819E61BDC9E446BF74A5C266D20362DC5DB7340611758D2C1168E6EABD5A9F42",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\EmailOutboxConfiguration.cs"
+    },
+    {
+        "sha256":  "96B2C148DE6D0CFF1C04C1BF2276CE3CB1DB847BA61A742A49D561DFC5B82C73",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\EmployeeConfiguration.cs"
+    },
+    {
+        "sha256":  "BCAA1902EA2D38C565157999F0F3046E8E66924A073765AAE8242DCA0C2598C7",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\EvaluationAnswerConfiguration.cs"
+    },
+    {
+        "sha256":  "656BC1A9D256A8C88A7CFA11E81E0471616A89B38AB0C6A4DB247EE9D379CA81",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\EvaluationFormVersionConfiguration.cs"
+    },
+    {
+        "sha256":  "726BCD0BBD1F51520B8972192FC85C1069DA0FBAD128BDA6A99F8B2A665A14E2",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\EvaluationOptionConfiguration.cs"
+    },
+    {
+        "sha256":  "653534CD1811E453EE458249ADB85301935A283F3DEDC048730D86B2B13FAB86",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\EvaluationQuestionConfiguration.cs"
+    },
+    {
+        "sha256":  "BD648D96DE01567F4DD7C5DC2E16BCBBC49527C9B35A014CF6D486A7ECED23ED",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\EvaluationResponseConfiguration.cs"
+    },
+    {
+        "sha256":  "189668930B7FFFCFDC9B471B1D36578AD118C3E2FBB5657AD194BCDF76A4760D",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\ExamResultConfiguration.cs"
+    },
+    {
+        "sha256":  "C11445044C6AC6BD20D65649FF25B210B529CCE5E2CFE50D3F6EF1EBC084FBDE",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\ExamResultHistoryConfiguration.cs"
+    },
+    {
+        "sha256":  "B0F9DFABF716DFE79EF3A2E3D1A33FF5DF73141193748CB5801F27CCF8F9F3B9",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\ExternalInstructorAccountRequestConfiguration.cs"
+    },
+    {
+        "sha256":  "3D3D542B7D5D8F936622EC062A54022043FF90AC5E19CE093295FD0DAB716DA8",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\ExternalInstructorProfileConfiguration.cs"
+    },
+    {
+        "sha256":  "E2D7290AAD016934649028AB87761C5F5D0810097E6405487C75B0C93A4DA4C4",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\FieldHintConfiguration.cs"
+    },
+    {
+        "sha256":  "E1739AF304D8E172CED269A3226412CC74D668FD9A73D15332A31101DFF75416",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\ForgotPasswordAttemptConfiguration.cs"
+    },
+    {
+        "sha256":  "0DF47ECC227A644263A8817A8835C2C97E6AB813B92FDF2BAE1AE98C97E4016D",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\ImpactSubmissionConfiguration.cs"
+    },
+    {
+        "sha256":  "CB8D896247E6C9C583BECAABC90F89613D912AE374343347E6DFD807A21313A2",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\LectureConfiguration.cs"
+    },
+    {
+        "sha256":  "7A5B8B3FC6BFD93C69ECFC0B6332F501F4D196756162901C02DC2854F5AC8E89",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\MemberProfileConfiguration.cs"
+    },
+    {
+        "sha256":  "10A25D918234F8D17A8760B11C691C93CA835B849C7F231BDBDD89B048D1D140",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\NotificationConfiguration.cs"
+    },
+    {
+        "sha256":  "259347DDA3C4E0E32573C067D82CD221A017FAACFAFD9EA1238D2FEDF003BF55",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\NumberSequenceConfiguration.cs"
+    },
+    {
+        "sha256":  "DCA8FCBC38358868E8A81DAA0292BBD76613AEA5A9815109DCCDA24D04D7425F",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\PasswordPolicyConfiguration.cs"
+    },
+    {
+        "sha256":  "3BABF6B037E65032035287F6A0AD2324A18850CB24676F05EE59C6C715811AAE",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\PermissionConfiguration.cs"
+    },
+    {
+        "sha256":  "C2E566E1722A154E36D2F2A07E2DDA35422A7EDFAADA902A1242D340EE43157D",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\ProfessionalCertCategoryConfiguration.cs"
+    },
+    {
+        "sha256":  "B8EEAE45EC2102CC3C97E19884E9919416A74087C874DE62B5D0BD238B6C2282",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\ProfessionalCertEventConfiguration.cs"
+    },
+    {
+        "sha256":  "B14C463DEE9D551C31600C2BDE8D1934E9EB9DD78A933F89410CC73761812B34",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\ProfessionalCertificationConfiguration.cs"
+    },
+    {
+        "sha256":  "9B3E83885B6B885C65F5DE354EEC15B697CD13CD8A1FD7E7E101EAA7BAB710FB",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\RefreshTokenConfiguration.cs"
+    },
+    {
+        "sha256":  "23E4B5F8229E9131F36887A22CC8F3B8F86A0B3E5B28670850D35CED6909220F",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\RoleConfiguration.cs"
+    },
+    {
+        "sha256":  "4CBC1115632A72C36449BF9F2064A6D19FD7C50BAE543B05D0E3D9784FCD0A18",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\RolePermissionConfiguration.cs"
+    },
+    {
+        "sha256":  "1650AD661E0FDC4F7C324D2B578FCA5357575601E72E3DDB17B5E6A5EE2B00D1",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\StoredFileConfiguration.cs"
+    },
+    {
+        "sha256":  "11A306AA772BDC8B7097DA06A6EB9BAF8AF76E8706A1EC68CB57EA5A5DDCD18A",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\SyncReviewItemConfiguration.cs"
+    },
+    {
+        "sha256":  "94F2DC27030DACE427A5F44A8A3BA4FD951CFF41C97442A5CCB81FE05FDD5478",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\SyncRunConfiguration.cs"
+    },
+    {
+        "sha256":  "EE73E8BD01E9F2ED44EF140CD9754E4ED903FC63EABB4EB1E45FE7142F9578C2",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\SystemSettingConfiguration.cs"
+    },
+    {
+        "sha256":  "9E3604036B2CF7FC00F285A4EBCE51F3EB52392F9FA26BFC56FC93FC7F627001",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\TrainingNeedConfiguration.cs"
+    },
+    {
+        "sha256":  "12BAC83A20690994A63C0FAFE3FDDFBCD9E96298DA9AB1603E13AE995BD64E66",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\TrainingNeedEventConfiguration.cs"
+    },
+    {
+        "sha256":  "BBE09CEE3F7F0FCB2327865FCA6132406495A422FAA0A2B60930F83CA61E2FBE",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\TrainingTrackConfiguration.cs"
+    },
+    {
+        "sha256":  "3C859309B44AC4B2C7D3E73D6A2E3FF8D1E14311CE24CF9D856A7081E7C01BA2",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\UniversitySideConfiguration.cs"
+    },
+    {
+        "sha256":  "0AD1CFF2A769B142B2EA10ECB40B6FB07DFAE7385F8EC6CF43654366EDD6DCD0",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\UserConfiguration.cs"
+    },
+    {
+        "sha256":  "8F80DD87D01D5342E90B49438B97A2F690E296B8A06FB8A3D05F8B7BDA001724",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\UserPermissionOverrideConfiguration.cs"
+    },
+    {
+        "sha256":  "4D2B3A1295A70AC8A511AE5931E060CBA4D57ECB786D8DF1C31598945B2557B6",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\UserRoleConfiguration.cs"
+    },
+    {
+        "sha256":  "49B31AF61ED04E03373B2E51624CA24035AE6E10817E65ECF8561ACE8B891CEE",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Configurations\\VaultDocumentConfiguration.cs"
+    },
+    {
+        "sha256":  "D8E5FC1101412269F50BF69DDE8514ED09387C24488951D23719F1DBD6095949",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Migrations\\20261028124842_InitialCreate.cs"
+    },
+    {
+        "sha256":  "9B9FF119CB90C8FF3DE802D16DB9C0805A897888D35A8DA8DFB52D048FF06ACA",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Migrations\\20261028124842_InitialCreate.Designer.cs"
+    },
+    {
+        "sha256":  "5154C5D0E84831F7E9C9C9340C9F237E8FA6D7105BC999588B9D303BF1A97416",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Migrations\\20261028125845_HardenSchema.cs"
+    },
+    {
+        "sha256":  "01CFD617C5397DCB30490FF0C3F015E30C28CB05E6F7997E35B0499A931997AE",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Migrations\\20261028125845_HardenSchema.Designer.cs"
+    },
+    {
+        "sha256":  "A7B10A98FE7571B10282532CA3EF76AD6776902478CB2D4E5DAC1731610EB41F",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Migrations\\20261028203237_AlignRuntimeModel.cs"
+    },
+    {
+        "sha256":  "F41EBB5741C7EB8401B5117DBF2DF8862115A906CE9CFBB83AE97FB38A0D1401",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Migrations\\20261028203237_AlignRuntimeModel.Designer.cs"
+    },
+    {
+        "sha256":  "85D2C63EC6136E4C619D89BE29AD042EA04BABF312A5F9A6D8764977347BCA72",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Migrations\\20261028204904_SyncReviewOriginAndOptionalRun.cs"
+    },
+    {
+        "sha256":  "03CE424080AEAD406E12B5FE6DFAB66C9F02F75100D39A3CC4424CA8AE57D743",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Migrations\\20261028204904_SyncReviewOriginAndOptionalRun.Designer.cs"
+    },
+    {
+        "sha256":  "11F3D0471E9591577719894058B04CA2E51F90E52BE9E8CA4829AB2BBEF7C61E",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Migrations\\20261029124609_OptionalCancellationLetter.cs"
+    },
+    {
+        "sha256":  "C35B869728E7AFFE6F4F2B9DE384ABBB44BCC00EA94FD7437DA5EB352E932062",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Migrations\\20261029124609_OptionalCancellationLetter.Designer.cs"
+    },
+    {
+        "sha256":  "F1F67F8108CDA8B52F893F8C00E3DB620B0EA5FB7FB6D482AC1BEAFAA7BCAE31",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Migrations\\20261029155309_CourseArchiveNotifications.cs"
+    },
+    {
+        "sha256":  "37CC4AF6258E26B934453A4243BCEC49DFB1BD20CE839D0E267DDE85CEEECDA5",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Migrations\\20261029155309_CourseArchiveNotifications.Designer.cs"
+    },
+    {
+        "sha256":  "0D4E6468FB0B5CEC85CC3056EF423F3A7E13326D37428BABE1206BA61924BF85",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Migrations\\AppDbContextModelSnapshot.cs"
+    },
+    {
+        "sha256":  "68782D6A4A19A4768D5F15DD66BD534E7A33055CC755411E33F16D18C50FDCCE",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Seed\\common-passwords.txt"
+    },
+    {
+        "sha256":  "D73671FD122DF48DAA6D46665306553FE2D38DE89FBA8E7B6B1E1F912A0E3A4F",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Seed\\DbSeeder.cs"
+    },
+    {
+        "sha256":  "7A9E44C52291254D6B9315AE29A691C46EBEA31B00B92CB6884706964A6C9C25",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Seed\\field-hints.ar.json"
+    },
+    {
+        "sha256":  "1DA768D0FAB05AAD515C48D03FE921711528522F18896AE8BF471E05AC47A671",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Seed\\permissions.json"
+    },
+    {
+        "sha256":  "8F3FED72DA8C614F66038664651A5F1B529B437AF2AA3FCC9BF04A1A64FF5CAB",
+        "path":  "src\\ZuLms.Infrastructure\\Persistence\\Seed\\settings.json"
+    },
+    {
+        "sha256":  "D48B706666BBD34C28DE00F45B9E5AE45381385D913CBA606ED4AC0F44D3E4ED",
+        "path":  "src\\ZuLms.Infrastructure\\Qr\\QrCodeService.cs"
+    },
+    {
+        "sha256":  "AE88B16645911906D210F02624EC234ECA37DD7E0B2019DF93C279B5FA6D319E",
+        "path":  "src\\ZuLms.Infrastructure\\Security\\AesGcmEncryptionService.cs"
+    },
+    {
+        "sha256":  "6C2CF83419F66EF95AAFA4BA8BAEA229983C562D4FD8A438E2BEA535CD80D27D",
+        "path":  "src\\ZuLms.Infrastructure\\Security\\CurrentUserAccessor.cs"
+    },
+    {
+        "sha256":  "3FB7EFE7CA9A55ABD146E61B243F287F1A66484F11C17196CBCA525ABCD4CCF0",
+        "path":  "src\\ZuLms.Infrastructure\\Security\\JwtTokenService.cs"
+    },
+    {
+        "sha256":  "B95DE99E6D57624759EE55F060EF74478CDA7028A4EB0683C26F61F56EF21D9E",
+        "path":  "src\\ZuLms.Infrastructure\\Security\\MemoryCredentialReauthCache.cs"
+    },
+    {
+        "sha256":  "6EF651527FBFC98D5355A1BC3EDB68750CFCEB2B643AF78235C0734EA2064E2C",
+        "path":  "src\\ZuLms.Infrastructure\\Security\\Pbkdf2PasswordHasher.cs"
+    },
+    {
+        "sha256":  "5F6BCC7C0B5169B20409B858492C81C37641F8203906483A4B989D7C136CD980",
+        "path":  "src\\ZuLms.Infrastructure\\Time\\SystemClock.cs"
+    },
+    {
+        "sha256":  "14B7B461364252C37B0E87B172A0DE44B52BA9D8ACC8DCEFA1C4EB6802C7189D",
+        "path":  "src\\ZuLms.Infrastructure\\University\\UniversityApiClient.cs"
+    },
+    {
+        "sha256":  "22E068E2F057CF828FA209C1422C54E7AF4FA19B8A95BE82E042DDA02A1E5BA4",
+        "path":  "src\\ZuLms.Infrastructure\\University\\UniversitySyncCoordinator.cs"
+    },
+    {
+        "sha256":  "CE1B1CE3FE00771C39DF57AA6A7193A30C8A201E304526242AA7249A0438D408",
+        "path":  "src\\ZuLms.Infrastructure\\University\\UniversitySyncLock.cs"
+    },
+    {
+        "sha256":  "00E42A7136D661C5A021323E705E81DABCF870277EDCE97E71D0B4FD960E9760",
+        "path":  "src\\ZuLms.Web\\appsettings.Development.json"
+    },
+    {
+        "sha256":  "27D60E4A3BB66849BA072C81FA9D46CDE083B076B538FD64F67EC09BCEBA1648",
+        "path":  "src\\ZuLms.Web\\appsettings.json"
+    },
+    {
+        "sha256":  "E10638E427686E7D73294C74C5892830D3B033A6D2B24437F51CA054091BD110",
+        "path":  "src\\ZuLms.Web\\CommandLineSync.cs"
+    },
+    {
+        "sha256":  "0C9223FCDFBA796E1A7FAA5735F387BB34B9C44FE00FBE6480BC4AC3B97235EC",
+        "path":  "src\\ZuLms.Web\\Program.cs"
+    },
+    {
+        "sha256":  "BD9E2BF1E570FE9949D5CE1EB91C66CA3B65366025188D99BA8B7EEF19C97D03",
+        "path":  "src\\ZuLms.Web\\SecretReencryption.cs"
+    },
+    {
+        "sha256":  "9DFACB8DA983D0E98ED099074A0810689270F51D5BF8CB13D17118FC62728E02",
+        "path":  "src\\ZuLms.Web\\ZuLms.Web.csproj"
+    },
+    {
+        "sha256":  "6F66AE894FF90BD12FC0195C06B50A35CCF670AD25A8419AB393BF5BD07C39AB",
+        "path":  "src\\ZuLms.Web\\Api\\AdminCourseLifecycleController.cs"
+    },
+    {
+        "sha256":  "79C223B62CDE863A46B3357BB3FA072DDEA6A886E6A4C73ACBD54647E77DD101",
+        "path":  "src\\ZuLms.Web\\Api\\AuditController.cs"
+    },
+    {
+        "sha256":  "6A4F7E844ADB7D5F5B49891830E0F33F152EF476504935EF560E8DEBBDC5AF41",
+        "path":  "src\\ZuLms.Web\\Api\\CentersController.cs"
+    },
+    {
+        "sha256":  "975A651BC6B851B75CA1BF963E4CBD2596B7EEA3F21C2F5F4D0C7E3243308DF1",
+        "path":  "src\\ZuLms.Web\\Api\\CertificatesController.cs"
+    },
+    {
+        "sha256":  "56F4C3E3F603544E323B0D3D0587E03715A8A8403F749B8090C9F54FF2386AC8",
+        "path":  "src\\ZuLms.Web\\Api\\CertificateTemplateController.cs"
+    },
+    {
+        "sha256":  "43D250A6EF69FB7AA473F7F4DFB6AECC4E467AE734445F1C25FD5BBA363FF7F7",
+        "path":  "src\\ZuLms.Web\\Api\\CourseAttendanceThresholdController.cs"
+    },
+    {
+        "sha256":  "1AF76BF22F09F88B9001532E6145B7A1F3A1C4E3E5A117E549DBC7E23238BB74",
+        "path":  "src\\ZuLms.Web\\Api\\CourseCancellationController.cs"
+    },
+    {
+        "sha256":  "ABFEE4FF94B91B84E59CAE579396CD8A6632C5A41EBB6F47A52B670AB4E3B2C8",
+        "path":  "src\\ZuLms.Web\\Api\\CourseCommonEditController.cs"
+    },
+    {
+        "sha256":  "1E2E5A0160578F2CC97B4D2510C3C0529356BF8CEAD1FABE5327FEFA67A7B828",
+        "path":  "src\\ZuLms.Web\\Api\\CourseDirectoryController.cs"
+    },
+    {
+        "sha256":  "81F5D23DBB666BE4EB9C0CB052A889A4575B394D5E15C086BB3A34EA6A7AAA70",
+        "path":  "src\\ZuLms.Web\\Api\\CourseFinishController.cs"
+    },
+    {
+        "sha256":  "E7198D05D97D8D6DC16BDB92EBBE8005C0F381F8AA276895B91F00270BE89876",
+        "path":  "src\\ZuLms.Web\\Api\\CourseForceStatusController.cs"
+    },
+    {
+        "sha256":  "77753BE32DE7E2A0C25186F77433896C21C40DDE52BDF184E071FC3D037BF5F6",
+        "path":  "src\\ZuLms.Web\\Api\\CourseInstructorEditController.cs"
+    },
+    {
+        "sha256":  "E0B5821E77450177AA2DD5D2E45CFA679034E2B0845714C30EBFE337BDD42364",
+        "path":  "src\\ZuLms.Web\\Api\\CourseProgressController.cs"
+    },
+    {
+        "sha256":  "D003093C3AAA673D965AF342504C9EA3ABE8F06F847A6C3B8DEE82CA653B3F0F",
+        "path":  "src\\ZuLms.Web\\Api\\CourseProposalsController.cs"
+    },
+    {
+        "sha256":  "BE5D81F87DC9C0C9FCE7F37E6F2FF811D18CE98986E45057A30A20FBBA1843F2",
+        "path":  "src\\ZuLms.Web\\Api\\CourseRegistrationController.cs"
+    },
+    {
+        "sha256":  "5C3A7AC3E49FA80F71AF16C87BB337D30AB3D8306BA46677D7E0AF0016F6AEC9",
+        "path":  "src\\ZuLms.Web\\Api\\CredentialsController.cs"
+    },
+    {
+        "sha256":  "7F9224EBBC50B03B24963C0A01D42BBE59A417C226DAE69FCC55D42804514C78",
+        "path":  "src\\ZuLms.Web\\Api\\DirectCoursesController.cs"
+    },
+    {
+        "sha256":  "6EB97A10FD173F57BBADBC8010467CD3C3A8F81D32D22B82EC8E5BA533A5BAE6",
+        "path":  "src\\ZuLms.Web\\Api\\EvaluationAggregateController.cs"
+    },
+    {
+        "sha256":  "CA96597DD6A61E4119E3F131EA39C6E3286FC7DB57285BBFB32723D4C39B6119",
+        "path":  "src\\ZuLms.Web\\Api\\EvaluationController.cs"
+    },
+    {
+        "sha256":  "C7FD0C8B8DFB4ABA5F241CA384558760F0AEEFCFD84E142F87ECD51C46AD8655",
+        "path":  "src\\ZuLms.Web\\Api\\EvaluationFormAdminController.cs"
+    },
+    {
+        "sha256":  "776B56E585F62060A9552200D6E344514E762AFB060516E6EBE0A17D91BF237C",
+        "path":  "src\\ZuLms.Web\\Api\\EvaluationsController.cs"
+    },
+    {
+        "sha256":  "C42946B70D9089265775D525F2037109F652C9B75AB1880AF02DD203556155D1",
+        "path":  "src\\ZuLms.Web\\Api\\ExamsController.cs"
+    },
+    {
+        "sha256":  "28CE598EE7A319C747924C641471AA69DBBC7BCE7497AFEC3071FC8778EB3D47",
+        "path":  "src\\ZuLms.Web\\Api\\ExternalInstructorRequestsController.cs"
+    },
+    {
+        "sha256":  "18DDDA6F9B65394221F610D113306B710A529CB620474A90B3EA1C53C7B29892",
+        "path":  "src\\ZuLms.Web\\Api\\FilesController.cs"
+    },
+    {
+        "sha256":  "13C23528F1E1F215C182073F035B060F92F1A2C6798D2C558D51B3ECF652B796",
+        "path":  "src\\ZuLms.Web\\Api\\HintsController.cs"
+    },
+    {
+        "sha256":  "FF5A6EEBB91C0B57149C6B403B8CB4AA26BE5B2989BF432E8ABB4F78D543BF24",
+        "path":  "src\\ZuLms.Web\\Api\\ImpactsController.cs"
+    },
+    {
+        "sha256":  "FB570073B7C81FB630BD59C04939C06D9C3BDB6C5A72FD41202CDB5417D0CE07",
+        "path":  "src\\ZuLms.Web\\Api\\LectureMaterialsController.cs"
+    },
+    {
+        "sha256":  "30CAAB44EA6D9F9D8A7FC8A15B4925DE8AF5A1298B1A712045B5E3DE67B195B0",
+        "path":  "src\\ZuLms.Web\\Api\\LecturesController.cs"
+    },
+    {
+        "sha256":  "0812F6D1A52AE4F6328C201A56CCB06BF5E1157230B353FA027E5C66360AD5C2",
+        "path":  "src\\ZuLms.Web\\Api\\ManualParticipantsController.cs"
+    },
+    {
+        "sha256":  "FB3BB19BCC67068ED04EA4F449694DD47A23AE7FC1FD57B15C672DBCCF622647",
+        "path":  "src\\ZuLms.Web\\Api\\NeedsController.cs"
+    },
+    {
+        "sha256":  "C4BEAFF6C2BAAE6494B5499B5014B91058C6A4F7258F79160B63D75ACBD18216",
+        "path":  "src\\ZuLms.Web\\Api\\PasswordPolicyController.cs"
+    },
+    {
+        "sha256":  "08FE84476866191550D2574B164C831641DA9E1D8A35B60DDE678E608CFCA797",
+        "path":  "src\\ZuLms.Web\\Api\\ProCertsController.cs"
+    },
+    {
+        "sha256":  "E1B0689FE1384CB28AA78D078C6AD23F502D05EF59EAA2384CF10D1D8087A520",
+        "path":  "src\\ZuLms.Web\\Api\\ProfilesController.cs"
+    },
+    {
+        "sha256":  "5A724C96231820E1073C36B10B9D261581379AE80D803423B9507A2983DA202B",
+        "path":  "src\\ZuLms.Web\\Api\\SettingsController.cs"
+    },
+    {
+        "sha256":  "48CA2D8EE1469D5F39D5B552C3DF789145DA68E7A1B5CCD59EB521E46FD75534",
+        "path":  "src\\ZuLms.Web\\Api\\SyncAdminController.cs"
+    },
+    {
+        "sha256":  "5BD95B47541B3523D2F8F91260C6491A7075CACD53B2381A83F039D91444FC67",
+        "path":  "src\\ZuLms.Web\\Api\\SyncController.cs"
+    },
+    {
+        "sha256":  "EEA5C0517654898B39CA193D79187AE479454C09872DAA3379210DA777493DE2",
+        "path":  "src\\ZuLms.Web\\Api\\UsersController.cs"
+    },
+    {
+        "sha256":  "61C298E55B2221F3062F216A8662959E496E8A42769B7ADE2159B2C77A03A962",
+        "path":  "src\\ZuLms.Web\\Api\\VaultController.cs"
+    },
+    {
+        "sha256":  "AE2B31F8B559A952E2B2FACB5CCA334D4150ABD00785E1839927C028FD87ABA1",
+        "path":  "src\\ZuLms.Web\\Areas\\Public\\Pages\\AccessDenied.cshtml"
+    },
+    {
+        "sha256":  "294F3939C3D51B16AD3860EC947C8B9083ECEB5D4BADE7FC064F61672FE9E56D",
+        "path":  "src\\ZuLms.Web\\Areas\\Public\\Pages\\ChangePassword.cshtml"
+    },
+    {
+        "sha256":  "DD25A75F7959089412E0307B0FB60B0100EF580F97D23974D50B545C670DFED2",
+        "path":  "src\\ZuLms.Web\\Areas\\Public\\Pages\\ForgotPassword.cshtml"
+    },
+    {
+        "sha256":  "FC75C8D80D9FC113D23FDA5673C1BBA0204598D7BFD76EB6188F92F844289689",
+        "path":  "src\\ZuLms.Web\\Areas\\Public\\Pages\\Login.cshtml"
+    },
+    {
+        "sha256":  "6FD875774E550AD03BD1C860884244B9BF978AD89F9F99FB1649FB5FECA268CD",
+        "path":  "src\\ZuLms.Web\\Areas\\Public\\Pages\\Verify.cshtml"
+    },
+    {
+        "sha256":  "DF3F09415BBA9F7DC9B2DA3D0806DDE2E4FFAD441D3BD5B287D182D81A722B4D",
+        "path":  "src\\ZuLms.Web\\Areas\\Public\\Pages\\_ViewImports.cshtml"
+    },
+    {
+        "sha256":  "0D1554CEE1A442B9B1285CA552F6DD4D4FBE6EF46D553D6985A7957E1B3A4C0B",
+        "path":  "src\\ZuLms.Web\\Background\\EvaluationPinningWorker.cs"
+    },
+    {
+        "sha256":  "796E4CC3087AF793C8AAA4E0ED693DBE65EEC278985DA8DB547E045C3ADB21BA",
+        "path":  "src\\ZuLms.Web\\Localization\\EmailContentBuilder.cs"
+    },
+    {
+        "sha256":  "3F42760CB6D306D5FA9925A73914044849C443CC377D741E710FEC81CEC7070D",
+        "path":  "src\\ZuLms.Web\\Localization\\RequestCultureFromUserProvider.cs"
+    },
+    {
+        "sha256":  "C36934A3D01C64941BF791D0B6308374EF00CBC46DFB71065FFA93FD04A6F125",
+        "path":  "src\\ZuLms.Web\\Localization\\SharedResource.ar.resx"
+    },
+    {
+        "sha256":  "FF4762584246413DCB9847F73055224426E3BFB8E8D0A7969B1EDE27D609CE1C",
+        "path":  "src\\ZuLms.Web\\Localization\\SharedResource.cs"
+    },
+    {
+        "sha256":  "9A225C3D86AFBD802E5AF1F2FCBE0C5B6B8AB9CBBFE8D9A862310DCA5D60D28B",
+        "path":  "src\\ZuLms.Web\\Localization\\SharedResource.en.resx"
+    },
+    {
+        "sha256":  "A77339728CE63762C38291E9E59A77BD67E7057F9EFD1450B3987864878E6A43",
+        "path":  "src\\ZuLms.Web\\Middleware\\ApiEnvelopeMiddleware.cs"
+    },
+    {
+        "sha256":  "36F51EA61B8730BAE9C4684893984055EB1615367B214AB0C48A0F730CF94FCE",
+        "path":  "src\\ZuLms.Web\\Middleware\\ApiMessages.cs"
+    },
+    {
+        "sha256":  "9E5E1ED9A553E3259503C6482624CD619A03869D9F88E4C96BBE985420853D5B",
+        "path":  "src\\ZuLms.Web\\Middleware\\CorrelationIdMiddleware.cs"
+    },
+    {
+        "sha256":  "F6EAB6775F02510C1ED080039EC84324AFDE81C36F35AA1CAF48D45694F9CB2A",
+        "path":  "src\\ZuLms.Web\\Pages\\Error.cshtml"
+    },
+    {
+        "sha256":  "E904AF39DC66583920EC80943FACA10A6FFD25DCB720DBD29F6B03007A18F0ED",
+        "path":  "src\\ZuLms.Web\\Pages\\Error.cshtml.cs"
+    },
+    {
+        "sha256":  "FA3739317F3A4EE24210F8B85E17DC06F9A59625EA329C26C98B5DF085249893",
+        "path":  "src\\ZuLms.Web\\Pages\\Index.cshtml"
+    },
+    {
+        "sha256":  "BFBB3ACB6DA44D828D6BC078ED62842FE026E3DFE663CC513EAE932A991CFC4B",
+        "path":  "src\\ZuLms.Web\\Pages\\Index.cshtml.cs"
+    },
+    {
+        "sha256":  "A24631BA09A4495F86B5E0E47A2AB6A6BF71A2C66C9B10854C09F5D521851857",
+        "path":  "src\\ZuLms.Web\\Pages\\Privacy.cshtml"
+    },
+    {
+        "sha256":  "DDF1DA2C584FDDDA710F5C2535B0DEEE33C7DD7AC6E48BA4D4B122FF5846D52C",
+        "path":  "src\\ZuLms.Web\\Pages\\Privacy.cshtml.cs"
+    },
+    {
+        "sha256":  "18CC04346B12F0338E80509EB620AF773298AC958B8679324F666E3F09D92F75",
+        "path":  "src\\ZuLms.Web\\Pages\\_ViewImports.cshtml"
+    },
+    {
+        "sha256":  "47E02B4DA20D198892B7B1B00B12944068797C438EF2E82D20FF70B4D56BAD39",
+        "path":  "src\\ZuLms.Web\\Pages\\_ViewStart.cshtml"
+    },
+    {
+        "sha256":  "04D2063C1DB9D1E0E484F19FBDE8F6569AA64F1A9F437B50D42C87663564FB40",
+        "path":  "src\\ZuLms.Web\\Pages\\Account\\Password.cshtml"
+    },
+    {
+        "sha256":  "BEA9A42B9D37C162861FB9CA7569EAC769237B3C79FFA7D97E7EF4902CB154B6",
+        "path":  "src\\ZuLms.Web\\Pages\\Admin\\Audit.cshtml"
+    },
+    {
+        "sha256":  "C73F87E53B9F10BF6DD437B80D6E67E1096140572946B55D796AC0A01AAF8F24",
+        "path":  "src\\ZuLms.Web\\Pages\\Admin\\Centers.cshtml"
+    },
+    {
+        "sha256":  "658A8EA514BBF58878AB9796C630F9F4FAF443DBD85FEC5077767BF3F82CFD56",
+        "path":  "src\\ZuLms.Web\\Pages\\Admin\\CertificateTemplate.cshtml"
+    },
+    {
+        "sha256":  "C4869948A5411942D5A3589BA1368CBB8A8FE7672D295A8AE0751EB35A149508",
+        "path":  "src\\ZuLms.Web\\Pages\\Admin\\Courses.cshtml"
+    },
+    {
+        "sha256":  "9C5ECD30AB4F6F6565C8583E6C23E2694AD4E5A88120B97D1B721705A22F00C2",
+        "path":  "src\\ZuLms.Web\\Pages\\Admin\\CoursesNew.cshtml"
+    },
+    {
+        "sha256":  "945805A8E83081C6C133127F38C30538CC8F49144874D7BE222A05CDB6284822",
+        "path":  "src\\ZuLms.Web\\Pages\\Admin\\Credentials.cshtml"
+    },
+    {
+        "sha256":  "B68D0955A5C5976F7C04FC8B0C92E1EE83F1346E7DC9DBE96971E6F038843949",
+        "path":  "src\\ZuLms.Web\\Pages\\Admin\\Dashboard.cshtml"
+    },
+    {
+        "sha256":  "D79522895326DCC55A64C8CFF4F6BAB5E32F9EE60EC2B65FC9BAD201F37089EB",
+        "path":  "src\\ZuLms.Web\\Pages\\Admin\\Hints.cshtml"
+    },
+    {
+        "sha256":  "F5D66A08A8269A924E540D90299DA9E72BA6948D655A08E25C59235ACCA2CC5F",
+        "path":  "src\\ZuLms.Web\\Pages\\Admin\\LiveFeed.cshtml"
+    },
+    {
+        "sha256":  "5F010E0B94087EC2CF65A4E0583C20321DF03EE3C3D0D761641C5B61ACB1A17F",
+        "path":  "src\\ZuLms.Web\\Pages\\Admin\\Needs.cshtml"
+    },
+    {
+        "sha256":  "D019F0CD80609A4F361598C9AA242934C2EE8E9725D1C48F90A9FA308118300F",
+        "path":  "src\\ZuLms.Web\\Pages\\Admin\\PasswordPolicy.cshtml"
+    },
+    {
+        "sha256":  "5990C0690E3A9859182817145668892DDA6E6A4553783977FD49F078EAF6CB2C",
+        "path":  "src\\ZuLms.Web\\Pages\\Admin\\Settings.cshtml"
+    },
+    {
+        "sha256":  "DC5CDE864B5CFFC75A9FC8F9FF21B4D348C2785D49B31871393FD7C21B7DBB22",
+        "path":  "src\\ZuLms.Web\\Pages\\Admin\\Sync.cshtml"
+    },
+    {
+        "sha256":  "42B6F165E10A43CDBAAF45D7B6B4A8CF9764903E86D475CDE378D56ED8A69B2A",
+        "path":  "src\\ZuLms.Web\\Pages\\Admin\\Users.cshtml"
+    },
+    {
+        "sha256":  "15BA3CDF063F44A6EB58C7B8B13D79CB86C63FEF162B2ABD029E12208F738144",
+        "path":  "src\\ZuLms.Web\\Pages\\Courses\\Available.cshtml"
+    },
+    {
+        "sha256":  "DEF0950D5E3B11DA15F8D22BE14EDF293094DABA531ADAB248A23952637CA0B3",
+        "path":  "src\\ZuLms.Web\\Pages\\Courses\\CancelRequest.cshtml"
+    },
+    {
+        "sha256":  "E445B8BC4E30DDC10E4BAE6A09E41A9EB584A96AAB2B9BC6BF3277A34DA29AC3",
+        "path":  "src\\ZuLms.Web\\Pages\\Courses\\Details.cshtml"
+    },
+    {
+        "sha256":  "97154183F34D2F50D05219AD3247DE8928C2473090C0B4F00ADE53722F31A096",
+        "path":  "src\\ZuLms.Web\\Pages\\Courses\\Participants.cshtml"
+    },
+    {
+        "sha256":  "B03BCE58FFF96E77AC07C1252BB6A7126C887EEA4723F721C8539F70044AE50B",
+        "path":  "src\\ZuLms.Web\\Pages\\Dean\\Courses.cshtml"
+    },
+    {
+        "sha256":  "F16B609B4C532DF83D4E209186A482C2CD6F584CAAE98330B8227CAB72CA5C0A",
+        "path":  "src\\ZuLms.Web\\Pages\\Dean\\Dashboard.cshtml"
+    },
+    {
+        "sha256":  "EB6DB0D9C4EB68EDEB7AB2774D31EC23D7F41160EFD3F54FB1942E408B61BD69",
+        "path":  "src\\ZuLms.Web\\Pages\\Dean\\Members.cshtml"
+    },
+    {
+        "sha256":  "3372DEDC05DDDC475FEDBB045FEF89E50DA4F1B089A5A9ADF50F93BDFB73AEB0",
+        "path":  "src\\ZuLms.Web\\Pages\\Dean\\Needs.cshtml"
+    },
+    {
+        "sha256":  "C9F975F80430264BEC42FE06BA409978EBACE4654E24D3888DA59C63FD3503F1",
+        "path":  "src\\ZuLms.Web\\Pages\\Dean\\Propose.cshtml"
+    },
+    {
+        "sha256":  "3583DDB30819E05AD0BDD5D73FC585E6C89736125DEC377D9A4EEA003EDE7DB2",
+        "path":  "src\\ZuLms.Web\\Pages\\Instructor\\Courses.cshtml"
+    },
+    {
+        "sha256":  "3E5DB7BB995E9753168040FAD39286C449723CB462C6461902FDDBEF7674060A",
+        "path":  "src\\ZuLms.Web\\Pages\\Instructor\\Impact.cshtml"
+    },
+    {
+        "sha256":  "8606C5BCCD71585552D98EF88433E5FE441533EBEDD5BCD038CAB13958520291",
+        "path":  "src\\ZuLms.Web\\Pages\\Instructor\\Lectures.cshtml"
+    },
+    {
+        "sha256":  "AB0E27F0F3FEF7772ECF7E9C81AD3E7C2E9CC58129B4E8F229810D3A56C639D6",
+        "path":  "src\\ZuLms.Web\\Pages\\Instructor\\Progress.cshtml"
+    },
+    {
+        "sha256":  "F47C61BF87CDB18437641B10FFA157E2C8C74EF16CC3530C4E5953FE04D72E1B",
+        "path":  "src\\ZuLms.Web\\Pages\\Member\\Certificates.cshtml"
+    },
+    {
+        "sha256":  "3988984A3DF3F62DE3B82089DBC8767B27756E23789C8B5C4133558C59BD682A",
+        "path":  "src\\ZuLms.Web\\Pages\\Member\\Courses.cshtml"
+    },
+    {
+        "sha256":  "F6C52AD75FA87A3EFAA2CD5D1B815D603E03270D901552B9A66DE051B2DF9F99",
+        "path":  "src\\ZuLms.Web\\Pages\\Member\\Dashboard.cshtml"
+    },
+    {
+        "sha256":  "EF44233400170B5DE43DAD80CB9DC5AEE9BC580931E471C5FA33227DA7E3BE2C",
+        "path":  "src\\ZuLms.Web\\Pages\\Member\\EnterCode.cshtml"
+    },
+    {
+        "sha256":  "EDE987D2560F99164633DD84F8D3F32E76A56946B8294A7D1B443B40ECAB71F2",
+        "path":  "src\\ZuLms.Web\\Pages\\Member\\Impact.cshtml"
+    },
+    {
+        "sha256":  "F6277FE68EF14CBD83C1EDD994C2D9E330A7CCF54010BB5910FD51AFAED4D8BE",
+        "path":  "src\\ZuLms.Web\\Pages\\Member\\ProCerts.cshtml"
+    },
+    {
+        "sha256":  "98671FDA0F31B77EAFFD8F1B7EC2961816A563BDE330B2D3BB4D67A915CB0ADB",
+        "path":  "src\\ZuLms.Web\\Pages\\Member\\Teaching.cshtml"
+    },
+    {
+        "sha256":  "CAC208918AA045E2A483354F8F70CA294E2FAC3D1B0210A4B10C8FBD21DAC7BC",
+        "path":  "src\\ZuLms.Web\\Pages\\Quality\\Cancellations.cshtml"
+    },
+    {
+        "sha256":  "915AE934462282F714A2A9E5FB14CCFD159F23FAD28B1D46A9C7C06A118A000B",
+        "path":  "src\\ZuLms.Web\\Pages\\Quality\\Certificates.cshtml"
+    },
+    {
+        "sha256":  "F1964C9B87BAB244D5E18B8FDC53D522BE0BA462472C4946A3A0C859CC05BF7E",
+        "path":  "src\\ZuLms.Web\\Pages\\Quality\\Courses.cshtml"
+    },
+    {
+        "sha256":  "952442EBA6178DD0A3E378F5256AC68C0F6BD582B4C2CEE9477F1C2892589ABA",
+        "path":  "src\\ZuLms.Web\\Pages\\Quality\\CoursesNew.cshtml"
+    },
+    {
+        "sha256":  "F2A8B686FD19DCC15C81CFE0A83F8D4664C3369CE836CE617D95554850E19D13",
+        "path":  "src\\ZuLms.Web\\Pages\\Quality\\Dashboard.cshtml"
+    },
+    {
+        "sha256":  "2255CC6A26B01F5E8EBD8C78FF485D04E4B7F5F30AA64A9FA22754CCE40562E8",
+        "path":  "src\\ZuLms.Web\\Pages\\Quality\\EvalForm.cshtml"
+    },
+    {
+        "sha256":  "782E8B6C16677DDF74ED1B7E291A6D979E37F233A54D92BA18885687376F6AFF",
+        "path":  "src\\ZuLms.Web\\Pages\\Quality\\Evaluations.cshtml"
+    },
+    {
+        "sha256":  "E46A05D21BA034FDF4AA2FF40C5841212EC116CA2097AF9D7167AD8195EF8E72",
+        "path":  "src\\ZuLms.Web\\Pages\\Quality\\Needs.cshtml"
+    },
+    {
+        "sha256":  "A5514867AD994A2F1A3BBB40F6C02328220F1E64AE36ADF0D43FA35676662EB6",
+        "path":  "src\\ZuLms.Web\\Pages\\Quality\\ProCerts.cshtml"
+    },
+    {
+        "sha256":  "A16A0AA314442020029D36E916C01FF9F2B03372CC956AABAD7022585BD3B829",
+        "path":  "src\\ZuLms.Web\\Pages\\Quality\\ProCertStats.cshtml"
+    },
+    {
+        "sha256":  "12CA7DBA3A80241C62049573A65D3EC5CFC29659F20ACE511E26A756FCB5B24E",
+        "path":  "src\\ZuLms.Web\\Pages\\Quality\\Proposals.cshtml"
+    },
+    {
+        "sha256":  "3FAB473F45D4571AD5644B849692561880D9CA2EDF91DA553AB36628C948CDBD",
+        "path":  "src\\ZuLms.Web\\Pages\\Quality\\Tracks.cshtml"
+    },
+    {
+        "sha256":  "CB61BEE0127C65F056E69AD9EE12D193E3CA4ED2B3702D0B93B5A6C0BC550652",
+        "path":  "src\\ZuLms.Web\\Pages\\Shared\\DateTimePickerModel.cs"
+    },
+    {
+        "sha256":  "9B7FF25DE857A078A0BE845F05864E8955E83FE933285C46DD9B9CA67B4672A3",
+        "path":  "src\\ZuLms.Web\\Pages\\Shared\\Directory.cshtml"
+    },
+    {
+        "sha256":  "C51504273E1277A5C5DE07980E1FDF6C5F9D433AB3D5E8E1CC1C0370389D3250",
+        "path":  "src\\ZuLms.Web\\Pages\\Shared\\Profile.cshtml"
+    },
+    {
+        "sha256":  "E7CFE3DC4D136692F0E7D8E0C42574C77C79916FB67CC8BEEEBAF0B9FD4EF7D9",
+        "path":  "src\\ZuLms.Web\\Pages\\Shared\\_CourseDirectory.cshtml"
+    },
+    {
+        "sha256":  "00EB43CE8F637BDC0740CD5D8DF022DF735A39FAB094CFB0415914DB37A6E87C",
+        "path":  "src\\ZuLms.Web\\Pages\\Shared\\_DateTimePicker.cshtml"
+    },
+    {
+        "sha256":  "CEC246DA83341A6B79A5EECF15D67524ADB7CC7605B63D2797A5464E6CB20600",
+        "path":  "src\\ZuLms.Web\\Pages\\Shared\\_DirectCourseForm.cshtml"
+    },
+    {
+        "sha256":  "546DF82DAFB0CFDEC2D49EA7FD41331C9D54AB34CC83E72A31B72561FF104D86",
+        "path":  "src\\ZuLms.Web\\Pages\\Shared\\_Layout.cshtml"
+    },
+    {
+        "sha256":  "2AA385992BD8B279D3572BBF59179B79A39F0DC9C58BB86677E42FB7FC1BC423",
+        "path":  "src\\ZuLms.Web\\Pages\\Shared\\_Layout.cshtml.css"
+    },
+    {
+        "sha256":  "842C4AEF4BF68FE954F2ACBEADFFA306E248766A69E67B74F99DC7D8B1D34A78",
+        "path":  "src\\ZuLms.Web\\Pages\\Shared\\_RoleSwitcher.cshtml"
+    },
+    {
+        "sha256":  "574F31F5A9A43CD72F4E0BC199FFFDB27204B0D0B537AC9CD5FAD49D8203DFD5",
+        "path":  "src\\ZuLms.Web\\Pages\\Shared\\_ValidationScriptsPartial.cshtml"
+    },
+    {
+        "sha256":  "8FA6771FF5189385676DCF2EDF1076B358E848E09A7DEC90AD0DBE3F73A977D5",
+        "path":  "src\\ZuLms.Web\\Pages\\Vault\\Index.cshtml"
+    },
+    {
+        "sha256":  "E70CF0AEF80E89159093B66347482F33CBD542553E85F9D06B34EAF8499907A8",
+        "path":  "src\\ZuLms.Web\\Properties\\launchSettings.json"
+    },
+    {
+        "sha256":  "881499683DD1B8D728FA0B7AEDC5C33CDFBF05D51E5BF01F867B5B83BB54C6A1",
+        "path":  "src\\ZuLms.Web\\Security\\ApiAntiforgeryAttribute.cs"
+    },
+    {
+        "sha256":  "88846A25074FB725F1A8BFEC0CE54C53D9F3B49325DEF59D78845B475B47F06E",
+        "path":  "src\\ZuLms.Web\\Security\\AuthEndpoints.cs"
+    },
+    {
+        "sha256":  "25324D89BD9797A331CC6D6892147EDC6B87B8C388BB72DE2C8889919CF629D1",
+        "path":  "src\\ZuLms.Web\\Security\\AuthHttp.cs"
+    },
+    {
+        "sha256":  "13417EA32832DD50061E7CA05BCB8A7B240420D10A6B0F82E47F789D89FA2B60",
+        "path":  "src\\ZuLms.Web\\Security\\ContextEndpoints.cs"
+    },
+    {
+        "sha256":  "647559940A4102C3C5DC2F92701EE0B20484EE7977D79EA4E2900651951CBC11",
+        "path":  "src\\ZuLms.Web\\Security\\HealthEndpoints.cs"
+    },
+    {
+        "sha256":  "1A95A52A7D3DE45D998D5401551EF5DEA46A5E18B9D3206BC37B331A4BB13BBC",
+        "path":  "src\\ZuLms.Web\\Security\\LoginRateGate.cs"
+    },
+    {
+        "sha256":  "81A870F096A4323F435D3A47D9DD0B748C4BBFAFCDE4D8E0404D64B7D78FC33F",
+        "path":  "src\\ZuLms.Web\\Security\\PermissionAuthorizationHandler.cs"
+    },
+    {
+        "sha256":  "E9CA13AFA7FFF3614FD021FA083A3BD8FA8183AF7469E3041E09A5FD673E30F9",
+        "path":  "src\\ZuLms.Web\\Security\\PermissionPolicyProvider.cs"
+    },
+    {
+        "sha256":  "B7DC3D4CB4298D7045536384843DE8794E5105671A9191024DF492FA0630EA9F",
+        "path":  "src\\ZuLms.Web\\Security\\PermissionRequirement.cs"
+    },
+    {
+        "sha256":  "B13260BC0D7ED1ED8F86A4C07E6C389A4D7594CBDECC918D22E92C94E88575CF",
+        "path":  "src\\ZuLms.Web\\Security\\RequirePermissionAttribute.cs"
+    },
+    {
+        "sha256":  "FC6F411515B045155A98EFC08608709E22D8168316C6BA989C13EF21CF0CCFCA",
+        "path":  "src\\ZuLms.Web\\Security\\UserStateCache.cs"
+    },
+    {
+        "sha256":  "986ACE4FED6457F657674DAC90B3808E8C4A4ECAC3DFD21E6B9BA86F2AFE32C1",
+        "path":  "src\\ZuLms.Web\\Security\\VerifyEndpoints.cs"
+    },
+    {
+        "sha256":  "C3A3D9351CC678D86CAD1DAB836FFC8CFF25D7453D6221FC8138327BA79E75CF",
+        "path":  "src\\ZuLms.Web\\TagHelpers\\FieldHintTagHelper.cs"
+    },
+    {
+        "sha256":  "9495EDAF8AB63F8F811E0296BAD4B9DC6867A102A665039D611912AC74460870",
+        "path":  "src\\ZuLms.Web\\TagHelpers\\PermissionTagHelper.cs"
+    },
+    {
+        "sha256":  "26DC5FF4BFB9213291735808465E156D4A4691135F3815E3613761243E1F69C3",
+        "path":  "src\\ZuLms.Web\\wwwroot\\favicon.ico"
+    },
+    {
+        "sha256":  "EFD1501E7753BA429F3E3C2FF9B76573EFF2B0B859C8ACA2C1D05F259FD6FF0B",
+        "path":  "src\\ZuLms.Web\\wwwroot\\css\\app.css"
+    },
+    {
+        "sha256":  "1729CA5C9FB412A7A4FB034ACE052EFF0A6E536406EB1563BCAAC87470F219A5",
+        "path":  "src\\ZuLms.Web\\wwwroot\\css\\auth.css"
+    },
+    {
+        "sha256":  "A3901F43971CD22B39A015F0BD0B915B3CFCE53AFA914ACC5888450575319181",
+        "path":  "src\\ZuLms.Web\\wwwroot\\css\\prototype.css"
+    },
+    {
+        "sha256":  "56E5CD6FFBD16FA06C608E6415FE7BB4DC98538B51F033B3F672C1FE8BE67CE0",
+        "path":  "src\\ZuLms.Web\\wwwroot\\css\\site.css"
+    },
+    {
+        "sha256":  "D1AECAA1306C0AF44E2D09422C74A018B43C6B24C50661500787B847FAA4D0E7",
+        "path":  "src\\ZuLms.Web\\wwwroot\\css\\tajawal.css"
+    },
+    {
+        "sha256":  "B081F7BF790678B56A2C0502651D6873CBABC09E78FE40655DF15F918B1E369B",
+        "path":  "src\\ZuLms.Web\\wwwroot\\fonts\\tajawal\\Iura6YBj_oCad4k1nzGBCw.woff2"
+    },
+    {
+        "sha256":  "6C9081FD00DB08800850FA7D214593AA94992BE5159E97557AA60197252CB95A",
+        "path":  "src\\ZuLms.Web\\wwwroot\\fonts\\tajawal\\Iura6YBj_oCad4k1nzSBC45I.woff2"
+    },
+    {
+        "sha256":  "DE8F431C146AB1FEB612CB7CED0842AE5C4E2F12067D13DB0BADECA73977200B",
+        "path":  "src\\ZuLms.Web\\wwwroot\\fonts\\tajawal\\Iurf6YBj_oCad4k1l4qkHrFpiQ.woff2"
+    },
+    {
+        "sha256":  "FA5E72326681ABEE3A4952BE582E1C2C2ABB27932EF262610C078CE89541F919",
+        "path":  "src\\ZuLms.Web\\wwwroot\\fonts\\tajawal\\Iurf6YBj_oCad4k1l4qkHrRpiYlJ.woff2"
+    },
+    {
+        "sha256":  "00241262004F96088A827AD4C5D423DBBC0648224E1CD990E5E5FF8E912157C9",
+        "path":  "src\\ZuLms.Web\\wwwroot\\fonts\\tajawal\\Iurf6YBj_oCad4k1l5anHrFpiQ.woff2"
+    },
+    {
+        "sha256":  "5FA525682B4805D95C59943BC4405B993DC9E028FD93CB96F4B50911F3B428B7",
+        "path":  "src\\ZuLms.Web\\wwwroot\\fonts\\tajawal\\Iurf6YBj_oCad4k1l5anHrRpiYlJ.woff2"
+    },
+    {
+        "sha256":  "D2C657214A232704251C3AD2733FEFDE88159C61E9B30B424502ACABD6FF7427",
+        "path":  "src\\ZuLms.Web\\wwwroot\\fonts\\tajawal\\Iurf6YBj_oCad4k1l5qjHrFpiQ.woff2"
+    },
+    {
+        "sha256":  "5D193428E0BB76CA068DED1DE74C6365ADF14390D69DBA944061FF6969A72977",
+        "path":  "src\\ZuLms.Web\\wwwroot\\fonts\\tajawal\\Iurf6YBj_oCad4k1l5qjHrRpiYlJ.woff2"
+    },
+    {
+        "sha256":  "9986DE5DB80EC050300F1CEA25D651A5779AE62B91A39B5667AC23D0C7668CBB",
+        "path":  "src\\ZuLms.Web\\wwwroot\\fonts\\tajawal\\Iurf6YBj_oCad4k1l8KiHrFpiQ.woff2"
+    },
+    {
+        "sha256":  "4255019C1CD986F7CDA7869DF69BAF72730D61304AE14BABA4ACFEB13085DA54",
+        "path":  "src\\ZuLms.Web\\wwwroot\\fonts\\tajawal\\Iurf6YBj_oCad4k1l8KiHrRpiYlJ.woff2"
+    },
+    {
+        "sha256":  "08BADE9FD7D06D8557D63A48C8139C15298E93B08936FC0888295789F5EDC826",
+        "path":  "src\\ZuLms.Web\\wwwroot\\img\\logo.png"
+    },
+    {
+        "sha256":  "BF7A0D3623DA37F92A2A80A471E3DA34F77E60049613A1DCBBB8093DCC056922",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\admin-audit.js"
+    },
+    {
+        "sha256":  "A6B2F1B9661006223D186BC24D8BE50EA0F1D0FA97D4E8F7A6A89A1E59A821ED",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\admin-dashboard.js"
+    },
+    {
+        "sha256":  "EEB54341E74ED3771852D6EFEBEBDED8E06573DD9DA7ED9FE2A55E0E4B9DF30A",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\admin-live-feed.js"
+    },
+    {
+        "sha256":  "078C508638398F700FC02C57B35541DEBCE15002E3A4B33DD2562AF1669FE316",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\admin-needs.js"
+    },
+    {
+        "sha256":  "F5B1FDA7122627D60135DAD5B78C34363244D6DCD6B199202470F675322EC02E",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\api.js"
+    },
+    {
+        "sha256":  "855AB14C1E149CCD503DC52C7921F3311E2C7AC3B48944931A86747C8F8D0BDD",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\auth.js"
+    },
+    {
+        "sha256":  "801BEADE211495AEA23624A259716F475BE7239CC4FB1CEC26521207BAF6CAF7",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\available-courses.js"
+    },
+    {
+        "sha256":  "A3406D58CFD77B72599913D3CE5684FEC4AE34265476EEAB2A5628BA85EDF77E",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\cancel-request.js"
+    },
+    {
+        "sha256":  "6724B5EEEBCFFA63AB40DD67292493EE748FDC0F383E9385C9759C5E8E3BBC31",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\centers-admin.js"
+    },
+    {
+        "sha256":  "066B89C1AAF864F73E6BBBAFF8A2931C5175B68670F16AF6A952799F082D2175",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\certificate-template.js"
+    },
+    {
+        "sha256":  "00D440FBC0E8A113B80B4EE8ECAAA2556FE677C69A5BA2F166AB6958F50BEB5D",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\course-details.js"
+    },
+    {
+        "sha256":  "19AF828D6A6236A40F71255097C27537A1C13AEB1B4A3C55741DF8347915813D",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\course-directory.js"
+    },
+    {
+        "sha256":  "64F7FCF4A7395F2BBBD2EC2EAE8676FE39A525DA5370C4E6D61709B38B93D82B",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\course-lectures.js"
+    },
+    {
+        "sha256":  "29C8E137E068757A99BDF671D3A999635E4221F9ACFE1267AA494EBA4B702FA6",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\course-participants.js"
+    },
+    {
+        "sha256":  "CF9AD31735A68410119A981F8741A0BEB81A5C1740B0D1F4266B6ECAB27F1765",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\credentials-directory.js"
+    },
+    {
+        "sha256":  "3401363FCFFE4D17C36FC0CE2ABD859590D2E389C442B09FE460D078A13173EA",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\dates.js"
+    },
+    {
+        "sha256":  "CD3DADB16880E2D0D08D3C607DE7E4B92D7F3A32601E5931386EC5606CCBAD6C",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\dean-dashboard.js"
+    },
+    {
+        "sha256":  "5B4E2145EA8FBC9B01A7F43F88DD586D43D70B3B912B8EEF3239C0D43797822F",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\dean-members.js"
+    },
+    {
+        "sha256":  "1058570ACFFB717D5F4F56C74FFFEC0DC1A289BF82AE3BE2C3C48BE5F5E37C23",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\dean-needs.js"
+    },
+    {
+        "sha256":  "37CB2B80E03F974663ACE388A45EF050B8C73889051F95D3F29A4A9C6F98097D",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\dean-proposals.js"
+    },
+    {
+        "sha256":  "AEFEEC7BDBC03ABFCE52FC976910231D007E6FFA36B1F4B1C194378031A55A36",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\direct-course.js"
+    },
+    {
+        "sha256":  "30533B72E586EFA6F7CE3D1CB15C5C3F2040F33588ADC97B1486543CAD20FA35",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\directory.js"
+    },
+    {
+        "sha256":  "1BFE253133D0DB1C3B84F2D78C4D8F9F1431958F0AE12A9DB75C89C68DE725AC",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\eval-form.js"
+    },
+    {
+        "sha256":  "5AD8B90DBB5253D453B29D518868CB6E6F0920741393B6C655F07F89EF4B6E3F",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\external-instructor-requests.js"
+    },
+    {
+        "sha256":  "A20B2290E094B913620922E73237738F774D4C3C55DC5D8A060762484F906F10",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\hints-admin.js"
+    },
+    {
+        "sha256":  "837E4B98661937C8F73A65AF5BF285EE60B888B269F9210A3D4BF195A8B46AA8",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\hints.js"
+    },
+    {
+        "sha256":  "EFEFC1C1EBAE3B7FB39C10ED548F48A6EA29118FE91CCB0F2413A63AB425CE3C",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\i18n.js"
+    },
+    {
+        "sha256":  "72830E6A85574507A8578999105A5B69AEFEE3E5FE90A76A4410EE176B2E6316",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\instructor-impact.js"
+    },
+    {
+        "sha256":  "D87905B25D44BD93078CEAE41D4C514A38C8E9C67F2000FF7993AE8517313D6F",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\instructor-progress.js"
+    },
+    {
+        "sha256":  "37AFACDAB77A434A4D207091C4F30FD083470F16B21CC52ABFB5CE1578C33C09",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\member-certificates.js"
+    },
+    {
+        "sha256":  "B551933B4FB0F4704D5183B21B11BF64294DBDB67AEE0F9C087912CE29AC156A",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\member-dashboard.js"
+    },
+    {
+        "sha256":  "A8C8140EDFB2BC4D419735580EFFFFAF3F1D229F614DC6D59DB69EFFF0734AAA",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\member-enter-code.js"
+    },
+    {
+        "sha256":  "337D5F019753BD356C6EEEBAEEC252E7C2E543D25FF6C6C651702866932997FA",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\member-impact.js"
+    },
+    {
+        "sha256":  "AFF2C0ADD7B1A70A080F15E7034EEBFCE051C0DDAC00402EFD355AB05EF141F6",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\member-pro-certs.js"
+    },
+    {
+        "sha256":  "C4716AD9D58D1388D9082B330F1C887AF580E368E3F7007F238212724AB5FE31",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\notifications.js"
+    },
+    {
+        "sha256":  "0126E962ECD6FC0805438F4015D71467650161607A47EA26E49BF511F86F0C31",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\password-policy.js"
+    },
+    {
+        "sha256":  "46691B11994A6BD5CE3FB9CA26F6A2A25C215091EE1B32D17EE41E230D51B072",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\pickers.js"
+    },
+    {
+        "sha256":  "BD4DE7FE44F665EE4DE1E62580A3D9AF32C4440F586B0515BBBB2E72C14A3F2D",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\profile.js"
+    },
+    {
+        "sha256":  "23EB13ACDE511C1558E997B6C1EEDA504D00F0C726224EB0C785CC0D19F85F68",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\quality-cancellations.js"
+    },
+    {
+        "sha256":  "52295AE8844F72D842420A70CB4D983BFC7B5A442FF340AB835DBD18A7401211",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\quality-certificates.js"
+    },
+    {
+        "sha256":  "AFC44012C0E9292CD9369406D680AAD255246E9BC92D76254055970D0EBB31A8",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\quality-dashboard.js"
+    },
+    {
+        "sha256":  "728EABF6502B4F764103C524C345E1205320B579555F2D2D36E6E549E6520D1E",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\quality-eval-form.js"
+    },
+    {
+        "sha256":  "5EDD0D1D1FA98FF24A7BD9CF446080DC0916C76635B71C50EF47D488E1630F6D",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\quality-eval-results.js"
+    },
+    {
+        "sha256":  "4264C1D2AAB36AC55D9A425FFE880FF7043992DD525AD6C5AC1C990C5FE5B9D8",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\quality-needs.js"
+    },
+    {
+        "sha256":  "D91BF7340EACCF095DFD421F202BB7935F7EFBD4BFAF79CC274B46B8A7FEE7DF",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\quality-pro-cert-stats.js"
+    },
+    {
+        "sha256":  "F41618E3531E89FF4FD7E832D90EAEF6A7A30C517A3D5577F97E65853A714DDB",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\quality-pro-certs.js"
+    },
+    {
+        "sha256":  "16320C371C9476F188E541A8C4DB2E95EC3DCE67C594DC773BB7A1D86C356173",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\quality-proposals.js"
+    },
+    {
+        "sha256":  "4CB7EF9B6203D4FE967DB7AA5C498C3BE9E628147F3D0CD1C0051FBF68B54CD4",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\quality-tracks.js"
+    },
+    {
+        "sha256":  "898B646E1EFEC47610C92F558F14923ABF583A149701357083A4B2C580943DB3",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\role-switcher.js"
+    },
+    {
+        "sha256":  "5A75BA5BC918BB38421562E876CBBEC10990CAEB40C7E63AD98E478845E97B42",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\settings.js"
+    },
+    {
+        "sha256":  "831917F329604016743B600583C8CF2C8DBADDC3371EE81BDC95D1A2427C9347",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\shell.js"
+    },
+    {
+        "sha256":  "03EABD9D0543A5F82B2AFF19460AE0BCC7659551993F7D601AA364C3A754F85E",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\site.js"
+    },
+    {
+        "sha256":  "5A92CEDCD8EBF5D614E3875C1C85032F5894BAF89D9FB4BB069ED550575BD092",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\university-sync.js"
+    },
+    {
+        "sha256":  "0703C62A9AA17EA0881C7D99A47BE9AE495BD20876AF727F69DBA4514C74073F",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\vault.js"
+    },
+    {
+        "sha256":  "09468FAFA14B83519CAF149CB760EAE9946E58230B54C1916C8C70E8ED880716",
+        "path":  "src\\ZuLms.Web\\wwwroot\\js\\verify.js"
+    },
+    {
+        "sha256":  "647EA903A052C7A7EE1D9BDD68AA61D43C1427E55262294888442EF22967BEA9",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\LICENSE"
+    },
+    {
+        "sha256":  "632E7F841A919A6536309D532B03F6697A133BAF8E8F3ACB98922C0B65B2E07F",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+        "sha256":  "C404FE9F6E4513986F3A38F67C6E1874EC2BD5B97822500904D83A3DB84B4F61",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+        "sha256":  "E670C73068B27D91E5DD45DE3EE84B0D047D9DC3DF051D4725E64B5F224D576E",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+        "sha256":  "9202FEC7056633C20EB35E659E81EDF5D691D8B44C8811BF7188143DC290398E",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+        "sha256":  "099C6817CCE368B97256472F5420E573C09E411D70D5132BBE0631DF472CF243",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+        "sha256":  "FEC890500F325FCDF48FE70BE1A98A1D8DF206D9F79FCCF7120F95675E5FF749",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+        "sha256":  "BCCC5372F902E0BCBB2E2013DC6F32132F44A53AFB1607B849CCD6A74EFFA779",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+        "sha256":  "EC674E970ED4FF083269E52D166C4FCF9FCCA6176F5523ED54E3A54E7F5CDF74",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+        "sha256":  "968F5823CD8E174DEFA2376EF97391DFE0D1ACB229321A7364D9876CCE420CC0",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+        "sha256":  "45727F4198817C75E83ED5D1D84802F9B168DA97B71AD6D93BBDB646D88B1B34",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+        "sha256":  "97CBEDE68A33BFDE7C78C77D4C5B0F016825F4924AF5829F6D54ACF2672143CE",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+        "sha256":  "D1EA954FADA4A912C987DA13A8B7881F852742C92A56389BF219767D7C65E258",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+        "sha256":  "57CA6C9C7A094BF30F9425D6C1CFC9DED1ADA7D7378061519AAB08420A67F868",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+        "sha256":  "3A8415C21EC0AE9EDB5682B66624F1D92FFF2AB9CFAD23F33D9F770AA08C85EF",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+        "sha256":  "FFC8E1F217043052B24BA8285AA9CDBBBB7713364F0867506603BAB02908F2D2",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+        "sha256":  "F75D33C3EACC75C8342ECE3C013A7AE6F127F2B7791EF3F138A9B6C77FC20482",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+        "sha256":  "D81B9B80D50F950485FF4C0B15C45743F623CE4F6FB146C301E2B640CFA1FB2A",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+        "sha256":  "35F8EB73852BF45BF6A0112CC10588C819CD0CFF7DABE2E12FECFDE79DCED1C6",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+        "sha256":  "2B213DC5B28EF42B98C741D7A482A0B1622F5E401F213B62435EF68F6EB0991B",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+        "sha256":  "AC70E68A9E09673B9A18E71243541242B21B1B411BDD98DAF7086A485D736085",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+        "sha256":  "1FAC2405B4B08EE6B6BDE2684E1268E2ECB5EB58E9F833A2653968525719EAA4",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+        "sha256":  "A74055AB955EFDDA2104875F6EB66CA1036ED36252B0A875834C1BCA242251A5",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+        "sha256":  "18052E9BA163C10F07AD719AA054671D3A9040BA658D719ABD3EE6057F04F6A5",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+        "sha256":  "A3C5CADF699C63F15F70E4350F61C9BD5B99D184D74944590CB5C22B47E741E0",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+        "sha256":  "18A105D7CB38E01E5ED0CA255C092992A2E211B39594A7FA57262BFC6FC4EA9C",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+        "sha256":  "2B3355477A7B51919B6BDE1D9C2B6573A8D78CAE6EAD23E267F78D9CA4E60E4C",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+        "sha256":  "3C8F27E6009CCFD710A905E6DCF12D0EE3C6F2AC7DA05B0572D3E0D12E736FC8",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+        "sha256":  "F12338536350A422C64D02D6E43FF1DEA493C3156AD823FE19761CDD5D56C05B",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+        "sha256":  "8F91385C88F5A7590D9C38B4C75B5E5FD457A21D7F14D94FBC230BF589918764",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+        "sha256":  "DDB61652289560C65FBF6C2AE499D722C1E540A8122ACFD57118AF823819D61A",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+        "sha256":  "879944ECD9BC4A4788A411C763137DF6CA4FDD5B8614A97935982CA1C8A5EF39",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+        "sha256":  "AD3CD79677A971BFEF80502207E53B3834007CE9492DF337818E8853B78800D9",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+        "sha256":  "9A4A11A15DB88D5FAB08F59C1C34796B03F1F15BB3CC928DD226E1C59F7F59A3",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+        "sha256":  "5AAE1A596D6B41D27EEA8020CB525073D2018C72FD4F730A7D74C136A3AFD367",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+        "sha256":  "0833B2E9C3A26C258476C46266E6877FC75218625162E0460BE9A3A098A61C6C",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+        "sha256":  "5E3E0763164143BAAA1CA0706B6100BA0452F911D6CE9713B48E3DBE07B35125",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+        "sha256":  "7B189764D243C2E7177EE8DEDC26D73DBB92EBE12BCB7CFDB0FFA9826BE1F270",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+        "sha256":  "10F44B829A9691A84BC449FA0948DD33BE91218230D71747C136DE1ECB2E8FFE",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+        "sha256":  "4197454F564D765CB8AE681406D5E65C54BD054D454DAFAC3DEEA1EFDE2C1514",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+        "sha256":  "4EC6EFF33E9594D815113F31BF3FF22E8FEFE622474C08F62788648633F5AC73",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+        "sha256":  "F945BCD36C2055F9E36926DDC321CB954EC056995BD164E83A5BCDD429F321A7",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+        "sha256":  "F56AFB1F17BC802243A081E1E713F6F65757BC2DE43761A489F423F5CF2F631E",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+        "sha256":  "DE040986D9A3ED89D5D5F9AD6D5727015E9E238C2CD13AF8F1B55909386D0864",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+        "sha256":  "648D357BF9ECE3BDC62AF0021B831C82025DC6F15F148C38C6CA704221BC61EE",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+        "sha256":  "94FDB66EC8FE748981A4F2090FDF4A2A0A3DBE5ACE2E65C4CE46E95D692BDAC7",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\daterangepicker\\daterangepicker.css"
+    },
+    {
+        "sha256":  "88E56CD45CAD3DB88FDC772786D14CCE8D0CC1879BC03E4E56BE919DFD9AD229",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\daterangepicker\\daterangepicker.js"
+    },
+    {
+        "sha256":  "86320192F9A0C505DB3572B707D610DEDD3A4702EE4124330BF769BEE07F94C9",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+        "sha256":  "78A85ACA2F0B110C29E0D2B137E09F0A1FB7A8E554B499F740D6744DC8962CFE",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+        "sha256":  "FC9A93DD241F6B045CBFF0481CF4E1901BECD0E12FB45166A8F17F95823F0B1A",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+        "sha256":  "CF74D51C62D299189989130EBB423B30453532FDC8988D8E2B71B1B9165A80B8",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+        "sha256":  "520BEF37CBC19203B496E3D2525DACF13225392611A061405F88E50889BD01D7",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\jquery\\dist\\jquery.slim.js"
+    },
+    {
+        "sha256":  "9261EFB3407E3A9096E4654750D8EFF6B3A663422F48845C7FBCC65034C340CF",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.js"
+    },
+    {
+        "sha256":  "F45626720B71F2A668D4E3CF88FB7F049FECCF4108F1244D518B052D90C412DE",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.map"
+    },
+    {
+        "sha256":  "81E1C4930FD618F75A1D0311AB91EE358F6C9E588DCD4FF2D8E5BCC9C9E1197C",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+        "sha256":  "5CBEB239FE2C7C6DA0D795BC681EF8E13E0295B8831B820C1A5DA68B4B5BCEED",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+        "sha256":  "8E1BCA471668E9E5BF3F209EFB8AE304BCEA7AC26513CAE7C901848E4F25DA4F",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+        "sha256":  "9112FCDB7EF6BABE58AD54E3156A7D9AE6A8F72794F00A0B889C526F97A49878",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+        "sha256":  "BA66D3685C4FDF516FE8ED62B692D2FF7FAFE5F3805832CE533966BCE19A295E",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+        "sha256":  "D7A68596AB69B06F51CA278A6545148E4269A9381C26D597C13DF5D88E08CF5B",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+        "sha256":  "C0941A2745F29C11367EAE827B15D78712AEEDFB2D56641CED5D8C1CD4E8F964",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.js"
+    },
+    {
+        "sha256":  "6096BB5BC12241D429924F778861238E72D25164694496D27F37D4461D64C73E",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+        "sha256":  "845C524969EDD5B3AF9AA6D8718D29FE92E8DBE25B955214A8E064A05A9A5027",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\moment\\moment.min.js"
+    },
+    {
+        "sha256":  "6FDFC689A5BE7AAC831AFB24FE20C723CAE2D56E4843F9D219178C98A4C69C00",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\tabler\\tabler-icons.min.css"
+    },
+    {
+        "sha256":  "62CB919C55D75478DD4205C1F66DB36F00F606E7C548BB7C993EFF17C0666665",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\tabler\\fonts\\tabler-icons.ttf"
+    },
+    {
+        "sha256":  "D4C63A7DBA58E89FEB3087CB39B7AE25FC58167E186BE5BA341C14EFD1E4CD28",
+        "path":  "src\\ZuLms.Web\\wwwroot\\lib\\tabler\\fonts\\tabler-icons.woff2"
+    }
+]

@@ -1,0 +1,20 @@
+@page "/quality/pro-cert-stats"
+@{ ViewData["Title"] = "إحصاءات الشهادات المهنية"; }
+<div class="container py-4" id="procstats-page">
+  <h1>إحصاءات الشهادات المهنية</h1>
+  <div id="ps-error" class="alert alert-danger d-none" role="alert"></div>
+  <form id="ps-filters" class="row g-2 mb-3">
+    <div class="col-md-3"><select id="ps-faculty" class="form-select"></select></div>
+    <div class="col-md-3"><select id="ps-category" class="form-select"></select></div>
+    <div class="col-md-2"><input id="ps-issuer" class="form-control" placeholder="الجهة المانحة" /></div>
+     <div class="col-md-2"><label for="ps-from" class="form-label">من تاريخ</label><input id="ps-from" class="form-control zu-date" type="text" inputmode="numeric" /></div>
+    <div class="col-md-2"><button class="btn btn-outline-primary w-100" type="submit">تحديث</button></div>
+  </form>
+  <div class="row g-3 mb-4" id="ps-totals"></div>
+  <section class="card card-body mb-4"><h2 class="h6">الأكثر امتلاكاً</h2><table class="table table-sm mb-0"><thead><tr><th>العضو</th><th>الكلية</th><th>العدد</th></tr></thead><tbody id="ps-top"></tbody></table></section>
+  <section class="card card-body mb-4"><h2 class="h6">حسب الكلية</h2><table class="table table-sm mb-0"><thead><tr><th>الكلية</th><th>الشهادات</th><th>الأعضاء</th><th>المتوسط</th></tr></thead><tbody id="ps-faculties"></tbody></table></section>
+  <section class="card card-body mb-4"><h2 class="h6">حسب التصنيف</h2><table class="table table-sm mb-0"><thead><tr><th>التصنيف</th><th>الشهادات</th><th>الأعضاء</th></tr></thead><tbody id="ps-categories"></tbody></table></section>
+  <section class="card card-body mb-4"><h2 class="h6">أكثر الجهات المانحة</h2><table class="table table-sm mb-0"><thead><tr><th>الجهة</th><th>الشهادات</th><th>الأعضاء</th></tr></thead><tbody id="ps-issuers"></tbody></table></section>
+  <a id="ps-export" class="btn btn-outline-secondary" href="/api/v1/procerts/stats/export">تصدير CSV</a>
+</div>
+@section Scripts { <script src="~/js/quality-pro-cert-stats.js" asp-append-version="true"></script> }

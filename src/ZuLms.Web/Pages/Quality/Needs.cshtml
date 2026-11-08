@@ -1,0 +1,24 @@
+@page "/quality/needs"
+@{ ViewData["Title"] = "مراجعة الاحتياجات التدريبية"; }
+<div class="container py-4" id="quality-needs-page">
+  <h1>الاحتياجات التدريبية الواردة</h1>
+  <div id="qneeds-error" class="alert alert-danger d-none" role="alert"></div>
+  <div id="qneeds-success" class="alert alert-success d-none" role="status"></div>
+  <form id="qneeds-filters" class="row g-2 mb-3">
+    <div class="col-md-4"><input id="qneeds-search" class="form-control" placeholder="بحث بالعنوان" /></div>
+    <div class="col-md-3">
+      <select id="qneeds-status" class="form-select">
+        <option value="">كل الحالات</option><option value="Submitted">بانتظار المراجعة</option>
+        <option value="Returned">معادة</option><option value="Approved">معتمدة</option>
+      </select>
+    </div>
+    <div class="col-md-2"><button class="btn btn-outline-primary w-100" type="submit">بحث</button></div>
+  </form>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead><tr><th>العنوان</th><th>الكلية</th><th>العميد</th><th>الحالة</th><th>الكتاب</th><th>إجراء</th></tr></thead>
+      <tbody id="qneeds-rows"></tbody>
+    </table>
+  </div>
+</div>
+@section Scripts { <script src="~/js/quality-needs.js" asp-append-version="true"></script> }

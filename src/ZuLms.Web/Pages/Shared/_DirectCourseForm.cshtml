@@ -1,0 +1,78 @@
+@{ bool historicalOnly = ViewData["HistoricalOnly"] as bool? ?? false; }
+<div class="container py-4" id="direct-course-page" data-historical-only="@(historicalOnly.ToString().ToLowerInvariant())">
+  <h1>@(historicalOnly ? "إدخال دورة سابقة" : "إنشاء دورة مباشرة")</h1>
+  @if (historicalOnly) { <p class="text-muted">هذا القسم مخصص لتوثيق الدورات المنفذة سابقاً وإظهار نتيجتها في سجل كل عضو.</p> }
+  <div id="direct-error" class="alert alert-danger d-none" role="alert"></div>
+  <div id="direct-success" class="alert alert-success d-none" role="status"></div>
+  <form id="direct-form" class="card card-body">
+    <section class="direct-course-section">
+    <h2><i class="ti ti-info-circle" aria-hidden="true"></i> البيانات الأساسية</h2>
+    <div class="row g-3">
+      <div class="col-md-6"><label for="d-title-ar" class="form-label">العنوان بالعربية</label><input id="d-title-ar" class="form-control" required maxlength="300"></div>
+      <div class="col-md-6"><label for="d-title-en" class="form-label">العنوان بالإنجليزية</label><input id="d-title-en" class="form-control" maxlength="300"></div>
+      <div class="col-md-4"><label for="d-track" class="form-label">المحور</label><select id="d-track" class="form-select" required></select></div>
+      <div class="col-md-4"><label for="d-related" class="form-label">الكلية المعنية (اختياري)</label><select id="d-related" class="form-select"></select></div>
+      <div class="col-md-4"><label for="d-mode" class="form-label">نمط التنفيذ</label><select id="d-mode" class="form-select"><option value="InPerson">وجاهي</option><option value="Online">أونلاين</option><option value="Blended">مدمج</option></select></div>
+    </div></section>
+    <section class="direct-course-section">
+    <h2><i class="ti ti-file-text" aria-hidden="true"></i> المحتوى</h2>
+    <div class="row g-3">
+      <div class="col-md-6"><label for="d-objectives-ar" class="form-label">الأهداف بالعربية</label><textarea id="d-objectives-ar" class="form-control" required></textarea></div>
+      <div class="col-md-6"><label for="d-objectives-en" class="form-label">الأهداف بالإنجليزية</label><textarea id="d-objectives-en" class="form-control"></textarea></div>
+      <div class="col-md-6"><label for="d-target-ar" class="form-label">الفئة المستهدفة بالعربية</label><textarea id="d-target-ar" class="form-control" required></textarea></div>
+      <div class="col-md-6"><label for="d-target-en" class="form-label">الفئة المستهدفة بالإنجليزية</label><textarea id="d-target-en" class="form-control"></textarea></div>
+    </div></section>
+    <section class="direct-course-section">
+    <h2><i class="ti ti-calendar" aria-hidden="true"></i> المواعيد</h2>
+    <div class="row g-3">
+      <div class="col-md-3"><label for="d-hours" class="form-label">الساعات</label><input id="d-hours" class="form-control" type="number" min="0.01" max="9999.99" step="0.01" required></div>
+       <div class="col-md-3"><label for="d-start" class="form-label">البداية</label><input id="d-start" class="form-control zu-date" type="text" inputmode="numeric" required></div>
+       <div class="col-md-3"><label for="d-end" class="form-label">النهاية</label><input id="d-end" class="form-control zu-date" type="text" inputmode="numeric" required></div>
+        @if (historicalOnly) {
+          <div class="col-md-3"><label class="form-check mt-4"><input id="d-historical-evaluation-required" class="form-check-input" type="checkbox"> التقييم مطلوب قبل إصدار الشهادة</label></div>
+        }
+        <div class="col-md-3 @(historicalOnly ? "d-none" : "")" id="d-evaluation-wrap"><label for="d-evaluation" class="form-label">آخر موعد لتقييم الدورة</label><input id="d-evaluation" class="form-control zu-date" type="text" inputmode="numeric" required="@(historicalOnly ? null : "required")"></div>
+    </div></section>
+    <section class="direct-course-section">
+    <h2><i class="ti ti-users" aria-hidden="true"></i> التسجيل والمشاركون</h2>
+    <div class="row g-3">
+      <div class="col-md-4"><label for="d-audience" class="form-label">نوع المشاركين</label><select id="d-audience" class="form-select"><option value="General">عام</option><option value="Faculty">كلية محددة</option><option value="Administrative">الإداريون</option><option value="Named">أسماء محددة</option></select></div>
+      <div class="col-md-4 d-none" id="d-target-center-wrap"><label for="d-target-center" class="form-label">كلية المشاركين</label><select id="d-target-center" class="form-select"></select></div>
+       <div class="col-md-4"><label for="d-deadline" class="form-label">آخر موعد للتسجيل</label><input id="d-deadline" class="form-control zu-datetime" type="text" inputmode="numeric"></div>
+      <div class="col-md-4"><label for="d-max" class="form-label">الحد الأعلى للمشاركين</label><input id="d-max" class="form-control" type="number" min="1"></div>
+      @if (!historicalOnly) {
+        <div class="col-md-4"><label class="form-check mt-4"><input id="d-exam" class="form-check-input" type="checkbox"> تتضمن امتحاناً</label></div>
+      }
+      @if (historicalOnly) {
+        <div class="col-12"><label for="d-historical-notes" class="form-label">ملاحظات الدورة السابقة</label><textarea id="d-historical-notes" class="form-control" required></textarea></div>
+      }
+    </div>
+    </section>
+    <section class="direct-course-section">
+    <h2><i class="ti ti-user" aria-hidden="true"></i> المحاضر</h2>
+    <div class="row g-3">
+      <div class="col-md-6"><label for="d-choice" class="form-label">طريقة تحديد المحاضر</label><select id="d-choice" class="form-select"><option value="Internal">موظف من أي كلية</option><option value="ExistingExternal">مدرب خارجي مسجّل</option><option value="NewExternalAccount">مدرب خارجي بحساب جديد</option><option value="ManagedByQuality">اسم فقط، تدير الجودة الدورة</option></select></div>
+      <div class="col-md-6" id="d-existing-wrap"><label for="d-search" class="form-label">بحث عن المحاضر</label><input id="d-search" class="form-control mb-1" type="search"><select id="d-user" class="form-select" required></select></div>
+      <div class="col-12 d-none" id="d-external-wrap"><div class="row g-3">
+        <div class="col-md-6"><label for="d-name-ar" class="form-label">اسم المدرب بالعربية</label><input id="d-name-ar" class="form-control" maxlength="300"></div>
+        <div class="col-md-6"><label for="d-name-en" class="form-label">اسم المدرب بالإنجليزية</label><input id="d-name-en" class="form-control" maxlength="300"></div>
+        <div class="col-md-6"><label for="d-org-ar" class="form-label">الجهة بالعربية</label><input id="d-org-ar" class="form-control" maxlength="300"></div>
+        <div class="col-md-6"><label for="d-org-en" class="form-label">الجهة بالإنجليزية</label><input id="d-org-en" class="form-control" maxlength="300"></div>
+        <div class="col-md-6" id="d-email-wrap"><label for="d-email" class="form-label">البريد الإلكتروني</label><input id="d-email" class="form-control" type="email" maxlength="254"></div>
+        <div class="col-md-6"><label for="d-letter" class="form-label">كتاب مجلس الكلية (PDF)</label><input id="d-letter" class="form-control" type="file" accept=".pdf,application/pdf"></div>
+        <div class="col-md-6"><label for="d-cv" class="form-label">السيرة الذاتية (PDF أو DOCX)</label><input id="d-cv" class="form-control" type="file" accept=".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document"></div>
+      </div></div>
+    </div>
+    </section>
+    @if (historicalOnly) {
+      <section class="card card-body mt-4 border-primary-subtle">
+        <h2 class="h5">المشاركون ونتيجة الدورة</h2>
+        <p class="text-muted">قرار الجودة أو الأدمن هو النتيجة النهائية: الناجح مستوفٍ ضمنياً للحضور والامتحان، وغير الناجح غير مستحق. لا تُنشأ محاضرات أو امتحانات للدورة السابقة. إذا اخترت أن التقييم مطلوب، يبقى هو الشرط الوحيد قبل إصدار الشهادة.</p>
+        <div id="d-historical-employees" class="table-responsive">
+          <table class="table table-striped align-middle"><thead><tr><th>إضافة</th><th>العضو</th><th>رقم الدخول</th><th>الحالة</th></tr></thead><tbody id="d-historical-rows"><tr><td colspan="4" class="text-muted">اختر كلية المشاركين.</td></tr></tbody></table>
+        </div>
+      </section>
+    }
+    <div class="direct-course-submit"><button id="d-submit" class="btn btn-primary" type="submit">@(historicalOnly ? "حفظ الدورة السابقة" : "اعتماد الدورة")</button></div>
+  </form>
+</div>

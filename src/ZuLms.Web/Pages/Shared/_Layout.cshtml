@@ -1,0 +1,302 @@
+@using System.Globalization
+@using Microsoft.Extensions.Localization
+@using Microsoft.AspNetCore.Antiforgery
+@using System.Security.Claims
+@inject IStringLocalizer<ZuLms.Web.SharedResource> T
+@inject ZuLms.Application.Common.Abstractions.IPermissionService Permissions
+@inject IAntiforgery Antiforgery
+@{
+    string language = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
+    bool authenticated = User.Identity?.IsAuthenticated == true;
+    bool hasId = long.TryParse(User.FindFirstValue(ClaimTypes.NameIdentifier), out long userId);
+    async Task<bool> Can(string key) => authenticated && hasId &&
+        await Permissions.HasAsync(userId, key, Context.RequestAborted);
+    bool canCredentials = await Can("page.admin.credentials");
+    bool canPolicy = await Can("page.admin.password_policy");
+    bool canSettings = await Can("page.admin.settings");
+    bool canRoles = await Can("page.admin.roles");
+    bool canAdminStats = await Can("page.admin.stats");
+    bool canDeanStats = await Can("page.dean.stats");
+    bool canExternalInstructors = await Can("page.quality.external_instructors");
+    bool canHistorical = await Can("course.create_historical");
+    bool canSync = await Can("page.admin.sync");
+    bool canCenters = await Can("page.admin.centers");
+    bool canRegister = await Can("participants.self_register");
+    bool canPropose = await Can("page.dean.propose");
+    bool canDecideProposals = await Can("page.quality.proposals");
+    bool canAdminUsers = await Can("page.admin.users");
+    bool canDirect = await Can("course.create_direct");
+    bool canCancellations = await Can("cancellation.decide");
+    bool canAdminCourses = await Can("page.admin.courses");
+    bool canQualityCourses = await Can("page.quality.courses");
+    bool canDeanCourses = await Can("page.dean.courses");
+    bool canInstructorCourses = await Can("page.instructor.courses");
+    bool canMemberCourses = await Can("page.member.enrolled");
+    bool canAdminDashboard = await Can("page.admin.dashboard");
+    bool canQualityDashboard = await Can("page.quality.dashboard");
+    bool canDeanDashboard = await Can("page.dean.dashboard");
+    bool canMemberDashboard = await Can("page.member.dashboard");
+    bool canHints = await Can("page.admin.hints");
+    bool canEvalForm = await Can("evalform.edit");
+    bool canDeanNeeds = await Can("page.dean.needs");
+    bool canQualityNeeds = await Can("page.quality.needs");
+    bool canAdminNeeds = await Can("page.admin.needs");
+    bool canEvaluations = await Can("page.quality.evaluations");
+    bool canQualityCerts = await Can("page.quality.certificates") ||
+        await Can("certificates.issue_pending");
+    bool canIssuePendingCertificates = await Can("certificates.issue_pending");
+    bool canMemberCerts = await Can("page.member.certificates");
+    bool canMemberImpact = await Can("page.member.impact");
+    bool canReviewImpact = await Can("impact.review") || await Can("page.instructor.impact");
+    bool canCertTemplate = await Can("cert_template.upload");
+    bool canMemberProCerts = await Can("page.member.pro_certs");
+    bool canQualityProCerts = await Can("page.quality.pro_certs");
+    bool canProCertStats = await Can("page.quality.pro_cert_stats");
+    bool canAudit = await Can("page.admin.audit");
+    bool canLiveFeed = await Can("page.admin.live_feed");
+    bool canVault = await Can("page.vault");
+    bool canTracks = await Can("page.quality.tracks");
+    bool canDirectory = await Can("page.shared.directory");
+    bool canTeaching = await Can("page.member.teaching");
+    bool canDeanMembers = await Can("page.dean.members");
+    bool canEnterCode = await Can("attendance.enter_code");
+    // Personal (trainee) and role-scoped Quality pages need the matching role.
+    // Admin certificate issuance and historical course creation use explicit permissions.
+    var effectivePermissions = authenticated && hasId
+        ? await Permissions.GetEffectiveAsync(userId, Context.RequestAborted)
+        : null;
+    IReadOnlySet<ZuLms.Domain.Enums.RoleCode> effectiveRoles = effectivePermissions?.Roles
+        ?? new HashSet<ZuLms.Domain.Enums.RoleCode>();
+    bool hasMemberRole = effectiveRoles.Contains(ZuLms.Domain.Enums.RoleCode.Member);
+    bool hasQualityRole = effectiveRoles.Contains(ZuLms.Domain.Enums.RoleCode.Quality);
+    bool showRolePageDenied = authenticated &&
+        ((Context.Request.Path.StartsWithSegments("/member") && !hasMemberRole) ||
+         (Context.Request.Path.StartsWithSegments("/courses/available") && !hasMemberRole) ||
+         (Context.Request.Path.StartsWithSegments("/quality") && !hasQualityRole &&
+          !(Context.Request.Path.Value?.Equals("/quality/certificates", StringComparison.OrdinalIgnoreCase) == true && canIssuePendingCertificates) &&
+          !(Context.Request.Path.Value?.Equals("/quality/courses/new-historical", StringComparison.OrdinalIgnoreCase) == true && canHistorical)));
+    bool canQualityDashboardForLink = canQualityDashboard && hasQualityRole;
+    string? csrfToken = authenticated ? Antiforgery.GetAndStoreTokens(Context).RequestToken : null;
+    string displayName = User.FindFirstValue("name") ?? User.Identity?.Name ?? string.Empty;
+    var activeMode = effectivePermissions?.ActiveMode;
+    string roleLabel = activeMode switch
+    {
+        ZuLms.Domain.Enums.RoleCode.Admin => T["Credentials.Role.Admin"],
+        ZuLms.Domain.Enums.RoleCode.Quality => T["Credentials.Role.Quality"],
+        ZuLms.Domain.Enums.RoleCode.Dean => T["Credentials.Role.Dean"],
+        ZuLms.Domain.Enums.RoleCode.Instructor => T["Credentials.Role.Instructor"],
+        ZuLms.Domain.Enums.RoleCode.ExternalInstructor => T["Credentials.Role.ExternalInstructor"],
+        ZuLms.Domain.Enums.RoleCode.Member => T["Credentials.Role.Member"],
+        _ => string.Empty
+    };
+    string initials = "ZU";
+    var nameWords = displayName.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+    if (nameWords.Length > 0)
+    {
+        initials = string.Concat(nameWords.Take(2).Select(w => char.ToUpperInvariant(w[0])));
+    }
+    string pageTitle = ViewData["Title"]?.ToString() is { Length: > 0 } title && title != "ZU-LMS" ? title : "ZU-LMS";
+
+    // Sidebar: grouped links, shown only when the matching page permission exists.
+    var nav = new List<(string Group, List<(string Href, string Icon, string Label, bool Active)> Items)>();
+    void AddItem(string group, bool show, string href, string icon, string label)
+    {
+        if (!show) return;
+        int index = nav.FindIndex(x => x.Group == group);
+        if (index < 0) { nav.Add((group, new())); index = nav.Count - 1; }
+        bool active = Context.Request.Path.StartsWithSegments(href, StringComparison.OrdinalIgnoreCase);
+        nav[index].Items.Add((href, icon, label, active));
+    }
+
+    AddItem(T["Nav.Group.Home"], canAdminDashboard, "/admin/dashboard", "ti-layout-dashboard", T["Nav.AdminDashboard"]);
+    AddItem(T["Nav.Group.Home"], canQualityDashboardForLink, "/quality/dashboard", "ti-layout-dashboard", T["Nav.QualityDashboard"]);
+    AddItem(T["Nav.Group.Home"], canDeanDashboard, "/dean/dashboard", "ti-layout-dashboard", T["Nav.DeanDashboard"]);
+    AddItem(T["Nav.Group.Home"], canMemberDashboard && hasMemberRole, "/member/dashboard", "ti-layout-dashboard", T["Nav.MemberDashboard"]);
+
+    AddItem(T["Nav.Group.Courses"], canPropose, "/dean/propose", "ti-file-plus", T["Nav.Propose"]);
+    AddItem(T["Nav.Group.Courses"], canDecideProposals && hasQualityRole, "/quality/proposals", "ti-clipboard-check", T["Nav.Proposals"]);
+    AddItem(T["Nav.Group.Courses"], canDirect && canAdminDashboard, "/admin/courses/new", "ti-square-plus", T["Nav.CreateCourse"]);
+    AddItem(T["Nav.Group.Courses"], canDirect && hasQualityRole, "/quality/courses/new", "ti-square-plus", T["Nav.CreateCourse"]);
+    AddItem(T["Nav.Group.Courses"], canHistorical && (hasQualityRole || canAdminDashboard), "/quality/courses/new-historical", "ti-history", T["Nav.HistoricalCourses"]);
+    AddItem(T["Nav.Group.Courses"], canCancellations && hasQualityRole, "/quality/cancellations", "ti-ban", T["Nav.Cancellations"]);
+    AddItem(T["Nav.Group.Courses"], canAdminCourses, "/admin/courses", "ti-book-2", T["Nav.AllCourses"]);
+    AddItem(T["Nav.Group.Courses"], canQualityCourses && hasQualityRole && !canAdminCourses, "/quality/courses", "ti-book-2", T["Nav.AllCourses"]);
+    AddItem(T["Nav.Group.Courses"], canDeanCourses, "/dean/courses", "ti-book-2", T["Nav.FacultyCourses"]);
+    AddItem(T["Nav.Group.Courses"], canInstructorCourses, "/instructor/courses", "ti-presentation", T["Nav.InstructorCourses"]);
+    AddItem(T["Nav.Group.Courses"], canMemberCourses && hasMemberRole, "/member/courses", "ti-school", T["Nav.Enrolled"]);
+    AddItem(T["Nav.Group.Courses"], canRegister && hasMemberRole, "/courses/available", "ti-calendar-event", T["Nav.Available"]);
+    AddItem(T["Nav.Group.Courses"], canEnterCode && hasMemberRole, "/member/enter-code", "ti-keyboard", T["Nav.EnterCode"]);
+    AddItem(T["Nav.Group.Courses"], canTeaching && hasMemberRole, "/member/teaching", "ti-presentation", T["Nav.Teaching"]);
+    AddItem(T["Nav.Group.Courses"], canTracks && hasQualityRole, "/quality/tracks", "ti-route", T["Nav.Tracks"]);
+    AddItem(T["Nav.Group.Courses"], canExternalInstructors && hasQualityRole, "/quality/external-instructors", "ti-user-star", T["Nav.ExternalInstructors"]);
+
+    AddItem(T["Nav.Group.NeedsEvaluation"], canDeanNeeds, "/dean/needs", "ti-file-text", T["Nav.TrainingNeeds"]);
+    AddItem(T["Nav.Group.NeedsEvaluation"], canQualityNeeds && hasQualityRole, "/quality/needs", "ti-file-text", T["Nav.Needs"]);
+    AddItem(T["Nav.Group.NeedsEvaluation"], canAdminNeeds, "/admin/needs", "ti-file-text", T["Nav.ManageNeeds"]);
+    AddItem(T["Nav.Group.NeedsEvaluation"], canEvalForm && hasQualityRole, "/quality/eval-form", "ti-forms", T["Nav.EvalForm"]);
+    AddItem(T["Nav.Group.NeedsEvaluation"], canEvaluations && hasQualityRole, "/quality/evaluations", "ti-chart-bar", T["Nav.Evaluations"]);
+
+    AddItem(T["Nav.Group.ImpactCertificates"], canMemberImpact && hasMemberRole, "/member/impact", "ti-target-arrow", T["Nav.Impact"]);
+    AddItem(T["Nav.Group.ImpactCertificates"], canReviewImpact, "/impact/review", "ti-eye-check", T["Nav.ReviewImpact"]);
+    AddItem(T["Nav.Group.ImpactCertificates"], canMemberCerts && hasMemberRole, "/member/certificates", "ti-certificate", T["Nav.MyCertificates"]);
+    AddItem(T["Nav.Group.ImpactCertificates"], canQualityCerts && (hasQualityRole || canIssuePendingCertificates), "/quality/certificates", "ti-certificate", T["Nav.Certificates"]);
+    AddItem(T["Nav.Group.ImpactCertificates"], canCertTemplate, "/admin/certificate-template", "ti-template", T["Nav.CertificateTemplate"]);
+    AddItem(T["Nav.Group.ImpactCertificates"], canMemberProCerts && hasMemberRole, "/member/pro-certs", "ti-award", T["Nav.MyProCerts"]);
+    AddItem(T["Nav.Group.ImpactCertificates"], canQualityProCerts && hasQualityRole, "/quality/pro-certs", "ti-award", T["Nav.ProCerts"]);
+    AddItem(T["Nav.Group.ImpactCertificates"], canProCertStats && hasQualityRole, "/quality/pro-cert-stats", "ti-chart-pie", T["Nav.ProCertStats"]);
+
+    AddItem(T["Nav.Group.System"], canAdminUsers, "/admin/users", "ti-users", T["Nav.ExternalRequests"]);
+    AddItem(T["Nav.Group.System"], canCredentials, "/admin/credentials", "ti-key", T["Nav.Credentials"]);
+    AddItem(T["Nav.Group.System"], canPolicy, "/admin/password-policy", "ti-shield-lock", T["Nav.PasswordPolicy"]);
+    AddItem(T["Nav.Group.System"], canHints, "/admin/hints", "ti-bulb", T["Nav.Hints"]);
+    AddItem(T["Nav.Group.System"], canSettings, "/admin/settings", "ti-settings", T["Nav.Settings"]);
+    AddItem(T["Nav.Group.System"], canSync, "/admin/sync", "ti-refresh", T["Nav.Sync"]);
+    AddItem(T["Nav.Group.System"], canCenters, "/admin/centers", "ti-building", T["Nav.Centers"]);
+    AddItem(T["Nav.Group.System"], canRoles, "/admin/roles", "ti-shield-cog", T["Nav.RolesPermissions"]);
+    AddItem(T["Nav.Group.System"], canAdminStats, "/admin/stats", "ti-chart-bar", T["Nav.UniversityStatistics"]);
+    AddItem(T["Nav.Group.System"], canDeanStats, "/dean/stats", "ti-chart-bar", T["Nav.FacultyStatistics"]);
+
+    AddItem(T["Nav.Group.Members"], canDeanMembers, "/dean/members", "ti-users", T["Nav.FacultyMembers"]);
+    AddItem(T["Nav.Group.Members"], canDirectory, "/shared/directory", "ti-address-book", T["Directory.Title"]);
+
+    AddItem(T["Nav.Group.Audit"], canVault, "/vault", "ti-archive", T["Nav.Vault"]);
+    AddItem(T["Nav.Group.Audit"], canAudit, "/admin/audit", "ti-activity", T["Nav.Audit"]);
+    AddItem(T["Nav.Group.Audit"], canLiveFeed, "/admin/live-feed", "ti-broadcast", T["Nav.LiveFeed"]);
+    string? mostSpecific = nav.SelectMany(group => group.Items).Where(item => item.Active)
+        .OrderByDescending(item => item.Href.Length).Select(item => item.Href).FirstOrDefault();
+    foreach (var group in nav)
+    {
+        for (int i = 0; i < group.Items.Count; i++)
+        {
+            var item = group.Items[i];
+            group.Items[i] = (item.Href, item.Icon, item.Label, item.Href == mostSpecific);
+        }
+    }
+}
+<!doctype html>
+<html lang="@language" dir="@(language == "ar" ? "rtl" : "ltr")">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="~/js/session.js" asp-append-version="true"></script>
+    <title>@pageTitle — ZU-LMS</title>
+    @if (!string.IsNullOrEmpty(csrfToken))
+    {
+        <meta name="csrf" content="@csrfToken" />
+    }
+    <link rel="icon" type="image/png" href="~/img/logo.png" asp-append-version="true" />
+    <link rel="stylesheet" href="@(language == "ar" ? "/lib/bootstrap/dist/css/bootstrap.rtl.min.css" : "/lib/bootstrap/dist/css/bootstrap.min.css")" />
+    <link rel="stylesheet" href="~/lib/tabler/tabler-icons.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/tajawal.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/daterangepicker/daterangepicker.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/prototype.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ZuLms.Web.styles.css" asp-append-version="true" />
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body class="@(authenticated ? "app-authenticated" : "")" data-picker-clear="@T["Picker.Clear"]" data-picker-invalid="@T["Picker.Invalid"]">
+@if (authenticated)
+{
+    <div class="app-layout">
+        <aside class="sidebar" id="app-sidebar">
+            <div class="sidebar-brand">
+                <a class="brand-logo" href="/">
+                    <img src="~/img/logo.png" alt="@T["Shell.Logo"]" asp-append-version="true" />
+                    <span class="brand-text">
+                        <h6>@T["Shell.Platform"]</h6>
+                        <small>@T["Shell.University"]</small>
+                    </span>
+                </a>
+            </div>
+            <div class="sidebar-user">
+                <span class="avatar av-navy">@initials</span>
+                <span class="sidebar-user-info">
+                    <h6 data-no-auto-translate>@displayName</h6>
+                    <small><i class="ti ti-shield-check" aria-hidden="true"></i> <span data-current-role>@roleLabel</span></small>
+                </span>
+            </div>
+            <nav class="sidebar-nav" aria-label="@T["Shell.Navigation"]">
+                @foreach (var group in nav)
+                {
+                    <div class="nav-section-title">@group.Group</div>
+                    foreach (var item in group.Items)
+                    {
+                        <a class="nav-item @(item.Active ? "active" : "")" href="@item.Href" data-context-path="@item.Href" aria-current="@(item.Active ? "page" : null)">
+                            <i class="ti @item.Icon nav-icon"></i><span>@item.Label</span>
+                        </a>
+                    }
+                }
+            </nav>
+            <div class="sidebar-footer">
+                <a class="nav-item" href="/account/settings"><i class="ti ti-adjustments nav-icon"></i><span>إعدادات الحساب</span></a>
+                <a class="nav-item" href="/account/password" data-internal-only="true"><i class="ti ti-lock nav-icon"></i><span>@T["Nav.MyPassword"]</span></a>
+            </div>
+        </aside>
+        <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+        <div class="main-content">
+            <header class="header">
+                <div class="d-flex align-items-center gap-2 header-title">
+                    <button class="sidebar-toggle" id="sidebar-toggle" type="button" aria-label="@T["Shell.Menu"]" aria-controls="app-sidebar" aria-expanded="false">
+                        <i class="ti ti-menu-2"></i>
+                    </button>
+                    <div>
+                        <h4>@pageTitle</h4>
+                         <p><span data-current-role>@roleLabel</span> — @T["Shell.University"]</p>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    @await Html.PartialAsync("_RoleSwitcher")
+                    <div class="dropdown" id="notifications-widget" data-empty="@T["Notifications.Empty"]"
+                         data-read-all="@T["Notifications.ReadAll"]" data-error="@T["Notifications.Error"]"
+                         data-loading="@T["Notifications.Loading"]" data-read-error="@T["Notifications.ReadError"]">
+                        <button type="button" class="btn-notif" id="notifications-bell"
+                                data-bs-toggle="dropdown" aria-expanded="false" aria-label="@T["Notifications.Title"]">
+                            <i class="ti ti-bell"></i>
+                            <span id="notifications-count" class="notif-dot d-none"></span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end p-2" id="notifications-list"></ul>
+                    </div>
+                    <button type="button" class="btn-outline-navy" data-language-toggle
+                            aria-label="@T["Nav.ChangeLanguage"]"><i class="ti ti-language"></i> <span class="header-action-text">@T["Nav.ChangeLanguage"]</span></button>
+                    <span class="header-user d-none d-md-flex" title="@displayName" data-no-auto-translate>
+                        <span class="avatar av-yellow">@initials</span>
+                        <span>@displayName</span>
+                    </span>
+                    <button type="button" class="btn-outline-navy" id="logout-button">
+                        <i class="ti ti-logout"></i> <span class="header-action-text">@T["Nav.Logout"]</span>
+                    </button>
+                </div>
+            </header>
+            <main role="main" class="page-content">
+                @if (showRolePageDenied)
+                {
+                    RenderBody();
+                    <div class="container py-5"><div class="alert alert-warning" role="alert">لا تملك صلاحية لهذه الصفحة</div></div>
+                }
+                else { @RenderBody() }
+            </main>
+        </div>
+    </div>
+}
+else
+{
+    <main role="main" class="page-content">@RenderBody()</main>
+}
+<div class="zu-toast-host" id="zu-toasts"></div>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/moment/moment.min.js"></script>
+<script src="~/lib/daterangepicker/daterangepicker.js"></script>
+<script src="~/js/api.js" asp-append-version="true"></script>
+<script src="~/js/i18n.js" asp-append-version="true"></script>
+<script src="~/js/ui-translations.js" asp-append-version="true"></script>
+<script src="~/js/dates.js" asp-append-version="true"></script>
+<script src="~/js/hints.js" asp-append-version="true"></script>
+<script src="~/js/pickers.js" asp-append-version="true"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/js/shell.js" asp-append-version="true"></script>
+<script src="~/js/role-switcher.js" asp-append-version="true"></script>
+<script src="~/js/notifications.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

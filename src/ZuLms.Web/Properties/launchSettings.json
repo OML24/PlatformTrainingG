@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "https": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "applicationUrl": "https://localhost:7275",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ZU_STORAGE_ROOT": "C:\\temp\\zulms-storage",
+        "ZU_PUBLIC_BASE_URL": "https://localhost:7275",
+        "ZU_BOOTSTRAP_ADMIN_LOGIN": "admin",
+        "ZU_BOOTSTRAP_ADMIN_NAME": "System Administrator"
+      }
+    }
+  }
+}

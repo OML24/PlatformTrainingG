@@ -1,0 +1,1673 @@
+[
+  {
+    "key": "page.admin.dashboard",
+    "group": "page.admin",
+    "kind": "PageView",
+    "scope": "Global",
+    "nameAr": "صفحة — إدارة النظام — لوحة التحكم",
+    "nameEn": "page / admin / dashboard",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "page.admin.users",
+    "group": "page.admin",
+    "kind": "PageView",
+    "scope": "Global",
+    "nameAr": "صفحة — إدارة النظام — المستخدمون",
+    "nameEn": "page / admin / users",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "page.admin.credentials",
+    "group": "page.admin",
+    "kind": "PageView",
+    "scope": "Global",
+    "nameAr": "صفحة — إدارة النظام — بيانات الدخول",
+    "nameEn": "page / admin / credentials",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "page.admin.courses",
+    "group": "page.admin",
+    "kind": "PageView",
+    "scope": "Global",
+    "nameAr": "صفحة — إدارة النظام — الدورات",
+    "nameEn": "page / admin / courses",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "page.admin.settings",
+    "group": "page.admin",
+    "kind": "PageView",
+    "scope": "Global",
+    "nameAr": "صفحة — إدارة النظام — الإعدادات",
+    "nameEn": "page / admin / settings",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "page.admin.password_policy",
+    "group": "page.admin",
+    "kind": "PageView",
+    "scope": "Global",
+    "nameAr": "صفحة — إدارة النظام — سياسة كلمات المرور",
+    "nameEn": "page / admin / password policy",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "page.admin.hints",
+    "group": "page.admin",
+    "kind": "PageView",
+    "scope": "Global",
+    "nameAr": "صفحة — إدارة النظام — تلميحات الحقول",
+    "nameEn": "page / admin / hints",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "page.admin.roles",
+    "group": "page.admin",
+    "kind": "PageView",
+    "scope": "Global",
+    "nameAr": "صفحة — إدارة النظام — الأدوار",
+    "nameEn": "page / admin / roles",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "page.admin.centers",
+    "group": "page.admin",
+    "kind": "PageView",
+    "scope": "Global",
+    "nameAr": "صفحة — إدارة النظام — المراكز",
+    "nameEn": "page / admin / centers",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "page.admin.sync",
+    "group": "page.admin",
+    "kind": "PageView",
+    "scope": "Global",
+    "nameAr": "صفحة — إدارة النظام — مزامنة الجامعة",
+    "nameEn": "page / admin / sync",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "page.admin.cert_template",
+    "group": "page.admin",
+    "kind": "PageView",
+    "scope": "Global",
+    "nameAr": "صفحة — إدارة النظام — قالب الشهادة",
+    "nameEn": "page / admin / cert template",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "page.admin.audit",
+    "group": "page.admin",
+    "kind": "PageView",
+    "scope": "Global",
+    "nameAr": "صفحة — إدارة النظام — سجل التدقيق",
+    "nameEn": "page / admin / audit",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "page.admin.live_feed",
+    "group": "page.admin",
+    "kind": "PageView",
+    "scope": "Global",
+    "nameAr": "صفحة — إدارة النظام — التدفق المباشر",
+    "nameEn": "page / admin / live feed",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "page.admin.stats",
+    "group": "page.admin",
+    "kind": "PageView",
+    "scope": "Global",
+    "nameAr": "صفحة — إدارة النظام — الإحصاءات",
+    "nameEn": "page / admin / stats",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "page.admin.needs",
+    "group": "page.admin",
+    "kind": "PageView",
+    "scope": "Global",
+    "nameAr": "صفحة — إدارة النظام — الاحتياجات التدريبية",
+    "nameEn": "page / admin / needs",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "page.vault",
+    "group": "page.vault",
+    "kind": "PageView",
+    "scope": "Global",
+    "nameAr": "صفحة — vault",
+    "nameEn": "page / vault",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "page.quality.dashboard",
+    "group": "page.quality",
+    "kind": "PageView",
+    "scope": "Global",
+    "nameAr": "صفحة — الجودة — لوحة التحكم",
+    "nameEn": "page / quality / dashboard",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "page.quality.proposals",
+    "group": "page.quality",
+    "kind": "PageView",
+    "scope": "Global",
+    "nameAr": "صفحة — الجودة — المقترحات",
+    "nameEn": "page / quality / proposals",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "page.quality.cancellations",
+    "group": "page.quality",
+    "kind": "PageView",
+    "scope": "Global",
+    "nameAr": "صفحة — الجودة — طلبات الإلغاء",
+    "nameEn": "page / quality / cancellations",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "page.quality.courses",
+    "group": "page.quality",
+    "kind": "PageView",
+    "scope": "Global",
+    "nameAr": "صفحة — الجودة — الدورات",
+    "nameEn": "page / quality / courses",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "page.quality.tracks",
+    "group": "page.quality",
+    "kind": "PageView",
+    "scope": "Global",
+    "nameAr": "صفحة — الجودة — المحاور",
+    "nameEn": "page / quality / tracks",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "page.quality.external_instructors",
+    "group": "page.quality",
+    "kind": "PageView",
+    "scope": "Global",
+    "nameAr": "صفحة — الجودة — المدربون الخارجيون",
+    "nameEn": "page / quality / external instructors",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "page.quality.needs",
+    "group": "page.quality",
+    "kind": "PageView",
+    "scope": "Global",
+    "nameAr": "صفحة — الجودة — الاحتياجات التدريبية",
+    "nameEn": "page / quality / needs",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "page.quality.evaluations",
+    "group": "page.quality",
+    "kind": "PageView",
+    "scope": "Global",
+    "nameAr": "صفحة — الجودة — التقييمات",
+    "nameEn": "page / quality / evaluations",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "page.quality.eval_form",
+    "group": "page.quality",
+    "kind": "PageView",
+    "scope": "Global",
+    "nameAr": "صفحة — الجودة — نموذج التقييم",
+    "nameEn": "page / quality / eval form",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "page.quality.certificates",
+    "group": "page.quality",
+    "kind": "PageView",
+    "scope": "Global",
+    "nameAr": "صفحة — الجودة — الشهادات",
+    "nameEn": "page / quality / certificates",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "page.dean.dashboard",
+    "group": "page.dean",
+    "kind": "PageView",
+    "scope": "OwnFaculty",
+    "nameAr": "صفحة — العميد — لوحة التحكم",
+    "nameEn": "page / dean / dashboard",
+    "roles": [
+      "Dean"
+    ]
+  },
+  {
+    "key": "page.dean.courses",
+    "group": "page.dean",
+    "kind": "PageView",
+    "scope": "OwnFaculty",
+    "nameAr": "صفحة — العميد — الدورات",
+    "nameEn": "page / dean / courses",
+    "roles": [
+      "Dean"
+    ]
+  },
+  {
+    "key": "page.dean.propose",
+    "group": "page.dean",
+    "kind": "PageView",
+    "scope": "OwnFaculty",
+    "nameAr": "صفحة — العميد — اقتراح",
+    "nameEn": "page / dean / propose",
+    "roles": [
+      "Dean"
+    ]
+  },
+  {
+    "key": "page.dean.members",
+    "group": "page.dean",
+    "kind": "PageView",
+    "scope": "OwnFaculty",
+    "nameAr": "صفحة — العميد — members",
+    "nameEn": "page / dean / members",
+    "roles": [
+      "Dean"
+    ]
+  },
+  {
+    "key": "page.dean.needs",
+    "group": "page.dean",
+    "kind": "PageView",
+    "scope": "OwnFaculty",
+    "nameAr": "صفحة — العميد — الاحتياجات التدريبية",
+    "nameEn": "page / dean / needs",
+    "roles": [
+      "Dean"
+    ]
+  },
+  {
+    "key": "page.dean.stats",
+    "group": "page.dean",
+    "kind": "PageView",
+    "scope": "OwnFaculty",
+    "nameAr": "صفحة — العميد — الإحصاءات",
+    "nameEn": "page / dean / stats",
+    "roles": [
+      "Dean"
+    ]
+  },
+  {
+    "key": "page.instructor.courses",
+    "group": "page.instructor",
+    "kind": "PageView",
+    "scope": "InstructedCourse",
+    "nameAr": "صفحة — المحاضر — الدورات",
+    "nameEn": "page / instructor / courses",
+    "roles": [
+      "Admin",
+      "Quality",
+      "Instructor",
+      "ExternalInstructor"
+    ]
+  },
+  {
+    "key": "page.instructor.course",
+    "group": "page.instructor",
+    "kind": "PageView",
+    "scope": "InstructedCourse",
+    "nameAr": "صفحة — المحاضر — الدورة",
+    "nameEn": "page / instructor / course",
+    "roles": [
+      "Admin",
+      "Quality",
+      "Instructor",
+      "ExternalInstructor"
+    ]
+  },
+  {
+    "key": "page.instructor.lectures",
+    "group": "page.instructor",
+    "kind": "PageView",
+    "scope": "InstructedCourse",
+    "nameAr": "صفحة — المحاضر — lectures",
+    "nameEn": "page / instructor / lectures",
+    "roles": [
+      "Admin",
+      "Quality",
+      "Instructor",
+      "ExternalInstructor"
+    ]
+  },
+  {
+    "key": "page.instructor.attendance",
+    "group": "page.instructor",
+    "kind": "PageView",
+    "scope": "InstructedCourse",
+    "nameAr": "صفحة — المحاضر — attendance",
+    "nameEn": "page / instructor / attendance",
+    "roles": [
+      "Admin",
+      "Quality",
+      "Instructor",
+      "ExternalInstructor"
+    ]
+  },
+  {
+    "key": "page.instructor.participants",
+    "group": "page.instructor",
+    "kind": "PageView",
+    "scope": "InstructedCourse",
+    "nameAr": "صفحة — المحاضر — participants",
+    "nameEn": "page / instructor / participants",
+    "roles": [
+      "Admin",
+      "Quality",
+      "Instructor",
+      "ExternalInstructor"
+    ]
+  },
+  {
+    "key": "page.instructor.exam",
+    "group": "page.instructor",
+    "kind": "PageView",
+    "scope": "InstructedCourse",
+    "nameAr": "صفحة — المحاضر — exam",
+    "nameEn": "page / instructor / exam",
+    "roles": [
+      "Admin",
+      "Quality",
+      "Instructor",
+      "ExternalInstructor"
+    ]
+  },
+  {
+    "key": "page.instructor.impact",
+    "group": "page.instructor",
+    "kind": "PageView",
+    "scope": "Global",
+    "nameAr": "صفحة — مراجعة قياس الأثر",
+    "nameEn": "page / impact / review",
+    "roles": [
+      "Admin",
+      "Quality",
+      "Dean"
+    ]
+  },
+  {
+    "key": "page.instructor.certificates",
+    "group": "page.instructor",
+    "kind": "PageView",
+    "scope": "InstructedCourse",
+    "nameAr": "صفحة — المحاضر — الشهادات",
+    "nameEn": "page / instructor / certificates",
+    "roles": [
+      "Admin",
+      "Quality",
+      "Dean"
+    ]
+  },
+  {
+    "key": "page.instructor.evaluation",
+    "group": "page.instructor",
+    "kind": "PageView",
+    "scope": "InstructedCourse",
+    "nameAr": "صفحة — المحاضر — evaluation",
+    "nameEn": "page / instructor / evaluation",
+    "roles": [
+      "Admin",
+      "Quality",
+      "Instructor",
+      "ExternalInstructor"
+    ]
+  },
+  {
+    "key": "page.member.dashboard",
+    "group": "page.member",
+    "kind": "PageView",
+    "scope": "Self",
+    "nameAr": "صفحة — العضو — لوحة التحكم",
+    "nameEn": "page / member / dashboard",
+    "roles": [
+      "Admin",
+      "Quality",
+      "Dean",
+      "Member"
+    ]
+  },
+  {
+    "key": "page.member.available",
+    "group": "page.member",
+    "kind": "PageView",
+    "scope": "Self",
+    "nameAr": "صفحة — العضو — الدورات المتاحة",
+    "nameEn": "page / member / available",
+    "roles": [
+      "Admin",
+      "Quality",
+      "Dean",
+      "Member"
+    ]
+  },
+  {
+    "key": "page.member.enrolled",
+    "group": "page.member",
+    "kind": "PageView",
+    "scope": "Self",
+    "nameAr": "صفحة — العضو — دوراتي",
+    "nameEn": "page / member / enrolled",
+    "roles": [
+      "Admin",
+      "Quality",
+      "Dean",
+      "Member"
+    ]
+  },
+  {
+    "key": "page.member.certificates",
+    "group": "page.member",
+    "kind": "PageView",
+    "scope": "Self",
+    "nameAr": "صفحة — العضو — الشهادات",
+    "nameEn": "page / member / certificates",
+    "roles": [
+      "Admin",
+      "Quality",
+      "Dean",
+      "Member"
+    ]
+  },
+  {
+    "key": "page.member.impact",
+    "group": "page.member",
+    "kind": "PageView",
+    "scope": "Self",
+    "nameAr": "صفحة — العضو — الأثر التدريبي",
+    "nameEn": "page / member / impact",
+    "roles": [
+      "Admin",
+      "Quality",
+      "Dean",
+      "Member"
+    ]
+  },
+  {
+    "key": "page.member.teaching",
+    "group": "page.member",
+    "kind": "PageView",
+    "scope": "Self",
+    "nameAr": "صفحة — العضو — دوراتي كمحاضر",
+    "nameEn": "page / member / teaching",
+    "roles": [
+      "Admin",
+      "Quality",
+      "Dean",
+      "Instructor",
+      "Member"
+    ]
+  },
+  {
+    "key": "page.member.pro_certs",
+    "group": "page.member",
+    "kind": "PageView",
+    "scope": "Self",
+    "nameAr": "صفحة — العضو — الشهادات المهنية",
+    "nameEn": "page / member / pro certs",
+    "roles": [
+      "Admin",
+      "Quality",
+      "Dean",
+      "Member"
+    ]
+  },
+  {
+    "key": "page.quality.pro_certs",
+    "group": "page.quality",
+    "kind": "PageView",
+    "scope": "Global",
+    "nameAr": "صفحة — الجودة — الشهادات المهنية",
+    "nameEn": "page / quality / pro certs",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "page.quality.pro_cert_stats",
+    "group": "page.quality",
+    "kind": "PageView",
+    "scope": "Global",
+    "nameAr": "صفحة — الجودة — إحصاءات الشهادات المهنية",
+    "nameEn": "page / quality / pro cert stats",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "page.shared.directory",
+    "group": "page.shared",
+    "kind": "PageView",
+    "scope": "Global",
+    "nameAr": "صفحة — مشتركة — دليل الأعضاء",
+    "nameEn": "page / shared / directory",
+    "roles": [
+      "Admin",
+      "Quality",
+      "Dean",
+      "Instructor",
+      "Member"
+    ]
+  },
+  {
+    "key": "page.shared.profile",
+    "group": "page.shared",
+    "kind": "PageView",
+    "scope": "Global",
+    "nameAr": "صفحة — مشتركة — الملف الشخصي",
+    "nameEn": "page / shared / profile",
+    "roles": [
+      "Admin",
+      "Quality",
+      "Dean",
+      "Instructor",
+      "Member"
+    ]
+  },
+  {
+    "key": "user.create",
+    "group": "user.create",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "user — إنشاء",
+    "nameEn": "user / create",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "user.edit",
+    "group": "user.edit",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "user — تعديل",
+    "nameEn": "user / edit",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "user.deactivate",
+    "group": "user.deactivate",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "user — تعطيل",
+    "nameEn": "user / deactivate",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "user.restore",
+    "group": "user.restore",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "user — استعادة",
+    "nameEn": "user / restore",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "user.roles.assign",
+    "group": "user.roles",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "user — الأدوار — تعيين",
+    "nameEn": "user / roles / assign",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "user.permissions.override",
+    "group": "user.permissions",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "user — permissions — تجاوز",
+    "nameEn": "user / permissions / override",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "credentials.reveal",
+    "group": "credentials.reveal",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "بيانات الدخول — عرض",
+    "nameEn": "credentials / reveal",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "credentials.change",
+    "group": "credentials.change",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "بيانات الدخول — تغيير",
+    "nameEn": "credentials / change",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "credentials.send_initial",
+    "group": "credentials.send_initial",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "بيانات الدخول — إرسال بيانات الدخول",
+    "nameEn": "credentials / send initial",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "credentials.set_shared_initial",
+    "group": "credentials.set_shared_initial",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "بيانات الدخول — ضبط الكلمة المشتركة",
+    "nameEn": "credentials / set shared initial",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "settings.edit",
+    "group": "settings.edit",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "الإعدادات — تعديل",
+    "nameEn": "settings / edit",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "password_policy.edit",
+    "group": "password_policy.edit",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "سياسة كلمات المرور — تعديل",
+    "nameEn": "password policy / edit",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "hints.manage",
+    "group": "hints.manage",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "تلميحات الحقول — إدارة",
+    "nameEn": "hints / manage",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "roles.edit_permissions",
+    "group": "roles.edit_permissions",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "الأدوار — edit permissions",
+    "nameEn": "roles / edit permissions",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "centers.edit",
+    "group": "centers.edit",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "المراكز — تعديل",
+    "nameEn": "centers / edit",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "sync.run",
+    "group": "sync.run",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "مزامنة الجامعة — تشغيل",
+    "nameEn": "sync / run",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "sync.review.resolve",
+    "group": "sync.review",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "مزامنة الجامعة — مراجعة — معالجة",
+    "nameEn": "sync / review / resolve",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "cert_template.upload",
+    "group": "cert_template.upload",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "قالب الشهادة — رفع",
+    "nameEn": "cert template / upload",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "certificates.revoke_manual",
+    "group": "certificates.revoke_manual",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "الشهادات — إلغاء يدوي",
+    "nameEn": "certificates / revoke manual",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "certificates.issue_pending",
+    "group": "certificates.issue_pending",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "الشهادات — إصدار المعلّقة",
+    "nameEn": "certificates / issue pending",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "audit.export",
+    "group": "audit.export",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "سجل التدقيق — تصدير",
+    "nameEn": "audit / export",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "vault.upload",
+    "group": "vault.upload",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "vault — رفع",
+    "nameEn": "vault / upload",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "vault.download",
+    "group": "vault.download",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "vault — تنزيل",
+    "nameEn": "vault / download",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "vault.deactivate",
+    "group": "vault.deactivate",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "vault — تعطيل",
+    "nameEn": "vault / deactivate",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "tracks.manage",
+    "group": "tracks.manage",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "المحاور — إدارة",
+    "nameEn": "tracks / manage",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "course.create_direct",
+    "group": "course.create_direct",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "الدورة — create direct",
+    "nameEn": "course / create direct",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "course.create_historical",
+    "group": "course.create_historical",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "الدورة — create historical",
+    "nameEn": "course / create historical",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "course.edit",
+    "group": "course.edit",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "الدورة — تعديل",
+    "nameEn": "course / edit",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "course.deactivate",
+    "group": "course.deactivate",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "الدورة — تعطيل",
+    "nameEn": "course / deactivate",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "course.restore",
+    "group": "course.restore",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "الدورة — استعادة",
+    "nameEn": "course / restore",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "course.archive",
+    "group": "course.archive",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "الدورة — أرشفة",
+    "nameEn": "course / archive",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "course.unarchive",
+    "group": "course.unarchive",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "الدورة — إلغاء الأرشفة",
+    "nameEn": "course / unarchive",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "course.reopen",
+    "group": "course.reopen",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "الدورة — إعادة فتح",
+    "nameEn": "course / reopen",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "course.force_status",
+    "group": "course.force_status",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "الدورة — تغيير الحالة",
+    "nameEn": "course / force status",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "course.cancel_direct",
+    "group": "course.cancel_direct",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "الدورة — إلغاء مباشر",
+    "nameEn": "course / cancel direct",
+    "roles": [
+      "Quality"
+    ]
+  },
+  {
+    "key": "course.propose",
+    "group": "course.propose",
+    "kind": "Action",
+    "scope": "OwnFaculty",
+    "nameAr": "الدورة — اقتراح",
+    "nameEn": "course / propose",
+    "roles": [
+      "Dean"
+    ]
+  },
+  {
+    "key": "proposal.resubmit",
+    "group": "proposal.resubmit",
+    "kind": "Action",
+    "scope": "OwnFaculty",
+    "nameAr": "proposal — إعادة إرسال",
+    "nameEn": "proposal / resubmit",
+    "roles": [
+      "Dean"
+    ]
+  },
+  {
+    "key": "proposal.decide",
+    "group": "proposal.decide",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "proposal — اتخاذ قرار",
+    "nameEn": "proposal / decide",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "cancellation.request",
+    "group": "cancellation.request",
+    "kind": "Action",
+    "scope": "OwnFaculty",
+    "nameAr": "cancellation — طلب",
+    "nameEn": "cancellation / request",
+    "roles": [
+      "Dean"
+    ]
+  },
+  {
+    "key": "cancellation.decide",
+    "group": "cancellation.decide",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "cancellation — اتخاذ قرار",
+    "nameEn": "cancellation / decide",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "need.submit",
+    "group": "need.submit",
+    "kind": "Action",
+    "scope": "OwnFaculty",
+    "nameAr": "need — إرسال",
+    "nameEn": "need / submit",
+    "roles": [
+      "Dean"
+    ]
+  },
+  {
+    "key": "need.resubmit",
+    "group": "need.resubmit",
+    "kind": "Action",
+    "scope": "OwnFaculty",
+    "nameAr": "need — إعادة إرسال",
+    "nameEn": "need / resubmit",
+    "roles": [
+      "Dean"
+    ]
+  },
+  {
+    "key": "need.review",
+    "group": "need.review",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "need — مراجعة",
+    "nameEn": "need / review",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "extinstr.select_existing",
+    "group": "extinstr.select_existing",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "extinstr — اختيار مسجل",
+    "nameEn": "extinstr / select existing",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "extinstr.request_account",
+    "group": "extinstr.request_account",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "extinstr — طلب حساب",
+    "nameEn": "extinstr / request account",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "extinstr.create_account",
+    "group": "extinstr.create_account",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "extinstr — إنشاء حساب",
+    "nameEn": "extinstr / create account",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "participants.view.all",
+    "group": "participants.view",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "participants — عرض — all",
+    "nameEn": "participants / view / all",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "participants.view.faculty",
+    "group": "participants.view",
+    "kind": "Action",
+    "scope": "OwnFaculty",
+    "nameAr": "participants — عرض — الكلية",
+    "nameEn": "participants / view / faculty",
+    "roles": [
+      "Dean"
+    ]
+  },
+  {
+    "key": "participants.add",
+    "group": "participants.add",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "participants — إضافة",
+    "nameEn": "participants / add",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "participants.remove",
+    "group": "participants.remove",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "participants — إخراج",
+    "nameEn": "participants / remove",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "participants.self_register",
+    "group": "participants.self_register",
+    "kind": "Action",
+    "scope": "Self",
+    "nameAr": "participants — تسجيل ذاتي",
+    "nameEn": "participants / self register",
+    "roles": [
+      "Admin",
+      "Quality",
+      "Dean",
+      "Member"
+    ]
+  },
+  {
+    "key": "lecture.manage",
+    "group": "lecture.manage",
+    "kind": "Action",
+    "scope": "InstructedCourse",
+    "nameAr": "lecture — إدارة",
+    "nameEn": "lecture / manage",
+    "roles": [
+      "Admin",
+      "Quality",
+      "Instructor",
+      "ExternalInstructor"
+    ]
+  },
+  {
+    "key": "material.manage",
+    "group": "material.manage",
+    "kind": "Action",
+    "scope": "InstructedCourse",
+    "nameAr": "material — إدارة",
+    "nameEn": "material / manage",
+    "roles": [
+      "Admin",
+      "Quality",
+      "Instructor",
+      "ExternalInstructor"
+    ]
+  },
+  {
+    "key": "course.finish",
+    "group": "course.finish",
+    "kind": "Action",
+    "scope": "InstructedCourse",
+    "nameAr": "الدورة — إنهاء",
+    "nameEn": "course / finish",
+    "roles": [
+      "Admin",
+      "Quality",
+      "Instructor",
+      "ExternalInstructor"
+    ]
+  },
+  {
+    "key": "attendance.activate_code",
+    "group": "attendance.activate_code",
+    "kind": "Action",
+    "scope": "InstructedCourse",
+    "nameAr": "attendance — تفعيل الكود",
+    "nameEn": "attendance / activate code",
+    "roles": [
+      "Admin",
+      "Quality",
+      "Instructor",
+      "ExternalInstructor"
+    ]
+  },
+  {
+    "key": "attendance.edit_manual",
+    "group": "attendance.edit_manual",
+    "kind": "Action",
+    "scope": "InstructedCourse",
+    "nameAr": "attendance — تصحيح يدوي",
+    "nameEn": "attendance / edit manual",
+    "roles": [
+      "Admin",
+      "Quality",
+      "Instructor",
+      "ExternalInstructor"
+    ]
+  },
+  {
+    "key": "attendance.enter_code",
+    "group": "attendance.enter_code",
+    "kind": "Action",
+    "scope": "Self",
+    "nameAr": "attendance — إدخال الكود",
+    "nameEn": "attendance / enter code",
+    "roles": [
+      "Admin",
+      "Quality",
+      "Dean",
+      "Member"
+    ]
+  },
+  {
+    "key": "exam.manage",
+    "group": "exam.manage",
+    "kind": "Action",
+    "scope": "InstructedCourse",
+    "nameAr": "exam — إدارة",
+    "nameEn": "exam / manage",
+    "roles": [
+      "Admin",
+      "Quality",
+      "Instructor",
+      "ExternalInstructor"
+    ]
+  },
+  {
+    "key": "exam.requirement.edit",
+    "group": "exam.requirement",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "exam — الشرط — تعديل",
+    "nameEn": "exam / requirement / edit",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "exam.results.disable",
+    "group": "exam.results",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "exam — النتائج — تعطيل",
+    "nameEn": "exam / results / disable",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "impact.submit",
+    "group": "impact.submit",
+    "kind": "Action",
+    "scope": "Self",
+    "nameAr": "الأثر التدريبي — إرسال",
+    "nameEn": "impact / submit",
+    "roles": [
+      "Admin",
+      "Quality",
+      "Dean",
+      "Member"
+    ]
+  },
+  {
+    "key": "impact.review",
+    "group": "impact.review",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "الأثر التدريبي — مراجعة",
+    "nameEn": "impact / review",
+    "roles": [
+      "Admin",
+      "Quality",
+      "Dean"
+    ]
+  },
+  {
+    "key": "evaluation.submit",
+    "group": "evaluation.submit",
+    "kind": "Action",
+    "scope": "Self",
+    "nameAr": "evaluation — إرسال",
+    "nameEn": "evaluation / submit",
+    "roles": [
+      "Admin",
+      "Quality",
+      "Dean",
+      "Member"
+    ]
+  },
+  {
+    "key": "evalform.edit",
+    "group": "evalform.edit",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "evalform — تعديل",
+    "nameEn": "evalform / edit",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "evaluation.extend_period",
+    "group": "evaluation.extend_period",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "evaluation — تمديد الفترة",
+    "nameEn": "evaluation / extend period",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "evaluation.results.all",
+    "group": "evaluation.results",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "evaluation — النتائج — all",
+    "nameEn": "evaluation / results / all",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "evaluation.results.course",
+    "group": "evaluation.results",
+    "kind": "Action",
+    "scope": "InstructedCourse",
+    "nameAr": "evaluation — النتائج — الدورة",
+    "nameEn": "evaluation / results / course",
+    "roles": [
+      "Admin",
+      "Quality",
+      "Instructor",
+      "ExternalInstructor"
+    ]
+  },
+  {
+    "key": "certificates.view.all",
+    "group": "certificates.view",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "الشهادات — عرض — all",
+    "nameEn": "certificates / view / all",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "certificates.view.faculty",
+    "group": "certificates.view",
+    "kind": "Action",
+    "scope": "OwnFaculty",
+    "nameAr": "الشهادات — عرض — الكلية",
+    "nameEn": "certificates / view / faculty",
+    "roles": [
+      "Dean"
+    ]
+  },
+  {
+    "key": "certificates.view.own",
+    "group": "certificates.view",
+    "kind": "Action",
+    "scope": "Self",
+    "nameAr": "الشهادات — عرض — الذاتية",
+    "nameEn": "certificates / view / own",
+    "roles": [
+      "Admin",
+      "Quality",
+      "Dean",
+      "Member"
+    ]
+  },
+  {
+    "key": "certificates.download.own",
+    "group": "certificates.download",
+    "kind": "Action",
+    "scope": "Self",
+    "nameAr": "الشهادات — تنزيل — الذاتية",
+    "nameEn": "certificates / download / own",
+    "roles": [
+      "Admin",
+      "Quality",
+      "Dean",
+      "Member"
+    ]
+  },
+  {
+    "key": "stats.university",
+    "group": "stats.university",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "الإحصاءات — الجامعة",
+    "nameEn": "stats / university",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "stats.faculty",
+    "group": "stats.faculty",
+    "kind": "Action",
+    "scope": "OwnFaculty",
+    "nameAr": "الإحصاءات — الكلية",
+    "nameEn": "stats / faculty",
+    "roles": [
+      "Admin",
+      "Quality",
+      "Dean"
+    ]
+  },
+  {
+    "key": "stats.course",
+    "group": "stats.course",
+    "kind": "Action",
+    "scope": "InstructedCourse",
+    "nameAr": "الإحصاءات — الدورة",
+    "nameEn": "stats / course",
+    "roles": [
+      "Admin",
+      "Quality",
+      "Instructor",
+      "ExternalInstructor"
+    ]
+  },
+  {
+    "key": "stats.member",
+    "group": "stats.member",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "الإحصاءات — العضو",
+    "nameEn": "stats / member",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "procert.submit",
+    "group": "procert.submit",
+    "kind": "Action",
+    "scope": "Self",
+    "nameAr": "الشهادة المهنية — إرسال",
+    "nameEn": "procert / submit",
+    "roles": [
+      "Admin",
+      "Quality",
+      "Dean",
+      "Member"
+    ]
+  },
+  {
+    "key": "procert.withdraw",
+    "group": "procert.withdraw",
+    "kind": "Action",
+    "scope": "Self",
+    "nameAr": "الشهادة المهنية — withdraw",
+    "nameEn": "procert / withdraw",
+    "roles": [
+      "Admin",
+      "Quality",
+      "Dean",
+      "Member"
+    ]
+  },
+  {
+    "key": "procert.download.own",
+    "group": "procert.download",
+    "kind": "Action",
+    "scope": "Self",
+    "nameAr": "الشهادة المهنية — تنزيل — الذاتية",
+    "nameEn": "procert / download / own",
+    "roles": [
+      "Admin",
+      "Quality",
+      "Dean",
+      "Member"
+    ]
+  },
+  {
+    "key": "procert.review",
+    "group": "procert.review",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "الشهادة المهنية — مراجعة",
+    "nameEn": "procert / review",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "procert.edit",
+    "group": "procert.edit",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "الشهادة المهنية — تعديل",
+    "nameEn": "procert / edit",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "procert.download.any",
+    "group": "procert.download",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "الشهادة المهنية — تنزيل — any",
+    "nameEn": "procert / download / any",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "procert.deactivate",
+    "group": "procert.deactivate",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "الشهادة المهنية — تعطيل",
+    "nameEn": "procert / deactivate",
+    "roles": [
+      "Admin"
+    ]
+  },
+  {
+    "key": "procert.categories.manage",
+    "group": "procert.categories",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "الشهادة المهنية — التصنيفات — إدارة",
+    "nameEn": "procert / categories / manage",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "procert.stats",
+    "group": "procert.stats",
+    "kind": "Action",
+    "scope": "Global",
+    "nameAr": "الشهادة المهنية — الإحصاءات",
+    "nameEn": "procert / stats",
+    "roles": [
+      "Admin",
+      "Quality"
+    ]
+  },
+  {
+    "key": "profile.edit.own",
+    "group": "profile.edit",
+    "kind": "Action",
+    "scope": "Self",
+    "nameAr": "الملف الشخصي — تعديل — الذاتية",
+    "nameEn": "profile / edit / own",
+    "roles": [
+      "Admin",
+      "Quality",
+      "Dean",
+      "Member"
+    ]
+  },
+  {
+    "key": "faculty.members.view",
+    "group": "faculty.members",
+    "kind": "Action",
+    "scope": "OwnFaculty",
+    "nameAr": "الكلية — members — عرض",
+    "nameEn": "faculty / members / view",
+    "roles": [
+      "Dean"
+    ]
+  }
+]

@@ -1,0 +1,30 @@
+@page "/admin/certificate-template"
+@{ ViewData["Title"] = "قالب شهادة الدورة"; }
+<div class="container py-4" id="certificate-template-page">
+  <h1>قالب شهادة الدورة</h1>
+  <div id="template-error" class="alert alert-danger d-none" role="alert"></div>
+  <div id="template-success" class="alert alert-success d-none" role="status"></div>
+
+  <section class="card card-body mb-4" id="template-current">
+    <h2 class="h5">القالب الحالي</h2>
+    <p id="template-current-info" class="mb-0 text-muted">لا يوجد قالب مرفوع بعد؛ إصدار الشهادات معلّق حتى رفعه.</p>
+  </section>
+
+  <section class="card card-body mb-4">
+    <h2 class="h5">رفع نسخة جديدة</h2>
+    <form id="template-form">
+      <div class="mb-3">
+        <label for="template-file" class="form-label">ملف القالب (PDF بصفحة واحدة)</label>
+        <input id="template-file" class="form-control" type="file" accept=".pdf,application/pdf" required />
+      </div>
+      <div class="mb-3">
+        <label for="template-layout" class="form-label">مواضع العناصر (layout JSON)</label>
+        <textarea id="template-layout" class="form-control font-monospace" dir="ltr" rows="10" required></textarea>
+        <div class="form-text">إحداثيات مطلقة بالنقاط (pt) لأعلى-يسار الصفحة. الحقول الإلزامية: holder_name، course_title، course_period، course_hours، instructor_name، issue_date، reference_no، qr.</div>
+      </div>
+      <button id="template-submit" class="btn btn-primary" type="submit">رفع القالب</button>
+      <button id="template-preview" class="btn btn-outline-secondary" type="button">معاينة</button>
+    </form>
+  </section>
+</div>
+@section Scripts { <script src="~/js/certificate-template.js" asp-append-version="true"></script> }

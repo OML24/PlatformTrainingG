@@ -1,0 +1,22 @@
+@page "/quality/tracks"
+@{ ViewData["Title"] = "محاور التدريب"; }
+<div class="container py-4" id="tracks-page">
+  <h1>محاور التدريب</h1>
+  <div id="tracks-error" class="alert alert-danger d-none" role="alert"></div>
+  <div id="tracks-success" class="alert alert-success d-none" role="status"></div>
+  <form id="tracks-form" class="card card-body mb-4">
+    <div class="row g-3">
+      <div class="col-md-5"><label class="form-label" for="tracks-name">اسم المحور (عربي)</label><input id="tracks-name" class="form-control" maxlength="200" required /></div>
+      <div class="col-md-4"><label class="form-label" for="tracks-name-en">الاسم (إنجليزي)</label><input id="tracks-name-en" class="form-control" dir="ltr" /></div>
+      <div class="col-md-3"><label class="form-label" for="tracks-sort">الترتيب</label><input id="tracks-sort" class="form-control" type="number" value="0" /></div>
+    </div>
+    <button id="tracks-submit" class="btn btn-primary mt-3" type="submit">حفظ المحور</button>
+  </form>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead><tr><th>المحور</th><th>الترتيب</th><th>الحالة</th><th>إجراء</th></tr></thead>
+      <tbody id="tracks-rows"></tbody>
+    </table>
+  </div>
+</div>
+@section Scripts { <script src="~/js/quality-tracks.js" asp-append-version="true"></script> }

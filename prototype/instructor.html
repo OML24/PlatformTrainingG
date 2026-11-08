@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>لوحة المحاضر وعاقد الدورة | منصة تدريب جامعة الزرقاء</title>
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css">
+<!-- Icons from Template (Tabler Icons) -->
+<link href="template/paces/assets/css/vendors.min.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/experience.css">
+</head>
+<body>
+<div class="app-layout">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sidebar-brand">
+    <div class="brand-logo">
+      <img src="logo.png" alt="شعار جامعة الزرقاء">
+      <div class="brand-text">
+        <h6>منصة التدريب</h6>
+        <small>جامعة الزرقاء</small>
+      </div>
+    </div>
+  </div>
+  <div class="sidebar-user">
+    <div class="avatar av-green">خم</div>
+    <div class="sidebar-user-info">
+      <h6>د. خالد المحاضر</h6>
+      <small><i class="ti ti-presentation me-1"></i> عاقد الدورة / المدرب</small>
+    </div>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="nav-section-title">الرئيسية</div>
+    <button class="nav-item active" onclick="show('dashboard',this)"><i class="ti ti-layout-dashboard nav-icon"></i> لوحة التحكم</button>
+    <div class="nav-section-title">إدارة البرنامج التدريبي</div>
+    <button class="nav-item" id="lnk-courses" onclick="show('courses',this)"><i class="ti ti-books nav-icon"></i> دوراتي التدريبية</button>
+    <button class="nav-item" id="lnk-attendance" onclick="show('attendance',this)"><i class="ti ti-qrcode nav-icon"></i> التحضير المزدوج (Dual-QR)</button>
+    <button class="nav-item" onclick="show('exams',this)"><i class="ti ti-checklist nav-icon"></i> رصد نتائج الامتحان</button>
+    <button class="nav-item" onclick="show('evalbuilder',this)"><i class="ti ti-list-check nav-icon"></i> بناء نموذج التقييم</button>
+    <div class="nav-section-title">المخرجات والشهادات</div>
+    <button class="nav-item" onclick="show('impact',this)"><i class="ti ti-bookmark-star nav-icon"></i> التحقق من الأثر التدريبي</button>
+    <button class="nav-item" onclick="show('certificates',this)"><i class="ti ti-certificate nav-icon"></i> متطلبات إصدار الشهادات</button>
+    <div class="nav-section-title">حسابي كعضو هيئة تدريس</div>
+    <button class="nav-item" onclick="show('memberrole',this)"><i class="ti ti-user nav-icon"></i> دوراتي كمتدرب</button>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="index.html" class="btn-demo-hub"><i class="ti ti-arrow-back-up"></i> مركز العرض والديمو</a>
+    <button class="btn-logout" onclick="location.href='index.html'"><i class="ti ti-logout"></i> تسجيل الخروج</button>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<div class="main-content">
+  <header class="header">
+    <div class="header-left">
+      <h4 id="pageTitle">لوحة التحكم</h4>
+      <p>دورة: مهارات التدريس الفعّال والتعلم النشط — الجلسة الختامية جارية الآن</p>
+    </div>
+    <div class="header-actions">
+      <button class="btn-s" onclick="show('memberrole',null)"><i class="ti ti-switch-horizontal"></i> حسابي كعضو هيئة تدريس</button>
+      <!-- Quick Role Switcher for Demo -->
+      <div class="dropdown">
+        <button class="role-switcher-dropdown dropdown-toggle" type="button" data-bs-toggle="dropdown">
+          <i class="ti ti-switch-horizontal"></i> تبديل الدور (ديمو)
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow-sm border" style="font-size:13px;">
+          <li><a class="dropdown-item" href="admin.html"><i class="ti ti-shield text-warning me-1"></i> مسؤول النظام</a></li>
+          <li><a class="dropdown-item" href="quality.html"><i class="ti ti-award text-info me-1"></i> مسؤولة الجودة</a></li>
+          <li><a class="dropdown-item" href="dean.html"><i class="ti ti-building text-primary me-1"></i> عميد الكلية</a></li>
+          <li><a class="dropdown-item fw-bold" href="instructor.html"><i class="ti ti-presentation text-success me-1"></i> عاقد الدورة (المدرب)</a></li>
+          <li><a class="dropdown-item" href="member.html"><i class="ti ti-user text-danger me-1"></i> عضو هيئة التدريس</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item text-primary" href="index.html"><i class="ti ti-home me-1"></i> العودة للمركز الرئيسي</a></li>
+        </ul>
+      </div>
+
+      <div class="btn-notif" data-bs-toggle="modal" data-bs-target="#notifModal" title="الإشعارات">
+        <i class="ti ti-bell"></i><span class="notif-dot"></span>
+      </div>
+      <div class="avatar av-green" style="cursor:pointer;">خم</div>
+    </div>
+  </header>
+
+  <div class="page-content">
+
+    <!-- DASHBOARD -->
+    <div id="sec-dashboard">
+      <div class="row g-3 mb-4">
+        <div class="col-6 col-lg-3 fade-in delay-1">
+          <div class="stat-card ca-blue">
+            <div class="stat-icon" style="background:var(--zu-navy-subtle);color:var(--zu-navy);"><i class="ti ti-users"></i></div>
+            <div class="stat-number">42</div>
+            <div class="stat-label">مشارك مسجّل بالدورة</div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3 fade-in delay-2">
+          <div class="stat-card ca-green">
+            <div class="stat-icon" style="background:var(--green-dim);color:var(--green);"><i class="ti ti-user-check"></i></div>
+            <div class="stat-number">38</div>
+            <div class="stat-label">أثبتوا حضورهم الذكي</div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3 fade-in delay-3">
+          <div class="stat-card ca-yellow">
+            <div class="stat-icon" style="background:var(--yellow-dim);color:var(--yellow);"><i class="ti ti-alert-circle"></i></div>
+            <div class="stat-number">3</div>
+            <div class="stat-label">تنبيهات غياب مسجلة</div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3 fade-in delay-4">
+          <div class="stat-card ca-green">
+            <div class="stat-icon" style="background:var(--green-dim);color:var(--green);"><i class="ti ti-certificate"></i></div>
+            <div class="stat-number">29</div>
+            <div class="stat-label">شهادة جاهزة للاعتماد</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHARTS ROW: Interactive Visual Analytics on Main Dashboard -->
+      <div class="row g-3 mb-4">
+        <div class="col-lg-8">
+          <div class="data-card">
+            <div class="data-card-header">
+              <h5><i class="ti ti-chart-bar" style="color:var(--zu-navy);"></i> معدل حضور المتدربين الفعلي عبر الجلسات الثلاث (المسجلون: 42)</h5>
+              <span class="badge-s bs-info">تحديث فوري للحضور</span>
+            </div>
+            <div class="data-card-body">
+              <div style="position:relative;height:240px;"><canvas id="instChart1"></canvas></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="data-card h-100">
+            <div class="data-card-header">
+              <h5><i class="ti ti-chart-pie" style="color:var(--purple);"></i> توزيع تقييم المتدربين للمدرب والمحتوى</h5>
+              <span class="badge-s bs-active">متوسط 4.7/5</span>
+            </div>
+            <div class="data-card-body">
+              <div style="position:relative;height:220px;"><canvas id="instChart2"></canvas></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="col-lg-6">
+          <div class="data-card">
+            <div class="data-card-header">
+              <h5><i class="ti ti-video" style="color:var(--zu-navy);"></i> جدول جلسات البرنامج التدريبي</h5>
+              <button class="btn-s" onclick="openInstructorCourse('course-1')">تفاصيل الدورة والمحاضرات</button>
+            </div>
+            <div class="data-card-body" style="padding:0;">
+              <table class="custom-table">
+                <thead><tr><th>الجلسة</th><th>النمط</th><th>التاريخ والوقت</th><th>نسبة الحضور</th><th>الحالة</th></tr></thead>
+                <tbody>
+                  <tr><td class="fw-bold">الجلسة الأولى: المفاهيم الأساسية</td><td><span class="badge-s bs-info">أونلاين Teams</span></td><td>1 نوفمبر — 9:00 ص</td><td>40 / 42</td><td><span class="badge-s bs-ended">منتهية وموثقة</span></td></tr>
+                  <tr><td class="fw-bold">الجلسة الثانية: التطبيقات العملية</td><td><span class="badge-s bs-active">وجاهية بالحرم</span></td><td>2 نوفمبر — 9:00 ص</td><td>38 / 42</td><td><span class="badge-s bs-ended">منتهية وموثقة</span></td></tr>
+                  <tr style="background:#F0F7FF;"><td class="fw-bold">الجلسة الثالثة: الورشة الختامية <span style="color:var(--zu-navy);font-size:11px;">(الآن)</span></td><td><span class="badge-s bs-active">وجاهية بالحرم</span></td><td>3 نوفمبر — 9:00 ص</td><td>—</td><td><span class="badge-s bs-active pulse">جارية الآن</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="data-card">
+            <div class="data-card-header">
+              <h5><i class="ti ti-qrcode" style="color:var(--green);"></i> تسجيل الحضور الذكي — الجلسة الحالية</h5>
+            </div>
+            <div class="data-card-body">
+              <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;">
+                <button class="btn-p btn-green" onclick="selectAllAttend()"><i class="ti ti-check-all"></i> تسجيل الكل حاضر</button>
+                <button class="btn-p" style="background:var(--zu-navy);" onclick="generateCode()"><i class="ti ti-qrcode"></i> توليد رمز حي للحضور</button>
+                <div id="codeWidget" style="display:none;width:100%;padding:14px;background:#F8FAFC;border-radius:var(--r);border:2px dashed var(--zu-navy-border);text-align:center;margin-top:10px;">
+                  <div style="font-size:12px;color:var(--text-2);font-weight:700;">اعرض هذا الرمز أمام المتدربين لإدخاله عبر هواتفهم:</div>
+                  <div class="code-display" id="generatedCode" style="padding:10px 0;margin:6px 0;">7 4 3 9</div>
+                  <div class="code-timer">ينتهي صلاحية الرمز خلال <span id="timerCount">10:00</span></div>
+                  <button class="btn-s bs-r" style="margin-top:10px;" onclick="document.getElementById('codeWidget').style.display='none'"><i class="ti ti-x"></i> إغلاق الرمز</button>
+                </div>
+              </div>
+              <div id="attendanceList" style="max-height:240px;overflow-y:auto;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COURSES LIST (دوراتي التدريبية) -->
+    <div id="sec-courses" style="display:none;">
+      <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
+        <div>
+          <div class="section-title mb-1"><i class="ti ti-books" style="color:var(--zu-navy);"></i> دوراتي التدريبية (البرامج التدريبية المكلّف بها)</div>
+          <small class="text-muted">قائمة البرامج التدريبية المسندة إليك كمدرب — اضغط على أي دورة للدخول إلى تفاصيلها وإدارة محاضراتها وجلساتها</small>
+        </div>
+      </div>
+
+      <!-- Courses Grid -->
+      <div class="row g-4">
+        <!-- Course 1: Active -->
+        <div class="col-lg-6">
+          <div class="data-card" style="border-top:4px solid var(--zu-navy);border-radius:var(--r);box-shadow:var(--shadow-sm);transition:all .2s ease;">
+            <div class="data-card-body p-4">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <div>
+                  <span class="badge-s bs-info mb-2"><i class="ti ti-category me-1"></i>مسار التطوير الأكاديمي والتحول الرقمي</span>
+                  <h5 class="fw-bold mb-1" style="color:var(--zu-navy);font-size:17px;">استراتيجيات التدريس الفعّال والتعلم النشط</h5>
+                  <div class="text-muted text-sm"><i class="ti ti-barcode me-1"></i>رمز الدورة: ZU-TR-2026-081</div>
+                </div>
+                <span class="badge-s bs-active pulse" style="font-size:12px;"><i class="ti ti-point-filled"></i> جارية حالياً</span>
+              </div>
+
+              <div class="row g-2 mb-3 py-2" style="background:#F8FAFC;border-radius:var(--r-sm);border:1px solid var(--border);">
+                <div class="col-6 col-sm-3 text-center">
+                  <div class="text-muted" style="font-size:11px;">عدد الساعات</div>
+                  <strong style="color:var(--zu-navy);">12 ساعة</strong>
+                </div>
+                <div class="col-6 col-sm-3 text-center">
+                  <div class="text-muted" style="font-size:11px;">المحاضرات المنشأة</div>
+                  <strong class="text-primary">4 محاضرات</strong>
+                </div>
+                <div class="col-6 col-sm-3 text-center">
+                  <div class="text-muted" style="font-size:11px;">المتدربون المسجلون</div>
+                  <strong style="color:var(--green);">42 عضواً</strong>
+                </div>
+                <div class="col-6 col-sm-3 text-center">
+                  <div class="text-muted" style="font-size:11px;">شرط النجاح</div>
+                  <strong style="color:var(--orange);">75% (3 محاضرات)</strong>
+                </div>
+              </div>
+
+              <div class="text-muted text-sm mb-3">
+                <div class="mb-1"><i class="ti ti-calendar me-2 text-primary"></i><strong>الفترة:</strong> 1 — 5 نوفمبر 2026 (الفصل الأول 2026/2027)</div>
+                <div><i class="ti ti-building me-2 text-primary"></i><strong>الموقع:</strong> وجاهية (مجمع القاعات A101) + أونلاين عبر Teams</div>
+              </div>
+
+              <!-- Progress bar of lectures -->
+              <div class="mb-3">
+                <div class="d-flex justify-content-between text-sm mb-1">
+                  <span>إنجاز المحاضرات المنعقدة:</span>
+                  <span class="fw-bold text-primary">3 من 4 محاضرات (75%)</span>
+                </div>
+                <div class="progress-bar-wrap" style="height:7px;"><div class="progress-bar-fill" style="width:75%;background:var(--zu-navy);"></div></div>
+              </div>
+
+              <div class="d-flex gap-2 flex-wrap pt-2 border-top">
+                <button class="btn-p" style="background:var(--zu-navy);" onclick="openInstructorCourse('course-1')">
+                  <i class="ti ti-folder-open me-1"></i> فتح تفاصيل ومحاضرات الدورة ←
+                </button>
+                <button class="btn-s bs-g" onclick="show('attendance',null)">
+                  <i class="ti ti-qrcode me-1"></i> التحضير الذكي للورشة الختامية
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Course 2: Scheduled -->
+        <div class="col-lg-6">
+          <div class="data-card" style="border-top:4px solid #3B82F6;border-radius:var(--r);box-shadow:var(--shadow-sm);">
+            <div class="data-card-body p-4">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <div>
+                  <span class="badge-s bs-info mb-2"><i class="ti ti-category me-1"></i>مسار البحث والابتكار الأكاديمي</span>
+                  <h5 class="fw-bold mb-1" style="color:var(--zu-navy);font-size:17px;">أدوات الذكاء الاصطناعي التوليدي في البحث العلمي والنشر الدولي</h5>
+                  <div class="text-muted text-sm"><i class="ti ti-barcode me-1"></i>رمز الدورة: ZU-TR-2026-104</div>
+                </div>
+                <span class="badge-s bs-info" style="font-size:12px;">معتمدة ومجدولة</span>
+              </div>
+
+              <div class="row g-2 mb-3 py-2" style="background:#F8FAFC;border-radius:var(--r-sm);border:1px solid var(--border);">
+                <div class="col-6 col-sm-3 text-center">
+                  <div class="text-muted" style="font-size:11px;">عدد الساعات</div>
+                  <strong style="color:var(--zu-navy);">8 ساعات</strong>
+                </div>
+                <div class="col-6 col-sm-3 text-center">
+                  <div class="text-muted" style="font-size:11px;">المحاضرات المجدولة</div>
+                  <strong class="text-primary">3 محاضرات</strong>
+                </div>
+                <div class="col-6 col-sm-3 text-center">
+                  <div class="text-muted" style="font-size:11px;">المتدربون المسجلون</div>
+                  <strong style="color:var(--green);">35 عضواً</strong>
+                </div>
+                <div class="col-6 col-sm-3 text-center">
+                  <div class="text-muted" style="font-size:11px;">شرط النجاح</div>
+                  <strong style="color:var(--orange);">75% (3 محاضرات)</strong>
+                </div>
+              </div>
+
+              <div class="text-muted text-sm mb-3">
+                <div class="mb-1"><i class="ti ti-calendar me-2 text-primary"></i><strong>الفترة:</strong> 18 — 20 نوفمبر 2026</div>
+                <div><i class="ti ti-device-laptop me-2 text-primary"></i><strong>النمط:</strong> أونلاين عبر منصة Microsoft Teams</div>
+              </div>
+
+              <div class="mb-3">
+                <div class="d-flex justify-content-between text-sm mb-1">
+                  <span>إنجاز المحاضرات:</span>
+                  <span class="text-muted">لم تبدأ بعد (0 من 3)</span>
+                </div>
+                <div class="progress-bar-wrap" style="height:7px;"><div class="progress-bar-fill" style="width:0%;"></div></div>
+              </div>
+
+              <div class="d-flex gap-2 flex-wrap pt-2 border-top">
+                <button class="btn-p" style="background:var(--zu-navy);" onclick="openInstructorCourse('course-2')">
+                  <i class="ti ti-folder-open me-1"></i> فتح تفاصيل ومحاضرات الدورة ←
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Course 3: Completed Archive -->
+        <div class="col-lg-6">
+          <div class="data-card" style="border-top:4px solid var(--green);border-radius:var(--r);box-shadow:var(--shadow-sm);">
+            <div class="data-card-body p-4">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <div>
+                  <span class="badge-s bs-info mb-2"><i class="ti ti-category me-1"></i>مسار الجودة والاعتماد الأكاديمي</span>
+                  <h5 class="fw-bold mb-1" style="color:var(--zu-navy);font-size:17px;">تصميم الاختبارات المعيارية وبنوك الأسئلة الإلكترونية</h5>
+                  <div class="text-muted text-sm"><i class="ti ti-barcode me-1"></i>رمز الدورة: ZU-TR-2026-045</div>
+                </div>
+                <span class="badge-s bs-ended" style="font-size:12px;">منتهية وموثقة</span>
+              </div>
+
+              <div class="row g-2 mb-3 py-2" style="background:#F8FAFC;border-radius:var(--r-sm);border:1px solid var(--border);">
+                <div class="col-6 col-sm-3 text-center">
+                  <div class="text-muted" style="font-size:11px;">عدد الساعات</div>
+                  <strong style="color:var(--zu-navy);">15 ساعة</strong>
+                </div>
+                <div class="col-6 col-sm-3 text-center">
+                  <div class="text-muted" style="font-size:11px;">المحاضرات المنعقدة</div>
+                  <strong class="text-primary">5 محاضرات</strong>
+                </div>
+                <div class="col-6 col-sm-3 text-center">
+                  <div class="text-muted" style="font-size:11px;">الناجحون المستحقون</div>
+                  <strong style="color:var(--green);">40 عضواً (100%)</strong>
+                </div>
+                <div class="col-6 col-sm-3 text-center">
+                  <div class="text-muted" style="font-size:11px;">الشهادات الصادرة</div>
+                  <strong style="color:var(--zu-navy);">40 شهادة</strong>
+                </div>
+              </div>
+
+              <div class="text-muted text-sm mb-3">
+                <div class="mb-1"><i class="ti ti-calendar me-2 text-primary"></i><strong>الفترة:</strong> 10 — 18 أكتوبر 2026</div>
+                <div><i class="ti ti-building me-2 text-primary"></i><strong>الموقع:</strong> وجاهية — مدرج القدس</div>
+              </div>
+
+              <div class="d-flex gap-2 flex-wrap pt-2 border-top">
+                <button class="btn-s" onclick="openInstructorCourse('course-3')">
+                  <i class="ti ti-archive me-1"></i> استعراض أرشيف الدورة والتقارير ←
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COURSE DETAIL & LECTURES MANAGEMENT (تفاصيل الدورة ومحاضراتها) -->
+    <div id="sec-coursedetail" style="display:none;">
+      <!-- Breadcrumb and Back Button -->
+      <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
+        <button class="btn-s bs-navy" onclick="show('courses', document.getElementById('lnk-courses'))">
+          <i class="ti ti-arrow-right me-1"></i> العودة إلى قائمة دوراتي التدريبية
+        </button>
+        <div class="text-muted text-sm">
+          <span style="color:var(--zu-navy);font-weight:700;">دوراتي التدريبية</span> &gt;
+          <span id="detailCourseBreadcrumb">استراتيجيات التدريس الفعّال</span> &gt;
+          <strong>تفاصيل ومحاضرات الدورة</strong>
+        </div>
+      </div>
+
+      <!-- Course Master Banner -->
+      <div class="data-card mb-4" style="border-top:4px solid var(--zu-navy);">
+        <div class="data-card-body p-4">
+          <div class="d-flex flex-wrap justify-content-between align-items-start gap-3">
+            <div>
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <span class="badge-s bs-info"><i class="ti ti-category me-1"></i>مسار التطوير الأكاديمي والتحول الرقمي</span>
+                <span class="badge-s bs-active pulse"><i class="ti ti-point-filled"></i> جارية حالياً</span>
+                <span class="text-muted text-sm"><i class="ti ti-barcode me-1"></i>ZU-TR-2026-081</span>
+              </div>
+              <h4 class="fw-bold mb-2" style="color:var(--zu-navy);" id="detailCourseTitle">استراتيجيات التدريس الفعّال والتعلم النشط</h4>
+              <p class="text-muted mb-0" style="font-size:13.5px;max-width:850px;">
+                برنامج تدريبي تطبيقي يركز على استراتيجيات التعلم التفاعلي والرقمنة داخل القاعة الجامعية. يستوجب اجتياز الدورة حضور 75% فأكثر من إجمالي عدد المحاضرات التي ينشئها المحاضر (وليس من مجموع الساعات).
+              </p>
+            </div>
+            <div class="d-flex gap-2">
+              <button class="btn-p btn-green" data-bs-toggle="modal" data-bs-target="#newSessionModal">
+                <i class="ti ti-plus me-1"></i> إضافة محاضرة جديدة لهذه الدورة
+              </button>
+            </div>
+          </div>
+
+          <!-- Dynamic Info Strip -->
+          <div class="row g-3 mt-3 pt-3 border-top">
+            <div class="col-sm-3 col-6">
+              <div class="text-muted text-sm">إجمالي عدد المحاضرات المنشأة</div>
+              <div class="fs-5 fw-bold" style="color:var(--zu-navy);" id="detailCourseLecCount"><i class="ti ti-presentation me-1 text-primary"></i> 4 محاضرات</div>
+            </div>
+            <div class="col-sm-3 col-6">
+              <div class="text-muted text-sm">المتدربون المسجلون</div>
+              <div class="fs-5 fw-bold text-success"><i class="ti ti-users me-1"></i> 42 عضواً</div>
+            </div>
+            <div class="col-sm-3 col-6">
+              <div class="text-muted text-sm">شرط الحضور للاجتياز (75%)</div>
+              <div class="fs-5 fw-bold text-warning"><i class="ti ti-checklist me-1"></i> 3 محاضرات على الأقل</div>
+            </div>
+            <div class="col-sm-3 col-6">
+              <div class="text-muted text-sm">الساعات التدريبية المعتمدة</div>
+              <div class="fs-5 fw-bold" style="color:var(--zu-navy);"><i class="ti ti-clock me-1 text-info"></i> 12 ساعة</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lectures Management Section for this Course -->
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h5 class="fw-bold mb-0" style="color:var(--zu-navy);"><i class="ti ti-video text-primary me-2"></i>محاضرات وجلسات الدورة المنعقدة والمجدولة</h5>
+        <button class="btn-p btn-green" data-bs-toggle="modal" data-bs-target="#newSessionModal">
+          <i class="ti ti-plus me-1"></i> إضافة محاضرة جديدة الآن (في أي وقت)
+        </button>
+      </div>
+
+      <div class="row g-3 mb-4">
+        <!-- Lecture 1 -->
+        <div class="col-lg-3 col-md-6">
+          <div class="data-card h-100" style="border-top:3.5px solid var(--green);">
+            <div class="data-card-body p-3">
+              <div class="d-flex justify-content-between mb-2">
+                <span class="fw-bold text-primary" style="font-size:14px;">المحاضرة 1</span>
+                <span class="badge-s bs-ended">منتهية وموثقة</span>
+              </div>
+              <h6 class="fw-bold mb-2" style="color:var(--zu-navy);font-size:14px;">المفاهيم الأساسية والتعلم النشط</h6>
+              <div class="text-muted text-sm mb-1"><i class="ti ti-calendar me-1"></i>1 نوفمبر 2026 — 9:00 ص</div>
+              <div class="text-muted text-sm mb-2"><i class="ti ti-brand-teams me-1"></i>أونلاين (Microsoft Teams)</div>
+              <div class="alert alert-light p-2 mb-3 border text-center" style="font-size:12px;">
+                <i class="ti ti-users me-1 text-success"></i> الحضور المثبت: <strong>40 / 42</strong>
+              </div>
+              <button class="btn-s w-100" style="font-size:12px;" onclick="show('attendance',null)">
+                <i class="ti ti-eye me-1"></i> استعراض سجل الحضور
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lecture 2 -->
+        <div class="col-lg-3 col-md-6">
+          <div class="data-card h-100" style="border-top:3.5px solid var(--green);">
+            <div class="data-card-body p-3">
+              <div class="d-flex justify-content-between mb-2">
+                <span class="fw-bold text-primary" style="font-size:14px;">المحاضرة 2</span>
+                <span class="badge-s bs-ended">منتهية وموثقة</span>
+              </div>
+              <h6 class="fw-bold mb-2" style="color:var(--zu-navy);font-size:14px;">التطبيقات العملية والمحاكاة</h6>
+              <div class="text-muted text-sm mb-1"><i class="ti ti-calendar me-1"></i>2 نوفمبر 2026 — 9:00 ص</div>
+              <div class="text-muted text-sm mb-2"><i class="ti ti-building me-1"></i>وجاهية — مجمع A101</div>
+              <div class="alert alert-light p-2 mb-3 border text-center" style="font-size:12px;">
+                <i class="ti ti-users me-1 text-success"></i> الحضور المثبت: <strong>38 / 42</strong>
+              </div>
+              <button class="btn-s w-100" style="font-size:12px;" onclick="show('attendance',null)">
+                <i class="ti ti-eye me-1"></i> استعراض سجل الحضور
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lecture 3: Active Now -->
+        <div class="col-lg-3 col-md-6">
+          <div class="data-card h-100" style="border-top:3.5px solid var(--zu-navy);box-shadow:var(--shadow-md);">
+            <div class="data-card-body p-3">
+              <div class="d-flex justify-content-between mb-2">
+                <span class="fw-bold" style="color:var(--zu-navy);font-size:14px;">المحاضرة 3</span>
+                <span class="badge-s bs-active pulse">جارية الآن</span>
+              </div>
+              <h6 class="fw-bold mb-2" style="color:var(--zu-navy);font-size:14px;">الورشة الختامية وتصميم الأنشطة</h6>
+              <div class="text-muted text-sm mb-1"><i class="ti ti-calendar me-1"></i>3 نوفمبر 2026 — 9:00 ص</div>
+              <div class="text-muted text-sm mb-2"><i class="ti ti-building me-1"></i>وجاهية — مجمع A101</div>
+              <div class="alert alert-primary p-2 mb-3 border text-center" style="font-size:12px;background:#F0F7FF;">
+                <i class="ti ti-qrcode me-1"></i> التحضير الذكي مفعّل حالياً
+              </div>
+              <button class="btn-p btn-green w-100" style="font-size:12px;" onclick="show('attendance',null)">
+                <i class="ti ti-qrcode me-1"></i> فتح التحضير المزدوج (Dual-QR)
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lecture 4: Newly Added -->
+        <div class="col-lg-3 col-md-6">
+          <div class="data-card h-100" style="border-top:3.5px solid #0EA5E9;background:#FAFDFF;">
+            <div class="data-card-body p-3">
+              <div class="d-flex justify-content-between mb-2">
+                <span class="fw-bold text-info" style="font-size:14px;">المحاضرة 4</span>
+                <span class="badge-s bs-info">أضيفت حديثاً</span>
+              </div>
+              <h6 class="fw-bold mb-2" style="color:var(--zu-navy);font-size:14px;">جلسة تطبيقية إضافية مخصصة</h6>
+              <div class="text-muted text-sm mb-1"><i class="ti ti-calendar me-1"></i>5 نوفمبر 2026 — 10:00 ص</div>
+              <div class="text-muted text-sm mb-2"><i class="ti ti-building me-1"></i>مختبر الحاسوب المركزي</div>
+              <div class="alert alert-info p-2 mb-3 border text-center" style="font-size:12px;background:#E0F2FE;">
+                <i class="ti ti-bell me-1"></i> أضيفت من قبلك في أي وقت
+              </div>
+              <button class="btn-s w-100" style="font-size:12px;" onclick="show('attendance',null)">
+                <i class="ti ti-settings me-1"></i> إدارة وتجهيز التحضير
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Trainees Summary on this course -->
+      <div class="data-card">
+        <div class="data-card-header d-flex justify-content-between align-items-center">
+          <h5 class="mb-0"><i class="ti ti-users text-primary me-2"></i>قائمة المتدربين المسجلين في هذه الدورة ومتابعة الحضور (شرط الـ 75%)</h5>
+          <button class="btn-s" onclick="show('exams',null)"><i class="ti ti-checklist me-1"></i> رصد نتائج الامتحان الخارجي</button>
+        </div>
+        <div class="data-card-body p-0">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>عضو هيئة التدريس المتدرب</th>
+                <th>الكلية / القسم</th>
+                <th class="text-center">المحاضرات المحضورة</th>
+                <th class="text-center">نسبة الحضور الحالية</th>
+                <th class="text-center">الوضع الأكاديمي للشهادة</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="fw-bold">م. رنا السلطاني</td>
+                <td>الهندسة — قسم الحاسوب</td>
+                <td class="text-center"><strong>2 من 4 محاضرات</strong></td>
+                <td class="text-center"><span class="badge-s bs-info">50% (جارية)</span></td>
+                <td class="text-center"><span class="badge-s bs-active">مستوفية عند تثبيت المحاضرة 3 (75%)</span></td>
+              </tr>
+              <tr>
+                <td class="fw-bold">د. أحمد ناصر</td>
+                <td>العلوم — الرياضيات</td>
+                <td class="text-center"><strong>3 من 4 محاضرات</strong></td>
+                <td class="text-center"><span class="badge-s bs-active">75% (محقق)</span></td>
+                <td class="text-center"><span class="badge-s bs-active">✓ اجتاز شرط الحضور للشهادة</span></td>
+              </tr>
+              <tr>
+                <td class="fw-bold">د. لينا القاسم</td>
+                <td>التمريض — الصحة العامة</td>
+                <td class="text-center"><strong>3 من 4 محاضرات</strong></td>
+                <td class="text-center"><span class="badge-s bs-active">75% (محقق)</span></td>
+                <td class="text-center"><span class="badge-s bs-active">✓ اجتاز شرط الحضور للشهادة</span></td>
+              </tr>
+              <tr>
+                <td class="fw-bold">م. سعيد الحسن</td>
+                <td>الآداب — اللغة الإنجليزية</td>
+                <td class="text-center"><strong>1 من 4 محاضرات</strong></td>
+                <td class="text-center"><span class="badge-s bs-rejected">25% (حرمان)</span></td>
+                <td class="text-center"><span class="badge-s bs-rejected">محروم لتجاوز الغياب المسموح (&lt; 75%)</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ATTENDANCE (LECTURE-SPECIFIC DUAL-QR SYSTEM) -->
+    <div id="sec-attendance" style="display:none;">
+      <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
+        <div>
+          <div class="section-title mb-1"><i class="ti ti-qrcode" style="color:var(--zu-navy);"></i> نظام التحضير الذكي (خاص بكل محاضرة على حدة)</div>
+          <small class="text-muted">لكل محاضرة يُنشئها المدرب باركود وكود حي فريد خاص بها، وتنعكس فوراً للمتدربين</small>
+        </div>
+        <button class="btn-p btn-green" data-bs-toggle="modal" data-bs-target="#newSessionModal">
+          <i class="ti ti-plus me-1"></i> إضافة محاضرة جديدة الآن (في أي وقت)
+        </button>
+      </div>
+      
+      <!-- Academic Passing Rule Banner (Based on Lecture Count, NOT Hours) -->
+      <div class="alert-c a-info mb-4" style="background:#F0F7FF;border:1.5px solid var(--zu-navy-border);padding:18px 22px;border-radius:var(--r);">
+        <div style="display:flex;align-items:flex-start;gap:14px;">
+          <i class="ti ti-award fs-3 text-primary mt-1"></i>
+          <div>
+            <h6 class="fw-bold mb-1" style="color:var(--zu-navy);font-size:15px;">ضابط استحقاق الشهادة: نسبة الحضور 75% فأكثر من "عدد المحاضرات"</h6>
+            <p class="mb-0 text-muted" style="font-size:13.5px;line-height:1.7;">
+              وفقاً لتعليمات الجودة، المعيار الحاكم لاجتياز الدورة واستحقاق الشهادة هو <strong>حضور ما لا يقل عن 75% من إجمالي عدد المحاضرات / الجلسات المنعقدة</strong> (وليس من مجموع الساعات).
+              يحق للمحاضر <strong>إضافة محاضرات جديدة في أي وقت</strong>، وتظهر فوراً في جدول المتدربين. كل محاضرة يُولَّد لها <strong>باركود خاص وحصري بها</strong> يقوم المتدربون بمسحه في الخانة المخصصة لتلك المحاضرة بعينها.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dynamic Lecture Selector Bar -->
+      <div class="data-card mb-4 p-3" style="background:#F8FAFC;border:1px solid var(--border);">
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-2">
+          <span class="fw-bold text-dark text-sm"><i class="ti ti-list-check me-1 text-primary"></i> اختر المحاضرة لتوليد باركود الحضور وإدارة كشفها:</span>
+          <span class="badge-s bs-info">إجمالي المحاضرات المنشأة حتى الآن: <strong id="totalLecCount">4 محاضرات</strong></span>
+        </div>
+        <div class="d-flex flex-wrap gap-2" id="lectureSelectorPills">
+          <button class="btn-s" onclick="selectLecture(1, 'المحاضرة 1: المفاهيم والأسس', '1042', '5519', 'منتهية', this)">
+            <i class="ti ti-check text-success me-1"></i> المحاضرة 1: المفاهيم (منتهية)
+          </button>
+          <button class="btn-s" onclick="selectLecture(2, 'المحاضرة 2: التطبيقات العملية', '5821', '7730', 'منتهية', this)">
+            <i class="ti ti-check text-success me-1"></i> المحاضرة 2: التطبيقات (منتهية)
+          </button>
+          <button class="btn-s bs-navy active-lec" id="lecBtn3" onclick="selectLecture(3, 'المحاضرة 3: الورشة الختامية', '7439', '9281', 'جارية الآن', this)">
+            <i class="ti ti-point-filled text-danger me-1"></i> المحاضرة 3: الورشة الختامية (جارية الآن)
+          </button>
+          <button class="btn-s" onclick="selectLecture(4, 'المحاضرة 4: جلسة تطبيقية إضافية', '3317', '6420', 'أضيفت حديثاً', this)">
+            <i class="ti ti-sparkles text-warning me-1"></i> المحاضرة 4: جلسة إضافية (أضيفت حديثاً)
+          </button>
+        </div>
+      </div>
+
+      <!-- Lecture-Specific Dual QR Control Center -->
+      <div class="row g-4 mb-4">
+        <!-- QR 1 Card -->
+        <div class="col-lg-6">
+          <div class="data-card h-100" style="border-top:4px solid var(--zu-navy);box-shadow:var(--shadow-sm);">
+            <div class="data-card-header d-flex justify-content-between align-items-center" style="padding:18px 22px;">
+              <div>
+                <span class="badge-s bs-info mb-1" id="curLecBadge">خاص بـ: المحاضرة 3</span>
+                <h5 class="mb-0 fw-bold" style="color:var(--zu-navy);"><i class="ti ti-scan me-1"></i> باركود بداية المحاضرة (Check-In)</h5>
+              </div>
+              <span class="badge-s bs-active" id="curLecStatus">مفعّل حالياً</span>
+            </div>
+            <div class="data-card-body text-center p-4">
+              <div style="background:#F8FAFC;border:2px dashed var(--zu-navy-border);border-radius:var(--r);padding:24px;margin-bottom:16px;">
+                <div style="font-size:13px;color:var(--text-2);font-weight:700;margin-bottom:8px;">
+                  كود بداية <strong id="curLecName1" style="color:var(--zu-navy);">المحاضرة 3</strong> (يدخله المتدرب في خانة المحاضرة 3):
+                </div>
+                <div class="code-display" id="qr1PinDisplay" style="padding:14px 0;margin:10px 0;font-size:36px;letter-spacing:8px;background:#ffffff;border:1px solid var(--border);border-radius:var(--r-sm);color:var(--zu-navy);font-weight:900;">
+                  7 4 3 9
+                </div>
+                <div class="text-muted text-sm mt-2"><i class="ti ti-clock me-1 text-danger"></i> كود مقيد بهذه المحاضرة فقط | صالح لمدة: <strong id="timer1" style="color:var(--red);font-size:15px;">12:40</strong> دقيقة</div>
+              </div>
+              <div class="d-flex gap-2 justify-content-center">
+                <button class="btn-p" style="background:var(--zu-navy);" onclick="openProjector('qr1')"><i class="ti ti-device-tv me-1"></i> عرض مكبّر للمتدربين (Projector)</button>
+                <button class="btn-s" onclick="alert('تم تجديد صلاحية باركود هذه المحاضرة 15 دقيقة إضافية')"><i class="ti ti-refresh me-1"></i> تجديد الكود</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- QR 2 Card -->
+        <div class="col-lg-6">
+          <div class="data-card h-100" style="border-top:4px solid var(--green);box-shadow:var(--shadow-sm);">
+            <div class="data-card-header d-flex justify-content-between align-items-center" style="padding:18px 22px;">
+              <div>
+                <span class="badge-s bs-active mb-1" id="curLecBadge2">خاص بـ: المحاضرة 3</span>
+                <h5 class="mb-0 fw-bold" style="color:var(--green);"><i class="ti ti-circle-check me-1"></i> باركود ختام المحاضرة (Check-Out)</h5>
+              </div>
+              <span class="badge-s bs-pending">يُفتح في الربع ساعة الأخير</span>
+            </div>
+            <div class="data-card-body text-center p-4">
+              <div style="background:#F8FAFC;border:2px dashed var(--green-border);border-radius:var(--r);padding:24px;margin-bottom:16px;">
+                <div style="font-size:13px;color:var(--text-2);font-weight:700;margin-bottom:8px;">
+                  كود ختام <strong id="curLecName2" style="color:var(--green);">المحاضرة 3</strong> (يدخله المتدرب لتأكيد اكتمال المحاضرة):
+                </div>
+                <div class="code-display" id="qr2PinDisplay" style="padding:14px 0;margin:10px 0;font-size:36px;letter-spacing:8px;background:#ffffff;border:1px solid var(--border);border-radius:var(--r-sm);color:var(--green);font-weight:900;">
+                  9 2 8 1
+                </div>
+                <div class="text-muted text-sm mt-2"><i class="ti ti-shield-check me-1 text-success"></i> خاص بهذه المحاضرة | يضمن التواجد الفعلي الكامل للمتدرب</div>
+              </div>
+              <div class="d-flex gap-2 justify-content-center">
+                <button class="btn-p btn-green" onclick="openProjector('qr2')"><i class="ti ti-device-tv me-1"></i> فتح وعرض باركود الختام</button>
+                <button class="btn-s bs-g" onclick="selectAllAttend()"><i class="ti ti-check-all me-1"></i> اعتماد حضور الكل بهذه المحاضرة</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Attendance Register Table (Spacious, Well Divided) -->
+      <div class="data-card mb-4" style="box-shadow:var(--shadow-sm);">
+        <div class="data-card-header d-flex justify-content-between align-items-center" style="padding:20px 24px;">
+          <div>
+            <h5 class="fw-bold mb-1" style="color:var(--zu-navy);font-size:16px;"><i class="ti ti-list-check me-1"></i> كشف حضور الجلسة الثالثة — 3 نوفمبر (وجاهية بالحرم)</h5>
+            <small class="text-muted">المسجلون: 42 عضو هيئة تدريس | اكتمال الحضور النهائي يتطلب مسح البداية والنهاية أو اعتماد المدرب</small>
+          </div>
+          <div class="d-flex gap-2">
+            <button class="btn-s bs-g" onclick="selectAllAttend()"><i class="ti ti-check-all me-1"></i> تحضير الجميع</button>
+            <button class="btn-s" onclick="alert('تم تصدير كشف الحضور بصيغة Excel')"><i class="ti ti-file-spreadsheet me-1"></i> تصدير الكشف</button>
+          </div>
+        </div>
+        <div class="data-card-body p-0">
+          <div class="table-responsive">
+            <table class="custom-table w-100" style="margin:0;">
+              <thead>
+                <tr style="background:#F8FAFC;">
+                  <th style="padding:16px 20px;">عضو هيئة التدريس</th>
+                  <th>الكلية / القسم</th>
+                  <th class="text-center">مسح البداية (QR 1)</th>
+                  <th class="text-center">مسح الختام (QR 2)</th>
+                  <th class="text-center">حالة الجلسة</th>
+                  <th class="text-center">إجمالي الحضور التراكمي</th>
+                  <th class="text-center">التعديل اليدوي</th>
+                </tr>
+              </thead>
+              <tbody id="dualQrTableBody">
+                <!-- Trainee 1 -->
+                <tr>
+                  <td style="padding:16px 20px;">
+                    <div class="d-flex align-items-center gap-2">
+                      <div class="avatar av-green" style="width:34px;height:34px;font-size:12px;">رس</div>
+                      <div>
+                        <div class="fw-bold text-dark">م. رنا السلطاني</div>
+                        <small class="text-muted">rana.s@zu.edu.jo</small>
+                      </div>
+                    </div>
+                  </td>
+                  <td>الهندسة التكنولوجية</td>
+                  <td class="text-center"><span class="badge-s bs-active"><i class="ti ti-check me-1"></i> 09:04 ص</span></td>
+                  <td class="text-center"><span class="badge-s bs-active"><i class="ti ti-check me-1"></i> 11:50 ص</span></td>
+                  <td class="text-center"><span class="badge-s bs-active fw-bold">✓ حضور كامل</span></td>
+                  <td class="text-center"><span class="badge-s bs-active">100% (مستوفية)</span></td>
+                  <td class="text-center"><button class="btn-s" onclick="toggleTraineeOverride(this)"><i class="ti ti-pencil"></i></button></td>
+                </tr>
+                <!-- Trainee 2 -->
+                <tr>
+                  <td style="padding:16px 20px;">
+                    <div class="d-flex align-items-center gap-2">
+                      <div class="avatar av-blue" style="width:34px;height:34px;font-size:12px;">أن</div>
+                      <div>
+                        <div class="fw-bold text-dark">د. أحمد ناصر</div>
+                        <small class="text-muted">a.nasser@zu.edu.jo</small>
+                      </div>
+                    </div>
+                  </td>
+                  <td>العلوم وتكنولوجيا المعلومات</td>
+                  <td class="text-center"><span class="badge-s bs-active"><i class="ti ti-check me-1"></i> 09:08 ص</span></td>
+                  <td class="text-center"><span class="badge-s bs-active"><i class="ti ti-check me-1"></i> 11:52 ص</span></td>
+                  <td class="text-center"><span class="badge-s bs-active fw-bold">✓ حضور كامل</span></td>
+                  <td class="text-center"><span class="badge-s bs-active">100% (مستوفٍ)</span></td>
+                  <td class="text-center"><button class="btn-s" onclick="toggleTraineeOverride(this)"><i class="ti ti-pencil"></i></button></td>
+                </tr>
+                <!-- Trainee 3 -->
+                <tr>
+                  <td style="padding:16px 20px;">
+                    <div class="d-flex align-items-center gap-2">
+                      <div class="avatar av-yellow" style="width:34px;height:34px;font-size:12px;">مق</div>
+                      <div>
+                        <div class="fw-bold text-dark">د. مرام القاسمي</div>
+                        <small class="text-muted">m.qasimi@zu.edu.jo</small>
+                      </div>
+                    </div>
+                  </td>
+                  <td>الصيدلة</td>
+                  <td class="text-center"><span class="badge-s bs-active"><i class="ti ti-check me-1"></i> 09:12 ص</span></td>
+                  <td class="text-center"><span class="badge-s bs-pending"><i class="ti ti-clock me-1"></i> بانتظار الختام</span></td>
+                  <td class="text-center"><span class="badge-s bs-info fw-bold">حضور جزئي 1/2</span></td>
+                  <td class="text-center"><span class="badge-s bs-info">83% (مستوفية)</span></td>
+                  <td class="text-center"><button class="btn-s" onclick="toggleTraineeOverride(this)"><i class="ti ti-pencil"></i></button></td>
+                </tr>
+                <!-- Trainee 4 -->
+                <tr style="background:#FFF9F9;">
+                  <td style="padding:16px 20px;">
+                    <div class="d-flex align-items-center gap-2">
+                      <div class="avatar av-red" style="width:34px;height:34px;font-size:12px;">سح</div>
+                      <div>
+                        <div class="fw-bold text-dark">م. سعيد الحسن</div>
+                        <small class="text-muted">s.hassan@zu.edu.jo</small>
+                      </div>
+                    </div>
+                  </td>
+                  <td>الآداب</td>
+                  <td class="text-center"><span class="badge-s bs-rejected"><i class="ti ti-x me-1"></i> لم يمسح</span></td>
+                  <td class="text-center"><span class="badge-s bs-rejected"><i class="ti ti-x me-1"></i> لم يمسح</span></td>
+                  <td class="text-center"><span class="badge-s bs-rejected fw-bold">✗ غائب</span></td>
+                  <td class="text-center"><span class="badge-s bs-rejected">33% (محروم &lt; 75%)</span></td>
+                  <td class="text-center"><button class="btn-s bs-r" onclick="toggleTraineeOverride(this)"><i class="ti ti-user-x"></i> تجاوز</button></td>
+                </tr>
+                <!-- Trainee 5 -->
+                <tr>
+                  <td style="padding:16px 20px;">
+                    <div class="d-flex align-items-center gap-2">
+                      <div class="avatar av-purple" style="width:34px;height:34px;font-size:12px;">فع</div>
+                      <div>
+                        <div class="fw-bold text-dark">د. فاطمة العلي</div>
+                        <small class="text-muted">f.ali@zu.edu.jo</small>
+                      </div>
+                    </div>
+                  </td>
+                  <td>العلوم الطبية المساندة</td>
+                  <td class="text-center"><span class="badge-s bs-active"><i class="ti ti-check me-1"></i> 09:02 ص</span></td>
+                  <td class="text-center"><span class="badge-s bs-active"><i class="ti ti-check me-1"></i> 11:48 ص</span></td>
+                  <td class="text-center"><span class="badge-s bs-active fw-bold">✓ حضور كامل</span></td>
+                  <td class="text-center"><span class="badge-s bs-active">100% (مستوفية)</span></td>
+                  <td class="text-center"><button class="btn-s" onclick="toggleTraineeOverride(this)"><i class="ti ti-pencil"></i></button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXAM RESULTS RECORDING (EXTERNAL EXAM - QUALITY METRIC ONLY) -->
+    <div id="sec-exams" style="display:none;">
+      <div class="section-title"><i class="ti ti-checklist" style="color:var(--zu-navy);"></i> رصد نتائج الامتحان الخارجي (مؤشر جودة إضافي)</div>
+
+      <!-- Explanatory Quality Alert -->
+      <div class="alert-c a-info mb-4" style="background:#F0F7FF;border:1.5px solid var(--zu-navy-border);padding:20px 24px;border-radius:var(--r);">
+        <div style="display:flex;align-items:flex-start;gap:14px;">
+          <i class="ti ti-award fs-3 text-primary mt-1"></i>
+          <div>
+            <h6 class="fw-bold mb-1" style="color:var(--zu-navy);font-size:15px;">ضوابط رصد الامتحان وفق محددات الجودة والاعتماد</h6>
+            <p class="mb-0 text-muted" style="font-size:13.5px;line-height:1.7;">
+              <strong>الامتحانات تُجرى وتُقيّم خارجياً</strong> بمعرفة المدرب (امتحان ورقي، تطبيقي، أو عبر منصة خارجية).
+              رصد النتيجة (<strong>ناجح / راسب</strong>) في المنصة هو <strong>مؤشر قياس جودة إضافي</strong> لتوثيق فاعلية التدريب،
+              <strong>ولا يُسقط حق المتدرب في استحقاق الشهادة</strong> ما دام قد حقق نسبة الحضور الإلزامية المقررة (<strong>75% فأكثر</strong>).
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Metrics Row (Spacious & Clear) -->
+      <div class="row g-3 mb-4">
+        <div class="col-md-3">
+          <div class="stat-card ca-blue p-4">
+            <div class="stat-icon" style="background:var(--zu-navy-subtle);color:var(--zu-navy);"><i class="ti ti-users"></i></div>
+            <div class="stat-number">42</div>
+            <div class="stat-label">إجمالي المسجلين بالدورة</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="stat-card ca-green p-4">
+            <div class="stat-icon" style="background:var(--green-dim);color:var(--green);"><i class="ti ti-user-check"></i></div>
+            <div class="stat-number">38</div>
+            <div class="stat-label">تقدّموا للامتحان الخارجي</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="stat-card ca-green p-4">
+            <div class="stat-icon" style="background:var(--green-dim);color:var(--green);"><i class="ti ti-award"></i></div>
+            <div class="stat-number">36</div>
+            <div class="stat-label">اجتازوا الامتحان بنجاح (94.7%)</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="stat-card ca-yellow p-4">
+            <div class="stat-icon" style="background:var(--yellow-dim);color:var(--yellow);"><i class="ti ti-help-circle"></i></div>
+            <div class="stat-number">4</div>
+            <div class="stat-label">لم يتقدموا / راسب (لا يمنع الشهادة)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Exam Scores Recording Table -->
+      <div class="data-card mb-4" style="box-shadow:var(--shadow-sm);">
+        <div class="data-card-header d-flex justify-content-between align-items-center" style="padding:20px 24px;">
+          <div>
+            <h5 class="fw-bold mb-1" style="color:var(--zu-navy);font-size:16px;"><i class="ti ti-table me-1"></i> كشف رصد نتائج المتدربين في الامتحان الخارجي</h5>
+            <small class="text-muted">يمكن للمدرب تعديل النتيجة ورصد العلامة التقديرية وملاحظات التقييم</small>
+          </div>
+          <button class="btn-p btn-green" onclick="alert('✅ تم حفظ وتثبيت نتائج الامتحان بنجاح، وأُرسلت نسخة لوحدة الجودة كمؤشر أداء')"><i class="ti ti-device-floppy me-1"></i> حفظ وتثبيت النتائج</button>
+        </div>
+        <div class="data-card-body p-0">
+          <div class="table-responsive">
+            <table class="custom-table w-100" style="margin:0;">
+              <thead>
+                <tr style="background:#F8FAFC;">
+                  <th style="padding:16px 20px;">عضو هيئة التدريس</th>
+                  <th>الكلية / القسم</th>
+                  <th class="text-center">حضور الدورة (75%+)</th>
+                  <th class="text-center" style="width:160px;">نتيجة الامتحان</th>
+                  <th class="text-center" style="width:120px;">العلامة (من 100)</th>
+                  <th>ملاحظات المدرب التقييمية</th>
+                  <th class="text-center">حالة استحقاق الشهادة</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:16px 20px;">
+                    <div class="fw-bold text-dark">م. رنا السلطاني</div>
+                    <small class="text-muted">الهندسة التكنولوجية</small>
+                  </td>
+                  <td>قسم هندسة العمارة</td>
+                  <td class="text-center"><span class="badge-s bs-active">✓ 100% مستوفٍ</span></td>
+                  <td class="text-center">
+                    <select class="form-ctrl form-select-sm text-success fw-bold">
+                      <option value="pass" selected>✓ ناجح</option>
+                      <option value="fail">✗ راسب</option>
+                      <option value="absent">لم يتقدم</option>
+                    </select>
+                  </td>
+                  <td class="text-center"><input type="number" class="form-ctrl text-center" value="92" style="max-width:90px;display:inline-block;"></td>
+                  <td><input type="text" class="form-ctrl form-control-sm" value="أداء تطبيقي متميز في تصميم خطة المقرر"></td>
+                  <td class="text-center"><span class="badge-s bs-active"><i class="ti ti-certificate me-1"></i> مؤهلة للشهادة</span></td>
+                </tr>
+                <tr>
+                  <td style="padding:16px 20px;">
+                    <div class="fw-bold text-dark">د. أحمد ناصر</div>
+                    <small class="text-muted">العلوم وتكنولوجيا المعلومات</small>
+                  </td>
+                  <td>قسم علم الحاسوب</td>
+                  <td class="text-center"><span class="badge-s bs-active">✓ 100% مستوفٍ</span></td>
+                  <td class="text-center">
+                    <select class="form-ctrl form-select-sm text-success fw-bold">
+                      <option value="pass" selected>✓ ناجح</option>
+                      <option value="fail">✗ راسب</option>
+                      <option value="absent">لم يتقدم</option>
+                    </select>
+                  </td>
+                  <td class="text-center"><input type="number" class="form-ctrl text-center" value="88" style="max-width:90px;display:inline-block;"></td>
+                  <td><input type="text" class="form-ctrl form-control-sm" value="تفاعل ممتاز مع بيئات التعلم الرقمية"></td>
+                  <td class="text-center"><span class="badge-s bs-active"><i class="ti ti-certificate me-1"></i> مؤهل للشهادة</span></td>
+                </tr>
+                <tr>
+                  <td style="padding:16px 20px;">
+                    <div class="fw-bold text-dark">د. فاطمة العلي</div>
+                    <small class="text-muted">العلوم الطبية المساندة</small>
+                  </td>
+                  <td>قسم التحاليل الطبية</td>
+                  <td class="text-center"><span class="badge-s bs-active">✓ 100% مستوفٍ</span></td>
+                  <td class="text-center">
+                    <select class="form-ctrl form-select-sm text-success fw-bold">
+                      <option value="pass" selected>✓ ناجح</option>
+                      <option value="fail">✗ راسب</option>
+                      <option value="absent">لم يتقدم</option>
+                    </select>
+                  </td>
+                  <td class="text-center"><input type="number" class="form-ctrl text-center" value="85" style="max-width:90px;display:inline-block;"></td>
+                  <td><input type="text" class="form-ctrl form-control-sm" value="تطبيق عملي دقيق"></td>
+                  <td class="text-center"><span class="badge-s bs-active"><i class="ti ti-certificate me-1"></i> مؤهلة للشهادة</span></td>
+                </tr>
+                <tr style="background:#FFFBF0;">
+                  <td style="padding:16px 20px;">
+                    <div class="fw-bold text-dark">د. مرام القاسمي</div>
+                    <small class="text-muted">الصيدلة</small>
+                  </td>
+                  <td>قسم الصيدلة السريرية</td>
+                  <td class="text-center"><span class="badge-s bs-active">✓ 83% مستوفٍ</span></td>
+                  <td class="text-center">
+                    <select class="form-ctrl form-select-sm text-warning fw-bold">
+                      <option value="pass">✓ ناجح</option>
+                      <option value="fail">✗ راسب</option>
+                      <option value="absent" selected>لم يتقدم</option>
+                    </select>
+                  </td>
+                  <td class="text-center"><input type="number" class="form-ctrl text-center" placeholder="—" style="max-width:90px;display:inline-block;"></td>
+                  <td><input type="text" class="form-ctrl form-control-sm" value="اعتذرت لظرف طارئ (لا يؤثر على استحقاق الشهادة)"></td>
+                  <td class="text-center"><span class="badge-s bs-active"><i class="ti ti-certificate me-1"></i> مؤهلة (حققت 75%+)</span></td>
+                </tr>
+                <tr style="background:#FFF5F5;">
+                  <td style="padding:16px 20px;">
+                    <div class="fw-bold text-dark">م. سعيد الحسن</div>
+                    <small class="text-muted">الآداب</small>
+                  </td>
+                  <td>قسم اللغة العربية</td>
+                  <td class="text-center"><span class="badge-s bs-rejected">✗ 33% (محروم)</span></td>
+                  <td class="text-center">
+                    <select class="form-ctrl form-select-sm text-danger fw-bold">
+                      <option value="pass">✓ ناجح</option>
+                      <option value="fail" selected>✗ راسب</option>
+                      <option value="absent">لم يتقدم</option>
+                    </select>
+                  </td>
+                  <td class="text-center"><input type="number" class="form-ctrl text-center" value="45" style="max-width:90px;display:inline-block;"></td>
+                  <td><input type="text" class="form-ctrl form-control-sm" value="تجاوز الغياب المسموح &lt; 75%"></td>
+                  <td class="text-center"><span class="badge-s bs-rejected"><i class="ti ti-ban me-1"></i> محروم (حضور منخفض)</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EVAL BUILDER -->
+    <div id="sec-evalbuilder" style="display:none;">
+      <div class="section-title"><i class="ti ti-list-check" style="color:var(--zu-navy);"></i> بناء نموذج تقييم جودة الدورة والمحاضر</div>
+      <div class="alert-c a-info" style="margin-bottom:20px;">
+        <i class="ti ti-info-circle fs-5"></i>
+        <span>يظهر هذا الاستبيان للمتدربين فور انتهاء الدورة واستيفاء نسبة الحضور المطلوبة. تُرسل النتائج تلقائياً لوحدة الجودة.</span>
+      </div>
+      <div class="data-card">
+        <div class="data-card-header">
+          <h5>أسئلة تقييم المحاضر والمحتوى التدريبي</h5>
+          <button class="btn-p" onclick="addQuestion()"><i class="ti ti-plus"></i> إضافة سؤال جديد</button>
+        </div>
+        <div class="data-card-body">
+          <div id="questionsList">
+            <!-- Q1 -->
+            <div class="q-item" style="background:#F8FAFC;border-radius:var(--r);padding:18px;margin-bottom:14px;border:1px solid var(--border);">
+              <div style="display:flex;gap:10px;margin-bottom:12px;">
+                <input class="form-ctrl" value="كيف تُقيِّم شمولية وفائدة المحتوى التدريبي المطروح؟" style="flex:1;">
+                <select class="form-ctrl" style="width:140px;" onchange="toggleOptions(this)">
+                  <option value="mcq" selected>خيارات متعددة</option>
+                  <option value="text">إجابة نصية</option>
+                </select>
+                <button class="btn-s bs-r" onclick="this.closest('.q-item').remove()"><i class="ti ti-trash"></i></button>
+              </div>
+              <div class="mcq-options">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+                  <div style="display:flex;align-items:center;gap:6px;"><input class="form-ctrl" value="ممتاز (5/5)"></div>
+                  <div style="display:flex;align-items:center;gap:6px;"><input class="form-ctrl" value="جيد جداً (4/5)"></div>
+                  <div style="display:flex;align-items:center;gap:6px;"><input class="form-ctrl" value="جيد (3/5)"></div>
+                  <div style="display:flex;align-items:center;gap:6px;"><input class="form-ctrl" value="يحتاج إلى تحسين"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:16px;display:flex;gap:10px;">
+            <button class="btn-p" onclick="alert('✅ تم حفظ نموذج استبيان الدورة بنجاح')"><i class="ti ti-device-floppy"></i> حفظ النموذج</button>
+            <button class="btn-s" onclick="alert('معاينة نموذج التقييم كما يظهر للمتدرب')"><i class="ti ti-eye"></i> معاينة كما يراه العضو</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IMPACT -->
+    <div id="sec-impact" style="display:none;">
+      <div class="section-title"><i class="ti ti-bookmark-star" style="color:var(--zu-navy);"></i> مراجعة والتحقق من الأثر التدريبي للمشاركين</div>
+      <div class="alert-c a-info" style="margin-bottom:16px;">
+        <i class="ti ti-info-circle fs-5"></i>
+        <span>يرفع المتدربون نماذج تطبيقية أو تقارير تثبت الاستفادة العملية. عند قيامك بالتحقق والاعتماد ✅، يتم تفعيل إصدار الشهادة فورياً.</span>
+      </div>
+      <div class="data-card">
+        <div class="data-card-body" style="padding:0;">
+          <table class="custom-table">
+            <thead><tr><th>اسم عضو هيئة التدريس</th><th>نوع الملف المرفوع</th><th>الحجم</th><th>تاريخ الإرسال</th><th>الملف</th><th>حالة المراجعة</th><th>إجراء المدرب</th></tr></thead>
+            <tbody>
+              <tr><td>م. رنا السلطاني</td><td><span class="badge-s" style="background:var(--red-dim);color:var(--red-text);">PDF خطة دراسية مطورة</span></td><td>1.2 MB</td><td>10/11/2026</td><td><button class="btn-s bs-navy"><i class="ti ti-download"></i> معاينة</button></td><td><span class="badge-s bs-active">معتمد ومحقق</span></td><td><i class="ti ti-circle-check-filled" style="color:var(--green);font-size:20px;"></i></td></tr>
+              <tr><td>د. أحمد ناصر</td><td><span class="badge-s" style="background:var(--blue-dim);color:var(--blue-text);">PNG نموذج اختبار تفاعلي</span></td><td>3.5 MB</td><td>11/11/2026</td><td><button class="btn-s bs-navy"><i class="ti ti-download"></i> معاينة</button></td><td><span class="badge-s bs-pending">بانتظار التحقق</span></td><td><button class="btn-s bs-g" onclick="approveImpact(this)"><i class="ti ti-check"></i> تأكيد الأثر</button></td></tr>
+              <tr><td>د. فاطمة العلي</td><td><span class="badge-s" style="background:var(--blue-dim);color:var(--blue-text);">JPG نشاط صفي مصور</span></td><td>2.1 MB</td><td>11/11/2026</td><td><button class="btn-s bs-navy"><i class="ti ti-download"></i> معاينة</button></td><td><span class="badge-s bs-pending">بانتظار التحقق</span></td><td><button class="btn-s bs-g" onclick="approveImpact(this)"><i class="ti ti-check"></i> تأكيد الأثر</button></td></tr>
+              <tr><td>م. باسم العكور</td><td>—</td><td>—</td><td>—</td><td>—</td><td><span class="badge-s bs-rejected">لم يرفع بعد</span></td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- CERTIFICATES -->
+    <div id="sec-certificates" style="display:none;">
+      <div class="section-title"><i class="ti ti-certificate" style="color:var(--zu-navy);"></i> متطلبات إصدار الشهادات الأكاديمية</div>
+      <div class="row g-3 mb-4">
+        <div class="col-md-4"><div class="stat-card ca-green"><div class="stat-number">29</div><div class="stat-label">مستوفون لكافة الشروط</div></div></div>
+        <div class="col-md-4"><div class="stat-card ca-red"><div class="stat-number">4</div><div class="stat-label">محرومون لتجاوز الغياب</div></div></div>
+        <div class="col-md-4"><div class="stat-card ca-yellow"><div class="stat-number">9</div><div class="stat-label">بانتظار رفع الأثر التدريبي</div></div></div>
+      </div>
+      <div class="data-card">
+        <div class="data-card-body" style="padding:0;">
+          <table class="custom-table">
+            <thead><tr><th>عضو هيئة التدريس</th><th>نسبة الحضور</th><th>تقييم الدورة</th><th>الأثر التدريبي</th><th>الشهادة المعتمدة</th></tr></thead>
+            <tbody>
+              <tr><td>م. رنا السلطاني</td><td><span class="badge-s bs-active">✓ 100% مستوفية</span></td><td><span class="badge-s bs-active">✓ مكتمل</span></td><td><span class="badge-s bs-active">✓ محقق</span></td><td><span class="badge-s bs-active"><i class="ti ti-download me-1"></i> جاهزة للتحميل</span></td></tr>
+              <tr><td>د. أحمد ناصر</td><td><span class="badge-s bs-active">✓ 100% مستوفي</span></td><td><span class="badge-s bs-active">✓ مكتمل</span></td><td><span class="badge-s bs-pending">بانتظار مراجعة الأثر</span></td><td><span class="badge-s bs-pending">معلقة لحين الاعتماد</span></td></tr>
+              <tr><td>م. سعيد الحسن</td><td><span class="badge-s bs-rejected">✗ غير مستوفٍ (2 غياب)</span></td><td>—</td><td>—</td><td><span class="badge-s bs-rejected">محروم رسمياً</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+</div>
+</div>
+
+<!-- New Session Modal -->
+<div class="modal fade" id="newSessionModal" tabindex="-1">
+  <div class="modal-dialog"><div class="modal-content modal-custom">
+    <div class="modal-header-custom"><h5><i class="ti ti-video text-primary me-2"></i>إضافة جلسة تدريبية جديدة</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+    <div class="modal-body-custom">
+      <div class="form-group"><label class="form-label">عنوان الجلسة</label><input class="form-ctrl" placeholder="مثال: الجلسة الرابعة — القياس والتقويم"></div>
+      <div class="row g-2">
+        <div class="col-6"><div class="form-group"><label class="form-label">التاريخ</label><input type="date" class="form-ctrl"></div></div>
+        <div class="col-6"><div class="form-group"><label class="form-label">الوقت</label><input type="time" class="form-ctrl" value="09:00"></div></div>
+      </div>
+      <div class="form-group"><label class="form-label">نمط الانعقاد</label><select class="form-ctrl"><option value="face">وجاهية بالحرم الجامعي</option><option value="online">أونلاين (عبر Teams)</option></select></div>
+      <div class="form-group"><label class="form-label">القاعة / الرابط</label><input class="form-ctrl" placeholder="قاعة A101 أو رابط Teams"></div>
+    </div>
+    <div class="modal-footer-custom"><button class="btn-p" onclick="alert('✅ تم إضافة الجلسة بنجاح');bootstrap.Modal.getInstance(document.getElementById('newSessionModal')).hide()"><i class="ti ti-check"></i> حفظ الجلسة</button><button class="btn-s" data-bs-dismiss="modal">إلغاء</button></div>
+  </div></div>
+</div>
+
+<!-- Projector Display Modal -->
+<div class="modal fade" id="projectorModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered" style="max-width:550px;">
+    <div class="modal-content modal-custom text-center p-4">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h5 class="fw-bold mb-0" id="projectorTitle"><i class="ti ti-qrcode text-primary me-2"></i>باركود تسجيل الحضور الذكي</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div style="background:#F8FAFC;border:2px dashed var(--zu-navy-border);border-radius:var(--r);padding:30px;margin-bottom:20px;">
+        <!-- Simulated Large High-Contrast QR Code for Projector -->
+        <div style="display:inline-block;padding:16px;background:#ffffff;border-radius:var(--r-sm);box-shadow:var(--shadow-sm);margin-bottom:16px;">
+          <svg width="220" height="220" viewBox="0 0 100 100" style="display:block;margin:auto;">
+            <!-- Simple QR representation pattern -->
+            <rect width="100" height="100" fill="white"/>
+            <!-- Corner 1 -->
+            <rect x="5" y="5" width="28" height="28" fill="#022C5A"/>
+            <rect x="9" y="9" width="20" height="20" fill="white"/>
+            <rect x="13" y="13" width="12" height="12" fill="#022C5A"/>
+            <!-- Corner 2 -->
+            <rect x="67" y="5" width="28" height="28" fill="#022C5A"/>
+            <rect x="71" y="9" width="20" height="20" fill="white"/>
+            <rect x="75" y="13" width="12" height="12" fill="#022C5A"/>
+            <!-- Corner 3 -->
+            <rect x="5" y="67" width="28" height="28" fill="#022C5A"/>
+            <rect x="9" y="71" width="20" height="20" fill="white"/>
+            <rect x="13" y="75" width="12" height="12" fill="#022C5A"/>
+            <!-- Center Patterns -->
+            <rect x="40" y="8" width="6" height="6" fill="#022C5A"/>
+            <rect x="52" y="15" width="6" height="6" fill="#022C5A"/>
+            <rect x="42" y="24" width="8" height="8" fill="#022C5A"/>
+            <rect x="25" y="40" width="6" height="6" fill="#022C5A"/>
+            <rect x="35" y="45" width="10" height="10" fill="#0D9488"/>
+            <rect x="55" y="42" width="8" height="8" fill="#022C5A"/>
+            <rect x="70" y="40" width="6" height="6" fill="#022C5A"/>
+            <rect x="45" y="60" width="10" height="6" fill="#022C5A"/>
+            <rect x="65" y="65" width="8" height="8" fill="#022C5A"/>
+            <rect x="40" y="75" width="12" height="12" fill="#022C5A"/>
+            <rect x="78" y="78" width="12" height="12" fill="#0D9488"/>
+          </svg>
+        </div>
+        <div style="font-size:14px;color:var(--text);font-weight:700;margin-bottom:6px;" id="projectorSub">امسح الكود عبر كاميرا هاتفك أو منصة التدريب</div>
+        <div style="font-size:12.5px;color:var(--text-2);">الرمز البديل: <strong style="font-size:20px;letter-spacing:4px;color:var(--zu-navy);" id="projectorPin">7439</strong></div>
+      </div>
+      <div class="d-flex justify-content-between align-items-center">
+        <span class="text-muted text-sm"><i class="ti ti-clock me-1 text-danger"></i> الوقت المتبقي: <strong style="color:var(--red);">11:20 دقيقة</strong></span>
+        <button class="btn-p btn-green" data-bs-dismiss="modal"><i class="ti ti-check me-1"></i> إغلاق شاشة العرض</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Notifications Modal -->
+<div class="modal fade" id="notifModal" tabindex="-1">
+  <div class="modal-dialog" style="max-width:380px;"><div class="modal-content modal-custom">
+    <div class="modal-header-custom"><h5><i class="ti ti-bell" style="color:var(--zu-navy);margin-left:8px;"></i> الإشعارات والتحضير</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+    <div style="padding:0;">
+      <div class="notif-item unread"><div class="notif-icon" style="background:var(--green-dim);color:var(--green);"><i class="ti ti-file-check"></i></div><div><div style="font-size:13px;font-weight:700;">أثر تدريبي جديد رُفع</div><div class="text-muted text-sm">د. أحمد ناصر رفع ملف الأثر — بانتظار اعتمادك</div></div></div>
+      <div class="notif-item"><div class="notif-icon" style="background:var(--yellow-dim);color:var(--yellow);"><i class="ti ti-alert-triangle"></i></div><div><div style="font-size:13px;font-weight:700;">إنذار غياب تلقائي</div><div class="text-muted text-sm">م. سعيد الحسن — تجاوز النسبة المسموحة</div></div></div>
+    </div>
+  </div></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+const secs=['dashboard','courses','coursedetail','attendance','exams','evalbuilder','impact','certificates','memberrole'];
+function show(name,el){
+  secs.forEach(s=>{const e=document.getElementById('sec-'+s);if(e)e.style.display='none';});
+  const target=document.getElementById('sec-'+name);
+  if(target)target.style.display='';
+  document.querySelectorAll('.nav-item').forEach(i=>i.classList.remove('active'));
+  if(el)el.classList.add('active');
+  document.getElementById('pageTitle').textContent=el?el.textContent.trim():'لوحة التحكم والمؤشرات';
+  if(name==='dashboard'||name==='attendance')renderAttendList();
+}
+
+function openInstructorCourse(id){
+  show('coursedetail', null);
+  const lnk = document.getElementById('lnk-courses');
+  if(lnk) lnk.classList.add('active');
+  if(id==='course-1'){
+    document.getElementById('detailCourseTitle').textContent='استراتيجيات التدريس الفعّال والتعلم النشط';
+    document.getElementById('detailCourseBreadcrumb').textContent='استراتيجيات التدريس الفعّال';
+    document.getElementById('detailCourseLecCount').innerHTML='<i class="ti ti-presentation me-1 text-primary"></i> 4 محاضرات';
+  } else if(id==='course-2'){
+    document.getElementById('detailCourseTitle').textContent='أدوات الذكاء الاصطناعي التوليدي في البحث العلمي والنشر الدولي';
+    document.getElementById('detailCourseBreadcrumb').textContent='الذكاء الاصطناعي التوليدي';
+    document.getElementById('detailCourseLecCount').innerHTML='<i class="ti ti-presentation me-1 text-primary"></i> 3 محاضرات مجدولة';
+  } else if(id==='course-3'){
+    document.getElementById('detailCourseTitle').textContent='تصميم الاختبارات المعيارية وبنوك الأسئلة الإلكترونية';
+    document.getElementById('detailCourseBreadcrumb').textContent='تصميم الاختبارات المعيارية';
+    document.getElementById('detailCourseLecCount').innerHTML='<i class="ti ti-presentation me-1 text-primary"></i> 5 محاضرات منتهية';
+  }
+}
+
+let currentLecture = {
+  num: 3,
+  title: 'المحاضرة 3: الورشة الختامية',
+  pin1: '7439',
+  pin2: '9281'
+};
+
+function selectLecture(num, title, pin1, pin2, status, btn){
+  currentLecture = { num, title, pin1, pin2 };
+  document.getElementById('curLecBadge').textContent = 'خاص بـ: المحاضرة ' + num;
+  document.getElementById('curLecBadge2').textContent = 'خاص بـ: المحاضرة ' + num;
+  document.getElementById('curLecName1').textContent = 'المحاضرة ' + num;
+  document.getElementById('curLecName2').textContent = 'المحاضرة ' + num;
+  document.getElementById('curLecStatus').textContent = status;
+  document.getElementById('qr1PinDisplay').textContent = pin1.split('').join(' ');
+  document.getElementById('qr2PinDisplay').textContent = pin2.split('').join(' ');
+
+  document.querySelectorAll('#lectureSelectorPills .btn-s').forEach(b => {
+    b.classList.remove('bs-navy', 'active-lec');
+  });
+  if(btn) {
+    btn.classList.add('bs-navy', 'active-lec');
+  }
+}
+
+function openProjector(type){
+  const modal = new bootstrap.Modal(document.getElementById('projectorModal'));
+  if(type==='qr1'){
+    document.getElementById('projectorTitle').innerHTML = `<i class="ti ti-scan text-primary me-2"></i> باركود بداية ${currentLecture.title} (Check-In)`;
+    document.getElementById('projectorSub').textContent = `امسح الكود الخاص بـ [${currentLecture.title}] من شاشتك`;
+    document.getElementById('projectorPin').textContent = currentLecture.pin1;
+  } else {
+    document.getElementById('projectorTitle').innerHTML = `<i class="ti ti-circle-check text-success me-2"></i> باركود ختام ${currentLecture.title} (Check-Out)`;
+    document.getElementById('projectorSub').textContent = `أكّد اكتمال حضور [${currentLecture.title}] قبل مغادرة القاعة`;
+    document.getElementById('projectorPin').textContent = currentLecture.pin2;
+  }
+  modal.show();
+}
+
+function toggleTraineeOverride(btn){
+  const row = btn.closest('tr');
+  const statusCell = row.cells[4];
+  if(statusCell.textContent.includes('حضور كامل')){
+    statusCell.innerHTML = '<span class="badge-s bs-rejected fw-bold">✗ غائب (يدوي)</span>';
+    alert('تم تعديل حالة المتدرب إلى غائب يدوياً بواسطة المدرب');
+  } else {
+    statusCell.innerHTML = '<span class="badge-s bs-active fw-bold">✓ حاضر (اعتماد مدرب)</span>';
+    alert('تم اعتماد حضور المتدرب للجلسة يدوياً بواسطة المدرب');
+  }
+}
+
+const members=['م. رنا السلطاني','د. أحمد ناصر','د. فاطمة العلي','م. باسم العكور','م. عمر التميمي','د. ليلى الرشيد','م. وسام الحياري','د. نادر الصفدي','م. هند الزيود','د. يوسف العبادي','م. دينا الكيلاني','د. طارق الحوري','م. سلمى البطاينة','د. إياد الحديدي','م. نور الربيعي','م. سعيد الحسن','د. مرام القاسمي','م. نضال العمري'];
+let attendance={};
+members.forEach(m=>attendance[m]=Math.random()>0.15);
+
+function renderAttendList(){
+  ['attendanceList','fullAttendList'].forEach(listId=>{
+    const list=document.getElementById(listId);
+    if(!list)return;
+    list.innerHTML='';
+    members.forEach(m=>{
+      const row=document.createElement('div');
+      row.className='attend-row';
+      const checked=attendance[m];
+      row.innerHTML=`<input type="checkbox" class="attend-chk" ${checked?'checked':''} onchange="attendance['${m}']=this.checked;this.closest('.attend-row').style.background=this.checked?'var(--green-dim)':'#FFFFFF'"><span style="font-size:13.5px;font-weight:600;flex:1;color:var(--text);">${m}</span>${checked?'<span class="badge-s bs-active" style="font-size:11px;">✓ حاضر وموثق</span>':'<span class="badge-s bs-pending" style="font-size:11px;">غائب</span>'}`;
+      row.style.background=checked?'var(--green-dim)':'#FFFFFF';
+      list.appendChild(row);
+    });
+  });
+}
+
+function selectAllAttend(){
+  members.forEach(m=>attendance[m]=true);
+  renderAttendList();
+  alert('✅ تم رصد حضور جميع المتدربين بنجاح');
+}
+
+let timerInterval=null;
+function generateCode(){
+  const w=document.getElementById('codeWidget');
+  if(w)w.style.display='';
+  startTimer();
+}
+function generateCode2(){
+  document.getElementById('noCodeMsg').style.display='none';
+  document.getElementById('codeDisplay2').style.display='';
+  startTimer2();
+}
+function startTimer(){
+  let secs=600;
+  if(timerInterval)clearInterval(timerInterval);
+  timerInterval=setInterval(()=>{
+    secs--;
+    const m=String(Math.floor(secs/60)).padStart(2,'0');
+    const s=String(secs%60).padStart(2,'0');
+    const el=document.getElementById('timerCount');
+    if(el)el.textContent=`${m}:${s}`;
+    if(secs<=0){clearInterval(timerInterval);const w=document.getElementById('codeWidget');if(w)w.style.display='none';}
+  },1000);
+}
+function startTimer2(){
+  let secs=600;
+  if(timerInterval)clearInterval(timerInterval);
+  timerInterval=setInterval(()=>{
+    secs--;
+    const m=String(Math.floor(secs/60)).padStart(2,'0');
+    const s=String(secs%60).padStart(2,'0');
+    const el=document.getElementById('timer2');
+    if(el){el.textContent=`${m}:${s}`;if(secs<=60)el.style.color='var(--red)';}
+    if(secs<=0){clearInterval(timerInterval);}
+  },1000);
+}
+
+function approveImpact(btn){
+  const row=btn.closest('tr');
+  row.cells[5].innerHTML='<span class="badge-s bs-active">معتمد</span>';
+  row.cells[6].innerHTML='<i class="ti ti-circle-check-filled" style="color:var(--green);font-size:20px;"></i>';
+  alert('✅ تم التحقق من الأثر التدريبي بنجاح وأُرسل إشعار للجودة لتأكيد الشهادة');
+}
+
+Chart.defaults.color='#475569';
+Chart.defaults.font.family='Tajawal';
+let chartsInit=false;
+function initCharts(){
+  if(chartsInit)return;chartsInit=true;
+  const c1=document.getElementById('instChart1');
+  if(c1)new Chart(c1,{
+    type:'bar',
+    data:{
+      labels:['الجلسة الأولى (أونلاين)','الجلسة الثانية (وجاهية)','الجلسة الثالثة (وجاهية)'],
+      datasets:[{
+        label:'الحضور الفعلي',
+        data:[40,38,36],
+        backgroundColor:['#022C5A','#0D9488','#4F46E5'],
+        borderRadius:6
+      }]
+    },
+    options:{
+      responsive:true,
+      maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{
+        y:{max:42,grid:{color:'rgba(0,0,0,0.04)'}},
+        x:{grid:{display:false}}
+      }
+    }
+  });
+
+  const c2=document.getElementById('instChart2');
+  if(c2)new Chart(c2,{
+    type:'doughnut',
+    data:{
+      labels:['ممتاز (5/5)','جيد جداً (4/5)','جيد (3/5)','يحتاج تحسين'],
+      datasets:[{
+        data:[18,12,6,2],
+        backgroundColor:['#0D9488','#022C5A','#D97706','#E11D48'],
+        borderWidth:2,
+        borderColor:'#ffffff'
+      }]
+    },
+    options:{
+      responsive:true,
+      maintainAspectRatio:false,
+      cutout:'60%',
+      plugins:{legend:{position:'bottom',labels:{color:'#475569',font:{size:11.5},padding:10}}}
+    }
+  });
+}
+
+// Automatically initialize charts & attendance immediately on page load
+window.addEventListener('DOMContentLoaded', ()=>{
+  initCharts();
+  renderAttendList();
+});
+</script>
+<script src="js/experience.js"></script>
+</body>
+</html>

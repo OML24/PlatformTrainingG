@@ -1,0 +1,35 @@
+@page "/dean/needs"
+@{ ViewData["Title"] = "الاحتياجات التدريبية"; }
+<div class="container py-4" id="dean-needs-page">
+  <h1>الاحتياجات التدريبية لكليتي</h1>
+  <div id="needs-error" class="alert alert-danger d-none" role="alert"></div>
+  <div id="needs-success" class="alert alert-success d-none" role="status"></div>
+
+  <section class="card card-body mb-4">
+    <h2 class="h5">رفع احتياج تدريبي جديد</h2>
+    <form id="needs-form">
+      <div class="row g-3">
+        <div class="col-md-6"><label class="form-label" for="needs-title">العنوان (عربي)</label><input id="needs-title" class="form-control" maxlength="300" required /></div>
+        <div class="col-md-6"><label class="form-label" for="needs-title-en">العنوان (إنجليزي)</label><input id="needs-title-en" class="form-control" dir="ltr" maxlength="300" /></div>
+        <div class="col-12"><label class="form-label" for="needs-description">الوصف</label><textarea id="needs-description" class="form-control" required></textarea></div>
+        <div class="col-md-4"><label class="form-label" for="needs-track">المحور</label><select id="needs-track" class="form-select"></select></div>
+        <div class="col-md-4"><label class="form-label" for="needs-participants">عدد المشاركين المتوقع</label><input id="needs-participants" class="form-control" type="number" min="0" /></div>
+        <div class="col-md-4"><label class="form-label" for="needs-timeframe">الإطار الزمني المفضل</label><input id="needs-timeframe" class="form-control" /></div>
+        <div class="col-md-4"><label class="form-label" for="needs-instructor-faculty">كلية المحاضر المطلوب (اختياري)</label><select id="needs-instructor-faculty" class="form-select"><option value="">— دون طلب محاضر —</option></select></div>
+        <div class="col-md-4"><label class="form-label" for="needs-instructor-search">بحث عن المحاضر</label><input id="needs-instructor-search" class="form-control" placeholder="الاسم أو رقم الدخول" disabled /></div>
+        <div class="col-md-4"><label class="form-label" for="needs-instructor">المحاضر من الكلية الأخرى</label><select id="needs-instructor" class="form-select" disabled><option value="">— اختر الكلية أولاً —</option></select></div>
+        <div class="col-md-6"><label class="form-label" for="needs-instructor-note">ملاحظة للمحاضر المطلوب</label><input id="needs-instructor-note" class="form-control" /></div>
+        <div class="col-md-6"><label class="form-label" for="needs-letter">الكتاب الرسمي (PDF)</label><input id="needs-letter" class="form-control" type="file" accept=".pdf,application/pdf" required /></div>
+      </div>
+      <button id="needs-submit" class="btn btn-primary mt-3" type="submit">إرسال إلى الجودة</button>
+    </form>
+  </section>
+
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead><tr><th>العنوان</th><th>الحالة</th><th>النسخة</th><th>آخر إعادة</th><th>الكتاب</th><th>إجراء</th></tr></thead>
+      <tbody id="needs-rows"></tbody>
+    </table>
+  </div>
+</div>
+@section Scripts { <script src="~/js/dean-needs.js" asp-append-version="true"></script> }

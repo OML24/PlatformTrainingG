@@ -1,0 +1,345 @@
+[
+  {
+    "fieldKey": "course.title_ar",
+    "contextKey": "course",
+    "hintAr": "اسم الدورة بالعربية كما سيظهر في القوائم والشهادة.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "course.title_en",
+    "contextKey": "course",
+    "hintAr": "الاسم الإنجليزي اختياري.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "course.track_id",
+    "contextKey": "course",
+    "hintAr": "اختر المحور التدريبي المناسب.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "course.delivery_mode",
+    "contextKey": "course",
+    "hintAr": "اختر نمط تقديم الدورة.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "course.objectives_ar",
+    "contextKey": "course",
+    "hintAr": "اكتب أهداف الدورة بالعربية بوضوح.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "course.objectives_en",
+    "contextKey": "course",
+    "hintAr": "ترجمة الأهداف اختيارية.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "course.target_audience_ar",
+    "contextKey": "course",
+    "hintAr": "صف الفئة المستهدفة بالعربية.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "course.target_audience_en",
+    "contextKey": "course",
+    "hintAr": "ترجمة الفئة المستهدفة اختيارية.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "course.total_hours",
+    "contextKey": "course",
+    "hintAr": "أدخل عدد ساعات الدورة، ويجب أن يكون أكبر من صفر.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "course.planned_start_date",
+    "contextKey": "course",
+    "hintAr": "اختر تاريخ بداية الدورة بتوقيت عمّان.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "course.planned_end_date",
+    "contextKey": "course",
+    "hintAr": "اختر تاريخ النهاية بعد تاريخ البداية أو مساويًا له.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "course.audience_type",
+    "contextKey": "course",
+    "hintAr": "التسجيل الذاتي للكلية أو مشاركون محددون تضيفهم الجودة.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "course.target_center_id",
+    "contextKey": "course",
+    "hintAr": "اختر الكلية المستهدفة عند اختيار جمهور الكلية.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "course.registration_deadline",
+    "contextKey": "course",
+    "hintAr": "آخر موعد للتسجيل الذاتي.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "course.max_participants",
+    "contextKey": "course",
+    "hintAr": "اتركه فارغًا إذا لم توجد سعة محددة.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "course.has_exam",
+    "contextKey": "course",
+    "hintAr": "حدد ما إذا كانت الدورة تتطلب امتحانًا خارجيًا.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "course.instructor_user_id",
+    "contextKey": "course",
+    "hintAr": "اختر محاضرًا من أعضاء الكلية المسموح بها.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "course.instructor_name_ar",
+    "contextKey": "course",
+    "hintAr": "الاسم العربي للمحاضر الفعلي.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "course.instructor_name_en",
+    "contextKey": "course",
+    "hintAr": "اسم المحاضر بالإنجليزية اختياري.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "course.instructor_org_ar",
+    "contextKey": "course",
+    "hintAr": "جهة المحاضر الخارجي بالعربية.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "course.evaluation_end_date",
+    "contextKey": "course",
+    "hintAr": "آخر يوم متاح للإجابة على تقييم الدورة.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "lecture.title_ar",
+    "contextKey": "lecture",
+    "hintAr": "عنوان المحاضرة بالعربية اختياري.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "lecture.mode",
+    "contextKey": "lecture",
+    "hintAr": "اختر وجاهيًا أو عبر الإنترنت.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "lecture.starts_at",
+    "contextKey": "lecture",
+    "hintAr": "وقت بدء المحاضرة بتوقيت عمّان.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "lecture.ends_at",
+    "contextKey": "lecture",
+    "hintAr": "وقت النهاية بعد وقت البداية.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "lecture.location_ar",
+    "contextKey": "lecture",
+    "hintAr": "مكان المحاضرة الوجاهية.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "lecture.teams_url",
+    "contextKey": "lecture",
+    "hintAr": "رابط المحاضرة عبر الإنترنت إن وُجد.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "procert.name",
+    "contextKey": "procert",
+    "hintAr": "اسم الشهادة كما ورد في وثيقتها.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "procert.name_ar",
+    "contextKey": "procert",
+    "hintAr": "الاسم بالعربية اختياري.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "procert.issuer_name",
+    "contextKey": "procert",
+    "hintAr": "اسم الجهة المانحة كما يظهر في الشهادة.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "procert.issuer_website_url",
+    "contextKey": "procert",
+    "hintAr": "رابط موقع الجهة الرسمي إن وُجد.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "procert.category_id",
+    "contextKey": "procert",
+    "hintAr": "اختر تصنيف الشهادة.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "procert.description",
+    "contextKey": "procert",
+    "hintAr": "وصف مختصر اختياري.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "procert.credential_code",
+    "contextKey": "procert",
+    "hintAr": "رقم أو رمز الشهادة؛ يلزم رمز أو رابط تحقق.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "procert.verify_url",
+    "contextKey": "procert",
+    "hintAr": "رابط تحقق يبدأ بـ http أو https؛ يلزم رابط أو رمز.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "procert.issued_date",
+    "contextKey": "procert",
+    "hintAr": "تاريخ الإصدار، ولا يمكن أن يكون في المستقبل.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "procert.expiry_date",
+    "contextKey": "procert",
+    "hintAr": "اتركه فارغًا للشهادات التي لا تنتهي.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "procert.file_id",
+    "contextKey": "procert",
+    "hintAr": "ارفع ملف PDF أو PPTX للشهادة.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "need.title_ar",
+    "contextKey": "need",
+    "hintAr": "عنوان الاحتياج التدريبي بالعربية.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "need.description_ar",
+    "contextKey": "need",
+    "hintAr": "اشرح الاحتياج والهدف منه.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "need.track_id",
+    "contextKey": "need",
+    "hintAr": "المحور التدريبي المناسب، إن وجد.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "need.expected_participants",
+    "contextKey": "need",
+    "hintAr": "عدد المشاركين المتوقع اختياري.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "need.preferred_timeframe_ar",
+    "contextKey": "need",
+    "hintAr": "الإطار الزمني المفضل للتدريب.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "need.requested_instructor_user_id",
+    "contextKey": "need",
+    "hintAr": "محاضر من كلية أخرى إن كان مطلوبًا.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "need.requested_instructor_note_ar",
+    "contextKey": "need",
+    "hintAr": "ملاحظة تشرح طلب المحاضر.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "need.letter_file_id",
+    "contextKey": "need",
+    "hintAr": "ارفع الكتاب الرسمي بصيغة PDF.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "auth.login_name",
+    "contextKey": "auth",
+    "hintAr": "أدخل الرقم الوظيفي أو رقم دخول المدرب الخارجي.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "auth.password",
+    "contextKey": "auth",
+    "hintAr": "أدخل كلمة المرور الحالية.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "auth.remember_me",
+    "contextKey": "auth",
+    "hintAr": "يحفظ الجلسة للمدة المحددة في إعدادات النظام.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "auth.email",
+    "contextKey": "auth",
+    "hintAr": "البريد الجامعي المرتبط بحسابك.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "auth.new_password",
+    "contextKey": "auth",
+    "hintAr": "اختر كلمة وفق سياسة كلمات المرور الحالية.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "profile.bio_ar",
+    "contextKey": "profile",
+    "hintAr": "نبذة مهنية بالعربية.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "profile.bio_en",
+    "contextKey": "profile",
+    "hintAr": "النبذة بالإنجليزية اختيارية.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "profile.photo_file_id",
+    "contextKey": "profile",
+    "hintAr": "ارفع صورة شخصية مناسبة.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "profile.expertise_ar",
+    "contextKey": "profile",
+    "hintAr": "أضف مجالات الخبرة بالعربية.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "profile.contact_method",
+    "contextKey": "profile",
+    "hintAr": "اختر وسيلة تواصل تظهر في الدليل.",
+    "hintEn": null
+  },
+  {
+    "fieldKey": "profile.contact_value",
+    "contextKey": "profile",
+    "hintAr": "أدخل بيانات وسيلة التواصل المختارة.",
+    "hintEn": null
+  }
+]
+

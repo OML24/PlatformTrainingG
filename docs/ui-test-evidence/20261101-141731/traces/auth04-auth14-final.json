@@ -1,0 +1,51 @@
+{
+  "executedAt": "2026-11-02",
+  "credentialsIncluded": false,
+  "sessionIdentifiersIncluded": false,
+  "results": [
+    { "caseId": "AUTH04", "status": "PASS", "checks": ["Arabic-Indic digits normalized", "surrounding spaces trimmed", "password remained exact"], "destination": "/member/dashboard" },
+    { "caseId": "AUTH05", "status": "PASS", "checks": [
+      { "fixture": "X1", "wrongPassword": "AUTH_INVALID", "correctPassword": "AUTH_DISABLED" },
+      { "fixture": "X2", "wrongPassword": "AUTH_INVALID", "correctPasswordBeforeOverride": "AUTH_NOT_ELIGIBLE" },
+      { "fixture": "X2", "uiOverrideWithReason": true, "request": "PUT /api/v1/users/27", "httpStatus": 200, "loginAfterOverride": "PASS" },
+      { "fixture": "X2", "uiOverrideWithdrawn": true, "loginAfterWithdrawal": "AUTH_NOT_ELIGIBLE" }
+    ]},
+    { "caseId": "AUTH06", "status": "PASS", "fixture": "EMPTY", "checks": [
+      { "wrongAttempts": 5, "visibleResult": "AUTH_INVALID" },
+      { "correctDuringLock": "AUTH_LOCKED", "configuredMinutes": 15 },
+      { "expirySetup": "locked_until moved just past the boundary in the isolated fixture database", "correctAfterExpiry": "PASS" }
+    ]},
+    { "caseId": "AUTH07", "status": "PASS", "fixture": "M1", "checks": [
+      { "rememberMe": false, "refreshLifetimeHours": 12 },
+      { "rememberMe": true, "refreshLifetimeHours": 720 },
+      { "jwtInLocalStorage": false, "jwtInSessionStorage": false, "onlySessionSelectorInSessionStorage": true }
+    ]},
+    { "caseId": "AUTH08", "status": "BLOCKED", "completedChecks": ["protected returnUrl produced by expired/logout flow is local"], "blocker": "No browser cookie-control or application clock-control is available; the configured HttpOnly access token lifetime is 15 minutes, so deterministic access-expiry/refresh-expiry execution cannot be completed now without changing the acceptance environment." },
+    { "caseId": "AUTH09", "status": "PASS", "fixture": "M1", "checks": [
+      { "passwordChangedThrough": "/account/password", "destination": "/member/dashboard" },
+      { "oldPassword": "AUTH_INVALID", "newPassword": "PASS" },
+      { "secondExistingContext": "redirected to login", "writeAfterInvalidation": "UNAUTHORIZED" }
+    ]},
+    { "caseId": "AUTH10", "status": "BLOCKED", "blocker": "E1 must be created by the quality external-instructor request workflow; that course/request fixture is not created yet. A directly seeded substitute would violate the test contract." },
+    { "caseId": "AUTH11", "status": "BLOCKED", "completedChecks": [
+      { "existingAccountWithoutMatchingEmail": "generic success text", "httpStatus": 200 },
+      { "unknownAccount": "same generic success text", "httpStatus": 200 }
+    ], "blocker": "No isolated SMTP inbox, and matching/shared/no-email/external mail fixtures are incomplete; delivery and rate-limit branches cannot receive a final PASS." },
+    { "caseId": "AUTH12", "status": "PASS", "fixture": "Q1", "checks": [
+      { "roles": ["Quality", "Member"] },
+      { "switchToMember": "/member/dashboard", "survivedRefresh": true, "deepLink": "/member/available" },
+      { "switchBackToQuality": "/quality/dashboard" }
+    ]},
+    { "caseId": "AUTH13", "status": "PASS", "fixture": "M2", "checks": [
+      { "logoutDestination": "/login" },
+      { "backResult": "/login with local returnUrl" },
+      { "openSecondTabWrite": "POST /api/v1/auth/account-password returned 401", "visibleMessage": "UNAUTHORIZED", "dataChanged": false }
+    ]},
+    { "caseId": "AUTH14", "status": "BLOCKED", "completedChecks": [
+      { "employeeExpiredRotation": "redirected to /change-password" },
+      { "localWithEquivalentAge": "full admin login; no forced rotation" },
+      { "fixtureSettingsRestored": true }
+    ], "blocker": "ExternalInstructor branch requires E1, which is not available until the quality request fixture is completed." }
+  ],
+  "summary": { "pass": 7, "blocked": 4, "fail": 0 }
+}

@@ -1,0 +1,16 @@
+@page "/courses/{courseId:long}/cancel-request"
+@{ ViewData["Title"] = "طلب إلغاء دورة"; }
+<div class="container py-4" id="cancel-request-page" data-course-id="@RouteData.Values["courseId"]">
+  <h1>طلب إلغاء دورة معتمدة</h1>
+  <p class="text-muted">تستمر الدورة حتى تصدر الجودة قرارها.</p>
+  <div id="cancel-request-error" class="alert alert-danger d-none" role="alert"></div>
+  <div id="cancel-request-success" class="alert alert-success d-none" role="status"></div>
+  <form id="cancel-request-form" class="card card-body">
+    <label for="cancel-request-reason" class="form-label">سبب الإلغاء</label>
+    <textarea id="cancel-request-reason" class="form-control mb-3" required maxlength="1000"></textarea>
+    <label for="cancel-request-letter" class="form-label">كتاب رسمي موقّع (PDF)</label>
+    <input id="cancel-request-letter" class="form-control mb-3" type="file" accept=".pdf,application/pdf" />
+    <button id="cancel-request-submit" class="btn btn-primary align-self-start" type="submit">إرسال طلب الإلغاء</button>
+  </form>
+</div>
+@section Scripts { <script src="~/js/cancel-request.js" asp-append-version="true"></script> }

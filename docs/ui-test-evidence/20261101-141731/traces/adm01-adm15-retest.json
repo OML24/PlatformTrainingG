@@ -1,0 +1,50 @@
+{
+  "runId": "20261101-141731",
+  "executedAt": "2026-11-02",
+  "environment": {
+    "app": "http://127.0.0.1:5375",
+    "database": "zu_lms_ui_20261101_141731",
+    "storage": "isolated-temp",
+    "smtp": "127.0.0.1 loopback-only sink; no authentication; no relay",
+    "secretsIncluded": false
+  },
+  "build": {
+    "configuration": "Release",
+    "warnings": 0,
+    "errors": 0,
+    "nonPostgresTestsPassed": 120,
+    "nonPostgresTestsFailed": 0,
+    "postgres18FallbackFactsPassed": 2,
+    "totalAutomatedTestsPassed": 122,
+    "postgres17ContainerGate": "BLOCKED: Docker unavailable; PostgreSQL 18 fallback is separate"
+  },
+  "cases": [
+    { "id": "ADM01", "status": "PASS", "assertions": ["dashboard rendered 10 recent audit events", "sync panel rendered the correct empty state when no runs exist", "all 4 KPI cards are anchors and the participants KPI links to the course directory", "audit/sync/stats requests returned 200", "no console errors"] },
+    { "id": "ADM02", "status": "PASS", "assertions": ["independent account-type filter returned 200", "independent role filter returned 200", "independent faculty filter returned 200", "independent active-state filter returned 200"] },
+    { "id": "ADM03", "status": "PASS", "assertions": ["attempted local login 8001, inside configured external range", "POST /api/v1/users/local returned 400 LOGIN_RESERVED", "visible Arabic error identified the reserved name", "no account was created"] },
+    { "id": "ADM04", "status": "PASS", "evidence": "traces/adm01-adm15-final.json", "assertions": ["edit and reset overrides persisted after refresh"] },
+    { "id": "ADM05", "status": "PASS", "evidence": "traces/adm01-adm15-final.json", "assertions": ["deactivation and restoration were confirmed through the UI"] },
+    { "id": "ADM06", "status": "PASS", "assertions": ["temporarily reduced active administrator fixture count to 1 through the UI", "attempt to revoke the remaining Admin role returned 409 LAST_ADMIN with visible error", "restored both test administrator roles through the UI", "active administrator count returned to 3"] },
+    { "id": "ADM07", "status": "PASS", "evidence": "traces/adm01-adm15-final.json", "assertions": ["Dean scope and derived Instructor role behavior retained"] },
+    { "id": "ADM08", "status": "PASS", "assertions": ["staged two override changes", "preview showed both proposed values", "cancel made no PUT requests", "apply sent two PUT requests and UI reflected saved overrides"] },
+    { "id": "ADM09", "status": "PASS", "assertions": ["permission search and full catalog rendered", "role-source labels included scoped faculty names", "preview/cancel and multi-save were exercised"] },
+    { "id": "ADM10", "status": "PASS", "evidence": "traces/adm01-adm15-final.json", "assertions": ["role permission changes were checked against assigned accounts"] },
+    { "id": "ADM11", "status": "PASS", "assertions": ["revealed a password only after reauthentication", "closing the dialog set initial/current/reauth input lengths to 0 and hid the value panel", "no console errors"] },
+    { "id": "ADM12", "status": "PASS", "fixtures": ["N3", "N4", "N5"], "assertions": ["admin password change before first login updated the initial credential", "first login reached the required password-change screen", "successful change continued to the Member dashboard"] },
+    { "id": "ADM13", "status": "PASS", "fixture": "N4", "assertions": ["individual NotSent message reached the isolated sink and became Sent", "resend cancellation made no send request", "confirmed resend reached the sink", "sink accepted DATA then dropped final acknowledgement; app marked Uncertain", "UI resolution changed Uncertain to Failed"] },
+    { "id": "ADM14", "status": "PASS", "fixture": "N4", "assertions": ["bulk preview showed 1 eligible and skip counts", "cancel made no bulk POST", "confirmed bulk operation reached the isolated sink and became Sent"] },
+    { "id": "ADM15", "status": "PASS", "fixtures": ["N5", "E1"], "assertions": ["E1 was created by Dean proposal → Quality approval requesting new external account → Admin completion", "old shared initial was rejected for new Employee N5", "current shared initial was accepted for N5", "shared initial was rejected for ExternalInstructor E1", "E1 entered successfully using its individual password", "shared-initial audit values were redacted"] }
+  ],
+  "smtpSink": {
+    "acceptedMessages": 5,
+    "relayed": false,
+    "messageBodiesRecordedInRepository": false,
+    "statusTransitions": ["NotSent→Sent", "Sent→Sent on confirmed resend", "Sent→Uncertain on lost final acknowledgement", "Uncertain→Failed by UI resolution", "Failed→Sent by confirmed bulk send"]
+  },
+  "cleanup": {
+    "administratorRolesRestored": true,
+    "permissionOverridesRestored": true,
+    "originalSharedInitialRestoredAndVerified": true,
+    "noPasswordsCookiesOrSessionIdentifiersInEvidence": true
+  }
+}

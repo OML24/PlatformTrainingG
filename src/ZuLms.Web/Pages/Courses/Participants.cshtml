@@ -1,0 +1,24 @@
+@page "/courses/{courseId:long}/participants"
+@{ ViewData["Title"] = "إدارة المشاركين"; }
+<div class="container py-4" id="participants-page" data-course-id="@RouteData.Values["courseId"]">
+  <h1>إدارة المشاركين</h1>
+  <p class="text-muted" id="participants-course"></p>
+  <div id="participants-error" class="alert alert-danger d-none" role="alert"></div>
+  <div id="participants-success" class="alert alert-success d-none" role="status"></div>
+  <section class="card card-body mb-4">
+    <h2 class="h5">إضافة موظفين</h2>
+    <label for="participants-search" class="form-label">ابحث بالاسم أو رقم الدخول</label>
+    <input id="participants-search" class="form-control mb-2" type="search" autocomplete="off" />
+    <div id="participants-results" class="list-group mb-2" aria-live="polite"></div>
+    <p class="small text-muted" id="participants-selected-count">لم يُحدد أحد</p>
+    <button id="participants-add" class="btn btn-primary align-self-start" type="button">إضافة المحددين</button>
+  </section>
+  <section class="card card-body">
+    <h2 class="h5">المشاركون الفعّالون</h2>
+    <div class="table-responsive"><table class="table table-striped">
+      <thead><tr><th>الاسم</th><th>رقم الدخول</th><th>المصدر</th><th>تاريخ الإضافة</th><th>الشهادة</th><th></th></tr></thead>
+      <tbody id="participants-rows"></tbody>
+    </table></div>
+  </section>
+</div>
+@section Scripts { <script src="~/js/course-participants.js" asp-append-version="true"></script> }

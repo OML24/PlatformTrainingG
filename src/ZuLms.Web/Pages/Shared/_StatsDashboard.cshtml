@@ -1,0 +1,71 @@
+@{
+    var role = ViewData["StatsRole"]?.ToString() ?? "quality";
+    var heading = ViewData["StatsHeading"]?.ToString() ?? "لوحة الإحصائيات";
+    var coursesHref = role == "admin" ? "/admin/courses" : role == "dean" ? "/dean/courses" : "/quality/courses";
+    var participantsHref = coursesHref;
+    var certificatesHref = role == "admin" ? "/quality/certificates" : coursesHref;
+}
+<div class="container py-4 stats-dashboard" id="stats-dashboard-page" data-role="@role">
+    <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-4">
+        <div>
+            <h1 class="h3 mb-1">@heading</h1>
+            <p class="text-muted mb-0">مؤشرات ورسوم بيانية مباشرة من بيانات النظام</p>
+        </div>
+        <span class="badge text-bg-light stats-scope" id="stats-scope">—</span>
+    </div>
+
+    <form class="card mb-4 stats-filters" id="stats-filters">
+        <div class="card-body">
+            <div class="row g-3 align-items-end">
+                <div class="col-12 col-lg-4" data-faculty-filter>
+                    <label class="form-label" for="stats-center">الكلية</label>
+                    <select class="form-select" id="stats-center"><option value="">جميع الكليات</option></select>
+                </div>
+                <div class="col-12 col-lg-4" data-user-filter>
+                    <label class="form-label" for="stats-user-search">البحث عن شخص</label>
+                    <input class="form-control" id="stats-user-search" type="search" placeholder="ابحث بالاسم أو الرقم" autocomplete="off" />
+                </div>
+                <div class="col-12 col-lg-4" data-user-filter>
+                    <label class="form-label" for="stats-user">اختيار الشخص</label>
+                    <select class="form-select" id="stats-user"><option value="">جميع الأشخاص</option></select>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <label class="form-label" for="stats-from">من تاريخ</label>
+                    <input class="form-control zu-date" id="stats-from" type="text" inputmode="numeric" />
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <label class="form-label" for="stats-to">إلى تاريخ</label>
+                    <input class="form-control zu-date" id="stats-to" type="text" inputmode="numeric" />
+                </div>
+                <div class="col-12 col-lg-4 d-flex gap-2">
+                    <button class="btn btn-primary flex-grow-1" type="submit"><i class="ti ti-filter"></i> تطبيق</button>
+                    <button class="btn btn-outline-secondary" id="stats-reset" type="button" aria-label="مسح الفلاتر"><i class="ti ti-refresh"></i></button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="alert alert-danger d-none" id="dashboard-error" role="alert"></div>
+    <div class="row g-3 mb-4" aria-live="polite">
+        <div class="col-6 col-xl-3"><a class="card kpi-card h-100 text-decoration-none text-reset" href="@coursesHref"><div class="card-body"><i class="ti ti-book-2 stats-kpi-icon"></i><div class="kpi-value" id="kpi-courses">—</div><div class="kpi-label">الدورات</div></div></a></div>
+        <div class="col-6 col-xl-3"><a class="card kpi-card h-100 text-decoration-none text-reset" href="@participantsHref"><div class="card-body"><i class="ti ti-users stats-kpi-icon"></i><div class="kpi-value" id="kpi-participants">—</div><div class="kpi-label">المشاركات</div></div></a></div>
+        <div class="col-6 col-xl-3"><a class="card kpi-card h-100 text-decoration-none text-reset" href="@certificatesHref"><div class="card-body"><i class="ti ti-certificate stats-kpi-icon"></i><div class="kpi-value" id="kpi-certificates">—</div><div class="kpi-label">الشهادات الصادرة</div></div></a></div>
+        <div class="col-6 col-xl-3"><a class="card kpi-card h-100 text-decoration-none text-reset" href="@coursesHref?status=Finished"><div class="card-body"><i class="ti ti-circle-check stats-kpi-icon"></i><div class="kpi-value"><span id="kpi-completion">—</span><small>%</small></div><div class="kpi-label">نسبة الدورات المنتهية</div></div></a></div>
+    </div>
+
+    <div class="card mb-4 d-none" id="person-summary">
+        <div class="card-body d-flex flex-wrap justify-content-between gap-3">
+            <div><span class="text-muted">إحصائيات الشخص</span><h2 class="h5 mb-0" id="person-name">—</h2></div>
+            <div class="stats-person-values"><span><b id="person-courses">0</b> دورة</span><span><b id="person-finished">0</b> منتهية</span><span><b id="person-certificates">0</b> شهادة</span></div>
+        </div>
+    </div>
+
+    <div class="row g-4 mb-4">
+        <div class="col-12 col-xl-8"><div class="card h-100"><div class="card-header"><i class="ti ti-chart-line"></i> تطور الدورات والمشاركات</div><div class="card-body stats-chart"><canvas id="chart-monthly" aria-label="تطور الدورات والمشاركات"></canvas></div></div></div>
+        <div class="col-12 col-xl-4"><div class="card h-100"><div class="card-header"><i class="ti ti-chart-donut"></i> الدورات حسب الحالة</div><div class="card-body stats-chart"><canvas id="chart-status" aria-label="الدورات حسب الحالة"></canvas></div></div></div>
+    </div>
+    <div class="row g-4">
+        <div class="col-12 col-xl-6"><div class="card h-100"><div class="card-header"><i class="ti ti-building"></i> التوزيع حسب الكلية</div><div class="card-body stats-chart"><canvas id="chart-faculty" aria-label="التوزيع حسب الكلية"></canvas></div></div></div>
+        <div class="col-12 col-xl-6"><div class="card h-100"><div class="card-header"><i class="ti ti-chart-bar"></i> التوزيع حسب المحور التدريبي</div><div class="card-body stats-chart"><canvas id="chart-track" aria-label="التوزيع حسب المحور التدريبي"></canvas></div></div></div>
+    </div>
+</div>

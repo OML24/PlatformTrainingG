@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Frontend component regression — simulated fixtures</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/assets/lib/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/lib/daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="/assets/css/tajawal.css">
+  <link rel="stylesheet" href="/assets/css/prototype.css">
+  <link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body data-picker-clear="Clear date" data-picker-invalid="Enter a valid date in the displayed format.">
+  <main class="container py-4">
+    <h1>Frontend component regression</h1>
+    <p class="alert alert-warning">SIMULATED-UI: real frontend scripts, fake API responses. No authentication or backend acceptance is claimed.</p>
+    <button id="run" type="button" class="btn btn-primary">Run component checks</button>
+    <ol id="results" aria-live="polite"></ol>
+    <section class="card card-body mb-3">
+      <h2 class="h5">Date fields</h2>
+      <label for="optional-date">Optional date</label><input class="form-control zu-date" id="optional-date">
+      <label for="required-date">Required date</label><input class="form-control zu-date" id="required-date" required>
+      <dialog id="date-dialog" class="zu-question-dialog"><div class="modal-body">
+        <label for="instant">Amman date and time</label><input class="form-control zu-datetime" id="instant" value="2026-11-01 23:59">
+        <button id="close-date-dialog" type="button" class="btn btn-secondary">Close</button>
+      </div></dialog>
+      <button id="open-date-dialog" type="button" class="btn btn-outline-primary">Open date dialog</button>
+    </section>
+    <section id="directory-page" data-all="All faculties" data-open="View profile" data-empty="No members" data-error="Could not load directory" data-loading="Loading members" data-retry="Try again">
+      <h2 class="h5">Directory fixture</h2>
+      <div id="directory-error" class="alert alert-danger d-none" role="alert"></div>
+      <div id="directory-filter-error" class="alert alert-warning d-none" role="alert">Could not load faculty filter <button id="directory-filter-retry" type="button">Try again</button></div>
+      <form id="directory-filters" class="d-flex gap-2 mb-3">
+        <input id="directory-search" aria-label="Search" class="form-control">
+        <select id="directory-center" aria-label="Faculty" class="form-select"><option value="">All faculties</option></select>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+      <div id="directory-cards" class="row g-3" aria-busy="true"></div>
+      <button id="directory-prev" type="button">Previous</button><span id="directory-page-number"></span><button id="directory-next" type="button">Next</button>
+    </section>
+    <section id="notifications-widget" class="mt-3" data-empty="No notifications" data-error="Could not load notifications" data-loading="Loading notifications" data-read-all="Mark all as read" data-read-error="Could not mark notifications as read">
+      <button id="notifications-bell" type="button">Notifications</button><span id="notifications-count" class="d-none"></span>
+      <ul id="notifications-list"></ul>
+    </section>
+  </main>
+  <script src="/assets/lib/jquery/dist/jquery.min.js"></script>
+  <script src="/assets/lib/moment/moment.min.js"></script>
+  <script src="/assets/lib/daterangepicker/daterangepicker.js"></script>
+  <script src="fixture-api.js"></script>
+  <script src="/assets/js/i18n.js"></script>
+  <script src="/assets/js/dates.js"></script>
+  <script src="/assets/js/pickers.js"></script>
+  <script src="/assets/js/site.js"></script>
+  <script src="/assets/js/directory.js"></script>
+  <script src="/assets/js/notifications.js"></script>
+  <script src="regression.js"></script>
+</body>
+</html>

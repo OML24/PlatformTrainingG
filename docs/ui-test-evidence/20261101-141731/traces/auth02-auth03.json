@@ -1,0 +1,36 @@
+{
+  "executedAt": "2026-11-02",
+  "credentialsIncluded": false,
+  "browserContextsShared": false,
+  "cases": [
+    {
+      "caseId": "AUTH02",
+      "fixture": "N1",
+      "status": "PASS",
+      "checks": [
+        { "name": "personal initial credential", "status": "PASS", "destination": "/change-password" },
+        { "name": "limited session dashboard access", "status": "PASS", "attempted": "/member/dashboard", "destination": "/change-password" },
+        { "name": "short password", "status": "PASS", "result": "PWD_TOO_SHORT", "httpStatus": 400 },
+        { "name": "same as personal initial", "status": "PASS", "result": "PWD_CONTAINS_CONTEXT", "httpStatus": 400 },
+        { "name": "confirmation mismatch", "status": "PASS", "result": "PWD_CONFIRM_MISMATCH", "httpStatus": 400 },
+        { "name": "valid new password", "status": "PASS", "destination": "/member/dashboard", "consoleErrors": 0, "httpErrors": 0 },
+        { "name": "old personal initial after completion", "status": "PASS", "result": "AUTH_INVALID", "httpStatus": 400 },
+        { "name": "new password login", "status": "PASS", "destination": "/member/dashboard" }
+      ]
+    },
+    {
+      "caseId": "AUTH03",
+      "fixture": "N2",
+      "status": "PASS",
+      "checks": [
+        { "name": "shared initial credential before completion", "status": "PASS", "destination": "/change-password" },
+        { "name": "limited session dashboard access", "status": "PASS", "attempted": "/member/dashboard", "destination": "/change-password" },
+        { "name": "valid personal replacement", "status": "PASS", "destination": "/member/dashboard" },
+        { "name": "admin changes shared initial through UI", "status": "PASS", "request": "PUT /api/v1/credentials/shared-initial", "httpStatus": 200, "secretInputClearedAfterReload": true },
+        { "name": "old shared initial after completion", "status": "PASS", "result": "AUTH_INVALID", "httpStatus": 400 },
+        { "name": "new shared initial after completion", "status": "PASS", "result": "AUTH_INVALID", "httpStatus": 400 },
+        { "name": "personal replacement still works", "status": "PASS", "destination": "/member/dashboard" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+@page "/member/impact"
+@{ ViewData["Title"] = "الأثر التدريبي"; }
+<div class="container py-4" id="member-impact-page">
+  <h1>رفع الأثر التدريبي ومتابعته</h1>
+  <div id="impact-error" class="alert alert-danger d-none" role="alert"></div>
+  <div id="impact-success" class="alert alert-success d-none" role="status"></div>
+  <div class="alert alert-info">يفتح رفع الأثر بعد انتهاء الدورة واستيفاء الحضور والامتحان. يُسمح برفع جديد فقط إن لم يوجد طلب أو كان آخر طلب معاداً، ويُمنع رفع الملف نفسه.</div>
+
+  <form id="impact-form" class="card card-body mb-4">
+    <div class="row g-3">
+      <div class="col-md-4"><label class="form-label" for="impact-course">الدورة</label><select id="impact-course" class="form-select" required></select></div>
+      <div class="col-md-4">
+        <label class="form-label" for="impact-type">نوع الأثر</label>
+        <select id="impact-type" class="form-select" required>
+          <option value="StudyPlan">خطة دراسية مطورة</option>
+          <option value="ExamModel">نموذج اختبار</option>
+          <option value="ClassActivity">نشاط صفّي</option>
+        </select>
+      </div>
+      <div class="col-md-4"><label class="form-label" for="impact-file">الملف (PDF/DOCX)</label><input id="impact-file" class="form-control" type="file" accept=".pdf,.docx" required /></div>
+    </div>
+    <button id="impact-submit" class="btn btn-primary mt-3" type="submit">رفع الأثر</button>
+  </form>
+
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead><tr><th>الدورة</th><th>النوع</th><th>الحالة</th><th>الترتيب</th><th>الملاحظات</th><th>الملف</th></tr></thead>
+      <tbody id="impact-rows"></tbody>
+    </table>
+  </div>
+</div>
+@section Scripts { <script src="~/js/member-impact.js" asp-append-version="true"></script> }

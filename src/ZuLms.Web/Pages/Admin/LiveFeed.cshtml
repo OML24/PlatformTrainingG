@@ -1,0 +1,17 @@
+@page "/admin/live-feed"
+@{ ViewData["Title"] = "التدفق المباشر"; }
+<div class="container py-4" id="live-feed-page">
+  <h1>التدفق المباشر للأحداث</h1>
+  <div class="d-flex gap-2 mb-3">
+    <button id="live-toggle" class="btn btn-outline-danger" type="button">إيقاف مؤقت</button>
+    <select id="live-category" class="form-select" style="max-width: 220px;">
+      <option value="">كل الفئات</option>
+      <option value="Course">الدورات</option><option value="Certificate">الشهادات</option>
+      <option value="Attendance">الحضور</option><option value="User">المستخدمون</option>
+      <option value="Security">الأمان</option><option value="Auth">الدخول</option>
+      <option value="Document">الملفات</option><option value="Need">الاحتياجات</option>
+    </select>
+  </div>
+  <ul id="live-list" class="list-group"></ul>
+</div>
+@section Scripts { <script src="~/js/admin-live-feed.js" asp-append-version="true"></script> }

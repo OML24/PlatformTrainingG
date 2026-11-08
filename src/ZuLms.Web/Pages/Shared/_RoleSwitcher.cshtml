@@ -1,0 +1,15 @@
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<ZuLms.Web.SharedResource> T
+<div class="d-flex align-items-center gap-2" id="role-switcher"
+     data-admin="@T["Credentials.Role.Admin"]"
+     data-quality="@T["Credentials.Role.Quality"]"
+     data-dean="@T["Credentials.Role.Dean"]"
+     data-instructor="@T["Credentials.Role.Instructor"]"
+     data-member="@T["Credentials.Role.Member"]"
+     data-external-instructor="@T["Credentials.Role.ExternalInstructor"]"
+     data-error="@T["RoleSwitcher.Error"]">
+    <label class="form-label mb-0" for="role-switcher-select" title="@T["RoleSwitcher.Explanation"]">@T["RoleSwitcher.Label"]</label>
+    <select class="form-select form-select-sm" id="role-switcher-select" aria-label="@T["RoleSwitcher.Label"]"></select>
+    <span class="small text-muted role-switcher-note" title="@T["RoleSwitcher.Explanation"]">@T["RoleSwitcher.DisplayOnly"]</span>
+    <span id="role-switcher-error" class="text-danger small" role="status"></span>
+</div>

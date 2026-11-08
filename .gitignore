@@ -1,0 +1,9 @@
+**/bin/
+**/obj/
+**/verification-output/
+.vs/
+.env
+appsettings.*.json
+storage/
+logs/
+.local-backups/

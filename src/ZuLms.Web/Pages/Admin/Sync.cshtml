@@ -1,0 +1,38 @@
+@page "/admin/sync"
+@using System.Security.Claims
+@inject ZuLms.Application.Common.Abstractions.IPermissionService Permissions
+@{
+    ViewData["Title"] = "مزامنة الجامعة";
+    long.TryParse(User.FindFirstValue(ClaimTypes.NameIdentifier), out long actorId);
+    bool canRun = actorId > 0 && await Permissions.HasAsync(actorId, "sync.run", ViewContext.HttpContext.RequestAborted);
+    bool canResolve = actorId > 0 && await Permissions.HasAsync(actorId, "sync.review.resolve", ViewContext.HttpContext.RequestAborted);
+}
+<div class="container py-4" id="sync-page" data-can-run="@canRun.ToString().ToLowerInvariant()" data-can-resolve="@canResolve.ToString().ToLowerInvariant()" data-confirm-resolution="تأكيد حفظ معالجة عنصر المراجعة؟">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1>مزامنة بيانات الجامعة</h1>
+        @if (canRun) { <button type="button" class="btn btn-primary" id="sync-start">تحديث بيانات الجامعة</button> }
+    </div>
+    <div class="alert alert-danger d-none" id="sync-error" role="alert"></div>
+    <section class="card mb-4"><div class="card-body">
+        <h2 class="h5">التشغيل الحالي</h2>
+        <div id="sync-current">لا يوجد تشغيل جارٍ</div>
+        <div class="progress mt-2 d-none" id="sync-progress" role="progressbar" aria-label="تقدم المزامنة">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:100%"></div>
+        </div>
+    </div></section>
+    <section class="mb-4"><h2 class="h4">الجهات</h2>
+        <div class="table-responsive"><table class="table table-striped"><thead><tr><th>الرمز</th><th>الجهة</th><th>آخر ظهور</th><th>استيراد هذه الجهة</th></tr></thead><tbody id="sync-sides"></tbody></table></div>
+    </section>
+    <section class="mb-4"><h2 class="h4">سجل التشغيلات</h2>
+        <div class="table-responsive"><table class="table table-striped"><thead><tr><th>الرقم</th><th>البداية</th><th>النهاية</th><th>المنفّذ</th><th>الحالة</th><th>الإحصاءات</th></tr></thead><tbody id="sync-runs"></tbody></table></div>
+    </section>
+    <section><div class="d-flex justify-content-between align-items-center"><h2 class="h4">عناصر المراجعة المفتوحة</h2>
+        <select id="sync-reason" class="form-select w-auto" aria-label="فلتر السبب"><option value="">كل الأسباب</option>
+            <option value="MissingFromSource">غير موجود في المصدر</option><option value="UnresolvedReference">مرجع غير معروف</option><option value="DuplicateLoginName">رقم دخول مكرر</option>
+            <option value="DuplicateSourceKey">معرّف مصدر مكرر</option><option value="SharedEmail">بريد إلكتروني مشترك</option><option value="StatusChanged">تغيّرت الحالة</option>
+        </select></div>
+        <div class="table-responsive"><table class="table table-striped"><thead><tr><th>السبب</th><th>العنصر</th><th>التفاصيل</th><th>المعالجة</th></tr></thead><tbody id="sync-reviews"></tbody></table></div>
+        <div class="d-flex gap-2 align-items-center"><button type="button" id="sync-prev" class="btn btn-outline-secondary">السابق</button><span id="sync-page-number"></span><button type="button" id="sync-next" class="btn btn-outline-secondary">التالي</button></div>
+    </section>
+</div>
+@section Scripts { <script src="~/js/university-sync.js" asp-append-version="true"></script> }

@@ -1,0 +1,19 @@
+@page "/courses/available"
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<ZuLms.Web.SharedResource> T
+@{
+    ViewData["Title"] = T["Available.Title"];
+}
+<div class="container py-4" id="available-courses-page" data-start="@T["Available.Start"]"
+     data-end="@T["Available.End"]" data-deadline="@T["Available.Deadline"]"
+     data-capacity="@T["Available.Capacity"]" data-register="@T["Available.Register"]"
+     data-registered="@T["Available.Registered"]" data-closed="@T["Available.Closed"]"
+     data-error="@T["Available.Error"]" data-empty="@T["Available.Empty"]"
+     data-loading="@T["Available.Loading"]" data-retry="@T["Available.Retry"]"
+     data-details="@T["Available.Details"]">
+    <h1>@T["Available.Title"]</h1>
+    <div class="alert alert-danger d-none" id="available-courses-error" role="alert"></div>
+    <div id="available-courses-rows" class="row g-3" aria-live="polite" aria-busy="true"></div>
+    <div class="d-flex gap-2 align-items-center mt-3"><button id="available-courses-prev" type="button" class="btn btn-outline-secondary">@T["Available.Previous"]</button><span id="available-courses-page-number"></span><button id="available-courses-next" type="button" class="btn btn-outline-secondary">@T["Available.Next"]</button></div>
+</div>
+@section Scripts { <script src="~/js/available-courses.js" asp-append-version="true"></script> }

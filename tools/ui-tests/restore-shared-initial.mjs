@@ -1,0 +1,40 @@
+// Restores the original generated shared-initial value in the isolated UI DB.
+// This is cleanup only; it refuses every database except this run's test DB.
+import { execFileSync } from 'node:child_process';
+import { createCipheriv, createDecipheriv, randomBytes, timingSafeEqual } from 'node:crypto';
+import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+
+const runId=process.env.ZU_UI_RUN_ID??'20261101-141731';
+const database=process.env.ZU_TEST_DB??'';
+if(database!==`zu_lms_ui_${runId.replaceAll('-','_')}`) throw new Error('Refusing non-UI database.');
+const root=process.env.ZU_UI_SECRET_ROOT;
+if(!root) throw new Error('ZU_UI_SECRET_ROOT is required.');
+const readJson=p=>JSON.parse(readFileSync(p,'utf8').replace(/^\uFEFF/,''));
+const credentials=readJson(join(root,'credentials.json'));
+const plain=credentials.sharedInitial;
+if(typeof plain!=='string'||plain.length<16) throw new Error('Original test shared-initial value is unavailable.');
+const config=JSON.parse(process.env.ZU_ENC_KEYS??'{}'),keyId=config.current;
+const key=keyId&&config.keys?.[keyId]?Buffer.from(config.keys[keyId],'base64'):null;
+if(!key||key.length!==32) throw new Error('Missing active encryption key.');
+const nonce=randomBytes(12),cipher=createCipheriv('aes-256-gcm',key,nonce,{authTagLength:16});
+cipher.setAAD(Buffer.from('zu-lms-v1','utf8'));
+const bytes=Buffer.concat([cipher.update(Buffer.from(plain.normalize('NFC'))),cipher.final()]);
+const encrypted=`v1:${keyId}:${nonce.toString('base64')}:${bytes.toString('base64')}:${cipher.getAuthTag().toString('base64')}`;
+const q=x=>`'${String(x).replaceAll("'","''")}'`;
+const sqlPath=join(root,'restore-shared-initial.sql');
+mkdirSync(dirname(sqlPath),{recursive:true});
+writeFileSync(sqlPath,`BEGIN;\nUPDATE zulms_rebuild.system_settings SET value=${q(encrypted)},updated_at=now(),updated_by=(SELECT id FROM zulms_rebuild.users WHERE login_name='uiadmin') WHERE setting_key='auth.shared_initial_password';\nCOMMIT;\n`, 'utf8');
+const psql=join(process.env.PG_BIN??'C:\\Program Files\\PostgreSQL\\18\\bin','psql.exe');
+const env={...process.env,PGPASSWORD:process.env.PGPASSWORD??'',PGCLIENTENCODING:'UTF8'};
+execFileSync(psql,['-h',process.env.PGHOST??'127.0.0.1','-p',process.env.PGPORT??'5432','-U',process.env.PGUSER??'postgres','-w','-d',database,'-v','ON_ERROR_STOP=1','-f',sqlPath],{env,encoding:'utf8',stdio:['ignore','ignore','pipe']});
+const stored=execFileSync(psql,['-h',process.env.PGHOST??'127.0.0.1','-p',process.env.PGPORT??'5432','-U',process.env.PGUSER??'postgres','-w','-d',database,'-At','-c',"SELECT value FROM zulms_rebuild.system_settings WHERE setting_key='auth.shared_initial_password'"],{env,encoding:'utf8'}).trim();
+const [version,storedKeyId,nonceText,cipherText,tagText]=stored.split(':');
+if(version!=='v1'||storedKeyId!==keyId) throw new Error('Restored setting format or key ID does not match.');
+const decipher=createDecipheriv('aes-256-gcm',key,Buffer.from(nonceText,'base64'),{authTagLength:16});
+decipher.setAAD(Buffer.from('zu-lms-v1','utf8'));decipher.setAuthTag(Buffer.from(tagText,'base64'));
+const restored=Buffer.concat([decipher.update(Buffer.from(cipherText,'base64')),decipher.final()]);
+const expected=Buffer.from(plain.normalize('NFC'));
+const restoredMatches=restored.length===expected.length&&timingSafeEqual(restored,expected);
+if(!restoredMatches) throw new Error('Restored shared-initial value did not verify.');
+console.log(JSON.stringify({status:'restored',setting:'auth.shared_initial_password',database,restoredMatches,secretsIncluded:false}));

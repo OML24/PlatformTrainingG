@@ -1,0 +1,8 @@
+@page "/instructor/courses/{courseId:long}/participants"
+@{ ViewData["Title"] = "استحقاق المشاركين"; }
+<div class="container py-4" id="instructor-progress-page" data-course-id="@RouteData.Values["courseId"]">
+  <h1>استحقاق المشاركين</h1>
+  <div id="instructor-progress-error" class="alert alert-danger d-none" role="alert"></div>
+  <div class="table-responsive"><table class="table table-striped"><thead><tr><th>المشارك</th><th>الحضور</th><th>النسبة</th><th>الامتحان</th><th>الاستبيان</th><th>الأثر</th><th>الاستحقاق</th><th>الشهادة</th></tr></thead><tbody id="instructor-progress-rows"></tbody></table></div>
+</div>
+@section Scripts { <script src="~/js/instructor-progress.js" asp-append-version="true"></script> }

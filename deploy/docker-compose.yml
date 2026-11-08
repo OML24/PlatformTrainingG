@@ -1,0 +1,43 @@
+# ZU-LMS production stack (11 §1). Copy .env.sample to .env on the server.
+services:
+  db:
+    image: postgres:17
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: zulms
+      POSTGRES_USER: zulms
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - "pgdata:/var/lib/postgresql/data"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U zulms -d zulms"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+    networks:
+      - internal          # no ports published to the outside world
+
+  app:
+    image: ghcr.io/${GHCR_ORG:-zu-edu}/zu-lms:${TAG:-latest}
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file: .env
+    volumes:
+      - "storage:/var/zu-lms/storage"
+      - "logs:/var/zu-lms/logs"
+      - "dataprotection:/home/zulms/.aspnet/DataProtection-Keys"
+    ports:
+      - "127.0.0.1:8080:8080" # reverse proxy only
+    networks:
+      - internal
+
+volumes:
+  pgdata:
+  storage:
+  logs:
+  dataprotection:
+
+networks:
+  internal:

@@ -1,0 +1,23 @@
+@page "/admin/settings"
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<ZuLms.Web.SharedResource> T
+@{
+    ViewData["Title"] = T["Settings.Title"];
+}
+<div class="container py-4" id="settings-page"
+     data-error="@T["Settings.Error"]"
+     data-save="@T["Settings.Save"]"
+     data-true="@T["Settings.True"]"
+     data-false="@T["Settings.False"]"
+     data-secret="@T["Settings.Secret"]"
+     data-min="@T["Settings.Min"]"
+     data-max="@T["Settings.Max"]">
+    <h1>@T["Settings.Title"]</h1>
+    <p class="text-muted">@T["Settings.Help"]</p>
+    <div class="alert alert-danger d-none" id="settings-message" role="alert"></div>
+    <nav id="settings-nav" class="settings-nav mb-4" aria-label="@T["Settings.Title"]"></nav>
+    <div id="settings-groups"></div>
+</div>
+@section Scripts {
+    <script src="~/js/settings.js" asp-append-version="true"></script>
+}

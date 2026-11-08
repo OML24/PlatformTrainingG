@@ -1,0 +1,24 @@
+@{ string view = ViewData["CourseDirectoryView"] as string ?? "Auto"; }
+<div class="container py-4" id="course-directory-page" data-view="@view">
+  <h1>@ViewData["Title"]</h1>
+  <div id="directory-error" class="alert alert-danger d-none" role="alert"></div>
+  <form id="directory-filter" class="card card-body mb-4">
+    <div class="row g-3">
+      <div class="col-md-4"><label for="directory-search" class="form-label">بحث</label><input id="directory-search" class="form-control" type="search" maxlength="100" placeholder="معرّف الدورة أو رقمها أو العنوان أو المحاضر" /></div>
+      <div class="col-md-2"><label for="directory-status" class="form-label">الحالة</label><select id="directory-status" class="form-select"><option value="">الكل</option><option value="Proposed">مقترحة</option><option value="Returned">معادة</option><option value="Rejected">مرفوضة</option><option value="Approved">معتمدة</option><option value="Finished">منتهية</option><option value="Cancelled">ملغية</option></select></div>
+      <div class="col-md-2"><label for="directory-center" class="form-label">الكلية</label><select id="directory-center" class="form-select"><option value="">الكل</option></select></div>
+      <div class="col-md-2"><label for="directory-track" class="form-label">المحور</label><select id="directory-track" class="form-select"><option value="">الكل</option></select></div>
+      <div class="col-md-2"><label for="directory-mode" class="form-label">نمط التنفيذ</label><select id="directory-mode" class="form-select"><option value="">الكل</option><option value="InPerson">وجاهي</option><option value="Online">أونلاين</option><option value="Blended">مدمج</option></select></div>
+      <div class="col-md-3"><label for="directory-from" class="form-label">البداية من</label><input id="directory-from" class="form-control zu-date" type="text" inputmode="numeric" /></div>
+      <div class="col-md-3"><label for="directory-to" class="form-label">البداية إلى</label><input id="directory-to" class="form-control zu-date" type="text" inputmode="numeric" /></div>
+      <div class="col-md-3"><label for="directory-active" class="form-label">التفعيل</label><select id="directory-active" class="form-select"><option value="">الكل</option><option value="true">فعّالة</option><option value="false">معطّلة</option></select></div>
+      <div class="col-md-3"><label for="directory-archived" class="form-label">الأرشفة</label><select id="directory-archived" class="form-select"><option value="">الكل</option><option value="true">مؤرشفة</option><option value="false">غير مؤرشفة</option></select></div>
+    </div>
+    <button class="btn btn-primary mt-3 align-self-end" type="submit"><i class="ti ti-filter" aria-hidden="true"></i> تطبيق المرشحات</button>
+  </form>
+  <div class="table-responsive"><table class="table table-striped" aria-busy="true">
+    <thead><tr><th>المعرّف / الرقم</th><th>العنوان</th><th>الحالة</th><th>الكلية</th><th>المحور</th><th>المحاضر</th><th>البداية</th><th>المشاركون</th><th>الإجراءات</th></tr></thead>
+    <tbody id="directory-rows"><tr><td colspan="9" role="status">جارٍ تحميل الدورات…</td></tr></tbody>
+  </table></div>
+  <div class="d-flex flex-wrap align-items-center gap-2 mt-3"><div class="d-flex align-items-center gap-2"><button id="directory-prev" type="button" class="btn btn-outline-secondary">السابق</button><span id="directory-page-number"></span><button id="directory-next" type="button" class="btn btn-outline-secondary">التالي</button></div><span id="directory-total" class="text-muted ms-auto"></span></div>
+</div>

@@ -1,0 +1,55 @@
+@page "/verify"
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<ZuLms.Web.SharedResource> T
+@{
+    Layout = null;
+    ViewData["Title"] = T["Verify.Title"];
+}
+<!doctype html>
+<html lang="@System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName" dir="@(System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "ar" ? "rtl" : "ltr")">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="~/js/session.js" asp-append-version="true"></script>
+    <title>@ViewData["Title"] — ZU-LMS</title>
+    <link rel="stylesheet" href="@(System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "ar" ? "/lib/bootstrap/dist/css/bootstrap.rtl.min.css" : "/lib/bootstrap/dist/css/bootstrap.min.css")" />
+    <link rel="stylesheet" href="~/css/tajawal.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/auth.css" asp-append-version="true" />
+</head>
+<body>
+    <main class="container py-5 verify-shell" id="verify-page"
+          data-required="@T["Verify.Required"]" data-error="@T["Verify.Error"]"
+          data-not-found="@T["Verify.NotFound"]" data-connection="@T["Verify.Connection"]"
+          data-revoked="@T["Verify.Revoked"]" data-valid="@T["Verify.Valid"]"
+          data-revoked-at="@T["Verify.RevokedAt"]" data-holder="@T["Verify.Holder"]"
+          data-course="@T["Verify.Course"]" data-period="@T["Verify.Period"]"
+          data-hours="@T["Verify.Hours"]" data-instructor="@T["Verify.Instructor"]"
+          data-issued="@T["Verify.Issued"]" data-reference="@T["Verify.Reference"]">
+        <img class="brand-mark" src="~/img/logo.png" alt="" asp-append-version="true" />
+        <h1 class="mb-4 text-center">@T["Verify.Title"]</h1>
+        <div class="card card-body mb-4">
+            <label class="form-label" for="verify-reference">@T["Verify.Reference"]</label>
+            <div class="row g-2">
+                <div class="col-md-9">
+                    <input id="verify-reference" class="form-control" dir="ltr"
+                            autocomplete="off" />
+                </div>
+                <div class="col-md-3">
+                    <button id="verify-submit" class="btn auth-submit w-100" type="button">@T["Verify.Submit"]</button>
+                </div>
+            </div>
+            <div id="verify-message" class="alert d-none mt-3" role="status"></div>
+        </div>
+        <section id="verify-result" class="d-none">
+            <div class="card">
+                <div class="card-header" id="verify-header"></div>
+                <div class="card-body">
+                    <dl class="row mb-0" id="verify-fields"></dl>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="~/js/dates.js" asp-append-version="true"></script>
+    <script src="~/js/verify.js" asp-append-version="true"></script>
+</body>
+</html>

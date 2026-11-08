@@ -1,0 +1,393 @@
+﻿routeId,controlId,label,selector,visibleWhen,enabledWhen,event,requestMethod,requestPath,caseIds,status
+PUB-DENIED,AccessDenied-001,/,/,TBD-runtime,TBD-runtime,navigate,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PUB-CHANGE,ChangePassword-001,change-password-form,#change-password-form,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PUB-CHANGE,ChangePassword-002,"@T[""Auth.ChangePassword.NewPassword""]",#new-password,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PUB-CHANGE,ChangePassword-003,"@T[""Auth.ChangePassword.Confirmation""]",#confirmation,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PUB-FORGOT,ForgotPassword-001,forgot-password-form,#forgot-password-form,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PUB-FORGOT,ForgotPassword-002,"@T[""Auth.Forgot.LoginName""]",#login-name,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PUB-FORGOT,ForgotPassword-003,"@T[""Auth.Forgot.Email""]",#email,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PUB-FORGOT,ForgotPassword-005,/login,/login,TBD-runtime,TBD-runtime,navigate,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PUB-LOGIN,Login-001,login-form,#login-form,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PUB-LOGIN,Login-002,"@T[""Auth.Login.LoginName""]",#login-name,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PUB-LOGIN,Login-003,"@T[""Auth.Login.Password""]",#password,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PUB-LOGIN,Login-004,"@T[""Auth.Login.RememberMe""]",#remember-me,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PUB-LOGIN,Login-006,/forgot-password,/forgot-password,TBD-runtime,TBD-runtime,navigate,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PUB-LOGIN,Login-007,?culture=ar,?culture=ar,TBD-runtime,TBD-runtime,navigate,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PUB-LOGIN,Login-008,?culture=en,?culture=en,TBD-runtime,TBD-runtime,navigate,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PUB-VERIFY,Verify-001,"@T[""Verify.Reference""]",#verify-reference,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PUB-VERIFY,Verify-002,verify-submit,#verify-submit,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ACC-PASSWORD,Password-001,account-password-form,#account-password-form,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ACC-PASSWORD,Password-002,"@T[""Account.Password.Current""]",#current-password,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ACC-PASSWORD,Password-003,"@T[""Auth.ChangePassword.NewPassword""]",#new-password,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ACC-PASSWORD,Password-004,"@T[""Auth.ChangePassword.Confirmation""]",#confirmation,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ACC-SETTINGS,Settings-002,/account/password,/account/password,TBD-runtime,TBD-runtime,navigate,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-AUDIT,Audit-001,audit-filters,#audit-filters,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-AUDIT,Audit-002,بحث في الملخص/الإجراء,#audit-search,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-AUDIT,Audit-003,رمز الإجراء,#audit-action,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-AUDIT,Audit-004,معرّف الدورة,#audit-course,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-AUDIT,Audit-005,النتيجة,#audit-success,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-AUDIT,Audit-006,من,#audit-from,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-AUDIT,Audit-007,إلى,#audit-to,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-AUDIT,Audit-009,audit-export,#audit-export,TBD-runtime,TBD-runtime,navigate,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-CENTERS,Centers-001,بحث,#centers-search,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-CENTERS,Centers-002,centers-prev,#centers-prev,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-CENTERS,Centers-003,centers-next,#centers-next,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-TEMPLATE,CertificateTemplate-001,template-form,#template-form,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-TEMPLATE,CertificateTemplate-002,ملف القالب (PDF بصفحة واحدة),#template-file,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-TEMPLATE,CertificateTemplate-003,مواضع العناصر (layout JSON),#template-layout,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-TEMPLATE,CertificateTemplate-004,template-submit,#template-submit,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-TEMPLATE,CertificateTemplate-005,template-preview,#template-preview,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-001,bulk-send,#bulk-send,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-002,local-open,#local-open,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-003,"@T[""Credentials.Search""]",#credentials-search,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-004,"@T[""Credentials.Filter""]",#credentials-filter,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-005,credentials-prev,#credentials-prev,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-006,credentials-next,#credentials-next,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-007,local-dialog,#local-dialog,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-008,local-form,#local-form,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-009,"@T[""Credentials.Login""]",#local-login,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-010,"@T[""Credentials.Name""]",#local-name-ar,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-011,"@T[""Credentials.NameEn""]",#local-name-en,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-012,"@T[""Credentials.Password""]",#local-password,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-013,"@T[""Credentials.Language""]",#local-language,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-015,local-cancel,#local-cancel,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-016,edit-dialog,#edit-dialog,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-017,edit-form,#edit-form,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-018,"@T[""Credentials.NameEn""]",#edit-name-en,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-019,"@T[""Credentials.EmailOverride""]",#edit-email,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-020,"@T[""Credentials.Language""]",#edit-language,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-021,edit-access,#edit-access,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-022,"@T[""Credentials.AccessReason""]",#edit-access-reason,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-024,edit-cancel,#edit-cancel,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-025,change-dialog,#change-dialog,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-026,change-form,#change-form,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-027,"@T[""Auth.ChangePassword.NewPassword""]",#change-new,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-028,change-required,#change-required,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-030,change-cancel,#change-cancel,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-031,reveal-dialog,#reveal-dialog,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-032,reauth-form,#reauth-form,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-033,"@T[""Credentials.AdminPassword""]",#reauth-password,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-035,"@T[""Credentials.InitialPassword""]",#revealed-initial,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-037,"@T[""Credentials.CurrentPassword""]",#revealed-current,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-039,reveal-close,#reveal-close,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-040,roles-dialog,#roles-dialog,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-041,roles-form,#roles-form,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-042,"@T[""Credentials.Role""]",#role-code,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-043,"@T[""Credentials.Faculty""]",#role-faculty,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-045,roles-close,#roles-close,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-046,permissions-dialog,#permissions-dialog,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-047,"@T[""Credentials.SearchPermission""]",#permissions-search,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USER,Credentials-048,permissions-close,#permissions-close,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-HINTS,Hints-001,hint-form,#hint-form,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-HINTS,Hints-002,"@T[""Hints.FieldKey""]",#hint-field-key,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-HINTS,Hints-003,"@T[""Hints.ContextKey""]",#hint-context-key,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-HINTS,Hints-004,"@T[""Hints.Enabled""]",#hint-enabled,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-HINTS,Hints-005,"@T[""Hints.HintAr""]",#hint-ar,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-HINTS,Hints-006,"@T[""Hints.HintEn""]",#hint-en,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-HINTS,Hints-007,hint-save,#hint-save,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-HINTS,Hints-008,hint-cancel,#hint-cancel,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-HINTS,Hints-009,hints-search,#hints-search,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-HINTS,Hints-010,hints-refresh,#hints-refresh,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-HINTS,Hints-011,hints-prev,#hints-prev,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-HINTS,Hints-012,hints-next,#hints-next,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-LIVE,LiveFeed-001,live-toggle,#live-toggle,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-LIVE,LiveFeed-002,live-category,#live-category,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-POLICY,PasswordPolicy-001,policy-form,#policy-form,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-POLICY,PasswordPolicy-002,"@T[""Policy.MinLength""]",#minLength,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-POLICY,PasswordPolicy-003,"@T[""Policy.MaxLength""]",#maxLength,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-POLICY,PasswordPolicy-004,"@T[""Policy.RotationDays""]",#rotationDays,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-POLICY,PasswordPolicy-005,@field,"[name=""@field""]",TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-POLICY,PasswordPolicy-007,blocked-add-form,#blocked-add-form,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-POLICY,PasswordPolicy-008,"@T[""Policy.Word""]",#blocked-password,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-POLICY,PasswordPolicy-010,"@T[""Policy.Search""]",#blocked-search,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-POLICY,PasswordPolicy-011,blocked-prev,#blocked-prev,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-POLICY,PasswordPolicy-012,blocked-next,#blocked-next,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-ROLES,Roles-001,الدور,#roles-role,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-ROLES,Roles-002,بحث في الصلاحيات,#roles-search,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-ROLES,Roles-003,roles-form,#roles-form,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-ROLES,Roles-004,roles-save,#roles-save,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-SYNC,Sync-001,sync-start,#sync-start,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-SYNC,Sync-002,فلتر السبب,#sync-reason,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-SYNC,Sync-003,sync-prev,#sync-prev,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-SYNC,Sync-004,sync-next,#sync-next,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USERS,Users-001,/admin/credentials,/admin/credentials,TBD-runtime,TBD-runtime,navigate,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USERS,Users-002,external-requests-prev,#external-requests-prev,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USERS,Users-003,external-requests-next,#external-requests-next,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USERS,Users-004,external-request-dialog,#external-request-dialog,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USERS,Users-005,external-request-form,#external-request-form,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USERS,Users-006,رقم الدخول أو اسم المستخدم,#external-request-login,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USERS,Users-007,external-request-suggest,#external-request-suggest,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USERS,Users-008,كلمة المرور,#external-request-password,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USERS,Users-009,external-request-submit,#external-request-submit,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-USERS,Users-010,external-request-cancel,#external-request-cancel,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+MEM-AVAILABLE,Available-001,available-courses-prev,#available-courses-prev,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+MEM-AVAILABLE,Available-002,available-courses-next,#available-courses-next,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ACT-025,CancelRequest-001,cancel-request-form,#cancel-request-form,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ACT-025,CancelRequest-002,سبب الإلغاء,#cancel-request-reason,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ACT-025,CancelRequest-003,كتاب رسمي موقّع (PDF),#cancel-request-letter,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ACT-025,CancelRequest-004,cancel-request-submit,#cancel-request-submit,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-001,course-details-deactivate-dialog,#course-details-deactivate-dialog,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-002,course-details-deactivate-form,#course-details-deactivate-form,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-003,السبب,#course-details-deactivate-reason,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-004,certificateAction,"[name=""certificateAction""]",TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-005,certificateAction,"[name=""certificateAction""]",TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-007,course-details-deactivate-cancel,#course-details-deactivate-cancel,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-008,course-details-edit-dialog,#course-details-edit-dialog,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-009,course-details-edit-form,#course-details-edit-form,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-010,titleAr,"[name=""titleAr""]",TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-011,titleEn,"[name=""titleEn""]",TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-012,objectivesAr,"[name=""objectivesAr""]",TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-013,objectivesEn,"[name=""objectivesEn""]",TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-014,targetAudienceAr,"[name=""targetAudienceAr""]",TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-015,targetAudienceEn,"[name=""targetAudienceEn""]",TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-016,totalHours,"[name=""totalHours""]",TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-017,plannedStartDate,"[name=""plannedStartDate""]",TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-018,plannedEndDate,"[name=""plannedEndDate""]",TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-019,maxParticipants,"[name=""maxParticipants""]",TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-020,trackId,"[name=""trackId""]",TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-021,deliveryMode,"[name=""deliveryMode""]",TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-022,audienceType,"[name=""audienceType""]",TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-023,targetCenterId,"[name=""targetCenterId""]",TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-024,registrationDeadline,"[name=""registrationDeadline""]",TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-026,course-details-edit-cancel,#course-details-edit-cancel,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-027,course-details-force-dialog,#course-details-force-dialog,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-028,course-details-force-form,#course-details-force-form,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-029,الحالة الجديدة,#course-details-force-target,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-030,سبب التغيير,#course-details-force-reason,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-031,course-details-force-confirm,#course-details-force-confirm,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-033,course-details-force-cancel,#course-details-force-cancel,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-034,course-details-threshold-dialog,#course-details-threshold-dialog,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-035,course-details-threshold-form,#course-details-threshold-form,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-036,النسبة المئوية,#course-details-threshold-percent,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-038,course-details-threshold-cancel,#course-details-threshold-cancel,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-039,course-details-eval-period-dialog,#course-details-eval-period-dialog,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-040,course-details-eval-period-form,#course-details-eval-period-form,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-041,التاريخ الجديد,#course-details-eval-period-date,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-043,course-details-eval-period-cancel,#course-details-eval-period-cancel,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-044,course-details-instructor-dialog,#course-details-instructor-dialog,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-045,course-details-instructor-form,#course-details-instructor-form,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-046,choice,"[name=""choice""]",TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-047,search,"[name=""search""]",TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-048,userId,"[name=""userId""]",TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-049,nameAr,"[name=""nameAr""]",TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-050,nameEn,"[name=""nameEn""]",TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-051,organizationAr,"[name=""organizationAr""]",TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-052,organizationEn,"[name=""organizationEn""]",TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ADM-COURSE,Details-054,course-details-instructor-cancel,#course-details-instructor-cancel,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ACT-027,Participants-001,ابحث بالاسم أو رقم الدخول,#participants-search,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+ACT-027,Participants-002,participants-add,#participants-add,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+DEA-MEMBERS,Members-001,dm-filters,#dm-filters,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+DEA-MEMBERS,Members-002,dm-search,#dm-search,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+DEA-NEEDS,Needs-001,needs-form,#needs-form,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+DEA-NEEDS,Needs-002,العنوان (عربي),#needs-title,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+DEA-NEEDS,Needs-003,العنوان (إنجليزي),#needs-title-en,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+DEA-NEEDS,Needs-004,الوصف,#needs-description,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+DEA-NEEDS,Needs-005,المحور,#needs-track,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+DEA-NEEDS,Needs-006,عدد المشاركين المتوقع,#needs-participants,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+DEA-NEEDS,Needs-007,الإطار الزمني المفضل,#needs-timeframe,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+DEA-NEEDS,Needs-008,طلب محاضر من كلية أخرى (اختياري),#needs-instructor,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+DEA-NEEDS,Needs-009,ملاحظة للمحاضر المطلوب,#needs-instructor-note,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+DEA-NEEDS,Needs-010,الكتاب الرسمي (PDF),#needs-letter,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+DEA-NEEDS,Needs-011,needs-submit,#needs-submit,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+DEA-PROPOSE,Propose-001,proposal-form,#proposal-form,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+DEA-PROPOSE,Propose-002,الكلية,#proposal-center,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+DEA-PROPOSE,Propose-003,المحور,#proposal-track,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+DEA-PROPOSE,Propose-004,العنوان بالعربية,#proposal-title-ar,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+DEA-PROPOSE,Propose-005,العنوان بالإنجليزية,#proposal-title-en,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+DEA-PROPOSE,Propose-006,نمط التنفيذ,#proposal-mode,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+DEA-PROPOSE,Propose-007,الساعات,#proposal-hours,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+DEA-PROPOSE,Propose-008,نوع المشاركين,#proposal-audience,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+DEA-PROPOSE,Propose-009,الحد الأعلى للمشاركين,#proposal-max,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+DEA-PROPOSE,Propose-010,الأهداف بالعربية,#proposal-objectives-ar,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+DEA-PROPOSE,Propose-011,الأهداف بالإنجليزية,#proposal-objectives-en,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+DEA-PROPOSE,Propose-012,الفئة المستهدفة بالعربية,#proposal-target-ar,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+DEA-PROPOSE,Propose-013,الفئة المستهدفة بالإنجليزية,#proposal-target-en,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+DEA-PROPOSE,Propose-014,proposal-exam,#proposal-exam,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+DEA-PROPOSE,Propose-015,المحاضر من أعضاء كليتي,#proposal-member-search,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+DEA-PROPOSE,Propose-016,proposal-member,#proposal-member,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+DEA-PROPOSE,Propose-017,proposal-submit,#proposal-submit,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+DEA-PROPOSE,Propose-018,proposal-cancel-edit,#proposal-cancel-edit,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+DEA-PROPOSE,Propose-019,my-proposals-prev,#my-proposals-prev,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+DEA-PROPOSE,Propose-020,my-proposals-next,#my-proposals-next,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PUB-ERROR,Error-001,/,/,TBD-runtime,TBD-runtime,navigate,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+INS-IMPACT,Impact-002,iimpact-course,#iimpact-course,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+INS-IMPACT,Impact-003,iimpact-load,#iimpact-load,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+INS-LECT,Lectures-001,lectures-form,#lectures-form,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+INS-LECT,Lectures-002,العنوان,#lectures-title,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+INS-LECT,Lectures-003,النمط,#lectures-mode,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+INS-LECT,Lectures-004,البداية بتوقيت عمّان,#lectures-start,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+INS-LECT,Lectures-005,النهاية بتوقيت عمّان,#lectures-end,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+INS-LECT,Lectures-006,المكان,#lectures-location,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+INS-LECT,Lectures-007,رابط Teams الآمن,#lectures-teams,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+INS-LECT,Lectures-008,ملاحظات,#lectures-notes,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+INS-LECT,Lectures-009,lectures-submit,#lectures-submit,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+INS-LECT,Lectures-010,lectures-cancel-edit,#lectures-cancel-edit,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+INS-LECT,Lectures-011,lectures-finish,#lectures-finish,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+INS-LECT,Lectures-012,سبب التعديل (اختياري),#lectures-roster-reason,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+INS-LECT,Lectures-013,lectures-materials-form,#lectures-materials-form,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+INS-LECT,Lectures-014,ملف المادة,#lectures-materials-file,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+INS-LECT,Lectures-015,عنوان المادة (اختياري),#lectures-materials-label,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+INS-LECT,Lectures-017,lectures-exam-form,#lectures-exam-form,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+INS-LECT,Lectures-018,lectures-exam-name,#lectures-exam-name,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+MEM-DASH,Dashboard-001,/courses/available,/courses/available,TBD-runtime,TBD-runtime,navigate,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+MEM-DASH,Dashboard-002,/account/password,/account/password,TBD-runtime,TBD-runtime,navigate,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+MEM-CODE,EnterCode-001,ec-form,#ec-form,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+MEM-CODE,EnterCode-002,الدورة,#ec-course,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+MEM-CODE,EnterCode-003,المحاضرة,#ec-lecture,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+MEM-CODE,EnterCode-004,الكود,#ec-code,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+MEM-CODE,EnterCode-005,ec-submit,#ec-submit,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+MEM-CODE,EnterCode-006,ec-prev,#ec-prev,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+MEM-CODE,EnterCode-007,ec-next,#ec-next,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+MEM-IMPACT,Impact-001,impact-form,#impact-form,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+MEM-IMPACT,Impact-002,الدورة,#impact-course,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+MEM-IMPACT,Impact-003,نوع الأثر,#impact-type,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+MEM-IMPACT,Impact-004,الملف (PDF/DOCX),#impact-file,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+MEM-IMPACT,Impact-005,impact-submit,#impact-submit,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+MEM-PROCERTS,ProCerts-001,pc-form,#pc-form,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+MEM-PROCERTS,ProCerts-002,اسم الشهادة,#pc-name,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+MEM-PROCERTS,ProCerts-003,الاسم بالعربية (اختياري),#pc-name-ar,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+MEM-PROCERTS,ProCerts-004,الجهة المانحة,#pc-issuer,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+MEM-PROCERTS,ProCerts-005,موقع الجهة (https),#pc-issuer-url,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+MEM-PROCERTS,ProCerts-006,التصنيف,#pc-category,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+MEM-PROCERTS,ProCerts-007,تاريخ الإصدار,#pc-issued,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+MEM-PROCERTS,ProCerts-008,تاريخ الانتهاء (اختياري),#pc-expiry,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+MEM-PROCERTS,ProCerts-009,رمز الشهادة (Credential ID),#pc-code,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+MEM-PROCERTS,ProCerts-010,رابط التحقق,#pc-verify,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+MEM-PROCERTS,ProCerts-011,الوصف (اختياري),#pc-description,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+MEM-PROCERTS,ProCerts-012,ملف الشهادة (PDF/PPTX),#pc-file,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+MEM-PROCERTS,ProCerts-013,pc-submit,#pc-submit,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+MEM-TEACH,Teaching-001,/instructor/courses,/instructor/courses,TBD-runtime,TBD-runtime,navigate,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-CANCEL,Cancellations-001,cancellations-direct-form,#cancellations-direct-form,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-CANCEL,Cancellations-002,معرّف الدورة المعتمدة,#cancellations-course-id,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-CANCEL,Cancellations-003,سبب الإلغاء,#cancellations-reason,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-CANCEL,Cancellations-004,كتاب رسمي موقّع (PDF),#cancellations-letter,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-CANCEL,Cancellations-005,cancellations-direct-submit,#cancellations-direct-submit,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-CERTS,Certificates-001,certs-filters,#certs-filters,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-CERTS,Certificates-002,certs-search,#certs-search,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-CERTS,Certificates-003,certs-course,#certs-course,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-CERTS,Certificates-004,certs-status,#certs-status,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-CERTS,Certificates-006,certs-issue-all,#certs-issue-all,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-CERTS,Certificates-007,certs-issue-course,#certs-issue-course,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-EVALFORM,EvalForm-001,عنوان النسخة (عربي),#eval-title,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-EVALFORM,EvalForm-002,eval-save,#eval-save,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-EVALFORM,EvalForm-003,eval-publish,#eval-publish,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-EVALFORM,EvalForm-004,eval-add-question,#eval-add-question,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-EVALS,Evaluations-001,results-filters,#results-filters,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-EVALS,Evaluations-002,results-course,#results-course,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-EVALS,Evaluations-003,التاريخ الجديد,#results-extend,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-EVALS,Evaluations-005,results-extend-submit,#results-extend-submit,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-EVALS,Evaluations-006,aggregate-filters,#aggregate-filters,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-EVALS,Evaluations-007,معرّف الدورة (اختياري),#aggregate-course,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-EVALS,Evaluations-008,الكلية,#aggregate-center,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-EVALS,Evaluations-009,المحور,#aggregate-track,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-EVALS,Evaluations-010,نسخة النموذج,#aggregate-version,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-EVALS,Evaluations-011,من تاريخ الدورة,#aggregate-from,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-EVALS,Evaluations-012,إلى تاريخ الدورة,#aggregate-to,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-EXT,ExternalInstructors-001,/quality/courses/new,/quality/courses/new,TBD-runtime,TBD-runtime,navigate,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-EXT,ExternalInstructors-002,بحث بالاسم أو رقم الدخول,#quality-external-search,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-NEEDS,Needs-001,qneeds-filters,#qneeds-filters,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-NEEDS,Needs-002,qneeds-search,#qneeds-search,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-NEEDS,Needs-003,qneeds-status,#qneeds-status,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-PROCERTS,ProCerts-001,#,#,TBD-runtime,TBD-runtime,navigate,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-PROCERTS,ProCerts-002,#,#,TBD-runtime,TBD-runtime,navigate,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-PROCERTS,ProCerts-003,qpc-filters,#qpc-filters,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-PROCERTS,ProCerts-004,qpc-search,#qpc-search,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-PROCERTS,ProCerts-005,qpc-category,#qpc-category,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-PROSTATS,ProCertStats-001,ps-filters,#ps-filters,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-PROSTATS,ProCertStats-002,ps-faculty,#ps-faculty,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-PROSTATS,ProCertStats-003,ps-category,#ps-category,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-PROSTATS,ProCertStats-004,ps-issuer,#ps-issuer,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-PROSTATS,ProCertStats-005,من تاريخ,#ps-from,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-PROSTATS,ProCertStats-007,ps-export,#ps-export,TBD-runtime,TBD-runtime,navigate,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-PROPOSALS,Proposals-001,quality-proposals-prev,#quality-proposals-prev,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-PROPOSALS,Proposals-002,quality-proposals-next,#quality-proposals-next,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-PROPOSALS,Proposals-003,quality-decision-form,#quality-decision-form,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-PROPOSALS,Proposals-004,نوع المشاركين,#quality-audience,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-PROPOSALS,Proposals-005,الكلية المستهدفة,#quality-target-center,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-PROPOSALS,Proposals-006,الحد الأعلى للمشاركين,#quality-max,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-PROPOSALS,Proposals-007,quality-exam,#quality-exam,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-PROPOSALS,Proposals-008,قرار حساب المدرب الخارجي,#quality-external-decision,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-PROPOSALS,Proposals-009,ابحث عن مدرب مسجّل,#quality-external-search,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-PROPOSALS,Proposals-010,quality-external-account,#quality-external-account,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-PROPOSALS,Proposals-011,ملاحظات القرار / سبب الإعادة أو الرفض,#quality-notes,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-TRACKS,Tracks-001,tracks-form,#tracks-form,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-TRACKS,Tracks-002,اسم المحور (عربي),#tracks-name,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-TRACKS,Tracks-003,الاسم (إنجليزي),#tracks-name-en,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-TRACKS,Tracks-004,الترتيب,#tracks-sort,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+QUA-TRACKS,Tracks-005,tracks-submit,#tracks-submit,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_CourseDirectory-001,directory-filter,#directory-filter,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_CourseDirectory-002,بحث بالرقم أو العنوان أو المحاضر,#directory-search,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_CourseDirectory-003,الحالة,#directory-status,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_CourseDirectory-004,الكلية,#directory-center,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_CourseDirectory-005,المحور,#directory-track,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_CourseDirectory-006,نمط التنفيذ,#directory-mode,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_CourseDirectory-007,البداية من,#directory-from,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_CourseDirectory-008,البداية إلى,#directory-to,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_CourseDirectory-009,التفعيل,#directory-active,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_CourseDirectory-010,الأرشفة,#directory-archived,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_CourseDirectory-012,directory-prev,#directory-prev,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_CourseDirectory-013,directory-next,#directory-next,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_DateTimePicker-001,@Model.Label,#@Model.Id,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_DirectCourseForm-001,direct-form,#direct-form,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_DirectCourseForm-002,العنوان بالعربية,#d-title-ar,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_DirectCourseForm-003,العنوان بالإنجليزية,#d-title-en,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_DirectCourseForm-004,المحور,#d-track,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_DirectCourseForm-005,الكلية المعنية (اختياري),#d-related,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_DirectCourseForm-006,نمط التنفيذ,#d-mode,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_DirectCourseForm-007,الأهداف بالعربية,#d-objectives-ar,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_DirectCourseForm-008,الأهداف بالإنجليزية,#d-objectives-en,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_DirectCourseForm-009,الفئة المستهدفة بالعربية,#d-target-ar,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_DirectCourseForm-010,الفئة المستهدفة بالإنجليزية,#d-target-en,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_DirectCourseForm-011,الساعات,#d-hours,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_DirectCourseForm-012,البداية,#d-start,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_DirectCourseForm-013,النهاية,#d-end,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_DirectCourseForm-014,نهاية التقييم,#d-evaluation,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_DirectCourseForm-015,نوع المشاركين,#d-audience,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_DirectCourseForm-016,كلية المشاركين,#d-target-center,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_DirectCourseForm-017,آخر موعد للتسجيل,#d-deadline,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_DirectCourseForm-018,الحد الأعلى للمشاركين,#d-max,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_DirectCourseForm-019,d-exam,#d-exam,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_DirectCourseForm-020,d-historical,#d-historical,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_DirectCourseForm-021,ملاحظات الدورة السابقة,#d-historical-notes,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_DirectCourseForm-022,طريقة تحديد المحاضر,#d-choice,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_DirectCourseForm-023,بحث عن المحاضر,#d-search,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_DirectCourseForm-024,d-user,#d-user,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_DirectCourseForm-025,اسم المدرب بالعربية,#d-name-ar,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_DirectCourseForm-026,اسم المدرب بالإنجليزية,#d-name-en,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_DirectCourseForm-027,الجهة بالعربية,#d-org-ar,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_DirectCourseForm-028,الجهة بالإنجليزية,#d-org-en,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_DirectCourseForm-029,البريد الإلكتروني,#d-email,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_DirectCourseForm-030,كتاب مجلس الكلية (PDF),#d-letter,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_DirectCourseForm-031,السيرة الذاتية (PDF أو DOCX),#d-cv,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_DirectCourseForm-032,d-submit,#d-submit,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_Layout-001,/,/,TBD-runtime,TBD-runtime,navigate,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_Layout-002,@item.Href,@item.Href,TBD-runtime,TBD-runtime,navigate,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_Layout-003,/account/settings,/account/settings,TBD-runtime,TBD-runtime,navigate,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_Layout-004,/account/password,/account/password,TBD-runtime,TBD-runtime,navigate,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_Layout-005,@T[,#sidebar-toggle,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_Layout-006,@T[,#notifications-bell,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_Layout-008,logout-button,#logout-button,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_RoleSwitcher-001,"@T[""RoleSwitcher.Label""]",#role-switcher-select,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_StatsDashboard-001,stats-filters,#stats-filters,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_StatsDashboard-002,الكلية,#stats-center,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_StatsDashboard-003,الشخص,#stats-user,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_StatsDashboard-004,من تاريخ,#stats-from,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_StatsDashboard-005,إلى تاريخ,#stats-to,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+PARTIAL,_StatsDashboard-007,مسح الفلاتر,#stats-reset,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+SHR-DIR,Directory-001,directory-filter-retry,#directory-filter-retry,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+SHR-DIR,Directory-002,directory-filters,#directory-filters,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+SHR-DIR,Directory-003,"@T[""Directory.Search""]",#directory-search,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+SHR-DIR,Directory-004,"@T[""Directory.Faculty""]",#directory-center,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+SHR-DIR,Directory-006,directory-prev,#directory-prev,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+SHR-DIR,Directory-007,directory-next,#directory-next,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+SHR-PROFILE,Profile-001,profile-retry,#profile-retry,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+VAULT,Index-001,vault-form,#vault-form,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+VAULT,Index-002,نوع الوثيقة,#vault-kind,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+VAULT,Index-003,العنوان,#vault-title,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+VAULT,Index-004,الدورة (اختياري),#vault-course,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+VAULT,Index-005,الكلية (اختياري),#vault-center,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+VAULT,Index-006,الملف (PDF),#vault-file,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+VAULT,Index-007,vault-submit,#vault-submit,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+VAULT,Index-008,vault-filters,#vault-filters,TBD-runtime,TBD-runtime,submit,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+VAULT,Index-009,vault-search,#vault-search,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED
+VAULT,Index-010,vault-type,#vault-type,TBD-runtime,TBD-runtime,click/change,TBD-JS,TBD-JS,TBD,STATIC-INVENTORIED

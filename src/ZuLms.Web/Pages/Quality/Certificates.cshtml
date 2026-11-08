@@ -1,0 +1,52 @@
+@page "/quality/certificates"
+@using System.Security.Claims
+@using ZuLms.Domain.Enums
+@inject ZuLms.Application.Common.Abstractions.IPermissionService Permissions
+@{
+  ViewData["Title"] = "شهادات الدورات";
+  bool isAdmin = long.TryParse(User.FindFirstValue(ClaimTypes.NameIdentifier), out long actorId) &&
+    (await Permissions.GetEffectiveAsync(actorId, HttpContext.RequestAborted)).Roles.Contains(RoleCode.Admin);
+}
+<div class="container py-4" id="quality-certificates-page">
+  <h1>شهادات الدورات</h1>
+  <div id="certs-error" class="alert alert-danger d-none" role="alert"></div>
+  <div id="certs-success" class="alert alert-success d-none" role="status"></div>
+
+  @if (isAdmin) { <section class="card card-body mb-4">
+    <h2 class="h5">إصدار استثنائي من المدير</h2>
+    <p class="text-muted">يضيف العضو للدورة عند الحاجة، ويسجلها لديه كمكتملة، ويعتبر الحضور والامتحان وبقية متطلبات الاستحقاق مستوفاة. تظهر الدورة والشهادة في سجله وملفه الشخصي. اختر هل يُعفى من تقييم الدورة أم يجب أن يكون قد قيّمها. قياس الأثر اختياري.</p>
+    <div class="row g-2 align-items-end">
+      <div class="col-md-3"><label for="certs-force-course" class="form-label">معرّف الدورة الظاهر (#)</label><input id="certs-force-course" class="form-control" type="number" min="1" inputmode="numeric"></div>
+      <div class="col-md-3"><label for="certs-force-user" class="form-label">الرقم الوظيفي الجامعي</label><input id="certs-force-user" class="form-control" type="number" min="1" inputmode="numeric"></div>
+      <div class="col-md-3"><label for="certs-force-evaluation" class="form-label">التقييم</label><select id="certs-force-evaluation" class="form-select"><option value="exempt">إعفاء من التقييم</option><option value="required">إلزام بالتقييم</option></select></div>
+      <div class="col-md-3"><button id="certs-force-issue" class="btn btn-warning w-100" type="button">إصدار الشهادة استثنائياً</button></div>
+    </div>
+  </section> }
+
+  <form id="certs-filters" class="row g-2 mb-3">
+    <div class="col-md-4"><input id="certs-search" class="form-control" placeholder="الرقم المرجعي، اسم الحاصل، الدورة" /></div>
+    <div class="col-md-3"><input id="certs-course" class="form-control" type="number" min="1" placeholder="معرّف الدورة" /></div>
+    <div class="col-md-3">
+      <select id="certs-status" class="form-select">
+        <option value="">كل الحالات</option>
+        <option value="Issued">سارية</option>
+        <option value="Revoked">ملغاة</option>
+      </select>
+    </div>
+    <div class="col-md-2"><button class="btn btn-outline-primary w-100" type="submit">بحث</button></div>
+  </form>
+
+  <div class="d-flex flex-wrap gap-2 mb-3">
+    <button id="certs-issue-all" class="btn btn-success" type="button">إصدار الشهادات المعلّقة (كل الدورات)</button>
+    <button id="certs-issue-course" class="btn btn-outline-success" type="button">إصدار المعلّقة لدورة محددة</button>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead><tr><th>الرقم المرجعي</th><th>الدورة</th><th>الحاصل</th><th>الحالة</th><th>الإصدار</th><th>إجراء</th></tr></thead>
+      <tbody id="certs-rows"></tbody>
+    </table>
+  </div>
+  <nav><ul class="pagination" id="certs-pager"></ul></nav>
+</div>
+@section Scripts { <script src="~/js/quality-certificates.js" asp-append-version="true"></script> }

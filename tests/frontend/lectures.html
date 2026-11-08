@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lecture form — SIMULATED-UI</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/assets/lib/bootstrap/dist/css/bootstrap.rtl.min.css">
+  <link rel="stylesheet" href="/assets/lib/daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="/assets/css/tajawal.css">
+  <link rel="stylesheet" href="/assets/css/prototype.css">
+  <link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body data-picker-clear="مسح التاريخ" data-picker-invalid="أدخل تاريخاً صحيحاً بالصيغة المعروضة.">
+  <main class="container py-4">
+    <p class="alert alert-warning">SIMULATED-UI: actual lecture markup/scripts, fake API. No application data is changed.</p>
+    <button id="run-lecture-checks" type="button" class="btn btn-primary">Run lecture checks</button>
+    <ol id="lecture-check-results" aria-live="polite"></ol>
+    <!-- LECTURE_PAGE -->
+  </main>
+  <script src="/assets/lib/jquery/dist/jquery.min.js"></script>
+  <script src="/assets/lib/moment/moment.min.js"></script>
+  <script src="/assets/lib/daterangepicker/daterangepicker.js"></script>
+  <script src="lecture-fixture.js"></script>
+  <script src="/assets/js/dates.js"></script>
+  <script src="/assets/js/pickers.js"></script>
+  <script src="/assets/js/course-lectures.js"></script>
+  <script src="lecture-regression.js"></script>
+</body>
+</html>

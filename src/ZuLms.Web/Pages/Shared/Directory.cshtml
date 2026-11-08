@@ -1,0 +1,26 @@
+@page "/shared/directory"
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<ZuLms.Web.SharedResource> T
+@{ ViewData["Title"] = T["Directory.Title"]; }
+<div class="container py-4" id="directory-page" data-all="@T["Directory.All"]"
+     data-open="@T["Directory.Open"]" data-empty="@T["Directory.Empty"]"
+     data-error="@T["Directory.Error"]" data-loading="@T["Directory.Loading"]" data-retry="@T["Directory.Retry"]">
+  <h1>@T["Directory.Title"]</h1>
+  <div id="directory-error" class="alert alert-danger d-none" role="alert"></div>
+  <div id="directory-filter-error" class="alert alert-warning d-none" role="alert">
+    @T["Directory.FilterError"]
+    <button id="directory-filter-retry" class="btn btn-sm btn-outline-secondary" type="button">@T["Directory.Retry"]</button>
+  </div>
+  <form id="directory-filters" class="card card-body row g-2 mb-4">
+    <div class="col-md-6"><label for="directory-search" class="form-label">@T["Directory.Search"]</label><input id="directory-search" class="form-control" type="search" maxlength="100" /></div>
+    <div class="col-md-3"><label for="directory-center" class="form-label">@T["Directory.Faculty"]</label><select id="directory-center" class="form-select"><option value="">@T["Directory.All"]</option></select></div>
+    <div class="col-md-2 align-self-end"><button class="btn btn-primary w-100" type="submit">@T["Directory.Submit"]</button></div>
+  </form>
+  <div id="directory-cards" class="row g-3" aria-live="polite" aria-busy="true"></div>
+  <nav class="d-flex gap-2 align-items-center mt-3" aria-label="@T["Directory.Pages"]">
+    <button id="directory-prev" class="btn btn-outline-secondary" type="button">@T["Directory.Previous"]</button>
+    <span id="directory-page-number"></span>
+    <button id="directory-next" class="btn btn-outline-secondary" type="button">@T["Directory.Next"]</button>
+  </nav>
+</div>
+@section Scripts { <script src="~/js/directory.js" asp-append-version="true"></script> }

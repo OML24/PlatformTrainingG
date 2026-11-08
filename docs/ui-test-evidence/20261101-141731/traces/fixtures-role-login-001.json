@@ -1,0 +1,33 @@
+{
+  "executedAt": "2026-11-02",
+  "baseUrl": "http://127.0.0.1:5375",
+  "database": "zu_lms_ui_20261101_141731",
+  "credentialsIncluded": false,
+  "fixtures": {
+    "accounts": 16,
+    "faculties": 2,
+    "derivedInstructorAssignments": 2,
+    "manualInstructorRoles": 0,
+    "orphanEmployeeUsers": 0
+  },
+  "uiChecks": [
+    { "fixture": "A2", "status": "PASS", "destination": "/admin/dashboard", "consoleErrors": 0 },
+    { "fixture": "Q1", "status": "PASS", "destination": "/quality/dashboard", "explicitRoles": ["Quality", "Member"] },
+    { "fixture": "D1", "status": "PASS", "destination": "/dean/dashboard", "visibleScope": "F1", "otherScopeVisible": false, "consoleErrors": 0, "httpErrors": 0 },
+    { "fixture": "D2", "status": "PASS", "destination": "/dean/dashboard", "visibleScope": "F2", "otherScopeVisible": false, "consoleErrors": 0, "httpErrors": 0 },
+    { "fixture": "M1", "status": "PASS", "destination": "/member/dashboard", "consoleErrors": 0, "httpErrors": 0 },
+    { "fixture": "I1", "status": "PASS", "destination": "/instructor/courses", "derivedRoleVisible": "Instructor", "ownCourseRows": 1, "otherInstructorCourseVisible": false, "consoleErrors": 0, "httpErrors": 0 },
+    { "fixture": "I2", "status": "PASS", "destination": "/member/dashboard", "derivedRoleVisible": "Instructor", "consoleErrors": 0, "httpErrors": 0 },
+    { "fixture": "O1", "status": "PASS", "destination": "/member/dashboard", "overrides": { "allow": "audit.export", "deny": "certificates.view.own", "inherit": "profile.view.own" } },
+    { "fixture": "EMPTY", "status": "PASS", "destination": "/member/dashboard", "consoleErrors": 0, "httpErrors": 0 },
+    { "fixture": "N1", "status": "PASS", "credentialType": "personal-initial", "destination": "/change-password" },
+    { "fixture": "N2", "status": "PASS", "credentialType": "shared-initial", "destination": "/change-password" },
+    { "fixture": "X1", "status": "PASS", "expectedResult": "AUTH_DISABLED", "httpStatus": 400 },
+    { "fixture": "X2", "status": "PASS", "expectedResult": "AUTH_NOT_ELIGIBLE", "httpStatus": 400 }
+  ],
+  "notes": [
+    "Every tested role used a distinct zu_session browser context.",
+    "Expected 400 login responses for X1 and X2 produced browser resource-error console entries; no unexpected application exception was observed.",
+    "Passwords, cookies, access tokens and session identifiers are omitted."
+  ]
+}

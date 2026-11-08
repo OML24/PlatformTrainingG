@@ -1,0 +1,61 @@
+﻿jsFile,literalElementIds,events,literalRequests
+wwwroot/js/admin-audit.js,audit-${name};audit-page,click;submit,GET /api/v1/audit?${params}
+wwwroot/js/admin-dashboard.js,admin-dashboard-page;dashboard-error,,
+wwwroot/js/admin-live-feed.js,live-category;live-feed-page;live-list;live-toggle,click,GET /api/v1/audit/live?afterId=${lastId}
+wwwroot/js/admin-needs.js,admin-needs-page;aneeds-error;aneeds-rows;aneeds-success,click,GET /api/v1/needs;POST /api/v1/needs/${row.id}/deactivate
+wwwroot/js/admin-roles.js,roles-${id};roles-page,change;input;submit,
+wwwroot/js/api.js,zu-toasts,hidden.bs.toast,
+wwwroot/js/auth.js,auth-message;remember-me,submit,
+wwwroot/js/available-courses.js,available-courses-error;available-courses-next;available-courses-page;available-courses-page-number;available-courses-prev;available-courses-rows,click,
+wwwroot/js/cancel-request.js,cancel-request-${name};cancel-request-page,submit,POST /api/v1/courses/${id}/cancellation/request
+wwwroot/js/centers-admin.js,centers-error;centers-next;centers-page;centers-page-number;centers-prev;centers-rows;centers-search,click;input,
+wwwroot/js/certificate-template.js,certificate-template-page;template-current-info;template-error;template-file;template-form;template-layout;template-preview;template-submit;template-success,click;submit,GET /api/v1/certificate-template;POST /api/v1/certificate-template
+wwwroot/js/course-details.js,course-details-${name};course-details-page,change;click;input;keydown;submit,GET /api/v1/courses/${id}/admin/deactivation-preview;GET /api/v1/courses/${id}/evaluation;GET /api/v1/courses/${id}/impact;GET /api/v1/courses/${id}/instructor/search?external=${external}&search=${search};GET /api/v1/courses/${id}/lectures;GET /api/v1/courses/${id}/progress;GET /api/v1/courses/directory/${id}?view=${view};GET /api/v1/courses/directory/lookups?view=All;GET /api/v1/evaluation/results/${id};GET /api/v1/lectures/${row.id}/materials;POST /api/v1/courses/${id}/admin/${name};POST /api/v1/courses/${id}/evaluation;POST /api/v1/courses/${id}/force-status;POST /api/v1/courses/${id}/impact;POST /api/v1/files;POST /api/v1/lectures/${row.id}/attendance/enter-code;PUT /api/v1/courses/${id}/attendance-threshold;PUT /api/v1/courses/${id}/details;PUT /api/v1/courses/${id}/exam-requirement;PUT /api/v1/courses/${id}/instructor;PUT /api/v1/evaluation/period/${id}
+wwwroot/js/course-directory.js,course-directory-page;directory-${name},click;submit,GET /api/v1/courses/directory/lookups?view=${view};GET /api/v1/courses/directory?${params()}
+wwwroot/js/course-lectures.js,lectures-${name};lectures-page,change;click;input;submit,GET /api/v1/courses/${id}/exam;GET /api/v1/courses/${id}/lectures;GET /api/v1/courses/directory/${id}?view=Auto;GET /api/v1/lectures/${lecture.id}/attendance/roster;GET /api/v1/lectures/${lecture.id}/materials;POST /api/v1/courses/${id}/exam;POST /api/v1/courses/${id}/finish;POST /api/v1/courses/${id}/lectures;POST /api/v1/files;POST /api/v1/lectures/${materialLecture.id}/materials;POST /api/v1/lectures/${row.id}/activate-code;POST /api/v1/lectures/${row.id}/deactivate;PUT /api/v1/courses/${id}/exam/participants/${row.participantId};PUT /api/v1/lectures/${editingId};PUT /api/v1/lectures/${lecture.id}/attendance/roster/${row.participantId}
+wwwroot/js/course-participants.js,participants-${key};participants-page,change;click;input,
+wwwroot/js/credentials-directory.js,assigned-roles;bulk-send;change-cancel;change-dialog;change-form;change-required;credentials-filter;credentials-message;credentials-next;credentials-page;credentials-page-number;credentials-prev;credentials-rows;credentials-search;edit-cancel;edit-dialog;edit-form;local-cancel;local-dialog;local-form;local-open;permissions-close;permissions-dialog;permissions-rows;permissions-search;reauth-form;reauth-password;reveal-close;reveal-dialog;revealed-current;revealed-initial;revealed-values;roles-close;roles-dialog;roles-form,change;click;close;input;submit,
+wwwroot/js/dates.js,,,
+wwwroot/js/dean-dashboard.js,dashboard-error;dean-dashboard-page,,
+wwwroot/js/dean-members.js,dean-members-page;dm-error;dm-filters;dm-rows;dm-search,submit,GET /api/v1/proposals/faculty-members?${params}
+wwwroot/js/dean-needs.js,dean-needs-page;needs-${name},click;submit,GET /api/v1/courses/direct/lookups;GET /api/v1/needs;GET /api/v1/needs/${row.id};GET /api/v1/proposals/faculty-members;POST /api/v1/files;POST /api/v1/needs;POST /api/v1/needs/${resubmitId}/resubmit
+wwwroot/js/dean-proposals.js,dean-propose-page,change;click;input;submit,
+wwwroot/js/direct-course.js,${[;direct-course-page,change;input;submit,
+wwwroot/js/directory.js,directory-cards;directory-center;directory-error;directory-filter-error;directory-filter-retry;directory-filters;directory-next;directory-page;directory-page-number;directory-prev;directory-search,click;submit,GET /api/v1/profiles/directory?${params};GET /api/v1/users/faculties
+wwwroot/js/eval-form.js,eval-form-${name};eval-form-page,change;click;input,GET /api/v1/evaluation-form/draft;POST /api/v1/evaluation-form/draft/${draft.id}/publish;PUT /api/v1/evaluation-form/draft/${draft.id}
+wwwroot/js/external-instructor-requests.js,admin-users-page,click;submit,
+wwwroot/js/hints-admin.js,hint-form;hints-page,click;input;submit,
+wwwroot/js/hints.js,,DOMContentLoaded;focus;mouseenter,
+wwwroot/js/i18n.js,,DOMContentLoaded;click,
+wwwroot/js/instructor-impact.js,iimpact-${name};instructor-impact-page,click,GET /api/v1/courses/${course}/impact/pending;GET /api/v1/courses/directory?view=Instructor;POST /api/v1/courses/${course}/impact/${row.id}/review
+wwwroot/js/instructor-progress.js,instructor-progress-error;instructor-progress-impacts;instructor-progress-page;instructor-progress-rows,click,GET /api/v1/courses/${id}/impact/pending;GET /api/v1/courses/${id}/progress/roster;POST /api/v1/courses/${id}/impact/${row.id}/review
+wwwroot/js/member-certificates.js,member-certificates-page;mycerts-cards;mycerts-empty;mycerts-error,click,GET /api/v1/certificates/mine
+wwwroot/js/member-dashboard.js,dashboard-error;member-dashboard-page,,
+wwwroot/js/member-enter-code.js,ec-${name};enter-code-page,change;click;submit,GET /api/v1/courses/${course}/lectures;GET /api/v1/courses/directory?view=Member&page=${page};POST /api/v1/lectures/${lecture}/attendance/enter-code
+wwwroot/js/member-impact.js,impact-${name};member-impact-page,change;submit,GET /api/v1/courses/${course}/impact;GET /api/v1/courses/directory?view=Member;POST /api/v1/courses/${course}/impact;POST /api/v1/files
+wwwroot/js/member-pro-certs.js,member-procerts-page;pc-${name},click;submit,GET /api/v1/procerts/categories;GET /api/v1/procerts?includeInactive=true;POST /api/v1/files;POST /api/v1/procerts;POST /api/v1/procerts/${editingId}/resubmit
+wwwroot/js/notifications.js,notifications-bell;notifications-count;notifications-list;notifications-widget,click;shown.bs.dropdown,
+wwwroot/js/password-policy.js,blocked-add-form;blocked-next;blocked-page;blocked-password;blocked-prev;blocked-rows;blocked-search;policy-form;policy-message;policy-page,click;input;submit,
+wwwroot/js/pickers.js,,DOMContentLoaded;change;click;input,
+wwwroot/js/profile.js,profile-${name};profile-page,click,
+wwwroot/js/quality-cancellations.js,cancellations-${name};quality-cancellations-page,click;submit,GET /api/v1/cancellations/pending;POST /api/v1/cancellations/${row.id}/decision;POST /api/v1/courses/${Number($(
+wwwroot/js/quality-certificates.js,certs-${name};quality-certificates-page,click;submit,GET /api/v1/certificates?${params};POST /api/v1/certificates/${row.id}/revoke;POST /api/v1/certificates/issue-pending;POST /api/v1/certificates/issue-pending?courseId=${encodeURIComponent(course)}
+wwwroot/js/quality-dashboard.js,dashboard-error;quality-dashboard-page,,
+wwwroot/js/quality-eval-form.js,eval-add-question;eval-form-page;eval-meta;eval-publish;eval-questions;eval-save;eval-title;form-error;form-success,click,GET /api/v1/evaluation-form/draft;POST /api/v1/evaluation-form/draft/${draftId}/publish;PUT /api/v1/evaluation-form/draft/${draftId}
+wwwroot/js/quality-eval-results.js,aggregate-${name};eval-results-page;results-${name},click;submit,GET /api/v1/courses/directory/lookups?view=All;GET /api/v1/evaluation/aggregate?${params};GET /api/v1/evaluation/results/${course};GET /api/v1/evaluation/versions;PUT /api/v1/evaluation/period/${course}
+wwwroot/js/quality-external-instructors.js,quality-external-error;quality-external-page;quality-external-rows;quality-external-search,input,
+wwwroot/js/quality-needs.js,qneeds-${name};quality-needs-page,click;submit,GET /api/v1/needs?${params};POST /api/v1/needs/${row.id}/decision
+wwwroot/js/quality-pro-cert-stats.js,procstats-page;ps-${name},submit,GET /api/v1/procerts/categories;GET /api/v1/procerts/stats?${params};GET /api/v1/users/faculties
+wwwroot/js/quality-pro-certs.js,qpc-${name};quality-procerts-page,click;submit,GET /api/v1/procerts/categories;GET /api/v1/procerts?${params};POST /api/v1/procerts/${row.id}/decision
+wwwroot/js/quality-proposals.js,quality-proposals-page,change;click;input,
+wwwroot/js/quality-tracks.js,tracks-${name};tracks-page,click;submit,GET /api/v1/tracks?includeArchived=true;POST /api/v1/tracks;POST /api/v1/tracks/${row.id}/${row.isArchived ? ;PUT /api/v1/tracks/${editingId}
+wwwroot/js/role-switcher.js,role-switcher;role-switcher-error;role-switcher-select,change,
+wwwroot/js/session-bootstrap.js,,,
+wwwroot/js/session.js,,click;pageshow,
+wwwroot/js/settings.js,settings-groups;settings-message;settings-page,submit,
+wwwroot/js/shell.js,app-sidebar;sidebar-backdrop;sidebar-toggle;zu-toasts,change;click;keydown,
+wwwroot/js/site.js,logout-button,cancel;click;submit,
+wwwroot/js/stats-dashboard.js,stats-dashboard-page,click;submit,
+wwwroot/js/university-sync.js,sync-current;sync-error;sync-next;sync-page;sync-page-number;sync-prev;sync-progress;sync-reason;sync-reviews;sync-runs;sync-sides;sync-start,change;click,
+wwwroot/js/vault.js,vault-${name};vault-page,submit,GET /api/v1/vault?${params};POST /api/v1/files;POST /api/v1/vault
+wwwroot/js/verify.js,verify-fields;verify-header;verify-message;verify-page;verify-reference;verify-result;verify-submit,click;keydown,

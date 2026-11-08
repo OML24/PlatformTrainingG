@@ -1,0 +1,39 @@
+@page "/member/dashboard"
+@{
+    ViewData["Title"] = "لوحة العضو";
+}
+<div class="container py-4" id="member-dashboard-page">
+    <h1 class="h3 mb-4">لوحة العضو</h1>
+    <div class="row g-3">
+        <div class="col-md-4">
+            <div class="card kpi-card h-100">
+                <div class="card-body">
+                    <div class="kpi-value" id="kpi-available">—</div>
+                    <div class="kpi-label">دورات متاحة للتسجيل</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card kpi-card h-100">
+                <div class="card-body">
+                    <div class="kpi-value" id="kpi-registered">—</div>
+                    <div class="kpi-label">مسجّل فيها حالياً</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card kpi-card h-100">
+                <div class="card-body">
+                    <div class="kpi-value" id="kpi-open">—</div>
+                    <div class="kpi-label">شهاداتي الصادرة</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="alert alert-danger d-none mt-3" id="dashboard-error" role="alert"></div>
+    <div class="mt-4 d-flex flex-wrap gap-2">
+        <a class="btn btn-outline-primary" href="/courses/available">الدورات المتاحة</a>
+        <a class="btn btn-outline-primary" href="/account/password">كلمة المرور</a>
+    </div>
+</div>
+@section Scripts { <script src="~/js/member-dashboard.js" asp-append-version="true"></script> }

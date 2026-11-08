@@ -1,0 +1,9 @@
+@page "/quality/external-instructors"
+@{ ViewData["Title"] = "المدربون الخارجيون"; }
+<div class="container py-4" id="quality-external-page">
+  <div class="d-flex justify-content-between align-items-center gap-2 mb-3"><div><h1>المدربون الخارجيون</h1><p class="text-muted mb-0">البحث في الحسابات الخارجية الجاهزة للاختيار في الدورات.</p></div><a class="btn btn-primary" href="/quality/courses/new">إنشاء دورة وطلب مدرب جديد</a></div>
+  <label class="form-label" for="quality-external-search">بحث بالاسم أو رقم الدخول</label><input id="quality-external-search" class="form-control mb-3" type="search" />
+  <div id="quality-external-error" class="alert alert-danger d-none" role="alert"></div>
+  <div class="table-responsive"><table class="table table-striped"><thead><tr><th>الاسم</th><th>رقم الدخول</th></tr></thead><tbody id="quality-external-rows"></tbody></table></div>
+</div>
+@section Scripts { <script src="~/js/quality-external-instructors.js" asp-append-version="true"></script> }

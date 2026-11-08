@@ -1,0 +1,12 @@
+global using ZuLms.Domain.Entities.Org;
+global using ZuLms.Domain.Entities.Identity;
+global using ZuLms.Domain.Entities.Config;
+global using ZuLms.Domain.Entities.Audit;
+global using ZuLms.Domain.Entities.Files;
+global using ZuLms.Domain.Entities.Notify;
+global using ZuLms.Domain.Entities.Training;
+global using ZuLms.Domain.Entities.Evaluation;
+global using ZuLms.Domain.Entities.Certificates;
+global using ZuLms.Domain.Entities.Needs;
+global using ZuLms.Domain.Entities.Profiles;
+global using ZuLms.Domain.Entities.Sync;

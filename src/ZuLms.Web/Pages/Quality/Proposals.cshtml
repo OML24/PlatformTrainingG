@@ -1,0 +1,35 @@
+@page "/quality/proposals"
+@{
+    ViewData["Title"] = "مقترحات الدورات";
+}
+<div class="container py-4" id="quality-proposals-page">
+    <h1>مقترحات الدورات بانتظار الجودة</h1>
+    <div class="alert alert-danger d-none" id="quality-proposals-error" role="alert"></div>
+    <div class="alert alert-success d-none" id="quality-proposals-success" role="status"></div>
+    <div class="table-responsive"><table class="table table-striped"><thead><tr><th>الرقم</th><th>العنوان</th><th>الكلية</th><th>النسخة</th><th>وقت الإرسال</th><th></th></tr></thead><tbody id="quality-proposals-rows"></tbody></table></div>
+    <div class="d-flex gap-2 align-items-center mb-4"><button id="quality-proposals-prev" class="btn btn-outline-secondary" type="button">السابق</button><span id="quality-proposals-page-number"></span><button id="quality-proposals-next" class="btn btn-outline-secondary" type="button">التالي</button></div>
+    <section id="quality-proposal-details" class="card card-body d-none">
+        <h2 class="h4" id="quality-proposal-title"></h2>
+        <dl class="row" id="quality-proposal-fields"></dl>
+        <h3 class="h5">النسخ السابقة والقرارات</h3><div id="quality-proposal-revisions"></div>
+        <form id="quality-decision-form" class="mt-3">
+            <h3 class="h5">القرار</h3>
+            <div class="row g-3">
+                <partial name="_DateTimePicker" model='new DateTimePickerModel("quality-evaluation-end", "نهاية فترة التقييم", false, false, null, "course.evaluation_end_date", "col-md-4")' />
+                <div class="col-md-4"><label class="form-label" for="quality-audience">نوع المشاركين</label><select id="quality-audience" class="form-select" zu-hint="course.audience_type"><option value="Faculty">أعضاء الكلية</option><option value="Administrative">الإداريون</option><option value="Named">مشاركون محددون</option><option value="General">عام</option></select></div>
+                <div class="col-md-4"><label class="form-label" for="quality-target-center">الكلية المستهدفة</label><select id="quality-target-center" class="form-select" zu-hint="course.target_center_id"></select></div>
+                <partial name="_DateTimePicker" model='new DateTimePickerModel("quality-deadline", "آخر موعد للتسجيل", true, false, null, "course.registration_deadline", "col-md-4")' />
+                <div class="col-md-4"><label class="form-label" for="quality-max">الحد الأعلى للمشاركين</label><input id="quality-max" type="number" min="1" class="form-control" zu-hint="course.max_participants" /></div>
+                <div class="col-md-4"><label class="form-check mt-4"><input id="quality-exam" type="checkbox" class="form-check-input" zu-hint="course.has_exam" /><span class="form-check-label">تتضمن امتحاناً</span></label></div>
+                <div class="col-md-6 d-none" id="quality-external-fields"><label class="form-label" for="quality-external-decision">قرار حساب المدرب الخارجي</label><select id="quality-external-decision" class="form-select"><option value="">اختر</option><option value="ExistingAccount">حساب مدرب مسجّل</option><option value="RequestNewAccount">طلب إنشاء حساب جديد</option><option value="ManagedByQuality">دورة قصيرة تديرها الجودة</option></select>
+                    <div id="quality-external-account-fields" class="d-none mt-2"><label class="form-label" for="quality-external-search">ابحث عن مدرب مسجّل</label><input id="quality-external-search" type="search" class="form-control mb-1" /><select id="quality-external-account" class="form-select"></select></div>
+                </div>
+                <div class="col-12"><label class="form-label" for="quality-notes">ملاحظات القرار / سبب الإعادة أو الرفض</label><textarea id="quality-notes" class="form-control"></textarea></div>
+            </div>
+            <div class="d-flex gap-2 mt-3"><button type="button" class="btn btn-success" data-decision="Approved">اعتماد</button><button type="button" class="btn btn-warning" data-decision="Returned">إعادة للتعديل</button><button type="button" class="btn btn-danger" data-decision="Rejected">رفض</button></div>
+        </form>
+    </section>
+</div>
+@section Scripts {
+    <script src="~/js/quality-proposals.js" asp-append-version="true"></script>
+}

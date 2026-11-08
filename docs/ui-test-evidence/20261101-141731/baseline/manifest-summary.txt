@@ -1,0 +1,2 @@
+﻿files=1443
+excluded=bin,obj,logs,.git,.vs,docs/ui-test-evidence

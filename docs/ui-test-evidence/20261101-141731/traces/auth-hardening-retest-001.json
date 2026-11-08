@@ -1,0 +1,24 @@
+{
+  "executedAt": "2026-11-02",
+  "buildEvidence": "commands/10-auth-double-submit-build.txt",
+  "credentialsIncluded": false,
+  "checks": [
+    {
+      "defect": "AUTH-SEC-001",
+      "status": "PASS",
+      "formMethod": "POST",
+      "fallbackDocumentRequest": "POST /login",
+      "fallbackStatus": 200,
+      "passwordPresentInUrl": false
+    },
+    {
+      "defect": "AUTH-UI-002",
+      "status": "PASS",
+      "simulation": "Delayed API promise with two immediate submit events",
+      "apiCallsBeforeFix": 2,
+      "apiCallsAfterFix": 1,
+      "buttonDisabledWhilePending": true,
+      "buttonReenabledAfterFailure": true
+    }
+  ]
+}

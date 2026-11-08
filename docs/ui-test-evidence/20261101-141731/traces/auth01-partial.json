@@ -1,0 +1,14 @@
+{
+  "executedAt": "2026-11-01",
+  "caseId": "AUTH01",
+  "status": "PASS",
+  "credentialsIncluded": false,
+  "checks": [
+    { "name": "empty submit", "status": "PASS", "loginValid": false, "passwordValid": false, "focusedField": "login-name", "loginRequests": 0 },
+    { "name": "wrong credentials", "status": "PASS", "visibleMessage": "The login name or password is incorrect.", "request": "POST /api/v1/auth/login", "httpStatus": 400 },
+    { "name": "Enter submits valid form", "status": "PASS", "destination": "/admin/dashboard", "title": "لوحة تحكم الأدمن — ZU-LMS" },
+    { "name": "password visibility", "status": "N/A", "reason": "No visibility control exists on the login screen." },
+    { "name": "double submit with delayed response", "status": "PASS", "apiCallsBeforeFix": 2, "apiCallsAfterFix": 1, "buttonDisabledWhilePending": true, "buttonReenabledAfterFailure": true }
+  ],
+  "remaining": []
+}

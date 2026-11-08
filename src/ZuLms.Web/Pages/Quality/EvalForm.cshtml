@@ -1,0 +1,26 @@
+@page "/quality/eval-form"
+@{ ViewData["Title"] = "نموذج التقييم الموحد"; }
+<div class="container py-4" id="eval-form-page">
+  <h1>نموذج التقييم الموحد</h1>
+  <div id="form-error" class="alert alert-danger d-none" role="alert"></div>
+  <div id="form-success" class="alert alert-success d-none" role="status"></div>
+  <div class="alert alert-warning">النسخ المنشورة لا تُعدَّل أبداً. نشر نسخة جديدة يسري على كل دورة غير مثبّتة، ويُطلب من المؤهلين إعادة التقييم بالنسخة الجديدة.</div>
+
+  <section class="card card-body mb-4">
+    <div class="row g-3 align-items-end">
+      <div class="col-md-8">
+        <label class="form-label" for="eval-title">عنوان النسخة (عربي)</label>
+        <input id="eval-title" class="form-control" maxlength="200" required />
+      </div>
+      <div class="col-md-4 d-flex gap-2">
+        <button id="eval-save" class="btn btn-primary" type="button">حفظ المسودة</button>
+        <button id="eval-publish" class="btn btn-success" type="button">نشر</button>
+      </div>
+    </div>
+    <div id="eval-meta" class="form-text mt-2"></div>
+  </section>
+
+  <section id="eval-questions" class="vstack gap-3"></section>
+  <button id="eval-add-question" class="btn btn-outline-primary align-self-start" type="button">إضافة سؤال</button>
+</div>
+@section Scripts { <script src="~/js/quality-eval-form.js" asp-append-version="true"></script> }

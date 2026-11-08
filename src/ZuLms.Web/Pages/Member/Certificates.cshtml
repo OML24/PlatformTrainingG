@@ -1,0 +1,11 @@
+@page "/member/certificates"
+@{ ViewData["Title"] = "شهاداتي"; }
+<div class="container py-4" id="member-certificates-page">
+  <h1>شهاداتي</h1>
+  <div id="mycerts-error" class="alert alert-danger d-none" role="alert"></div>
+  <div id="mycerts-empty" class="alert alert-info d-none" role="status">
+    لا توجد شهادات سارية بعد. تُصدر الشهادة تلقائياً بعد انتهاء الدورة واستيفاء متطلبات الحضور والامتحان والتقييم. قياس الأثر اختياري.
+  </div>
+  <div id="mycerts-cards" class="row g-3"></div>
+</div>
+@section Scripts { <script src="~/js/member-certificates.js" asp-append-version="true"></script> }

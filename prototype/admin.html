@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>لوحة التحكم — المسؤول | منصة تدريب جامعة الزرقاء</title>
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css">
+<!-- Icons from Template (Tabler Icons) -->
+<link href="template/paces/assets/css/vendors.min.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/experience.css">
+</head>
+<body>
+<div class="app-layout">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sidebar-brand">
+    <div class="brand-logo">
+      <img src="logo.png" alt="شعار جامعة الزرقاء">
+      <div class="brand-text">
+        <h6>منصة التدريب</h6>
+        <small>جامعة الزرقاء</small>
+      </div>
+    </div>
+  </div>
+  <div class="sidebar-user">
+    <div class="avatar av-yellow">أم</div>
+    <div class="sidebar-user-info">
+      <h6>أحمد المسؤول</h6>
+      <small><i class="ti ti-shield-check me-1"></i> مسؤول النظام</small>
+    </div>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="nav-section-title">الرئيسية</div>
+    <button class="nav-item active" onclick="show('dashboard',this)"><i class="ti ti-layout-dashboard nav-icon"></i> لوحة التحكم</button>
+    <div class="nav-section-title">الإدارة والتحكم الشامل</div>
+    <button class="nav-item" onclick="show('users',this)"><i class="ti ti-users nav-icon"></i> إدارة المستخدمين والأدوار</button>
+    <button class="nav-item" onclick="show('credentials',this)"><i class="ti ti-key nav-icon"></i> الحسابات وكلمات المرور</button>
+    <button class="nav-item" onclick="show('courses',this)"><i class="ti ti-book-2 nav-icon"></i> إدارة وحذف الدورات</button>
+    <button class="nav-item" onclick="show('docsvault',this)"><i class="ti ti-archive nav-icon"></i> المستودع المركزي للكتب</button>
+    <button class="nav-item" onclick="show('auditlog',this)"><i class="ti ti-activity nav-icon"></i> الرقابة واللوجز (Audit Log)</button>
+    <button class="nav-item" onclick="show('settings',this)"><i class="ti ti-settings nav-icon"></i> الإعدادات والقوالب</button>
+    <div class="nav-section-title">التقارير والاعتمادات</div>
+    <button class="nav-item" onclick="show('needs',this)"><i class="ti ti-file-text nav-icon"></i> كتب الاحتياجات <span class="nav-badge">6</span></button>
+    <button class="nav-item" onclick="show('stats',this)"><i class="ti ti-chart-bar nav-icon"></i> الإحصائيات الشاملة</button>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="index.html" class="btn-demo-hub"><i class="ti ti-arrow-back-up"></i> مركز العرض والديمو</a>
+    <button class="btn-logout" onclick="location.href='index.html'"><i class="ti ti-logout"></i> تسجيل الخروج</button>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<div class="main-content">
+  <header class="header">
+    <div class="header-left">
+      <h4 id="pageTitle">لوحة التحكم</h4>
+      <p>مرحباً أحمد، نظرة عامة على منظومة تدريب جامعة الزرقاء اليوم</p>
+    </div>
+    <div class="header-actions">
+      <!-- Quick Role Switcher for Demo -->
+      <div class="dropdown">
+        <button class="role-switcher-dropdown dropdown-toggle" type="button" data-bs-toggle="dropdown">
+          <i class="ti ti-switch-horizontal"></i> تبديل الدور (ديمو)
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow-sm border" style="font-size:13px;">
+          <li><a class="dropdown-item fw-bold" href="admin.html"><i class="ti ti-shield text-warning me-1"></i> مسؤول النظام</a></li>
+          <li><a class="dropdown-item" href="quality.html"><i class="ti ti-award text-info me-1"></i> مسؤولة الجودة</a></li>
+          <li><a class="dropdown-item" href="dean.html"><i class="ti ti-building text-primary me-1"></i> عميد الكلية</a></li>
+          <li><a class="dropdown-item" href="instructor.html"><i class="ti ti-presentation text-success me-1"></i> عاقد الدورة (المدرب)</a></li>
+          <li><a class="dropdown-item" href="member.html"><i class="ti ti-user text-danger me-1"></i> عضو هيئة التدريس</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item text-primary" href="index.html"><i class="ti ti-home me-1"></i> العودة للمركز الرئيسي</a></li>
+        </ul>
+      </div>
+
+      <div class="btn-notif" data-bs-toggle="modal" data-bs-target="#notifModal" title="الإشعارات">
+        <i class="ti ti-bell"></i><span class="notif-dot"></span>
+      </div>
+      <div class="avatar av-yellow" style="cursor:pointer;" title="الملف الشخصي">أم</div>
+    </div>
+  </header>
+
+  <div class="page-content">
+
+    <!-- DASHBOARD -->
+    <div id="sec-dashboard">
+      <div class="row g-3 mb-4">
+        <div class="col-6 col-lg-3 fade-in delay-1">
+          <div class="stat-card ca-yellow">
+            <div class="stat-icon" style="background:var(--yellow-dim);color:var(--yellow);"><i class="ti ti-users"></i></div>
+            <div class="stat-number">247</div>
+            <div class="stat-label">أعضاء هيئة التدريس</div>
+            <div class="stat-trend" style="color:var(--green);"><i class="ti ti-arrow-up-right"></i>12 هذا الفصل</div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3 fade-in delay-2">
+          <div class="stat-card ca-blue">
+            <div class="stat-icon" style="background:var(--zu-navy-subtle);color:var(--zu-navy);"><i class="ti ti-book-2"></i></div>
+            <div class="stat-number">23</div>
+            <div class="stat-label">دورة تدريبية نشطة</div>
+            <div class="stat-trend" style="color:var(--green);"><i class="ti ti-arrow-up-right"></i>5 هذا الشهر</div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3 fade-in delay-3">
+          <div class="stat-card ca-green">
+            <div class="stat-icon" style="background:var(--green-dim);color:var(--green);"><i class="ti ti-certificate"></i></div>
+            <div class="stat-number">184</div>
+            <div class="stat-label">شهادة معتمدة صادرة</div>
+            <div class="stat-trend" style="color:var(--green);"><i class="ti ti-arrow-up-right"></i>28 هذا الشهر</div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3 fade-in delay-4">
+          <div class="stat-card ca-purple">
+            <div class="stat-icon" style="background:var(--purple-dim);color:var(--purple);"><i class="ti ti-building"></i></div>
+            <div class="stat-number">8</div>
+            <div class="stat-label">كليات مشاركة</div>
+            <div class="stat-trend" style="color:var(--text-2);"><i class="ti ti-minus"></i>مكتملة التغطية</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-3 mb-4">
+        <div class="col-lg-8">
+          <div class="data-card">
+            <div class="data-card-header">
+              <h5><i class="ti ti-chart-bar" style="color:var(--zu-navy);"></i> الدورات المنجزة حسب الشهر — 2026</h5>
+              <span class="badge-s bs-info">تقرير سنوي</span>
+            </div>
+            <div class="data-card-body"><div style="position:relative;height:240px;"><canvas id="cChart"></canvas></div></div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="data-card h-100">
+            <div class="data-card-header">
+              <h5><i class="ti ti-chart-pie" style="color:var(--purple);"></i> توزيع المتدربين بالكليات</h5>
+            </div>
+            <div class="data-card-body"><div style="position:relative;height:220px;"><canvas id="colChart"></canvas></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="data-card">
+        <div class="data-card-header">
+          <h5><i class="ti ti-history" style="color:var(--yellow);"></i> أحدث نشاطات المستخدمين</h5>
+          <button class="btn-s" onclick="show('users',document.querySelector('.nav-item:nth-child(3)'))"><i class="ti ti-users"></i> كل المستخدمين</button>
+        </div>
+        <div class="data-card-body" style="padding:0;">
+          <table class="custom-table">
+            <thead><tr><th>الاسم</th><th>البريد الجامعي</th><th>الدور</th><th>الكلية</th><th>الحالة</th><th></th></tr></thead>
+            <tbody>
+              <tr><td><div style="display:flex;align-items:center;gap:8px;"><div class="avatar av-purple" style="width:30px;height:30px;font-size:11px;">مع</div>د. محمد العمري</div></td><td class="text-muted text-sm">dean@zarqa.edu.jo</td><td><span class="badge-s bs-purple">عميد الكلية</span></td><td>الهندسة</td><td><span class="badge-s bs-active"><i class="ti ti-point-filled"></i>نشط</span></td><td><button class="btn-s"><i class="ti ti-pencil"></i></button></td></tr>
+              <tr><td><div style="display:flex;align-items:center;gap:8px;"><div class="avatar av-green" style="width:30px;height:30px;font-size:11px;">خم</div>د. خالد المحاضر</div></td><td class="text-muted text-sm">instructor@zarqa.edu.jo</td><td><span class="badge-s bs-active">عاقد دورة</span></td><td>العلوم</td><td><span class="badge-s bs-active"><i class="ti ti-point-filled"></i>نشط</span></td><td><button class="btn-s"><i class="ti ti-pencil"></i></button></td></tr>
+              <tr><td><div style="display:flex;align-items:center;gap:8px;"><div class="avatar av-orange" style="width:30px;height:30px;font-size:11px;">مإ</div>Michael Evans</div></td><td class="text-muted text-sm">m.evans@external.com</td><td><span class="badge-s bs-orange">خبير خارجي</span></td><td>—</td><td><span class="badge-s bs-active"><i class="ti ti-point-filled"></i>نشط</span></td><td><button class="btn-s"><i class="ti ti-pencil"></i></button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- USERS -->
+    <div id="sec-users" style="display:none;">
+      <div class="section-title"><i class="ti ti-users" style="color:var(--zu-navy);"></i> إدارة المستخدمين والأدوار</div>
+      <div class="row g-3 mb-4">
+        <div class="col-md-4"><button class="btn-p w-full" style="justify-content:center;" data-bs-toggle="modal" data-bs-target="#addUserModal"><i class="ti ti-user-plus"></i> إضافة مستخدم جديد</button></div>
+        <div class="col-md-4"><button class="btn-s w-full" style="padding:10px;justify-content:center;" data-bs-toggle="modal" data-bs-target="#addExtModal"><i class="ti ti-id"></i> إضافة خبير / مدرب خارجي</button></div>
+        <div class="col-md-4"><input class="form-ctrl" placeholder="🔍 بحث في المستخدمين..."></div>
+      </div>
+      <div class="data-card">
+        <div class="data-card-body" style="padding:0;">
+          <table class="custom-table">
+            <thead><tr><th>#</th><th>الاسم</th><th>الرقم الوظيفي</th><th>الدور</th><th>الكلية</th><th>آخر دخول</th><th>الحالة</th><th>إجراءات</th></tr></thead>
+            <tbody>
+              <tr><td class="text-muted">001</td><td><div style="display:flex;align-items:center;gap:8px;"><div class="avatar av-yellow" style="width:28px;height:28px;font-size:10px;">أم</div>أحمد المسؤول</div></td><td class="text-muted text-sm">10001</td><td><span class="badge-s" style="background:var(--yellow-dim);color:var(--yellow);">مسؤول نظام</span></td><td>—</td><td class="text-muted text-sm">الآن</td><td><span class="badge-s bs-active"><i class="ti ti-point-filled"></i>نشط</span></td><td><div style="display:flex;gap:4px;"><button class="btn-s"><i class="ti ti-pencil"></i></button></div></td></tr>
+              <tr><td class="text-muted">002</td><td><div style="display:flex;align-items:center;gap:8px;"><div class="avatar av-blue" style="width:28px;height:28px;font-size:10px;">سج</div>سارة الجودة</div></td><td class="text-muted text-sm">10089</td><td><span class="badge-s bs-info">جودة</span></td><td>دائرة الجودة</td><td class="text-muted text-sm">منذ 30 د</td><td><span class="badge-s bs-active"><i class="ti ti-point-filled"></i>نشط</span></td><td><div style="display:flex;gap:4px;"><button class="btn-s"><i class="ti ti-pencil"></i></button><button class="btn-s bs-r"><i class="ti ti-ban"></i></button></div></td></tr>
+              <tr><td class="text-muted">003</td><td><div style="display:flex;align-items:center;gap:8px;"><div class="avatar av-purple" style="width:28px;height:28px;font-size:10px;">مع</div>د. محمد العمري</div></td><td class="text-muted text-sm">10234</td><td><span class="badge-s bs-purple">عميد</span></td><td>الهندسة</td><td class="text-muted text-sm">منذ ساعتين</td><td><span class="badge-s bs-active"><i class="ti ti-point-filled"></i>نشط</span></td><td><div style="display:flex;gap:4px;"><button class="btn-s"><i class="ti ti-pencil"></i></button><button class="btn-s bs-r"><i class="ti ti-ban"></i></button></div></td></tr>
+              <tr><td class="text-muted">004</td><td><div style="display:flex;align-items:center;gap:8px;"><div class="avatar av-green" style="width:28px;height:28px;font-size:10px;">خم</div>د. خالد المحاضر</div></td><td class="text-muted text-sm">10456</td><td><span class="badge-s bs-active">عاقد دورة</span></td><td>العلوم</td><td class="text-muted text-sm">09:15 ص</td><td><span class="badge-s bs-active"><i class="ti ti-point-filled"></i>نشط</span></td><td><div style="display:flex;gap:4px;"><button class="btn-s"><i class="ti ti-pencil"></i></button><button class="btn-s bs-r"><i class="ti ti-ban"></i></button></div></td></tr>
+              <tr><td class="text-muted">005</td><td><div style="display:flex;align-items:center;gap:8px;"><div class="avatar av-orange" style="width:28px;height:28px;font-size:10px;">رس</div>م. رنا السلطاني</div></td><td class="text-muted text-sm">10781</td><td><span class="badge-s bs-orange">عضو هيئة تدريس</span></td><td>الهندسة</td><td class="text-muted text-sm">أمس</td><td><span class="badge-s bs-active"><i class="ti ti-point-filled"></i>نشط</span></td><td><div style="display:flex;gap:4px;"><button class="btn-s"><i class="ti ti-pencil"></i></button><button class="btn-s bs-r"><i class="ti ti-ban"></i></button></div></td></tr>
+              <tr><td class="text-muted">006</td><td><div style="display:flex;align-items:center;gap:8px;"><div class="avatar" style="width:28px;height:28px;font-size:10px;background:var(--orange-dim);color:var(--orange);">ME</div>Michael Evans</div></td><td class="text-muted text-sm">EXT-01</td><td><span class="badge-s bs-orange">خبير خارجي</span></td><td>—</td><td class="text-muted text-sm">منذ 3 أيام</td><td><span class="badge-s bs-active"><i class="ti ti-point-filled"></i>نشط</span></td><td><div style="display:flex;gap:4px;"><button class="btn-s"><i class="ti ti-pencil"></i></button><button class="btn-s bs-r"><i class="ti ti-ban"></i></button></div></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- COURSES (WITH SUPER ADMIN FORCE PURGE CAPABILITY) -->
+    <div id="sec-courses" style="display:none;">
+      <div class="section-title"><i class="ti ti-book-2" style="color:var(--zu-navy);"></i> إدارة وحذف كافة الدورات والبرامج التدريبية</div>
+      
+      <!-- Super Admin Purge Alert -->
+      <div class="alert-c a-danger mb-4" style="background:#FEF2F2;border:1.5px solid #FECACA;padding:16px 20px;border-radius:var(--r);">
+        <div style="display:flex;align-items:flex-start;gap:12px;">
+          <i class="ti ti-shield-x fs-3 text-danger mt-1"></i>
+          <div>
+            <h6 class="fw-bold mb-1 text-danger" style="font-size:14.5px;">صلاحية الحذف الجذري النهائي (Force Purge)</h6>
+            <p class="mb-0 text-muted" style="font-size:13px;line-height:1.6;">
+              بصفتك مسؤول النظام الرئيسي، يمكنك <strong>حذف أي دورة تدريبية نهائياً</strong> من أي مكان في النظام فورياً (تختفي من لوحة العمداء، المحاضرين، والجودة والمتدربين وقاعدة البيانات المركزية).
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="data-card">
+        <div class="data-card-header d-flex justify-content-between align-items-center">
+          <div style="display:flex;gap:8px;">
+            <select class="form-ctrl" style="width:auto;padding:6px 10px;font-size:13px;"><option>كل الأنواع</option><option>عامة للجامعة</option><option>مخصصة لكلية</option><option>بناءً على طلب عميد</option></select>
+            <select class="form-ctrl" style="width:auto;padding:6px 10px;font-size:13px;"><option>كل الحالات</option><option>نشطة</option><option>قيد المراجعة</option><option>منتهية</option></select>
+          </div>
+          <button class="btn-p" onclick="alert('فتح نافذة إنشاء دورة جديدة')"><i class="ti ti-plus"></i> طرح دورة جديدة</button>
+        </div>
+        <div class="data-card-body" style="padding:0;">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>اسم البرنامج التدريبي</th>
+                <th>النوع / الكلية</th>
+                <th>المحاضر</th>
+                <th>المشاركون</th>
+                <th>الحالة</th>
+                <th class="text-center">إجراءات الحذف والتحكم</th>
+              </tr>
+            </thead>
+            <tbody id="adminCoursesTable">
+              <tr>
+                <td class="fw-bold text-dark">مهارات التدريس الفعّال والتعلم النشط</td>
+                <td><span class="badge-s bs-info">عامة</span></td>
+                <td>د. خالد المحاضر</td>
+                <td>42 عضواً</td>
+                <td><span class="badge-s bs-active">نشطة ومجدولة</span></td>
+                <td class="text-center">
+                  <button class="btn-s bs-navy me-1" onclick="alert('عرض تفاصيل وسجلات الدورة')"><i class="ti ti-eye"></i></button>
+                  <button class="btn-s bs-r" onclick="forcePurgeCourse(this, 'مهارات التدريس الفعّال')"><i class="ti ti-trash-x me-1"></i> حذف نهائي (Purge)</button>
+                </td>
+              </tr>
+              <tr>
+                <td class="fw-bold text-dark">إدارة الجودة والاعتماد الأكاديمي الدولي</td>
+                <td><span class="badge-s bs-purple">كلية العلوم</span></td>
+                <td>د. خالد المحاضر</td>
+                <td>18 عضواً</td>
+                <td><span class="badge-s bs-active">نشطة ومجدولة</span></td>
+                <td class="text-center">
+                  <button class="btn-s bs-navy me-1" onclick="alert('عرض تفاصيل وسجلات الدورة')"><i class="ti ti-eye"></i></button>
+                  <button class="btn-s bs-r" onclick="forcePurgeCourse(this, 'إدارة الجودة والاعتماد')"><i class="ti ti-trash-x me-1"></i> حذف نهائي (Purge)</button>
+                </td>
+              </tr>
+              <tr>
+                <td class="fw-bold text-dark">مهارات البحث العلمي والنشر في Scopus</td>
+                <td><span class="badge-s bs-purple">طلب عميد الهندسة</span></td>
+                <td>Michael Evans (خارجي)</td>
+                <td>15 عضواً</td>
+                <td><span class="badge-s bs-pending">قيد مراجعة الجودة</span></td>
+                <td class="text-center">
+                  <button class="btn-s bs-navy me-1" onclick="alert('عرض تفاصيل وسجلات الدورة')"><i class="ti ti-eye"></i></button>
+                  <button class="btn-s bs-r" onclick="forcePurgeCourse(this, 'مهارات البحث العلمي')"><i class="ti ti-trash-x me-1"></i> حذف نهائي (Purge)</button>
+                </td>
+              </tr>
+              <tr>
+                <td class="fw-bold text-dark">الأمن السيبراني وحماية البيانات الأكاديمية</td>
+                <td><span class="badge-s bs-rejected">طلب إلغاء من العميد</span></td>
+                <td>د. يوسف العبادي</td>
+                <td>24 عضواً</td>
+                <td><span class="badge-s bs-rejected">بانتظار قرار الإلغاء</span></td>
+                <td class="text-center">
+                  <button class="btn-s bs-navy me-1" onclick="alert('عرض تفاصيل وسجلات الدورة')"><i class="ti ti-eye"></i></button>
+                  <button class="btn-s bs-r" onclick="forcePurgeCourse(this, 'الأمن السيبراني وحماية البيانات')"><i class="ti ti-trash-x me-1"></i> حذف نهائي (Purge)</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- CREDENTIALS & PASSWORDS DIRECTORY -->
+    <div id="sec-credentials" style="display:none;">
+      <div class="section-title"><i class="ti ti-key" style="color:var(--zu-navy);"></i> دليل الحسابات المركزية وإدارة كلمات المرور</div>
+
+      <div class="alert-c a-info mb-4" style="background:#F0F7FF;border:1.5px solid var(--zu-navy-border);padding:18px 22px;border-radius:var(--r);">
+        <div style="display:flex;align-items:flex-start;gap:14px;">
+          <i class="ti ti-lock-access fs-3 text-primary mt-1"></i>
+          <div>
+            <h6 class="fw-bold mb-1" style="color:var(--zu-navy);font-size:15px;">مركز تحكم الهوية الرقمية وصلاحيات الأدوار</h6>
+            <p class="mb-0 text-muted" style="font-size:13.5px;line-height:1.7;">
+              يمتلك مسؤول النظام صلاحية استعراض حسابات جميع المستخدمين، تعيين وإعادة ضبط كلمات المرور، منح أو سحب أي دور (Role) أكاديمي أو إداري، وحذف الحسابات المعطلة.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="data-card" style="box-shadow:var(--shadow-sm);">
+        <div class="data-card-body p-0">
+          <div class="table-responsive">
+            <table class="custom-table w-100" style="margin:0;">
+              <thead>
+                <tr style="background:#F8FAFC;">
+                  <th style="padding:16px 20px;">المستخدم والبريد الرسمي</th>
+                  <th>الرقم الوظيفي</th>
+                  <th>الدور الممنوح</th>
+                  <th>الكلية / القسم</th>
+                  <th>كلمة المرور الحالية</th>
+                  <th>حالة الحساب</th>
+                  <th class="text-center">إجراءات الأمان</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:16px 20px;">
+                    <div class="fw-bold text-dark">د. محمد العمري</div>
+                    <small class="text-muted">dean@zarqa.edu.jo</small>
+                  </td>
+                  <td>10234</td>
+                  <td><span class="badge-s bs-purple">عميد الكلية</span></td>
+                  <td>الهندسة والتكنولوجيا</td>
+                  <td><code style="background:#F1F5F9;padding:4px 8px;border-radius:4px;font-size:12px;">•••••••• [Dean#2026]</code></td>
+                  <td><span class="badge-s bs-active">نشط وموثق</span></td>
+                  <td class="text-center">
+                    <button class="btn-s me-1" onclick="alert('تم إرسال رابط إعادة تعيين كلمة المرور إلى dean@zarqa.edu.jo')"><i class="ti ti-rotate-2 me-1"></i> تصفير</button>
+                    <button class="btn-s bs-r" onclick="alert('تم تجميد الحساب')"><i class="ti ti-lock"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:16px 20px;">
+                    <div class="fw-bold text-dark">سارة الجودة</div>
+                    <small class="text-muted">quality@zarqa.edu.jo</small>
+                  </td>
+                  <td>10089</td>
+                  <td><span class="badge-s bs-info">مسؤولة الجودة والاعتماد</span></td>
+                  <td>دائرة ضمان الجودة</td>
+                  <td><code style="background:#F1F5F9;padding:4px 8px;border-radius:4px;font-size:12px;">•••••••• [Qual!2026]</code></td>
+                  <td><span class="badge-s bs-active">نشط وموثق</span></td>
+                  <td class="text-center">
+                    <button class="btn-s me-1" onclick="alert('تم إرسال رابط إعادة تعيين كلمة المرور إلى quality@zarqa.edu.jo')"><i class="ti ti-rotate-2 me-1"></i> تصفير</button>
+                    <button class="btn-s bs-r" onclick="alert('تم تجميد الحساب')"><i class="ti ti-lock"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:16px 20px;">
+                    <div class="fw-bold text-dark">د. خالد المحاضر</div>
+                    <small class="text-muted">instructor@zarqa.edu.jo</small>
+                  </td>
+                  <td>10456</td>
+                  <td><span class="badge-s bs-active">عاقد دورة (مدرب) + عضو</span></td>
+                  <td>العلوم</td>
+                  <td><code style="background:#F1F5F9;padding:4px 8px;border-radius:4px;font-size:12px;">•••••••• [Inst#9912]</code></td>
+                  <td><span class="badge-s bs-active">نشط وموثق</span></td>
+                  <td class="text-center">
+                    <button class="btn-s me-1" onclick="alert('تم إرسال رابط إعادة تعيين كلمة المرور')"><i class="ti ti-rotate-2 me-1"></i> تصفير</button>
+                    <button class="btn-s bs-r" onclick="alert('تم تجميد الحساب')"><i class="ti ti-lock"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:16px 20px;">
+                    <div class="fw-bold text-dark">Michael Evans</div>
+                    <small class="text-muted">m.evans@research-council.org</small>
+                  </td>
+                  <td>EXT-01</td>
+                  <td><span class="badge-s bs-orange">مدرب / خبير خارجي</span></td>
+                  <td>مستضاف (الهندسة)</td>
+                  <td><code style="background:#FEF3C7;padding:4px 8px;border-radius:4px;font-size:12px;color:#92400E;">[ZuExt*9481]</code></td>
+                  <td><span class="badge-s bs-active">مؤقت نشط</span></td>
+                  <td class="text-center">
+                    <button class="btn-s me-1" onclick="alert('بيانات الدخول: Username: m.evans / Pass: ZuExt*9481')"><i class="ti ti-copy me-1"></i> نسخ</button>
+                    <button class="btn-s bs-r" onclick="alert('تم إلغاء الحساب الخارجي')"><i class="ti ti-trash"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CENTRAL DOCUMENTS & APPROVALS VAULT -->
+    <div id="sec-docsvault" style="display:none;">
+      <div class="section-title"><i class="ti ti-archive" style="color:var(--zu-navy);"></i> المستودع المركزي للكتب والموافقات الرسمية</div>
+
+      <div class="alert-c a-info mb-4" style="background:#F0F7FF;border:1.5px solid var(--zu-navy-border);padding:18px 22px;border-radius:var(--r);">
+        <div style="display:flex;align-items:flex-start;gap:14px;">
+          <i class="ti ti-folder-check fs-3 text-primary mt-1"></i>
+          <div>
+            <h6 class="fw-bold mb-1" style="color:var(--zu-navy);font-size:15px;">الأرشيف الرقمي الموحد لكافة المكاتبات والموافقات</h6>
+            <p class="mb-0 text-muted" style="font-size:13.5px;line-height:1.7;">
+              يحتفظ هذا المستودع بجميع الوثائق المرفوعة في النظام: كتب الترشيح الصادرة من العمداء، كتب مجالس الكليات، طلبات الإلغاء المسببة الموقعة، وكتب اعتماد الجودة، مع إمكانية تنزيل أي ملف بضغطة زر.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="data-card" style="box-shadow:var(--shadow-sm);">
+        <div class="data-card-body p-0">
+          <div class="table-responsive">
+            <table class="custom-table w-100" style="margin:0;">
+              <thead>
+                <tr style="background:#F8FAFC;">
+                  <th style="padding:16px 20px;">عنوان الوثيقة والكتاب</th>
+                  <th>النوع والتصنيف</th>
+                  <th>الجهة الصادرة</th>
+                  <th>التاريخ</th>
+                  <th>الحجم والصيغة</th>
+                  <th class="text-center">التحميل والمعاينة</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:16px 20px;">
+                    <div class="fw-bold text-dark"><i class="ti ti-file-text text-primary me-2"></i>كتاب ترشيح دورة مهارات البحث العلمي والنشر</div>
+                    <small class="text-muted">رقم صادر: ENG-2026-442</small>
+                  </td>
+                  <td><span class="badge-s bs-info">كتاب ترشيح رسمي</span></td>
+                  <td>عمادة كلية الهندسة والتكنولوجيا</td>
+                  <td>18 أكتوبر 2026</td>
+                  <td><span class="badge-s bs-rejected">PDF — 245 KB</span></td>
+                  <td class="text-center">
+                    <button class="btn-s bs-navy" onclick="alert('جاري تنزيل الكتاب الرسمي...')"><i class="ti ti-download me-1"></i> تنزيل</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:16px 20px;">
+                    <div class="fw-bold text-dark"><i class="ti ti-file-x text-danger me-2"></i>كتاب طلب إلغاء دورة الأمن السيبراني المعتمدة</div>
+                    <small class="text-muted">رقم صادر: IT-2026-108 (موقع ومسبب)</small>
+                  </td>
+                  <td><span class="badge-s bs-rejected">كتاب إلغاء مسبب</span></td>
+                  <td>عمادة كلية العلوم وتكنولوجيا المعلومات</td>
+                  <td>21 أكتوبر 2026</td>
+                  <td><span class="badge-s bs-rejected">PDF — 320 KB</span></td>
+                  <td class="text-center">
+                    <button class="btn-s bs-navy" onclick="alert('جاري تنزيل كتاب الإلغاء الرسمي...')"><i class="ti ti-download me-1"></i> تنزيل</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:16px 20px;">
+                    <div class="fw-bold text-dark"><i class="ti ti-certificate text-success me-2"></i>نموذج قالب الشهادات المعتمد لرئاسة الجامعة</div>
+                    <small class="text-muted">معتمد بقرار مجلس العمداء 2026</small>
+                  </td>
+                  <td><span class="badge-s bs-active">قالب رسمي</span></td>
+                  <td>دائرة ضمان الجودة ورئاسة الجامعة</td>
+                  <td>01 أكتوبر 2026</td>
+                  <td><span class="badge-s bs-rejected">PDF — 1.8 MB</span></td>
+                  <td class="text-center">
+                    <button class="btn-s bs-navy" onclick="alert('جاري تنزيل قالب الشهادة...')"><i class="ti ti-download me-1"></i> تنزيل</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:16px 20px;">
+                    <div class="fw-bold text-dark"><i class="ti ti-user-star text-warning me-2"></i>السيرة الذاتية واعتماد الخبير Michael Evans</div>
+                    <small class="text-muted">مرفق تكليف تدريب دولي</small>
+                  </td>
+                  <td><span class="badge-s bs-orange">ملف خبير خارجي</span></td>
+                  <td>International Research Council</td>
+                  <td>15 أكتوبر 2026</td>
+                  <td><span class="badge-s bs-rejected">PDF — 850 KB</span></td>
+                  <td class="text-center">
+                    <button class="btn-s bs-navy" onclick="alert('جاري تنزيل ملف السيرة الذاتية...')"><i class="ti ti-download me-1"></i> تنزيل</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AUDIT LOG & LIVE EVENTS MONITORING -->
+    <div id="sec-auditlog" style="display:none;">
+      <div class="section-title"><i class="ti ti-activity" style="color:var(--zu-navy);"></i> سجل العمليات المباشرة والرقابة المركزية (Audit Log)</div>
+
+      <div class="data-card mb-4" style="box-shadow:var(--shadow-sm);">
+        <div class="data-card-header d-flex justify-content-between align-items-center" style="padding:18px 22px;">
+          <div>
+            <h5 class="fw-bold mb-0" style="color:var(--zu-navy);"><i class="ti ti-radar me-1"></i> البث المباشر للعمليات والقرارات في المنصة</h5>
+            <small class="text-muted">رصد فوري لجميع الموافقات، الإلغاءات، الاعتمادات، وإصدار الشهادات</small>
+          </div>
+          <span class="badge-s bs-active"><i class="ti ti-point-filled"></i> رقابة مباشرة نشطة</span>
+        </div>
+        <div class="data-card-body p-0">
+          <div class="table-responsive">
+            <table class="custom-table w-100" style="margin:0;">
+              <thead>
+                <tr style="background:#F8FAFC;">
+                  <th style="padding:16px 20px;">الوقت والتاريخ</th>
+                  <th>المستخدم والمنفذ</th>
+                  <th>الدور</th>
+                  <th>نوع العملية</th>
+                  <th>تفاصيل الحدث والهدف</th>
+                  <th>عنوان IP والحالة</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:16px 20px;" class="text-muted text-sm"><i class="ti ti-clock me-1"></i>منذ 10 دقائق</td>
+                  <td><div class="fw-bold text-dark">د. طارق الحوري</div></td>
+                  <td><span class="badge-s bs-purple">عميد الكلية</span></td>
+                  <td><span class="badge-s bs-rejected">طلب إلغاء دورة</span></td>
+                  <td>رفع طلب إلغاء لدورة "الأمن السيبراني" مشفوعاً بكتاب رسمي مسبب</td>
+                  <td><code>10.20.4.88</code> <span class="badge-s bs-active ms-1">ناجح</span></td>
+                </tr>
+                <tr>
+                  <td style="padding:16px 20px;" class="text-muted text-sm"><i class="ti ti-clock me-1"></i>منذ 35 دقيقة</td>
+                  <td><div class="fw-bold text-dark">سارة الجودة</div></td>
+                  <td><span class="badge-s bs-info">مسؤولة الجودة</span></td>
+                  <td><span class="badge-s bs-active">طلب مدرب خارجي</span></td>
+                  <td>إرسال طلب للأدمن لتوليد حساب للخبير الخارجي Michael Evans</td>
+                  <td><code>10.20.1.15</code> <span class="badge-s bs-active ms-1">ناجح</span></td>
+                </tr>
+                <tr>
+                  <td style="padding:16px 20px;" class="text-muted text-sm"><i class="ti ti-clock me-1"></i>منذ ساعتين</td>
+                  <td><div class="fw-bold text-dark">د. خالد المحاضر</div></td>
+                  <td><span class="badge-s bs-active">عاقد دورة</span></td>
+                  <td><span class="badge-s bs-active">تحضير ذكي</span></td>
+                  <td>توليد باركود التحضير الذكي (Check-in 1/2) للجلسة الثالثة</td>
+                  <td><code>10.20.8.42</code> <span class="badge-s bs-active ms-1">ناجح</span></td>
+                </tr>
+                <tr>
+                  <td style="padding:16px 20px;" class="text-muted text-sm"><i class="ti ti-clock me-1"></i>منذ 3 ساعات</td>
+                  <td><div class="fw-bold text-dark">م. رنا السلطاني</div></td>
+                  <td><span class="badge-s bs-orange">عضو هيئة تدريس</span></td>
+                  <td><span class="badge-s bs-active">إثبات حضور</span></td>
+                  <td>مسح باركود البداية للجلسة الختامية وتأكيد الحضور</td>
+                  <td><code>10.20.12.19</code> <span class="badge-s bs-active ms-1">ناجح</span></td>
+                </tr>
+                <tr>
+                  <td style="padding:16px 20px;" class="text-muted text-sm"><i class="ti ti-clock me-1"></i>أمس 14:20</td>
+                  <td><div class="fw-bold text-dark">سارة الجودة</div></td>
+                  <td><span class="badge-s bs-info">مسؤولة الجودة</span></td>
+                  <td><span class="badge-s bs-active">اعتماد رسمي</span></td>
+                  <td>الموافقة على دورة "مهارات البحث العلمي والنشر في Scopus"</td>
+                  <td><code>10.20.1.15</code> <span class="badge-s bs-active ms-1">ناجح</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SETTINGS -->
+    <div id="sec-settings" style="display:none;">
+      <div class="section-title"><i class="ti ti-settings" style="color:var(--zu-navy);"></i> إعدادات منصة التدريب والشهادات</div>
+      <div class="row g-3">
+        <div class="col-lg-6">
+          <div class="data-card">
+            <div class="data-card-header"><h5><i class="ti ti-file-upload" style="color:var(--zu-navy);"></i> سياسة رفع الملفات والمرفقات</h5></div>
+            <div class="data-card-body">
+              <div class="form-group">
+                <label class="form-label">الحد الأقصى لحجم الملف الواحد (MB)</label>
+                <div style="display:flex;align-items:center;gap:12px;">
+                  <input type="range" min="1" max="50" value="10" id="slider1" oninput="document.getElementById('sv1').textContent=this.value" style="flex:1;accent-color:var(--zu-navy);">
+                  <span id="sv1" style="min-width:28px;font-weight:800;color:var(--zu-navy);">10</span><span class="text-muted text-sm">MB</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">الصيغ المسموح برفعها</label>
+                <div style="display:flex;flex-wrap:wrap;gap:10px;">
+                  <label style="display:flex;align-items:center;gap:5px;color:var(--text);font-size:13px;cursor:pointer;"><input type="checkbox" checked style="accent-color:var(--zu-navy);"> PDF</label>
+                  <label style="display:flex;align-items:center;gap:5px;color:var(--text);font-size:13px;cursor:pointer;"><input type="checkbox" checked style="accent-color:var(--zu-navy);"> DOCX</label>
+                  <label style="display:flex;align-items:center;gap:5px;color:var(--text);font-size:13px;cursor:pointer;"><input type="checkbox" checked style="accent-color:var(--zu-navy);"> PNG</label>
+                  <label style="display:flex;align-items:center;gap:5px;color:var(--text);font-size:13px;cursor:pointer;"><input type="checkbox" checked style="accent-color:var(--zu-navy);"> JPG</label>
+                  <label style="display:flex;align-items:center;gap:5px;color:var(--text);font-size:13px;cursor:pointer;"><input type="checkbox" style="accent-color:var(--zu-navy);"> XLSX</label>
+                  <label style="display:flex;align-items:center;gap:5px;color:var(--text);font-size:13px;cursor:pointer;"><input type="checkbox" style="accent-color:var(--zu-navy);"> PPTX</label>
+                </div>
+              </div>
+              <button class="btn-p" onclick="alert('✅ تم حفظ الإعدادات بنجاح')"><i class="ti ti-check"></i> حفظ الإعدادات</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="data-card">
+            <div class="data-card-header"><h5><i class="ti ti-certificate" style="color:var(--yellow);"></i> قالب الشهادة الجامعية الموحد</h5></div>
+            <div class="data-card-body">
+              <div class="alert-c a-info" style="margin-bottom:14px;">
+                <i class="ti ti-info-circle fs-5"></i>
+                <span>قالب الشهادة موحد ومعتمد بشعار جامعة الزرقاء. يُستبدل تلقائياً الحقول: <strong>{{FULL_NAME}}</strong> باسم العضو و<strong>{{DATE}}</strong> بتاريخ الدورة.</span>
+              </div>
+              <div class="upload-zone" onclick="alert('يفتح مربع رفع قالب الشهادة')" style="margin-bottom:14px;">
+                <i class="ti ti-file-type-pdf" style="color:var(--red);"></i>
+                <p>اسحب وأفلت نموذج PDF هنا أو <strong style="color:var(--zu-navy);">تصفح ملفات الجهاز</strong></p>
+                <small>يجب تضمين كود التحقق QR والمتغيرات الرسمية</small>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:12px;background:var(--green-dim);border-radius:var(--r-sm);border:1px solid rgba(13,148,136,0.2);">
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <i class="ti ti-file-type-pdf" style="color:var(--red);font-size:24px;"></i>
+                  <div><div style="font-size:13px;font-weight:700;">zarqa_univ_cert_template_2026.pdf</div><div class="text-sm text-muted">قالب نشط ومعتمد من رئاسة الجامعة</div></div>
+                </div>
+                <span class="badge-s bs-active"><i class="ti ti-check"></i>مفعّل</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="data-card">
+            <div class="data-card-header">
+              <h5><i class="ti ti-adjustments" style="color:var(--green);"></i> استثناءات وإعدادات مخصصة لبعض الدورات</h5>
+              <button class="btn-s bs-g" onclick="alert('إضافة إعداد مخصص')"><i class="ti ti-plus"></i> إضافة استثناء</button>
+            </div>
+            <div class="data-card-body" style="padding:0;">
+              <table class="custom-table">
+                <thead><tr><th>الدورة</th><th>الحد الأقصى</th><th>الصيغ المعتمدة</th><th>إجراء</th></tr></thead>
+                <tbody>
+                  <tr><td>مهارات التدريس الفعّال</td><td>5 MB</td><td>PDF, PNG, JPG</td><td><button class="btn-s"><i class="ti ti-pencil"></i> تعديل</button></td></tr>
+                  <tr><td>إدارة الجودة الأكاديمية</td><td>10 MB (افتراضي)</td><td>كافة الصيغ العامة</td><td><button class="btn-s"><i class="ti ti-pencil"></i> تعديل</button></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NEEDS -->
+    <div id="sec-needs" style="display:none;">
+      <div class="section-title"><i class="ti ti-file-text" style="color:var(--zu-navy);"></i> كتب الاحتياجات التدريبية الواردة من الكليات</div>
+      <div class="row g-3 mb-4">
+        <div class="col-md-4"><div class="stat-card ca-blue"><div class="stat-number">18</div><div class="stat-label">كتاب تدريبي مستلم</div></div></div>
+        <div class="col-md-4"><div class="stat-card ca-yellow"><div class="stat-number">6</div><div class="stat-label">قيد الدراسة والاعتماد</div></div></div>
+        <div class="col-md-4"><div class="stat-card ca-green"><div class="stat-number">12</div><div class="stat-label">تمت جدولتها ضمن الخطة</div></div></div>
+      </div>
+      <div class="data-card">
+        <div class="data-card-body" style="padding:0;">
+          <table class="custom-table">
+            <thead><tr><th>المُقدِّم</th><th>الكلية</th><th>الاحتياج التدريبي</th><th>تاريخ الإرسال</th><th>الكتاب الرسمي</th><th>حالة المعالجة</th></tr></thead>
+            <tbody>
+              <tr><td>د. محمد العمري (العميد)</td><td>الهندسة</td><td>تقنيات التعليم الرقمي المتقدم والذكاء الاصطناعي</td><td>15/10/2026</td><td><button class="btn-s bs-navy"><i class="ti ti-download"></i> عرض الكتاب</button></td><td><span class="badge-s bs-pending">قيد الدراسة</span></td></tr>
+              <tr><td>د. سمر الخالدي</td><td>العلوم</td><td>البحث العلمي المتقدم وكتابة الأوراق للنشر</td><td>14/10/2026</td><td><button class="btn-s bs-navy"><i class="ti ti-download"></i> عرض الكتاب</button></td><td><span class="badge-s bs-active">مجدول بالخطة</span></td></tr>
+              <tr><td>د. فيصل العبدالله</td><td>الطب البشري</td><td>مهارات التواصل الإكلينيكي والأكاديمي</td><td>12/10/2026</td><td><button class="btn-s bs-navy"><i class="ti ti-download"></i> عرض الكتاب</button></td><td><span class="badge-s bs-pending">قيد الدراسة</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <div id="sec-stats" style="display:none;">
+      <div class="section-title"><i class="ti ti-chart-bar" style="color:var(--zu-navy);"></i> مؤشرات الأداء والتقارير الإحصائية</div>
+      <div class="row g-3">
+        <div class="col-lg-6">
+          <div class="data-card">
+            <div class="data-card-header"><h5><i class="ti ti-certificate text-success me-1"></i> الشهادات المعتمدة الصادرة شهرياً</h5></div>
+            <div class="data-card-body"><div style="position:relative;height:240px;"><canvas id="certChart"></canvas></div></div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="data-card">
+            <div class="data-card-header"><h5><i class="ti ti-percentage text-primary me-1"></i> نسبة إنجاز الخطة التدريبية لكل كلية</h5></div>
+            <div class="data-card-body">
+              <div style="display:flex;flex-direction:column;gap:14px;">
+                <div><div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span class="fw-bold" style="font-size:13.5px;">كلية الهندسة والتكنولوجيا</span><span style="font-size:13px;color:var(--green);font-weight:700;">87%</span></div><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:87%;background:var(--zu-navy);"></div></div></div>
+                <div><div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span class="fw-bold" style="font-size:13.5px;">كلية العلوم</span><span style="font-size:13px;color:var(--green);font-weight:700;">79%</span></div><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:79%;background:var(--purple);"></div></div></div>
+                <div><div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span class="fw-bold" style="font-size:13.5px;">كلية الطب البشري</span><span style="font-size:13px;color:var(--green);font-weight:700;">93%</span></div><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:93%;background:var(--green);"></div></div></div>
+                <div><div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span class="fw-bold" style="font-size:13.5px;">كلية الآداب</span><span style="font-size:13px;color:var(--yellow);font-weight:700;">65%</span></div><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:65%;background:var(--yellow);"></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- end app-layout -->
+
+<!-- Add User Modal -->
+<div class="modal fade" id="addUserModal" tabindex="-1">
+  <div class="modal-dialog"><div class="modal-content modal-custom">
+    <div class="modal-header-custom"><h5><i class="ti ti-user-plus" style="color:var(--zu-navy);margin-left:8px;"></i>إضافة مستخدم جديد للنظام</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+    <div class="modal-body-custom">
+      <div class="form-group"><label class="form-label">الرقم الوظيفي الجامعي</label><input class="form-ctrl" placeholder="10XXX"></div>
+      <div class="form-group"><label class="form-label">الاسم الرباعي</label><input class="form-ctrl" placeholder="الاسم الكامل كما في السجلات"></div>
+      <div class="form-group"><label class="form-label">البريد الإلكتروني الجامعي</label><input class="form-ctrl" placeholder="name@zarqa.edu.jo"></div>
+      <div class="form-group"><label class="form-label">الدور الأكاديمي</label><select class="form-ctrl"><option>عضو هيئة تدريس</option><option>عميد كلية</option><option>مسؤول جودة</option><option>عاقد دورة (مدرب)</option></select></div>
+      <div class="form-group"><label class="form-label">الكلية / الدائرة</label><select class="form-ctrl"><option>كلية الهندسة والتكنولوجيا</option><option>كلية العلوم</option><option>كلية الطب</option><option>كلية الصيدلة</option><option>كلية الآداب</option><option>كلية الاقتصاد والعلوم الإدارية</option></select></div>
+    </div>
+    <div class="modal-footer-custom"><button class="btn-p" onclick="alert('✅ تم إضافة المستخدم بنجاح');bootstrap.Modal.getInstance(document.getElementById('addUserModal')).hide()"><i class="ti ti-check"></i> حفظ وإضافة</button><button class="btn-s" data-bs-dismiss="modal">إلغاء</button></div>
+  </div></div>
+</div>
+
+<!-- Add External Modal -->
+<div class="modal fade" id="addExtModal" tabindex="-1">
+  <div class="modal-dialog"><div class="modal-content modal-custom">
+    <div class="modal-header-custom"><h5><i class="ti ti-id" style="color:var(--orange);margin-left:8px;"></i>إضافة مدرب أو خبير خارجي</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+    <div class="modal-body-custom">
+      <div class="alert-c a-warning" style="margin-bottom:16px;"><i class="ti ti-alert-triangle fs-5"></i><span>الحسابات الخارجية مخصصة للخبراء والمدربين المتعاونين من خارج جامعة الزرقاء.</span></div>
+      <div class="form-group"><label class="form-label">الاسم الكامل</label><input class="form-ctrl" placeholder="Full Name"></div>
+      <div class="form-group"><label class="form-label">البريد الإلكتروني المهني</label><input class="form-ctrl" placeholder="trainer@organization.com"></div>
+      <div class="form-group"><label class="form-label">المؤسسة / جهة العمل</label><input class="form-ctrl" placeholder="اسم الشركة أو الجامعة الخارجية"></div>
+    </div>
+    <div class="modal-footer-custom"><button class="btn-p btn-orange" style="background:var(--orange);" onclick="alert('✅ تم إنشاء الحساب الخارجي وإرسال بيانات الدخول');bootstrap.Modal.getInstance(document.getElementById('addExtModal')).hide()"><i class="ti ti-send"></i> إرسال بيانات الدخول</button><button class="btn-s" data-bs-dismiss="modal">إلغاء</button></div>
+  </div></div>
+</div>
+
+<!-- Notifications Modal -->
+<div class="modal fade" id="notifModal" tabindex="-1">
+  <div class="modal-dialog" style="max-width:400px;margin:20px auto;"><div class="modal-content modal-custom">
+    <div class="modal-header-custom"><h5><i class="ti ti-bell" style="color:var(--zu-navy);margin-left:8px;"></i> مركز الإشعارات</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+    <div style="padding:0;">
+      <div class="notif-item unread"><div class="notif-icon" style="background:var(--yellow-dim);color:var(--yellow);"><i class="ti ti-user-plus"></i></div><div><div style="font-size:13px;font-weight:700;">عضو هيئة تدريس جديد</div><div class="text-muted text-sm">م. خالد الزعبي — كلية الهندسة</div><div class="text-sm" style="color:var(--text-3);margin-top:3px;">منذ 5 دقائق</div></div></div>
+      <div class="notif-item unread"><div class="notif-icon" style="background:var(--green-dim);color:var(--green);"><i class="ti ti-certificate"></i></div><div><div style="font-size:13px;font-weight:700;">3 شهادات جديدة معتمدة</div><div class="text-muted text-sm">دورة مهارات التدريس الفعّال</div><div class="text-sm" style="color:var(--text-3);margin-top:3px;">منذ ساعة</div></div></div>
+      <div class="notif-item"><div class="notif-icon" style="background:var(--zu-navy-subtle);color:var(--zu-navy);"><i class="ti ti-file-text"></i></div><div><div style="font-size:13px;font-weight:700;">كتاب احتياجات جديد</div><div class="text-muted text-sm">من د. محمد العمري — كلية الهندسة</div><div class="text-sm" style="color:var(--text-3);margin-top:3px;">منذ 3 ساعات</div></div></div>
+    </div>
+  </div></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+const sections=['dashboard','users','credentials','courses','docsvault','auditlog','settings','needs','stats'];
+function show(name,el){
+  sections.forEach(s=>{const el=document.getElementById('sec-'+s);if(el)el.style.display='none';});
+  const target=document.getElementById('sec-'+name);
+  if(target)target.style.display='';
+  document.querySelectorAll('.nav-item').forEach(i=>i.classList.remove('active'));
+  if(el)el.classList.add('active');
+  document.getElementById('pageTitle').textContent=el?el.textContent.trim():'لوحة التحكم';
+}
+
+function forcePurgeCourse(btn, courseName){
+  if(confirm(`⚠️ تحذير أمني عالي الحساسية:\nهل أنت متأكد من الحذف النهائي الجذري (Force Purge) لدورة: "${courseName}"؟\n\nهذا الإجراء سيقوم بشطب الدورة كلياً من المنصة المركزية وإزالتها من شاشات العمداء والمحاضرين والجودة والمتدربين فوراً ولا يمكن التراجع عنه!`)){
+    const row = btn.closest('tr');
+    row.style.background = '#FEE2E2';
+    setTimeout(()=>{
+      row.remove();
+      alert(`✅ تم حذف دورة "${courseName}" نهائياً من قاعدة البيانات واختفت عند جميع المستخدمين.`);
+    }, 400);
+  }
+}
+
+Chart.defaults.color='#475569';
+Chart.defaults.font.family='Tajawal';
+
+const cCtx=document.getElementById('cChart');
+if(cCtx)new Chart(cCtx,{
+  type:'bar',
+  data:{
+    labels:['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر'],
+    datasets:[{
+      label:'دورات',
+      data:[2,3,4,2,5,4,3,6,4,7],
+      backgroundColor:'#022C5A',
+      borderRadius:6
+    }]
+  },
+  options:{
+    responsive:true,
+    maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{
+      x:{grid:{color:'rgba(0,0,0,0.04)'}},
+      y:{grid:{color:'rgba(0,0,0,0.04)'}}
+    }
+  }
+});
+
+const colCtx=document.getElementById('colChart');
+if(colCtx)new Chart(colCtx,{
+  type:'doughnut',
+  data:{
+    labels:['الهندسة','العلوم','الطب','الآداب','أخرى'],
+    datasets:[{
+      data:[68,52,41,37,49],
+      backgroundColor:['#022C5A','#4F46E5','#0D9488','#D97706','#EA580C'],
+      borderWidth:2,
+      borderColor:'#ffffff'
+    }]
+  },
+  options:{
+    responsive:true,
+    maintainAspectRatio:false,
+    cutout:'65%',
+    plugins:{legend:{position:'bottom',labels:{color:'#475569',font:{size:11.5},boxWidth:12,padding:10}}}
+  }
+});
+
+const certCtx=document.getElementById('certChart');
+if(certCtx)new Chart(certCtx,{
+  type:'line',
+  data:{
+    labels:['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر'],
+    datasets:[{
+      label:'شهادات',
+      data:[8,12,15,10,22,18,14,28,19,28],
+      borderColor:'#0D9488',
+      backgroundColor:'rgba(13,148,136,0.08)',
+      tension:0.35,
+      fill:true,
+      pointBackgroundColor:'#0D9488',
+      pointRadius:4
+    }]
+  },
+  options:{
+    responsive:true,
+    maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{
+      x:{grid:{color:'rgba(0,0,0,0.04)'}},
+      y:{grid:{color:'rgba(0,0,0,0.04)'}}
+    }
+  }
+});
+</script>
+<script src="js/experience.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+@page "/instructor/courses/{courseId:long}/lectures"
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<ZuLms.Web.SharedResource> T
+@{ ViewData["Title"] = "محاضرات الدورة"; }
+<div class="container py-4" id="lectures-page" data-course-id="@RouteData.Values["courseId"]"
+     data-validation-error="@T["Lectures.ValidationError"]" data-error="@T["Lectures.Error"]">
+  <h1>محاضرات الدورة</h1>
+  <div id="lectures-error" class="alert alert-danger d-none" role="alert"></div>
+  <div id="lectures-success" class="alert alert-success d-none" role="status"></div>
+  <div id="lectures-code" class="alert alert-info d-none" role="status"></div>
+  <form id="lectures-form" class="card card-body mb-4">
+    <h2 id="lectures-form-title" class="h5">إضافة محاضرة</h2>
+    <div class="row g-3">
+      <div class="col-md-6"><label for="lectures-title" class="form-label">العنوان</label><input id="lectures-title" name="titleAr" class="form-control" maxlength="300" /></div>
+      <div class="col-md-3"><label for="lectures-mode" class="form-label">النمط</label><select id="lectures-mode" name="mode" class="form-select"><option value="InPerson">وجاهي</option><option value="Online">أونلاين</option></select></div>
+       <div class="col-md-3"><label for="lectures-start" class="form-label">البداية بتوقيت عمّان</label><input id="lectures-start" name="startsAt" dir="ltr" class="form-control zu-datetime" type="text" inputmode="numeric" required /></div>
+       <div class="col-md-3"><label for="lectures-end" class="form-label">النهاية بتوقيت عمّان</label><input id="lectures-end" name="endsAt" dir="ltr" class="form-control zu-datetime" type="text" inputmode="numeric" required /></div>
+      <div class="col-md-4" id="lectures-location-wrap"><label for="lectures-location" class="form-label">المكان</label><input id="lectures-location" name="locationAr" class="form-control" maxlength="300" required /></div>
+      <div class="col-md-5 d-none" id="lectures-teams-wrap"><label for="lectures-teams" class="form-label">رابط Teams الآمن</label><input id="lectures-teams" name="teamsUrl" class="form-control" type="url" maxlength="600" pattern="https://.*" placeholder="https://teams.microsoft.com/…" /><div class="form-text">يجب أن يبدأ الرابط بـ https://</div></div>
+      <div class="col-12"><label for="lectures-notes" class="form-label">ملاحظات</label><textarea id="lectures-notes" name="notesAr" class="form-control"></textarea></div>
+    </div>
+    <button id="lectures-submit" class="btn btn-primary mt-3 align-self-start" type="submit">إضافة المحاضرة</button>
+    <button id="lectures-cancel-edit" class="btn btn-outline-secondary mt-2 align-self-start d-none" type="button">إلغاء التعديل</button>
+  </form>
+  <h2 class="h5">المحاضرات</h2>
+  <div class="table-responsive"><table class="table table-striped"><thead><tr><th>العنوان</th><th>النمط</th><th>البداية</th><th>النهاية</th><th>المكان أو الرابط</th><th></th></tr></thead><tbody id="lectures-rows"></tbody></table></div>
+  <button id="lectures-finish" type="button" class="btn btn-outline-danger mt-2">إنهاء الدورة</button>
+  <section id="lectures-roster-section" class="card card-body mt-4 d-none">
+    <h2 id="lectures-roster-title" class="h5">كشف الحضور</h2>
+    <div class="mb-3"><label for="lectures-roster-reason" class="form-label">سبب التعديل (اختياري)</label><input id="lectures-roster-reason" class="form-control" maxlength="1000" /></div>
+    <div class="table-responsive"><table class="table table-striped"><thead><tr><th>المشارك</th><th>رقم الدخول</th><th>حضر</th></tr></thead><tbody id="lectures-roster-rows"></tbody></table></div>
+  </section>
+  <section id="lectures-materials-section" class="card card-body mt-4 d-none">
+    <h2 id="lectures-materials-title" class="h5">مواد المحاضرة</h2>
+    <ul id="lectures-materials-list"></ul>
+    <form id="lectures-materials-form" class="row g-2 align-items-end">
+      <div class="col-md-6"><label for="lectures-materials-file" class="form-label">ملف المادة</label><input id="lectures-materials-file" class="form-control" type="file" accept=".pdf,.pptx,.ppt,.docx,.xlsx,.zip" required /></div>
+      <div class="col-md-4"><label for="lectures-materials-label" class="form-label">عنوان المادة (اختياري)</label><input id="lectures-materials-label" class="form-control" maxlength="300" /></div>
+      <div class="col-md-2"><button class="btn btn-primary" type="submit">رفع وربط</button></div>
+    </form>
+  </section>
+  <section id="lectures-exam-section" class="card card-body mt-4">
+    <h2 class="h5">الامتحان الخارجي</h2>
+    <form id="lectures-exam-form" class="d-flex gap-2 mb-3"><input id="lectures-exam-name" class="form-control" maxlength="300" required placeholder="اسم الامتحان" /><button class="btn btn-primary" type="submit">إنشاء الامتحان</button></form>
+    <p id="lectures-exam-empty">لا يوجد امتحان منشأ لهذه الدورة.</p>
+    <div id="lectures-exam-roster" class="table-responsive d-none"><table class="table table-striped"><thead><tr><th>المشارك</th><th>رقم الدخول</th><th>النتيجة</th><th></th></tr></thead><tbody id="lectures-exam-rows"></tbody></table></div>
+  </section>
+</div>
+@section Scripts { <script src="~/js/course-lectures.js" asp-append-version="true"></script> }

@@ -1,0 +1,23 @@
+﻿Test run for C:\Users\VIP\Documents\ChatGPT\New project\newnew\zu-lms\tests\ZuLms.Infrastructure.Tests\bin\Release\net10.0\ZuLms.Infrastructure.Tests.dll (.NETCoreApp,Version=v10.0)
+Test run for C:\Users\VIP\Documents\ChatGPT\New project\newnew\zu-lms\tests\ZuLms.Architecture.Tests\bin\Release\net10.0\ZuLms.Architecture.Tests.dll (.NETCoreApp,Version=v10.0)
+Test run for C:\Users\VIP\Documents\ChatGPT\New project\newnew\zu-lms\tests\ZuLms.Application.Tests\bin\Release\net10.0\ZuLms.Application.Tests.dll (.NETCoreApp,Version=v10.0)
+Test run for C:\Users\VIP\Documents\ChatGPT\New project\newnew\zu-lms\tests\ZuLms.Web.Tests\bin\Release\net10.0\ZuLms.Web.Tests.dll (.NETCoreApp,Version=v10.0)
+Test run for C:\Users\VIP\Documents\ChatGPT\New project\newnew\zu-lms\tests\ZuLms.Domain.Tests\bin\Release\net10.0\ZuLms.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+A total of 1 test files matched the specified pattern.A total of 1 test files matched the specified pattern.
+
+A total of 1 test files matched the specified pattern.A total of 1 test files matched the specified pattern.
+
+[xUnit.net 00:00:00.20]     ZuLms.Application.Tests.OrganizationMergePostgresTests.PreservesSideScopedIdentityAndAdministrativeEmployeesWhileEnrichingPrograms [SKIP]
+
+
+Passed!  - Failed:     0, Passed:    38, Skipped:     0, Total:    38, Duration: 74 ms - ZuLms.Web.Tests.dll (net10.0)
+Passed!  - Failed:     0, Passed:    55, Skipped:     0, Total:    55, Duration: 49 ms - ZuLms.Domain.Tests.dll (net10.0)
+  Skipped ZuLms.Application.Tests.OrganizationMergePostgresTests.PreservesSideScopedIdentityAndAdministrativeEmployeesWhileEnrichingPrograms [1 ms]
+
+Passed!  - Failed:     0, Passed:     7, Skipped:     0, Total:     7, Duration: 260 ms - ZuLms.Infrastructure.Tests.dll (net10.0)
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 926 ms - ZuLms.Architecture.Tests.dll (net10.0)
+
+Passed!  - Failed:     0, Passed:    15, Skipped:     1, Total:    16, Duration: 23 s - ZuLms.Application.Tests.dll (net10.0)
+EXIT_CODE=0

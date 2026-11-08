@@ -1,0 +1,17 @@
+@page
+@model ErrorModel
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<ZuLms.Web.SharedResource> T
+@{ ViewData["Title"] = T["Error.Title"]; }
+<section class="container py-4" aria-labelledby="error-title">
+    <div class="card card-body mx-auto text-center error-box">
+        <i class="ti ti-alert-triangle fs-1 text-danger" aria-hidden="true"></i>
+        <h1 id="error-title">@T["Error.Title"]</h1>
+        <p>@T["Error.Message"]</p>
+        @if (Model.ShowRequestId)
+        {
+            <p class="small text-secondary">@T["Error.RequestId"] <code dir="ltr">@Model.RequestId</code></p>
+        }
+        <a class="btn btn-outline-primary" href="/">@T["Error.Home"]</a>
+    </div>
+</section>

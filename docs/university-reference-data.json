@@ -1,0 +1,50 @@
+{
+  "source": "User-provided side and suffix screenshots, and employee-status list (2026-11-01)",
+  "sideScreenshot": [
+    { "sideId": 320, "nameAr": "جامعة الزرقاء" },
+    { "sideId": 366, "nameAr": "شركة الضوء الساطع" },
+    { "sideId": 369, "nameAr": "كلية الزرقاء التقنية المتوسطة" },
+    { "sideId": 345, "nameAr": "أخرى" }
+  ],
+  "suffixScreenshot": [
+    { "zuSuffixId": 1, "suffixId": 1, "sideId": 320, "descriptionAr": "طالب جامعي" },
+    { "zuSuffixId": 2, "suffixId": 2, "sideId": 320, "descriptionAr": "موظف إداري / جامعة" },
+    { "zuSuffixId": 3, "suffixId": 3, "sideId": 320, "descriptionAr": "عضو هيئة تدريسية / جامعة" },
+    { "zuSuffixId": 4, "suffixId": 4, "sideId": 320, "descriptionAr": "موظفون من خارج الجامعة" },
+    { "zuSuffixId": 5, "suffixId": 5, "sideId": 320, "descriptionAr": "طالب تعليم مستمر" },
+    { "zuSuffixId": 6, "suffixId": 1, "sideId": 369, "descriptionAr": "طالب / الكلية التقنية" },
+    { "zuSuffixId": 7, "suffixId": 1, "sideId": 345, "descriptionAr": "عامل نظافة" },
+    { "zuSuffixId": 8, "suffixId": 2, "sideId": 345, "descriptionAr": "أخرى" },
+    { "zuSuffixId": 9, "suffixId": 3, "sideId": 345, "descriptionAr": "مستثمر" },
+    { "zuSuffixId": 10, "suffixId": 2, "sideId": 366, "descriptionAr": "موظف إداري / الضوء الساطع" },
+    { "zuSuffixId": 11, "suffixId": 2, "sideId": 369, "descriptionAr": "موظف إداري / الكلية التقنية" },
+    { "zuSuffixId": 12, "suffixId": 3, "sideId": 369, "descriptionAr": "عضو هيئة تدريسية / الكلية التقنية" }
+  ],
+  "employeeStatuses": [
+    { "code": 13, "descriptionAr": "على رأس عمله" },
+    { "code": 14, "descriptionAr": "مستقيل" },
+    { "code": 15, "descriptionAr": "منقطع عـن العمل" },
+    { "code": 41, "descriptionAr": "اجازة بدون راتب" },
+    { "code": 42, "descriptionAr": "معار" },
+    { "code": 89, "descriptionAr": "موظف الشركة" },
+    { "code": 125, "descriptionAr": "مبتعث" },
+    { "code": 126, "descriptionAr": "وفاة" },
+    { "code": 129, "descriptionAr": "ملغي" },
+    { "code": 152, "descriptionAr": "موظف مدارس الجامعة" },
+    { "code": 153, "descriptionAr": "استغناء عن خدمات" },
+    { "code": 223, "descriptionAr": "مدارس/مستقيل" },
+    { "code": 224, "descriptionAr": "موظف جامعة" },
+    { "code": 365, "descriptionAr": "موظف ضوء ساطع" },
+    { "code": 422, "descriptionAr": "ايقاف عن العمل" },
+    { "code": 423, "descriptionAr": "انهاء عقد" },
+    { "code": 424, "descriptionAr": "فصل عن العمل" }
+  ],
+  "rules": [
+    "ZU_SUFFIX_ID identifies the suffix reference row; SUFFIX_ID repeats between sides.",
+    "A suffix is identified by (SIDE_ID, SUFFIX_ID), not SUFFIX_ID alone.",
+    "Suffix categories are not main_job_code, sub_job_id, emp_status, authorization roles, or login eligibility.",
+    "No documented employee-to-suffix field contract was supplied; do not infer it from matching integers or provision students as employees.",
+    "Additional side values 319 and 321 occur in the actual HR APIs; do not collapse them into screenshot side 345.",
+    "Names and codes do not imply imported=true or permission to log in."
+  ]
+}

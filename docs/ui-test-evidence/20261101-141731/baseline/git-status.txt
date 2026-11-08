@@ -1,0 +1,41 @@
+﻿## No commits yet on master
+?? ../../.github/
+?? ../../.vs/
+?? ../../PLATFORM_SPECIFICATION.md
+?? ../../PLATFORM_SPECIFICATION.v2.1.original.md
+?? ../../PLATFORM_SPECIFICATION.v2.2.backup.md
+?? ../../PLATFORM_SPECIFICATION.v2.2.backupToClaude.zip
+?? ../../PROJECTS_EVALUATION_REPORT.md
+?? ../../PlatformOpenCode/
+?? ../../ZU_Training_Prototype_v2.2.zip
+?? ../../ZU_Training_Prototype_v2.3.zip
+?? ../../check-attrs-v3.cjs
+?? ../../check-handlers.cjs
+?? ../../check-prototype.cjs
+?? ../../check-structure.cjs
+?? ../../check-translation-v3.cjs
+?? ../../chrome-review-profile/
+?? ../../edge-review-profile/
+?? ../../finalize-db.cjs
+?? ../../fix-db-prose-v3.cjs
+?? ../
+?? ../../normalize-prototype-inputs-v3.cjs
+?? ../../openCodeWithGPTProject/
+?? ../../patch-db-instructor-v3.cjs
+?? ../../patch-external-db.cjs
+?? "../../platform - ClaudeFree.zip"
+?? "../../platform - ClaudeFree/"
+?? ../../platform/
+?? ../../platformClaude.zip
+?? ../../platformClaude/
+?? ../../platformGemeni/
+?? ../../platformVSCODE/
+?? ../../prepare-prototype-v3.cjs
+?? ../../prototype_review/
+?? ../../scan-current.cjs
+?? ../../scan-db.cjs
+?? ../../scan-db2.cjs
+?? ../../template/
+?? ../../update-database-map-v3.cjs
+?? ../../update-db.cjs
+?? "../../\330\252\331\202\331\212\331\212\331\205 gpt \331\204\331\204\330\247\331\201\330\266\331\204/"

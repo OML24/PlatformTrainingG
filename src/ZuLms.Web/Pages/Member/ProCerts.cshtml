@@ -1,0 +1,36 @@
+@page "/member/pro-certs"
+@{ ViewData["Title"] = "شهاداتي المهنية"; }
+<div class="container py-4" id="member-procerts-page">
+  <h1>شهاداتي المهنية</h1>
+  <div id="pc-error" class="alert alert-danger d-none" role="alert"></div>
+  <div id="pc-success" class="alert alert-success d-none" role="status"></div>
+  <div class="alert alert-info">شهادات الجهات العالمية المعتمدة تظهر في ملفك الشخصي فور قبولها من الجودة. يلزم رمز شهادة أو رابط تحقق واحد على الأقل مع ملف PDF/PPTX.</div>
+
+  <section class="card card-body mb-4">
+    <h2 class="h5" id="pc-form-title">إضافة شهادة مهنية</h2>
+    <form id="pc-form">
+      <div class="row g-3">
+        <div class="col-md-6"><label class="form-label" for="pc-name">اسم الشهادة</label><input id="pc-name" class="form-control" maxlength="300" required /></div>
+        <div class="col-md-6"><label class="form-label" for="pc-name-ar">الاسم بالعربية (اختياري)</label><input id="pc-name-ar" class="form-control" maxlength="300" /></div>
+        <div class="col-md-6"><label class="form-label" for="pc-issuer">الجهة المانحة</label><input id="pc-issuer" class="form-control" maxlength="300" required /></div>
+        <div class="col-md-6"><label class="form-label" for="pc-issuer-url">موقع الجهة (https)</label><input id="pc-issuer-url" class="form-control" dir="ltr" /></div>
+        <div class="col-md-4"><label class="form-label" for="pc-category">التصنيف</label><select id="pc-category" class="form-select" required></select></div>
+        <div class="col-md-4"><label class="form-label" for="pc-issued">تاريخ الإصدار</label><input id="pc-issued" class="form-control zu-date" type="text" inputmode="numeric" required /></div>
+        <div class="col-md-4"><label class="form-label" for="pc-expiry">تاريخ الانتهاء (اختياري)</label><input id="pc-expiry" class="form-control zu-date" type="text" inputmode="numeric" /></div>
+        <div class="col-md-4"><label class="form-label" for="pc-code">رمز الشهادة (Credential ID)</label><input id="pc-code" class="form-control" dir="ltr" /></div>
+        <div class="col-md-8"><label class="form-label" for="pc-verify">رابط التحقق</label><input id="pc-verify" class="form-control" dir="ltr" placeholder="https://" /></div>
+        <div class="col-12"><label class="form-label" for="pc-description">الوصف (اختياري)</label><textarea id="pc-description" class="form-control"></textarea></div>
+        <div class="col-md-6"><label class="form-label" for="pc-file">ملف الشهادة (PDF/PPTX)</label><input id="pc-file" class="form-control" type="file" accept=".pdf,.pptx" required /></div>
+      </div>
+      <button id="pc-submit" class="btn btn-primary mt-3" type="submit">إرسال إلى الجودة</button>
+    </form>
+  </section>
+
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead><tr><th>الشهادة</th><th>الجهة</th><th>التصنيف</th><th>الإصدار</th><th>الانتهاء</th><th>الحالة</th><th>إجراء</th></tr></thead>
+      <tbody id="pc-rows"></tbody>
+    </table>
+  </div>
+</div>
+@section Scripts { <script src="~/js/member-pro-certs.js" asp-append-version="true"></script> }

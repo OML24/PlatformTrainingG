@@ -1,0 +1,23 @@
+@page "/quality/pro-certs"
+@{ ViewData["Title"] = "مراجعة الشهادات المهنية"; }
+<div class="container py-4" id="quality-procerts-page">
+  <h1>الشهادات المهنية</h1>
+  <div id="qpc-error" class="alert alert-danger d-none" role="alert"></div>
+  <div id="qpc-success" class="alert alert-success d-none" role="status"></div>
+  <ul class="nav nav-tabs mb-3">
+    <li class="nav-item"><a class="nav-link active" href="#" data-status="Submitted">بانتظار المراجعة</a></li>
+    <li class="nav-item"><a class="nav-link" href="#" data-status="">الكل</a></li>
+  </ul>
+  <form id="qpc-filters" class="row g-2 mb-3">
+    <div class="col-md-4"><input id="qpc-search" class="form-control" placeholder="العضو، الشهادة، الجهة، الرمز" /></div>
+    <div class="col-md-3"><select id="qpc-category" class="form-select"></select></div>
+    <div class="col-md-2"><button class="btn btn-outline-primary w-100" type="submit">بحث</button></div>
+  </form>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead><tr><th>العضو</th><th>الشهادة</th><th>الجهة</th><th>الإصدار</th><th>الحالة</th><th>الملف</th><th>إجراء</th></tr></thead>
+      <tbody id="qpc-rows"></tbody>
+    </table>
+  </div>
+</div>
+@section Scripts { <script src="~/js/quality-pro-certs.js" asp-append-version="true"></script> }

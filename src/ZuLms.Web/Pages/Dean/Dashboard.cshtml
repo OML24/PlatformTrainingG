@@ -1,0 +1,11 @@
+@page "/dean/dashboard"
+@{
+    ViewData["Title"] = "لوحة العميد";
+}
+@{ ViewData["StatsRole"] = "dean"; ViewData["StatsHeading"] = "إحصائيات الكلية"; }
+@await Html.PartialAsync("_StatsDashboard")
+@await Html.PartialAsync("_ImpactReviewCard")
+@section Scripts {
+    <script src="~/lib/chartjs/chart.umd.js"></script>
+    <script src="~/js/stats-dashboard.js" asp-append-version="true"></script>
+}

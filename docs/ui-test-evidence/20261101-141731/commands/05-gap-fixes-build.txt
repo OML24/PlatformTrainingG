@@ -1,0 +1,16 @@
+﻿  ZuLms.Domain -> C:\Users\VIP\Documents\ChatGPT\New project\newnew\zu-lms\src\ZuLms.Domain\bin\Release\net10.0\ZuLms.Domain.dll
+  ZuLms.Application -> C:\Users\VIP\Documents\ChatGPT\New project\newnew\zu-lms\src\ZuLms.Application\bin\Release\net10.0\ZuLms.Application.dll
+  ZuLms.Domain.Tests -> C:\Users\VIP\Documents\ChatGPT\New project\newnew\zu-lms\tests\ZuLms.Domain.Tests\bin\Release\net10.0\ZuLms.Domain.Tests.dll
+  ZuLms.Infrastructure -> C:\Users\VIP\Documents\ChatGPT\New project\newnew\zu-lms\src\ZuLms.Infrastructure\bin\Release\net10.0\ZuLms.Infrastructure.dll
+  ZuLms.Application.Tests -> C:\Users\VIP\Documents\ChatGPT\New project\newnew\zu-lms\tests\ZuLms.Application.Tests\bin\Release\net10.0\ZuLms.Application.Tests.dll
+  ZuLms.Infrastructure.Tests -> C:\Users\VIP\Documents\ChatGPT\New project\newnew\zu-lms\tests\ZuLms.Infrastructure.Tests\bin\Release\net10.0\ZuLms.Infrastructure.Tests.dll
+  ZuLms.Web -> C:\Users\VIP\Documents\ChatGPT\New project\newnew\zu-lms\src\ZuLms.Web\bin\Release\net10.0\ZuLms.Web.dll
+  ZuLms.Web.Tests -> C:\Users\VIP\Documents\ChatGPT\New project\newnew\zu-lms\tests\ZuLms.Web.Tests\bin\Release\net10.0\ZuLms.Web.Tests.dll
+  ZuLms.Architecture.Tests -> C:\Users\VIP\Documents\ChatGPT\New project\newnew\zu-lms\tests\ZuLms.Architecture.Tests\bin\Release\net10.0\ZuLms.Architecture.Tests.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:02.05
+EXIT_CODE=0

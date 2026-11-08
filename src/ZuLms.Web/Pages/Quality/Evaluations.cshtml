@@ -1,0 +1,37 @@
+@page "/quality/evaluations"
+@{ ViewData["Title"] = "نتائج التقييم"; }
+<div class="container py-4" id="eval-results-page">
+  <h1>نتائج تقييم الدورات</h1>
+  <div id="results-error" class="alert alert-danger d-none" role="alert"></div>
+  <div id="results-success" class="alert alert-success d-none" role="status"></div>
+
+  <form id="results-filters" class="row g-2 mb-3">
+    <div class="col-md-4"><input id="results-course" class="form-control" type="number" min="1" placeholder="معرّف الدورة" required /></div>
+     <div class="col-md-3"><label for="results-extend" class="form-label">التاريخ الجديد</label><input id="results-extend" class="form-control zu-date" type="text" inputmode="numeric" /></div>
+    <div class="col-md-2"><button class="btn btn-outline-primary w-100" type="submit">عرض النتائج</button></div>
+    <div class="col-md-3"><button id="results-extend-submit" class="btn btn-outline-secondary w-100" type="button">تمديد فترة التقييم</button></div>
+  </form>
+
+  <section id="results-body" class="d-none">
+    <h2 id="results-course-title" class="h5 mb-3"></h2>
+    <p id="results-summary" class="text-muted"></p>
+    <div id="results-questions" class="vstack gap-3"></div>
+  </section>
+
+  <section class="card card-body mt-4" aria-labelledby="aggregate-title">
+    <h2 id="aggregate-title" class="h5">تحليل التقييمات بحسب المرشحات</h2>
+    <form id="aggregate-filters" class="row g-2 mb-3">
+      <div class="col-md-3"><label for="aggregate-course" class="form-label">معرّف الدورة (اختياري)</label><input id="aggregate-course" class="form-control" type="number" min="1" /></div>
+      <div class="col-md-3"><label for="aggregate-center" class="form-label">الكلية</label><select id="aggregate-center" class="form-select"><option value="">كل الكليات</option></select></div>
+      <div class="col-md-3"><label for="aggregate-track" class="form-label">المحور</label><select id="aggregate-track" class="form-select"><option value="">كل المحاور</option></select></div>
+      <div class="col-md-3"><label for="aggregate-version" class="form-label">نسخة النموذج</label><select id="aggregate-version" class="form-select"><option value="">النسخة المطبقة لكل دورة</option></select></div>
+       <div class="col-md-3"><label for="aggregate-from" class="form-label">من تاريخ الدورة</label><input id="aggregate-from" class="form-control zu-date" type="text" inputmode="numeric" /></div>
+       <div class="col-md-3"><label for="aggregate-to" class="form-label">إلى تاريخ الدورة</label><input id="aggregate-to" class="form-control zu-date" type="text" inputmode="numeric" /></div>
+      <div class="col-md-3 align-self-end"><button class="btn btn-primary w-100" type="submit">عرض التحليل</button></div>
+    </form>
+    <div id="aggregate-error" class="alert alert-danger d-none" role="alert"></div>
+    <p id="aggregate-summary" class="text-muted"></p>
+    <div id="aggregate-questions" class="vstack gap-3"></div>
+  </section>
+</div>
+@section Scripts { <script src="~/js/quality-eval-results.js" asp-append-version="true"></script> }

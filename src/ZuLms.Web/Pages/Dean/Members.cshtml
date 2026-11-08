@@ -1,0 +1,17 @@
+@page "/dean/members"
+@{ ViewData["Title"] = "أعضاء الكلية"; }
+<div class="container py-4" id="dean-members-page">
+  <h1>أعضاء كليتي</h1>
+  <div id="dm-error" class="alert alert-danger d-none" role="alert"></div>
+  <form id="dm-filters" class="row g-2 mb-3">
+    <div class="col-md-8"><input id="dm-search" class="form-control" placeholder="بحث بالاسم" /></div>
+    <div class="col-md-2"><button class="btn btn-outline-primary w-100" type="submit">بحث</button></div>
+  </form>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead><tr><th>الاسم</th><th>القسم</th><th>الملف</th><th>الإحصائيات</th></tr></thead>
+      <tbody id="dm-rows"></tbody>
+    </table>
+  </div>
+</div>
+@section Scripts { <script src="~/js/dean-members.js" asp-append-version="true"></script> }

@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms</value></resheader>
+  <data name="Auth.Login.Title" xml:space="preserve"><value>Sign in</value></data>
+  <data name="Auth.Login.Subtitle" xml:space="preserve"><value>Zarqa University portal</value></data>
+  <data name="Auth.Login.LoginName" xml:space="preserve"><value>Login number</value></data>
+  <data name="Auth.Login.Password" xml:space="preserve"><value>Password</value></data>
+  <data name="Auth.Login.RememberMe" xml:space="preserve"><value>Remember me</value></data>
+  <data name="Auth.Login.Submit" xml:space="preserve"><value>Sign in to the portal</value></data>
+  <data name="Auth.Login.Invalid" xml:space="preserve"><value>Sign in failed. Check your details and try again.</value></data>
+  <data name="Auth.Login.FirstTimeHelp" xml:space="preserve"><value>For your first sign in, use the temporary password sent to your university email. You will be asked to set a new password.</value></data>
+  <data name="Auth.Login.ForgotPassword" xml:space="preserve"><value>Forgot password?</value></data>
+  <data name="Auth.ChangePassword.Title" xml:space="preserve"><value>Set a new password</value></data>
+  <data name="Auth.ChangePassword.Help" xml:space="preserve"><value>Change the temporary password to complete sign in.</value></data>
+  <data name="Auth.ChangePassword.NewPassword" xml:space="preserve"><value>New password</value></data>
+  <data name="Auth.ChangePassword.Confirmation" xml:space="preserve"><value>Confirm password</value></data>
+  <data name="Auth.ChangePassword.Submit" xml:space="preserve"><value>Save password and continue</value></data>
+  <data name="Auth.ChangePassword.Error" xml:space="preserve"><value>Could not save the password. Check the requirements and try again.</value></data>
+  <data name="Shared.Language.Ar" xml:space="preserve"><value>العربية</value></data>
+  <data name="Shared.Language.En" xml:space="preserve"><value>English</value></data>
+  <data name="Auth.Forgot.EmailSubject" xml:space="preserve"><value>Password recovery — Zarqa University portal</value></data>
+  <data name="Auth.Forgot.EmailBody" xml:space="preserve"><value>&lt;html dir="ltr" lang="en"&gt;&lt;body&gt;&lt;p&gt;Hello {0},&lt;/p&gt;&lt;p&gt;Your current account password is: &lt;strong&gt;{1}&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Zarqa University&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</value></data>
+  <data name="Auth.Forgot.Title" xml:space="preserve"><value>Forgot password</value></data>
+  <data name="Auth.Forgot.Help" xml:space="preserve"><value>Enter your employee number and university email.</value></data>
+  <data name="Auth.Forgot.LoginName" xml:space="preserve"><value>Employee number</value></data>
+  <data name="Auth.Forgot.Email" xml:space="preserve"><value>University email</value></data>
+  <data name="Auth.Forgot.Submit" xml:space="preserve"><value>Send password</value></data>
+  <data name="Auth.Forgot.Generic" xml:space="preserve"><value>If your initial login details match, you will receive an email. If you changed your password before, contact an administrator to reset it.</value></data>
+  <data name="Auth.Forgot.BackToLogin" xml:space="preserve"><value>Back to sign in</value></data>
+  <data name="Credentials.Initial.EmailSubject" xml:space="preserve"><value>Sign-in details for the Professional Development and Training Portal — Zarqa University</value></data>
+  <data name="ExternalInstructor.EmailSubject" xml:space="preserve"><value>External instructor account — Zarqa University</value></data>
+  <data name="ExternalInstructor.EmailBody" xml:space="preserve"><value>&lt;html dir="ltr" lang="en"&gt;&lt;body&gt;&lt;p&gt;Hello {0},&lt;/p&gt;&lt;p&gt;Sign-in number: &lt;strong&gt;{1}&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Password: &lt;code&gt;{2}&lt;/code&gt;&lt;/p&gt;&lt;p&gt;&lt;a href="{3}"&gt;Open the portal&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</value></data>
+  <data name="Credentials.Initial.EmailBody" xml:space="preserve"><value>&lt;html dir="ltr" lang="en"&gt;&lt;body style="font-family:Tajawal,Arial,sans-serif"&gt;&lt;header style="background:#022C5A;color:#fff;padding:20px"&gt;Zarqa University&lt;/header&gt;&lt;main style="padding:20px"&gt;&lt;p&gt;Hello {0},&lt;/p&gt;&lt;p&gt;Sign-in number: &lt;strong&gt;{1}&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Initial password: &lt;code style="display:inline-block;padding:12px;background:#eef2f6"&gt;{2}&lt;/code&gt;&lt;/p&gt;&lt;p&gt;&lt;a href="{3}"&gt;Open the portal&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Do not share your sign-in details.&lt;/p&gt;&lt;/main&gt;&lt;/body&gt;&lt;/html&gt;</value></data>
+  <data name="Account.Password.Title" xml:space="preserve"><value>Change password</value></data>
+  <data name="Account.Password.Help" xml:space="preserve"><value>Enter your current password, then choose a new one.</value></data>
+  <data name="Account.Password.Current" xml:space="preserve"><value>Current password</value></data>
+  <data name="Account.Password.Submit" xml:space="preserve"><value>Save password</value></data>
+  <data name="Account.Password.Error" xml:space="preserve"><value>Could not change your password. Check the current password and the new password requirements.</value></data>
+  <data name="Policy.Title" xml:space="preserve"><value>Password policy</value></data>
+  <data name="Policy.Help" xml:space="preserve"><value>These rules apply when a password is created or changed.</value></data>
+  <data name="Policy.Error" xml:space="preserve"><value>Could not complete the action. Check the details and try again.</value></data>
+  <data name="Policy.Rules" xml:space="preserve"><value>Rules</value></data>
+  <data name="Policy.MinLength" xml:space="preserve"><value>Minimum length</value></data>
+  <data name="Policy.MaxLength" xml:space="preserve"><value>Maximum length</value></data>
+  <data name="Policy.RotationDays" xml:space="preserve"><value>Rotation days (optional)</value></data>
+  <data name="Policy.allowSpaces" xml:space="preserve"><value>Allow spaces</value></data>
+  <data name="Policy.allowArabic" xml:space="preserve"><value>Allow Arabic characters</value></data>
+  <data name="Policy.blockCommon" xml:space="preserve"><value>Block common passwords</value></data>
+  <data name="Policy.blockContext" xml:space="preserve"><value>Block account context</value></data>
+  <data name="Policy.requireUpper" xml:space="preserve"><value>Require uppercase</value></data>
+  <data name="Policy.requireLower" xml:space="preserve"><value>Require lowercase</value></data>
+  <data name="Policy.requireDigit" xml:space="preserve"><value>Require a digit</value></data>
+  <data name="Policy.requireSymbol" xml:space="preserve"><value>Require a symbol</value></data>
+  <data name="Policy.Save" xml:space="preserve"><value>Save policy</value></data>
+  <data name="Policy.Blocked" xml:space="preserve"><value>Blocked passwords</value></data>
+  <data name="Policy.Word" xml:space="preserve"><value>Password</value></data>
+  <data name="Policy.Source" xml:space="preserve"><value>Source</value></data>
+  <data name="Policy.Add" xml:space="preserve"><value>Add</value></data>
+  <data name="Policy.Search" xml:space="preserve"><value>Search</value></data>
+  <data name="Policy.DeleteConfirm" xml:space="preserve"><value>Delete this blocked password?</value></data>
+  <data name="Policy.Previous" xml:space="preserve"><value>Previous</value></data>
+  <data name="Policy.Next" xml:space="preserve"><value>Next</value></data>
+  <data name="Credentials.Title" xml:space="preserve"><value>Account credentials directory</value></data>
+  <data name="Credentials.Help" xml:space="preserve"><value>Search accounts and send initial sign-in details manually.</value></data>
+  <data name="Credentials.Error" xml:space="preserve"><value>Could not complete the action. Refresh the page and check the account details.</value></data>
+  <data name="Credentials.Search" xml:space="preserve"><value>Search by name or sign-in number</value></data>
+  <data name="Credentials.Filter" xml:space="preserve"><value>Filter</value></data>
+  <data name="Credentials.Filter.All" xml:space="preserve"><value>All</value></data>
+  <data name="Credentials.Filter.NotSent" xml:space="preserve"><value>Not sent</value></data>
+  <data name="Credentials.Filter.Sent" xml:space="preserve"><value>Sent</value></data>
+  <data name="Credentials.Filter.Failed" xml:space="preserve"><value>Failed</value></data>
+  <data name="Credentials.Filter.Uncertain" xml:space="preserve"><value>Uncertain</value></data>
+  <data name="Credentials.Filter.NoEmail" xml:space="preserve"><value>No email</value></data>
+  <data name="Credentials.Filter.FirstLoginPending" xml:space="preserve"><value>First sign-in incomplete</value></data>
+  <data name="Credentials.Filter.Disabled" xml:space="preserve"><value>Disabled</value></data>
+  <data name="Credentials.Name" xml:space="preserve"><value>Name</value></data>
+  <data name="Credentials.NameEn" xml:space="preserve"><value>English name</value></data>
+  <data name="Credentials.Login" xml:space="preserve"><value>Sign-in number</value></data>
+  <data name="Credentials.Type" xml:space="preserve"><value>Type</value></data>
+  <data name="Credentials.Faculty" xml:space="preserve"><value>Faculty</value></data>
+  <data name="Credentials.Active" xml:space="preserve"><value>Active</value></data>
+  <data name="Credentials.EmployeeStatus" xml:space="preserve"><value>Employee status</value></data>
+  <data name="Credentials.FirstLogin" xml:space="preserve"><value>First sign-in complete</value></data>
+  <data name="Credentials.Email" xml:space="preserve"><value>Effective email</value></data>
+  <data name="Credentials.EmailStatus" xml:space="preserve"><value>Credentials email</value></data>
+  <data name="Credentials.LastLogin" xml:space="preserve"><value>Last sign-in</value></data>
+  <data name="Credentials.Actions" xml:space="preserve"><value>Actions</value></data>
+  <data name="Credentials.Send" xml:space="preserve"><value>Send details</value></data>
+  <data name="Credentials.Resend" xml:space="preserve"><value>Resend</value></data>
+  <data name="Credentials.ConfirmResend" xml:space="preserve"><value>These details were sent before. Resend them?</value></data>
+  <data name="Credentials.MarkSent" xml:space="preserve"><value>Confirm delivery</value></data>
+  <data name="Credentials.MarkFailed" xml:space="preserve"><value>Mark failed</value></data>
+  <data name="Credentials.ConfirmSent" xml:space="preserve"><value>Have you confirmed that the message arrived?</value></data>
+  <data name="Credentials.ConfirmFailed" xml:space="preserve"><value>Mark this message as failed?</value></data>
+  <data name="Credentials.BulkSend" xml:space="preserve"><value>Bulk send</value></data>
+  <data name="Credentials.BulkConfirm" xml:space="preserve"><value>Bulk send summary. Send sign-in details to eligible accounts?</value></data>
+  <data name="Credentials.Eligible" xml:space="preserve"><value>Eligible</value></data>
+  <data name="Credentials.Sent" xml:space="preserve"><value>Previously sent</value></data>
+  <data name="Credentials.Uncertain" xml:space="preserve"><value>Uncertain</value></data>
+  <data name="Credentials.NoEmail" xml:space="preserve"><value>No email</value></data>
+  <data name="Credentials.Pending" xml:space="preserve"><value>Pending</value></data>
+  <data name="Credentials.Ineligible" xml:space="preserve"><value>Ineligible</value></data>
+  <data name="Credentials.Yes" xml:space="preserve"><value>Yes</value></data>
+  <data name="Credentials.No" xml:space="preserve"><value>No</value></data>
+  <data name="Credentials.CreateLocal" xml:space="preserve"><value>Create local account</value></data>
+  <data name="Credentials.Password" xml:space="preserve"><value>Password</value></data>
+  <data name="Credentials.Language" xml:space="preserve"><value>Language</value></data>
+  <data name="Credentials.Create" xml:space="preserve"><value>Create</value></data>
+  <data name="Credentials.Cancel" xml:space="preserve"><value>Cancel</value></data>
+  <data name="Credentials.Type.Employee" xml:space="preserve"><value>Employee</value></data>
+  <data name="Credentials.Type.ExternalInstructor" xml:space="preserve"><value>External instructor</value></data>
+  <data name="Credentials.Type.Local" xml:space="preserve"><value>Local account</value></data>
+  <data name="Credentials.Status.NotSent" xml:space="preserve"><value>Not sent</value></data>
+  <data name="Credentials.Status.Sent" xml:space="preserve"><value>Sent</value></data>
+  <data name="Credentials.Status.Failed" xml:space="preserve"><value>Failed</value></data>
+  <data name="Credentials.Status.Uncertain" xml:space="preserve"><value>Uncertain</value></data>
+  <data name="Credentials.Reveal" xml:space="preserve"><value>Reveal passwords</value></data>
+  <data name="Credentials.ChangePassword" xml:space="preserve"><value>Change password</value></data>
+  <data name="Credentials.Edit" xml:space="preserve"><value>Edit account</value></data>
+  <data name="Credentials.Disable" xml:space="preserve"><value>Disable</value></data>
+  <data name="Credentials.Restore" xml:space="preserve"><value>Restore</value></data>
+  <data name="Credentials.DisableReason" xml:space="preserve"><value>Enter a reason for disabling this account:</value></data>
+  <data name="Credentials.RestoreConfirm" xml:space="preserve"><value>Restore this account?</value></data>
+  <data name="Credentials.Copy" xml:space="preserve"><value>Copy</value></data>
+  <data name="Credentials.EmailOverride" xml:space="preserve"><value>Email override</value></data>
+  <data name="Credentials.AccessOverride" xml:space="preserve"><value>Allow access despite employment status</value></data>
+  <data name="Credentials.AccessReason" xml:space="preserve"><value>Access override reason</value></data>
+  <data name="Credentials.Save" xml:space="preserve"><value>Save</value></data>
+  <data name="Credentials.RequireChange" xml:space="preserve"><value>Require a password change at next sign-in</value></data>
+  <data name="Credentials.AdminPassword" xml:space="preserve"><value>Administrator password for verification</value></data>
+  <data name="Credentials.Verify" xml:space="preserve"><value>Verify</value></data>
+  <data name="Credentials.InitialPassword" xml:space="preserve"><value>Personal initial password</value></data>
+  <data name="Credentials.CurrentPassword" xml:space="preserve"><value>Current password</value></data>
+  <data name="Credentials.Close" xml:space="preserve"><value>Close</value></data>
+  <data name="Credentials.Roles" xml:space="preserve"><value>Roles</value></data>
+  <data name="Credentials.Role" xml:space="preserve"><value>Role</value></data>
+  <data name="Credentials.Role.Admin" xml:space="preserve"><value>System administrator</value></data>
+  <data name="Credentials.Role.Quality" xml:space="preserve"><value>Quality officer</value></data>
+  <data name="Credentials.Role.Dean" xml:space="preserve"><value>Dean</value></data>
+  <data name="Credentials.Role.Member" xml:space="preserve"><value>Member</value></data>
+  <data name="Credentials.Role.Instructor" xml:space="preserve"><value>Instructor</value></data>
+  <data name="Credentials.Role.ExternalInstructor" xml:space="preserve"><value>External instructor</value></data>
+  <data name="Credentials.AssignRole" xml:space="preserve"><value>Assign role</value></data>
+  <data name="Credentials.RemoveRole" xml:space="preserve"><value>Remove role</value></data>
+  <data name="Settings.Title" xml:space="preserve"><value>System settings</value></data>
+  <data name="Settings.Help" xml:space="preserve"><value>Saved values are applied to the portal according to each setting's type and limits.</value></data>
+  <data name="Settings.Error" xml:space="preserve"><value>Could not save the setting. Check its value and limits, then try again.</value></data>
+  <data name="Settings.Save" xml:space="preserve"><value>Save</value></data>
+  <data name="Settings.True" xml:space="preserve"><value>Yes</value></data>
+  <data name="Settings.False" xml:space="preserve"><value>No</value></data>
+  <data name="Settings.Secret" xml:space="preserve"><value>This value is secret. Leave it blank to keep it, except for the shared initial password, where blank disables it.</value></data>
+  <data name="Settings.Min" xml:space="preserve"><value>Minimum</value></data>
+  <data name="Settings.Max" xml:space="preserve"><value>Maximum</value></data>
+  <data name="Nav.Credentials" xml:space="preserve"><value>Accounts</value></data>
+  <data name="Nav.PasswordPolicy" xml:space="preserve"><value>Password policy</value></data>
+  <data name="Nav.Settings" xml:space="preserve"><value>Settings</value></data>
+  <data name="Nav.MyPassword" xml:space="preserve"><value>My password</value></data>
+  <data name="Nav.Dashboard" xml:space="preserve"><value>Dashboard</value></data>
+  <data name="Nav.Hints" xml:space="preserve"><value>Field hints</value></data>
+  <data name="Nav.Sync" xml:space="preserve"><value>University sync</value></data>
+  <data name="Nav.Centers" xml:space="preserve"><value>Centers</value></data>
+  <data name="Nav.AvailableCourses" xml:space="preserve"><value>Available courses</value></data>
+  <data name="Nav.ProposeCourse" xml:space="preserve"><value>Propose a course</value></data>
+  <data name="Nav.QualityProposals" xml:space="preserve"><value>Course proposals</value></data>
+  <data name="Nav.Users" xml:space="preserve"><value>Users</value></data>
+  <data name="Nav.ChangeLanguage" xml:space="preserve"><value>العربية</value></data>
+  <data name="Nav.Logout" xml:space="preserve"><value>Sign out</value></data>
+  <data name="Hints.Title" xml:space="preserve"><value>Field hints</value></data>
+  <data name="Hints.New" xml:space="preserve"><value>New hint</value></data>
+  <data name="Hints.FieldKey" xml:space="preserve"><value>Field key</value></data>
+  <data name="Hints.ContextKey" xml:space="preserve"><value>Context</value></data>
+  <data name="Hints.HintAr" xml:space="preserve"><value>Arabic text</value></data>
+  <data name="Hints.HintEn" xml:space="preserve"><value>English text</value></data>
+  <data name="Hints.Enabled" xml:space="preserve"><value>Enabled</value></data>
+  <data name="Hints.Save" xml:space="preserve"><value>Save</value></data>
+  <data name="Hints.Deactivate" xml:space="preserve"><value>Deactivate</value></data>
+  <data name="Hints.Cancel" xml:space="preserve"><value>Cancel</value></data>
+  <data name="Hints.Empty" xml:space="preserve"><value>No hints yet.</value></data>
+  <data name="Hints.Saved" xml:space="preserve"><value>The hint was saved.</value></data>
+  <data name="Hints.Deactivated" xml:space="preserve"><value>The hint was deactivated.</value></data>
+  <data name="Credentials.Permissions" xml:space="preserve"><value>Permissions</value></data>
+  <data name="Credentials.SearchPermission" xml:space="preserve"><value>Search permissions</value></data>
+  <data name="Credentials.Permission" xml:space="preserve"><value>Permission</value></data>
+  <data name="Credentials.Effective" xml:space="preserve"><value>Effective access</value></data>
+  <data name="Credentials.Override" xml:space="preserve"><value>Override</value></data>
+  <data name="Credentials.Mode.Inherit" xml:space="preserve"><value>Inherit from role</value></data>
+  <data name="Credentials.Mode.Allow" xml:space="preserve"><value>Allow</value></data>
+  <data name="Credentials.Mode.Deny" xml:space="preserve"><value>Deny</value></data>
+  <data name="RoleSwitcher.Label" xml:space="preserve"><value>Role</value></data>
+  <data name="RoleSwitcher.DisplayOnly" xml:space="preserve"><value>This tab's mode</value></data>
+  <data name="RoleSwitcher.Explanation" xml:space="preserve"><value>Permissions follow the selected role in this tab.</value></data>
+  <data name="RoleSwitcher.Error" xml:space="preserve"><value>Could not switch workspace.</value></data>
+  <data name="Profile.Title" xml:space="preserve"><value>Professional profile</value></data>
+  <data name="Profile.Verify" xml:space="preserve"><value>Verify certificate</value></data>
+  <data name="Profile.Hours" xml:space="preserve"><value>Hours</value></data>
+  <data name="Profile.Issued" xml:space="preserve"><value>Issued</value></data>
+  <data name="Profile.Expires" xml:space="preserve"><value>Expires</value></data>
+  <data name="Profile.Expired" xml:space="preserve"><value>Expired</value></data>
+  <data name="Profile.ProCerts" xml:space="preserve"><value>Professional certificates</value></data>
+  <data name="Profile.Certificates" xml:space="preserve"><value>Course certificates</value></data>
+  <data name="Profile.Empty" xml:space="preserve"><value>No certificates to display.</value></data>
+  <data name="Profile.Error" xml:space="preserve"><value>Could not load the professional profile.</value></data>
+  <data name="Profile.Loading" xml:space="preserve"><value>Loading professional profile…</value></data>
+  <data name="Profile.Retry" xml:space="preserve"><value>Try again</value></data>
+  <data name="Notifications.Title" xml:space="preserve"><value>Notifications</value></data>
+  <data name="Notifications.Empty" xml:space="preserve"><value>No notifications</value></data>
+  <data name="Notifications.ReadAll" xml:space="preserve"><value>Mark all as read</value></data>
+  <data name="Notifications.Error" xml:space="preserve"><value>Could not load notifications.</value></data>
+  <data name="Verify.Title" xml:space="preserve"><value>Verify course certificates — Zarqa University</value></data>
+  <data name="Verify.Reference" xml:space="preserve"><value>Certificate reference number</value></data>
+  <data name="Verify.Submit" xml:space="preserve"><value>Verify</value></data>
+  <data name="Verify.Required" xml:space="preserve"><value>Enter the certificate reference number</value></data>
+  <data name="Verify.Error" xml:space="preserve"><value>Verification is unavailable. Please try again later.</value></data>
+  <data name="Verify.NotFound" xml:space="preserve"><value>No certificate was found for this reference.</value></data>
+  <data name="Verify.Connection" xml:space="preserve"><value>Could not connect to the service.</value></data>
+  <data name="Verify.Revoked" xml:space="preserve"><value>Revoked certificate</value></data>
+  <data name="Verify.Valid" xml:space="preserve"><value>Valid certificate</value></data>
+  <data name="Verify.RevokedAt" xml:space="preserve"><value>Revoked on</value></data>
+  <data name="Verify.Holder" xml:space="preserve"><value>Holder</value></data>
+  <data name="Verify.Course" xml:space="preserve"><value>Course</value></data>
+  <data name="Verify.Period" xml:space="preserve"><value>Course period</value></data>
+  <data name="Verify.Hours" xml:space="preserve"><value>Training hours</value></data>
+  <data name="Verify.Instructor" xml:space="preserve"><value>Instructor</value></data>
+  <data name="Verify.Issued" xml:space="preserve"><value>Issued on</value></data>
+  <data name="Available.Title" xml:space="preserve"><value>Courses available for registration</value></data>
+  <data name="Available.Start" xml:space="preserve"><value>Starts</value></data>
+  <data name="Available.End" xml:space="preserve"><value>Ends</value></data>
+  <data name="Available.Deadline" xml:space="preserve"><value>Registration deadline</value></data>
+  <data name="Available.Capacity" xml:space="preserve"><value>Maximum participants</value></data>
+  <data name="Available.Register" xml:space="preserve"><value>Register</value></data>
+  <data name="Available.Registered" xml:space="preserve"><value>Registered</value></data>
+  <data name="Available.Closed" xml:space="preserve"><value>Registration closed</value></data>
+  <data name="Available.Error" xml:space="preserve"><value>Could not load courses.</value></data>
+  <data name="Available.Empty" xml:space="preserve"><value>No courses are currently available for registration.</value></data>
+  <data name="Available.Loading" xml:space="preserve"><value>Loading courses…</value></data>
+  <data name="Available.Retry" xml:space="preserve"><value>Try again</value></data>
+  <data name="Available.Details" xml:space="preserve"><value>Course details</value></data>
+  <data name="Available.Previous" xml:space="preserve"><value>Previous</value></data>
+  <data name="Available.Next" xml:space="preserve"><value>Next</value></data>
+  <data name="Error.Title" xml:space="preserve"><value>Page unavailable</value></data>
+  <data name="Error.Message" xml:space="preserve"><value>We could not process your request. Please try again later.</value></data>
+  <data name="Error.RequestId" xml:space="preserve"><value>Request ID:</value></data>
+  <data name="Error.Home" xml:space="preserve"><value>Back to home</value></data>
+  <data name="AccessDenied.Title" xml:space="preserve"><value>Access denied</value></data>
+  <data name="AccessDenied.Message" xml:space="preserve"><value>Contact the system administrator if you think this is a mistake.</value></data>
+  <data name="Directory.Title" xml:space="preserve"><value>Members directory</value></data>
+  <data name="Directory.All" xml:space="preserve"><value>All faculties</value></data>
+  <data name="Directory.Open" xml:space="preserve"><value>View profile</value></data>
+  <data name="Directory.Empty" xml:space="preserve"><value>No members match your search.</value></data>
+  <data name="Directory.Error" xml:space="preserve"><value>Could not load the directory.</value></data>
+  <data name="Directory.Loading" xml:space="preserve"><value>Loading members…</value></data>
+  <data name="Directory.Search" xml:space="preserve"><value>Search by name or expertise</value></data>
+  <data name="Directory.Faculty" xml:space="preserve"><value>Faculty</value></data>
+  <data name="Directory.Submit" xml:space="preserve"><value>Search</value></data>
+  <data name="Directory.Pages" xml:space="preserve"><value>Members directory pages</value></data>
+  <data name="Directory.Previous" xml:space="preserve"><value>Previous</value></data>
+  <data name="Directory.Next" xml:space="preserve"><value>Next</value></data>
+  <data name="Nav.Group.Home" xml:space="preserve"><value>Home</value></data>
+  <data name="Nav.Group.Courses" xml:space="preserve"><value>Courses</value></data>
+  <data name="Nav.Group.NeedsEvaluation" xml:space="preserve"><value>Needs and evaluation</value></data>
+  <data name="Nav.Group.ImpactCertificates" xml:space="preserve"><value>Impact and certificates</value></data>
+  <data name="Nav.Group.System" xml:space="preserve"><value>Users and system</value></data>
+  <data name="Nav.Group.Audit" xml:space="preserve"><value>Vault and audit</value></data>
+  <data name="Nav.AdminDashboard" xml:space="preserve"><value>Admin dashboard</value></data>
+  <data name="Nav.QualityDashboard" xml:space="preserve"><value>Quality dashboard</value></data>
+  <data name="Nav.DeanDashboard" xml:space="preserve"><value>Dean dashboard</value></data>
+  <data name="Nav.MemberDashboard" xml:space="preserve"><value>Member dashboard</value></data>
+  <data name="Nav.Propose" xml:space="preserve"><value>Propose a course</value></data>
+  <data name="Nav.Proposals" xml:space="preserve"><value>Course proposals</value></data>
+  <data name="Nav.CreateCourse" xml:space="preserve"><value>Create course</value></data>
+  <data name="Nav.Cancellations" xml:space="preserve"><value>Cancellation requests</value></data>
+  <data name="Nav.AllCourses" xml:space="preserve"><value>All courses</value></data>
+  <data name="Nav.FacultyCourses" xml:space="preserve"><value>My faculty's courses</value></data>
+  <data name="Nav.InstructorCourses" xml:space="preserve"><value>Courses I teach</value></data>
+  <data name="Nav.Enrolled" xml:space="preserve"><value>My enrolled courses</value></data>
+  <data name="Nav.Available" xml:space="preserve"><value>Available courses</value></data>
+  <data name="Nav.Tracks" xml:space="preserve"><value>Training tracks</value></data>
+  <data name="Nav.TrainingNeeds" xml:space="preserve"><value>Training needs</value></data>
+  <data name="Nav.Needs" xml:space="preserve"><value>Needs</value></data>
+  <data name="Nav.ManageNeeds" xml:space="preserve"><value>Manage needs</value></data>
+  <data name="Nav.EvalForm" xml:space="preserve"><value>Evaluation form</value></data>
+  <data name="Nav.Evaluations" xml:space="preserve"><value>Evaluation results</value></data>
+  <data name="Nav.Impact" xml:space="preserve"><value>Training impact</value></data>
+  <data name="Nav.ReviewImpact" xml:space="preserve"><value>Review impact</value></data>
+  <data name="Nav.HistoricalCourses" xml:space="preserve"><value>Add historical courses</value></data>
+  <data name="Nav.ExternalInstructors" xml:space="preserve"><value>External instructors</value></data>
+  <data name="Nav.RolesPermissions" xml:space="preserve"><value>Roles and permissions</value></data>
+  <data name="Nav.UniversityStatistics" xml:space="preserve"><value>University statistics</value></data>
+  <data name="Nav.FacultyStatistics" xml:space="preserve"><value>Faculty statistics</value></data>
+  <data name="ImpactReview.Card.Title" xml:space="preserve"><value>Training impact review</value></data>
+  <data name="ImpactReview.Card.Description" xml:space="preserve"><value>Review impact submissions assigned to you, approve them, or return them to the trainee with notes.</value></data>
+  <data name="ImpactReview.Card.Open" xml:space="preserve"><value>Open review requests</value></data>
+  <data name="AdminActions.Historical.Title" xml:space="preserve"><value>Add historical courses and certificates</value></data>
+  <data name="AdminActions.Historical.Description" xml:space="preserve"><value>Record a historical course and identify successful members who are eligible for certificates.</value></data>
+  <data name="AdminActions.Historical.Open" xml:space="preserve"><value>Open historical entry</value></data>
+  <data name="AdminActions.Certificates.Title" xml:space="preserve"><value>Manage and issue certificates</value></data>
+  <data name="AdminActions.Certificates.Description" xml:space="preserve"><value>Issue pending certificates or create an exceptional certificate for an employee.</value></data>
+  <data name="AdminActions.Certificates.Open" xml:space="preserve"><value>Open certificates</value></data>
+  <data name="Nav.MyCertificates" xml:space="preserve"><value>My certificates</value></data>
+  <data name="Nav.Certificates" xml:space="preserve"><value>Certificates</value></data>
+  <data name="Nav.CertificateTemplate" xml:space="preserve"><value>Certificate template</value></data>
+  <data name="Nav.MyProCerts" xml:space="preserve"><value>My professional certificates</value></data>
+  <data name="Nav.ProCerts" xml:space="preserve"><value>Professional certificates</value></data>
+  <data name="Nav.ProCertStats" xml:space="preserve"><value>Professional certificate statistics</value></data>
+  <data name="Nav.ExternalRequests" xml:space="preserve"><value>External instructor requests</value></data>
+  <data name="Nav.Vault" xml:space="preserve"><value>Vault</value></data>
+  <data name="Nav.Audit" xml:space="preserve"><value>Audit log</value></data>
+  <data name="Nav.LiveFeed" xml:space="preserve"><value>Live feed</value></data>
+  <data name="Shell.Platform" xml:space="preserve"><value>Training portal</value></data>
+  <data name="Shell.University" xml:space="preserve"><value>Zarqa University</value></data>
+  <data name="Shell.Logo" xml:space="preserve"><value>Zarqa University logo</value></data>
+  <data name="Shell.Navigation" xml:space="preserve"><value>Main navigation</value></data>
+  <data name="Shell.Menu" xml:space="preserve"><value>Menu</value></data>
+  <data name="Directory.Retry" xml:space="preserve"><value>Try again</value></data>
+  <data name="Notifications.Loading" xml:space="preserve"><value>Loading notifications…</value></data>
+  <data name="Notifications.ReadError" xml:space="preserve"><value>Could not mark notifications as read. Try again.</value></data>
+  <data name="Directory.FilterError" xml:space="preserve"><value>Could not load the faculty filter. You can still search by name or expertise.</value></data>
+  <data name="Picker.Clear" xml:space="preserve"><value>Clear date</value></data>
+  <data name="Picker.Invalid" xml:space="preserve"><value>Enter a valid date in the displayed format.</value></data>
+  <data name="Nav.Group.Members" xml:space="preserve"><value>Members</value></data>
+  <data name="Nav.EnterCode" xml:space="preserve"><value>Enter attendance code</value></data>
+  <data name="Nav.Teaching" xml:space="preserve"><value>My teaching assignments</value></data>
+  <data name="Nav.FacultyMembers" xml:space="preserve"><value>My faculty members</value></data>
+  <data name="Lectures.ValidationError" xml:space="preserve"><value>The lecture could not be saved. Check the fields listed below.</value></data>
+  <data name="Lectures.Error" xml:space="preserve"><value>The request could not be completed. Try again.</value></data>
+</root>

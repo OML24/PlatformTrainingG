@@ -1,0 +1,21 @@
+@page "/admin/centers"
+@using System.Security.Claims
+@inject ZuLms.Application.Common.Abstractions.IPermissionService Permissions
+@{
+    ViewData["Title"] = "المراكز";
+    long.TryParse(User.FindFirstValue(ClaimTypes.NameIdentifier), out long actorId);
+    bool canEdit = actorId > 0 && await Permissions.HasAsync(actorId, "centers.edit", ViewContext.HttpContext.RequestAborted);
+}
+<div class="container py-4" id="centers-page" data-can-edit="@canEdit.ToString().ToLowerInvariant()">
+    <h1>المراكز</h1>
+    <p class="text-muted">التصنيف والرمز المختصر وحالة التفعيل حقول محلية تديرها الإدارة.</p>
+    <div class="alert alert-danger d-none" id="centers-error" role="alert"></div>
+    <label class="form-label" for="centers-search">بحث</label>
+    <input id="centers-search" class="form-control mb-3" type="search" />
+    <div class="table-responsive"><table class="table table-striped align-middle"><thead><tr>
+        <th>الجهة</th><th>الرمز</th><th>اسم المركز</th><th>عميد مقترح</th>
+        <th>كلية</th><th>الرمز المختصر</th><th>مفعّل</th><th>إجراء</th>
+    </tr></thead><tbody id="centers-rows"></tbody></table></div>
+    <div class="d-flex gap-2 align-items-center"><button id="centers-prev" type="button" class="btn btn-outline-secondary">السابق</button><span id="centers-page-number"></span><button id="centers-next" type="button" class="btn btn-outline-secondary">التالي</button></div>
+</div>
+@section Scripts { <script src="~/js/centers-admin.js" asp-append-version="true"></script> }

@@ -1,0 +1,17 @@
+{
+  "executedAt": "2026-11-02",
+  "baseUrl": "http://127.0.0.1:5375",
+  "database": "zu_lms_ui_20261101_141731",
+  "credentialsIncluded": false,
+  "results": [
+    { "path": "/admin/roles", "status": "PASS", "title": "مصفوفة الأدوار والصلاحيات — ZU-LMS", "permissionRows": 138, "roles": 6, "httpErrors": 0, "consoleErrors": 0 },
+    { "path": "/admin/stats", "status": "PASS", "title": "إحصاءات الجامعة — ZU-LMS", "httpErrors": 0, "consoleErrors": 0 },
+    { "path": "/dean/stats", "status": "PASS", "as": "Admin", "result": "access-denied", "note": "Route exists and page authorization rejected an account without page.dean.stats." },
+    { "path": "/quality/courses/new-historical", "status": "PASS", "httpErrors": 0, "consoleErrors": 0 },
+    { "path": "/quality/external-instructors", "status": "PASS", "httpErrors": 0, "consoleErrors": 0 },
+    { "path": "/account/settings", "status": "PASS", "httpErrors": 0, "consoleErrors": 0 },
+    { "path": "/admin/users/1", "status": "PASS", "httpErrors": 0, "consoleErrors": 0, "deepLinkSearch": "uiadmin", "permissionDialogOpen": true, "permissionRows": 138 },
+    { "path": "/member/available", "status": "BLOCKED-ROLE", "as": "Local Admin", "apiStatus": 400, "note": "Requires an Employee/Member fixture." },
+    { "path": "/member/enrolled", "status": "BLOCKED-ROLE", "as": "Local Admin", "apiStatus": 403, "note": "Server scope denied non-member actor as expected." }
+  ]
+}

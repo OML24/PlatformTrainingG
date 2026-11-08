@@ -1,0 +1,53 @@
+@page "/vault"
+@{ ViewData["Title"] = "مستودع الكتب والموافقات"; }
+<div class="container py-4" id="vault-page">
+  <h1>مستودع الكتب والموافقات</h1>
+  <div id="vault-error" class="alert alert-danger d-none" role="alert"></div>
+  <div id="vault-success" class="alert alert-success d-none" role="status"></div>
+
+  <section class="card card-body mb-4">
+    <h2 class="h5">ربط وثيقة يدوياً (محاضر جودة / توصية / أخرى)</h2>
+    <form id="vault-form">
+      <div class="row g-3">
+        <div class="col-md-3">
+          <label class="form-label" for="vault-kind">نوع الوثيقة</label>
+          <select id="vault-kind" class="form-select">
+            <option value="QualityMinutes">محضر جودة</option>
+            <option value="Recommendation">كتاب توصية</option>
+            <option value="Other">أخرى</option>
+          </select>
+        </div>
+        <div class="col-md-3"><label class="form-label" for="vault-title">العنوان</label><input id="vault-title" class="form-control" maxlength="300" required /></div>
+        <div class="col-md-2"><label class="form-label" for="vault-course">الدورة (اختياري)</label><input id="vault-course" class="form-control" type="number" min="1" /></div>
+        <div class="col-md-2"><label class="form-label" for="vault-center">الكلية (اختياري)</label><input id="vault-center" class="form-control" type="number" min="1" /></div>
+        <div class="col-md-2"><label class="form-label" for="vault-file">الملف (PDF)</label><input id="vault-file" class="form-control" type="file" accept=".pdf" required /></div>
+      </div>
+      <button id="vault-submit" class="btn btn-primary mt-3" type="submit">ربط الوثيقة</button>
+    </form>
+  </section>
+
+  <form id="vault-filters" class="row g-2 mb-3">
+    <div class="col-md-4"><input id="vault-search" class="form-control" placeholder="بحث بالعنوان" /></div>
+    <div class="col-md-3">
+      <select id="vault-type" class="form-select">
+        <option value="">كل الأنواع</option>
+        <option value="ProposalCouncilLetter">كتاب مجلس الكلية</option>
+        <option value="InstructorCv">سيرة محاضر خارجي</option>
+        <option value="CancellationLetter">كتاب إلغاء</option>
+        <option value="NeedLetter">كتاب احتياج</option>
+        <option value="QualityMinutes">محضر جودة</option>
+        <option value="Recommendation">توصية</option>
+        <option value="ProfessionalCertificate">شهادة مهنية</option>
+      </select>
+    </div>
+    <div class="col-md-2"><button class="btn btn-outline-primary w-100" type="submit">بحث</button></div>
+  </form>
+
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead><tr><th>العنوان</th><th>النوع</th><th>الدورة</th><th>الكلية</th><th>الرافع</th><th>التاريخ</th><th>إجراء</th></tr></thead>
+      <tbody id="vault-rows"></tbody>
+    </table>
+  </div>
+</div>
+@section Scripts { <script src="~/js/vault.js" asp-append-version="true"></script> }

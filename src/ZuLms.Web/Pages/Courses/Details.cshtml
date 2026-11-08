@@ -1,0 +1,133 @@
+@page "/courses/{courseId:long}"
+@{ ViewData["Title"] = "تفاصيل الدورة"; }
+<div class="container py-4" id="course-details-page" data-course-id="@RouteData.Values["courseId"]">
+  <h1 id="course-details-title">تفاصيل الدورة</h1>
+  <div id="course-details-meta" class="course-details-meta mb-3"></div>
+  <div id="course-details-error" class="alert alert-danger d-none" role="alert"></div>
+  <div id="course-details-success" class="alert alert-success d-none" role="status"></div>
+  <div id="course-details-actions" class="course-details-actions mb-3"></div>
+  <nav id="course-details-tabs" class="focus-tabs d-none" role="tablist" aria-label="أقسام الدورة"></nav>
+  <section id="course-details-overview" class="card card-body" data-tab-label="بيانات الدورة">
+    <dl id="course-details-fields" class="course-details-fields mb-0"></dl>
+  </section>
+  <section id="course-details-history-section" class="mt-4 d-none"><h2 class="h5">سجل الحالة</h2><div id="course-details-history"></div></section>
+  <section id="course-details-files-section" class="mt-4 d-none"><h2 class="h5">الملفات</h2><ul id="course-details-files"></ul></section>
+  <section id="course-details-lectures-section" class="mt-4 d-none"><h2 class="h5">المحاضرات والحضور</h2><div id="course-details-lectures"></div></section>
+  <section id="course-details-progress-section" class="card card-body mt-4 d-none"><h2 class="h5">تقدّمي في متطلبات الشهادة</h2><div id="course-details-progress"></div></section>
+  <section id="course-details-evaluation-section" class="card card-body mt-4 d-none"><h2 class="h5">تقييم الدورة</h2><div id="course-details-evaluation"></div></section>
+  <section id="course-details-evaluation-results-section" class="card card-body mt-4 d-none"><h2 class="h5">نتائج تقييم الدورة</h2><div id="course-details-evaluation-results"></div></section>
+  <section id="course-details-impact-section" class="card card-body mt-4 d-none"><h2 class="h5">الأثر التدريبي</h2><div id="course-details-impact"></div></section>
+</div>
+<dialog id="course-details-deactivate-dialog" class="course-details-dialog border rounded p-4">
+  <form id="course-details-deactivate-form">
+    <h2 class="h5">تعطيل الدورة</h2>
+    <p>ستتوقف الدورة عن الظهور في القوائم التشغيلية. أدخل سبب التعطيل.</p>
+    <label for="course-details-deactivate-reason" class="form-label">السبب</label>
+    <textarea id="course-details-deactivate-reason" class="form-control mb-3" required maxlength="1000"></textarea>
+    <fieldset id="course-details-certificates-choice" class="d-none mb-3">
+      <legend id="course-details-certificates-warning" class="fs-6"></legend>
+      <label class="d-block mb-1"><input type="radio" name="certificateAction" value="Keep" /> إبقاء الشهادات لدى أصحابها</label>
+      <label class="d-block"><input type="radio" name="certificateAction" value="Hide" /> تعطيل الشهادات أيضاً (تُخفى من بوابة التحقق ولا تظهر تفاصيلها)</label>
+    </fieldset>
+    <div class="d-flex gap-2">
+      <button type="submit" class="btn btn-danger">تأكيد التعطيل</button>
+      <button id="course-details-deactivate-cancel" type="button" class="btn btn-outline-secondary">رجوع</button>
+    </div>
+  </form>
+</dialog>
+<dialog id="course-details-edit-dialog" class="course-details-dialog course-details-dialog-wide border rounded p-4">
+  <form id="course-details-edit-form" class="row g-2">
+    <h2 class="h5">تعديل بيانات الدورة</h2>
+    <label class="col-md-6">العنوان العربي<input name="titleAr" class="form-control" required maxlength="300" /></label>
+    <label class="col-md-6">العنوان الإنجليزي<input name="titleEn" class="form-control" maxlength="300" /></label>
+    <label class="col-12">الأهداف بالعربية<textarea name="objectivesAr" class="form-control" required></textarea></label>
+    <label class="col-12">الأهداف بالإنجليزية<textarea name="objectivesEn" class="form-control"></textarea></label>
+    <label class="col-md-6">الفئة المستهدفة بالعربية<input name="targetAudienceAr" class="form-control" required /></label>
+    <label class="col-md-6">الفئة المستهدفة بالإنجليزية<input name="targetAudienceEn" class="form-control" /></label>
+    <label class="col-md-4">الساعات<input name="totalHours" type="number" class="form-control" required min="0.01" max="9999.99" step="0.01" /></label>
+     <label class="col-md-4">تاريخ البداية<input name="plannedStartDate" type="text" inputmode="numeric" class="form-control zu-date" required /></label>
+     <label class="col-md-4">تاريخ النهاية<input name="plannedEndDate" type="text" inputmode="numeric" class="form-control zu-date" required /></label>
+    <label class="col-md-4">الحد الأقصى للمشاركين<input name="maxParticipants" type="number" class="form-control" min="1" step="1" /></label>
+    <label class="col-md-4">المحور<select name="trackId" class="form-select" required></select></label>
+    <label class="col-md-4">نمط التنفيذ<select name="deliveryMode" class="form-select" required>
+      <option value="InPerson">وجاهي</option><option value="Online">عن بُعد</option><option value="Blended">مدمج</option>
+    </select></label>
+    <label class="col-md-4">نوع الجمهور<select name="audienceType" class="form-select" required>
+      <option value="General">عام</option><option value="Faculty">كلية</option><option value="Administrative">الإداريون</option><option value="Named">محددون</option>
+    </select></label>
+    <label class="col-md-6">كلية الجمهور<select name="targetCenterId" class="form-select"></select></label>
+     <label class="col-md-6">آخر موعد للتسجيل (بتوقيت عمّان)<input name="registrationDeadline" type="text" inputmode="numeric" class="form-control zu-datetime" /></label>
+    <div class="col-12 d-flex gap-2 mt-3">
+      <button class="btn btn-primary" type="submit">حفظ</button>
+      <button class="btn btn-outline-secondary" id="course-details-edit-cancel" type="button">رجوع</button>
+    </div>
+  </form>
+</dialog>
+<dialog id="course-details-force-dialog" class="course-details-dialog border rounded p-4">
+  <form id="course-details-force-form">
+    <h2 class="h5">تغيير حالة الدورة بواسطة الأدمن</h2>
+    <p class="alert alert-warning">سيُسجَّل هذا الإجراء بسببك. الانتقال خارج المسار المعتاد قد يُلغي الشهادات الصادرة أو يعيد فحص الاستحقاق.</p>
+    <label for="course-details-force-target" class="form-label">الحالة الجديدة</label>
+    <select id="course-details-force-target" class="form-select mb-3" required>
+      <option value="Proposed">مقترحة — بانتظار الجودة</option>
+      <option value="Returned">معادة للتعديل</option>
+      <option value="Rejected">مرفوضة</option>
+      <option value="Approved">معتمدة</option>
+      <option value="Finished">منتهية</option>
+      <option value="Cancelled">ملغية بعد الاعتماد</option>
+    </select>
+    <label for="course-details-force-reason" class="form-label">سبب التغيير</label>
+    <textarea id="course-details-force-reason" class="form-control mb-3" required maxlength="1000"></textarea>
+    <label class="d-block mb-3"><input id="course-details-force-confirm" type="checkbox" required /> أؤكد تغيير الحالة وآثاره على الشهادات.</label>
+    <div class="d-flex gap-2">
+      <button type="submit" class="btn btn-danger">تأكيد التغيير</button>
+      <button id="course-details-force-cancel" type="button" class="btn btn-outline-secondary">رجوع</button>
+    </div>
+  </form>
+</dialog>
+<dialog id="course-details-threshold-dialog" class="course-details-dialog border rounded p-4">
+  <form id="course-details-threshold-form">
+    <h2 class="h5">نسبة الحضور الخاصة بالدورة</h2>
+    <p>اترك الحقل فارغاً لاستخدام النسبة العامة. سيُعاد فحص استحقاق المشاركين في الدورة المنتهية.</p>
+    <label for="course-details-threshold-percent" class="form-label">النسبة المئوية</label>
+    <input id="course-details-threshold-percent" type="number" class="form-control mb-3" min="1" max="100" step="1" />
+    <div class="d-flex gap-2"><button type="submit" class="btn btn-primary">حفظ</button>
+      <button id="course-details-threshold-cancel" type="button" class="btn btn-outline-secondary">رجوع</button></div>
+  </form>
+</dialog>
+<dialog id="course-details-eval-period-dialog" class="course-details-dialog border rounded p-4">
+  <form id="course-details-eval-period-form">
+    <h2 class="h5">نهاية فترة التقييم</h2>
+    <label for="course-details-eval-period-date" class="form-label">التاريخ الجديد</label>
+     <input id="course-details-eval-period-date" type="text" inputmode="numeric" class="form-control zu-date mb-3" required />
+    <div class="d-flex gap-2"><button type="submit" class="btn btn-primary">حفظ</button>
+      <button id="course-details-eval-period-cancel" type="button" class="btn btn-outline-secondary">رجوع</button></div>
+  </form>
+</dialog>
+<dialog id="course-details-instructor-dialog" class="course-details-dialog border rounded p-4">
+  <form id="course-details-instructor-form" class="row g-2">
+    <h2 class="h5">تعديل محاضر الدورة</h2>
+    <p id="course-details-instructor-current" class="text-muted"></p>
+    <label class="col-12">نوع المحاضر<select name="choice" class="form-select" required>
+      <option value="Internal">موظف من الجامعة</option>
+      <option value="ExistingExternal">مدرب خارجي بحساب</option>
+      <option value="ExternalNameOnly">مدرب خارجي بالاسم فقط</option>
+      <option value="ManagedByQuality">دورة تديرها الجودة</option>
+    </select></label>
+    <div id="course-details-instructor-account" class="col-12">
+      <label class="form-label">ابحث بالاسم أو اسم الدخول<input name="search" type="search" class="form-control" /></label>
+      <label class="form-label d-block">المحاضر<select name="userId" class="form-select" required></select></label>
+    </div>
+    <div id="course-details-instructor-name-only" class="col-12 d-none row g-2">
+      <label class="col-md-6">الاسم العربي<input name="nameAr" class="form-control" maxlength="300" /></label>
+      <label class="col-md-6">الاسم الإنجليزي<input name="nameEn" class="form-control" maxlength="300" /></label>
+      <label class="col-md-6">الجهة العربية<input name="organizationAr" class="form-control" maxlength="300" /></label>
+      <label class="col-md-6">الجهة الإنجليزية<input name="organizationEn" class="form-control" maxlength="300" /></label>
+    </div>
+    <div class="col-12 d-flex gap-2 mt-3">
+      <button type="submit" class="btn btn-primary">حفظ</button>
+      <button id="course-details-instructor-cancel" type="button" class="btn btn-outline-secondary">رجوع</button>
+    </div>
+  </form>
+</dialog>
+@section Scripts { <script src="~/js/course-details.js" asp-append-version="true"></script> }

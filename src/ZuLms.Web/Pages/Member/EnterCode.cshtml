@@ -1,0 +1,22 @@
+@page "/member/enter-code"
+@{ ViewData["Title"] = "إدخال كود الحضور"; }
+<div class="container py-4" id="enter-code-page">
+  <h1>إدخال كود الحضور</h1>
+  <div id="ec-error" class="alert alert-danger d-none" role="alert"></div>
+  <div id="ec-success" class="alert alert-success d-none" role="status"></div>
+  <div class="alert alert-info">اختر الدورة ثم المحاضرة الجارية وأدخل الكود الظاهر على الشاشة.</div>
+  <form id="ec-form" class="card card-body mb-4">
+    <div class="row g-3">
+      <div class="col-md-5"><label class="form-label" for="ec-course">الدورة</label><select id="ec-course" class="form-select" required></select></div>
+      <div class="col-md-4"><label class="form-label" for="ec-lecture">المحاضرة</label><select id="ec-lecture" class="form-select" required></select></div>
+       <div class="col-md-3"><label class="form-label" for="ec-code">الكود</label><input id="ec-code" class="form-control" type="text" dir="ltr" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]+" required /></div>
+    </div>
+    <button id="ec-submit" class="btn btn-primary mt-3" type="submit">تسجيل الحضور</button>
+  </form>
+  <div class="d-flex align-items-center gap-2">
+    <button id="ec-prev" type="button" class="btn btn-outline-secondary" disabled>السابق</button>
+    <span id="ec-page-number"></span>
+    <button id="ec-next" type="button" class="btn btn-outline-secondary" disabled>التالي</button>
+  </div>
+</div>
+@section Scripts { <script src="~/js/member-enter-code.js" asp-append-version="true"></script> }

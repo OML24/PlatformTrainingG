@@ -1,0 +1,14 @@
+@page "/admin/needs"
+@{ ViewData["Title"] = "إدارة الاحتياجات التدريبية"; }
+<div class="container py-4" id="admin-needs-page">
+  <h1>الاحتياجات التدريبية (إدارة)</h1>
+  <div id="aneeds-error" class="alert alert-danger d-none" role="alert"></div>
+  <div id="aneeds-success" class="alert alert-success d-none" role="status"></div>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead><tr><th>العنوان</th><th>الكلية</th><th>العميد</th><th>الحالة</th><th>الكتاب</th><th>إجراء</th></tr></thead>
+      <tbody id="aneeds-rows"></tbody>
+    </table>
+  </div>
+</div>
+@section Scripts { <script src="~/js/admin-needs.js" asp-append-version="true"></script> }

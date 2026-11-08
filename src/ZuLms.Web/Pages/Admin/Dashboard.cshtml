@@ -1,0 +1,19 @@
+@page "/admin/dashboard"
+@{
+    ViewData["Title"] = "لوحة تحكم الأدمن";
+}
+@{ ViewData["StatsRole"] = "admin"; ViewData["StatsHeading"] = "إحصائيات الجامعة"; }
+@await Html.PartialAsync("_StatsDashboard")
+@await Html.PartialAsync("_ImpactReviewCard")
+@await Html.PartialAsync("_AdminCertificateActions")
+<div class="container pb-4" id="admin-dashboard-activity">
+    <div class="row g-4">
+        <section class="col-12 col-xl-8"><div class="card h-100"><div class="card-header d-flex justify-content-between"><span>آخر 10 أحداث</span><a href="/admin/audit">فتح سجل التدقيق</a></div><div class="card-body"><div class="alert alert-danger d-none" id="admin-activity-error" role="alert"></div><ol class="list-group list-group-numbered" id="admin-recent-events"></ol></div></div></section>
+        <section class="col-12 col-xl-4"><div class="card h-100"><div class="card-header d-flex justify-content-between"><span>آخر مزامنة</span><a href="/admin/sync">فتح المزامنة</a></div><div class="card-body" id="admin-last-sync"><span class="text-muted">لا توجد مزامنة سابقة.</span></div></div></section>
+    </div>
+</div>
+@section Scripts {
+    <script src="~/lib/chartjs/chart.umd.js"></script>
+    <script src="~/js/stats-dashboard.js" asp-append-version="true"></script>
+    <script src="~/js/admin-dashboard.js" asp-append-version="true"></script>
+}

@@ -1,0 +1,11 @@
+@page "/not-found"
+@{
+    ViewData["Title"] = "الصفحة غير موجودة";
+    // Keep a real 404 status (not a soft 404) after the status-code redirect lands here.
+    ViewContext.HttpContext.Response.StatusCode = Microsoft.AspNetCore.Http.StatusCodes.Status404NotFound;
+}
+<section class="container py-5 text-center">
+    <h1>الصفحة غير موجودة</h1>
+    <p>الرابط الذي طلبته غير متاح.</p>
+    <a class="btn btn-primary" href="/">العودة للرئيسية</a>
+</section>

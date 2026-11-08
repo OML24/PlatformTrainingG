@@ -1,0 +1,13 @@
+@page "/account/settings"
+@using System.Globalization
+@{ ViewData["Title"] = "إعدادات الحساب"; }
+<div class="container py-4" id="account-settings-page">
+  <h1>إعدادات الحساب</h1>
+  <div class="card card-body" style="max-width:640px">
+    <h2 class="h5">لغة الواجهة</h2>
+    <p class="text-muted">اللغة الحالية: @(CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "en" ? "English" : "العربية")</p>
+    <button class="btn btn-outline-primary align-self-start" type="button" data-language-toggle>تبديل العربية / English</button>
+    <hr />
+    <a href="/account/password">تغيير كلمة المرور</a>
+  </div>
+</div>

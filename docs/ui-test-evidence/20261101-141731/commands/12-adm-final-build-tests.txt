@@ -1,0 +1,13 @@
+Command scope: isolated Release build output under the approved temp run directory.
+Build: dotnet build ZuLms.sln -c Release --no-restore
+Result: PASS; 0 warnings; 0 errors.
+
+Automated test command:
+dotnet test ZuLms.sln -c Release --no-build --no-restore
+Environment: ZU_TEST_PG points to dedicated PostgreSQL 18 UI-test fallback DB; ZU_ORG_TEST_PG points to a separate dedicated *_orgtest_* DB.
+Result: PASS; Domain 55, Application 16 (including 2 PostgreSQL integration facts), Infrastructure 7, Web 38, Architecture 6; total 122 passed, 0 failed, 0 skipped.
+The PostgreSQL 17 Testcontainers gate remains separate and BLOCKED because Docker is unavailable.
+
+After the last dashboard-link adjustment, a final Release rebuild also passed with 0 warnings/0 errors, and the 120 non-PostgreSQL tests passed again. The ADM retest confirms the participants KPI now links to the course directory.
+
+No passwords, connection strings, cookies, session IDs, or email bodies are included.

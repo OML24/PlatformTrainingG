@@ -1,0 +1,308 @@
+{
+  "runId": "20261101-141731",
+  "prefix": "UI-20261101-141731-",
+  "status": "ADM-RETEST-COMPLETE",
+  "reason": "ADM01-ADM15 fixes and UI retests completed with isolated fixtures and loopback SMTP sink; no secrets included.",
+  "database": "zu_lms_ui_20261101_141731",
+  "storage": "isolated-temp",
+  "faculties": [
+    {
+      "fixture": "F1",
+      "sideCode": 91,
+      "centerCode": 9101
+    },
+    {
+      "fixture": "F2",
+      "sideCode": 91,
+      "centerCode": 9102
+    }
+  ],
+  "accounts": [
+    {
+      "fixture": "Q1",
+      "id": 16,
+      "loginName": "911101",
+      "accountType": "Employee",
+      "isActive": true,
+      "centerId": 3,
+      "empStatus": 13,
+      "roles": [
+        "Member",
+        "Quality"
+      ],
+      "passwordIncluded": false
+    },
+    {
+      "fixture": "D1",
+      "id": 17,
+      "loginName": "911102",
+      "accountType": "Employee",
+      "isActive": true,
+      "centerId": 3,
+      "empStatus": 13,
+      "roles": [
+        "Dean",
+        "Member"
+      ],
+      "passwordIncluded": false
+    },
+    {
+      "fixture": "D2",
+      "id": 18,
+      "loginName": "911103",
+      "accountType": "Employee",
+      "isActive": true,
+      "centerId": 4,
+      "empStatus": 13,
+      "roles": [
+        "Dean",
+        "Member"
+      ],
+      "passwordIncluded": false
+    },
+    {
+      "fixture": "M1",
+      "id": 19,
+      "loginName": "911104",
+      "accountType": "Employee",
+      "isActive": true,
+      "centerId": 3,
+      "empStatus": 13,
+      "roles": [
+        "Member"
+      ],
+      "passwordIncluded": false
+    },
+    {
+      "fixture": "M2",
+      "id": 20,
+      "loginName": "911105",
+      "accountType": "Employee",
+      "isActive": true,
+      "centerId": 3,
+      "empStatus": 13,
+      "roles": [
+        "Member"
+      ],
+      "passwordIncluded": false
+    },
+    {
+      "fixture": "M3",
+      "id": 21,
+      "loginName": "911106",
+      "accountType": "Employee",
+      "isActive": true,
+      "centerId": 4,
+      "empStatus": 13,
+      "roles": [
+        "Member"
+      ],
+      "passwordIncluded": false
+    },
+    {
+      "fixture": "I1",
+      "id": 22,
+      "loginName": "911107",
+      "accountType": "Employee",
+      "isActive": true,
+      "centerId": 3,
+      "empStatus": 13,
+      "roles": [
+        "Member"
+      ],
+      "derivedRoles": [
+        "Instructor"
+      ],
+      "passwordIncluded": false
+    },
+    {
+      "fixture": "I2",
+      "id": 23,
+      "loginName": "911108",
+      "accountType": "Employee",
+      "isActive": true,
+      "centerId": 4,
+      "empStatus": 13,
+      "roles": [
+        "Member"
+      ],
+      "derivedRoles": [
+        "Instructor"
+      ],
+      "passwordIncluded": false
+    },
+    {
+      "fixture": "N1",
+      "id": 24,
+      "loginName": "911109",
+      "accountType": "Employee",
+      "isActive": true,
+      "centerId": 3,
+      "empStatus": 13,
+      "roles": [
+        "Member"
+      ],
+      "passwordIncluded": false
+    },
+    {
+      "fixture": "N2",
+      "id": 25,
+      "loginName": "911110",
+      "accountType": "Employee",
+      "isActive": true,
+      "centerId": 3,
+      "empStatus": 13,
+      "roles": [
+        "Member"
+      ],
+      "passwordIncluded": false
+    },
+    {
+      "fixture": "X1",
+      "id": 26,
+      "loginName": "911111",
+      "accountType": "Employee",
+      "isActive": false,
+      "centerId": 3,
+      "empStatus": 13,
+      "roles": [
+        "Member"
+      ],
+      "passwordIncluded": false
+    },
+    {
+      "fixture": "X2",
+      "id": 27,
+      "loginName": "911112",
+      "accountType": "Employee",
+      "isActive": true,
+      "centerId": 3,
+      "empStatus": 99,
+      "roles": [
+        "Member"
+      ],
+      "passwordIncluded": false
+    },
+    {
+      "fixture": "O1",
+      "id": 28,
+      "loginName": "911113",
+      "accountType": "Employee",
+      "isActive": true,
+      "centerId": 3,
+      "empStatus": 13,
+      "roles": [
+        "Member"
+      ],
+      "passwordIncluded": false
+    },
+    {
+      "fixture": "EMPTY",
+      "id": 29,
+      "loginName": "911114",
+      "accountType": "Employee",
+      "isActive": true,
+      "centerId": 3,
+      "empStatus": 13,
+      "roles": [
+        "Member"
+      ],
+      "passwordIncluded": false
+    },
+    {
+      "fixture": "A2",
+      "id": 30,
+      "loginName": "uia2-20261101141731",
+      "accountType": "Local",
+      "isActive": true,
+      "centerId": null,
+      "empStatus": null,
+      "roles": [
+        "Admin"
+      ],
+      "passwordIncluded": false
+    },
+    {
+      "fixture": "A1",
+      "id": 1,
+      "loginName": "uiadmin",
+      "accountType": "Local",
+      "isActive": true,
+      "centerId": null,
+      "empStatus": null,
+      "roles": [
+        "Admin"
+      ],
+      "passwordIncluded": false
+    },
+    {
+      "fixture": "N3",
+      "loginName": "911115",
+      "accountType": "Employee",
+      "firstLoginCompleted": false,
+      "email": "test-only-sink-address",
+      "roles": [
+        "Member"
+      ],
+      "purpose": "ADM12/13/14 pre-first-login employee"
+    },
+    {
+      "fixture": "N4",
+      "loginName": "911116",
+      "accountType": "Employee",
+      "firstLoginCompleted": false,
+      "email": "test-only-sink-address",
+      "roles": [
+        "Member"
+      ],
+      "purpose": "ADM13 resend and ADM14 bulk send"
+    },
+    {
+      "fixture": "N5",
+      "loginName": "911117",
+      "accountType": "Employee",
+      "firstLoginCompleted": false,
+      "email": "none",
+      "roles": [
+        "Member"
+      ],
+      "purpose": "ADM15 shared-initial password acceptance"
+    },
+    {
+      "fixture": "E1",
+      "id": 34,
+      "loginName": "8000",
+      "accountType": "ExternalInstructor",
+      "isActive": true,
+      "firstLoginCompleted": true,
+      "roles": [
+        "ExternalInstructor"
+      ],
+      "createdBy": "quality-request-ui",
+      "purpose": "ADM15/quality external-instructor request"
+    }
+  ],
+  "courses": [
+    {
+      "id": 1,
+      "courseNo": "UI-20261101-141731-I1-ASSIGN",
+      "instructorUserId": 22,
+      "purpose": "derived-instructor-role"
+    },
+    {
+      "id": 2,
+      "courseNo": "UI-20261101-141731-I2-ASSIGN",
+      "instructorUserId": 23,
+      "purpose": "derived-instructor-role"
+    }
+  ],
+  "overrides": {
+    "fixture": "O1",
+    "allow": "audit.export",
+    "deny": "certificates.view.own",
+    "inherit": "profile.view.own"
+  },
+  "files": [],
+  "secretsIncluded": false,
+  "credentialsLocation": "outside-repository"
+}

@@ -1,0 +1,9 @@
+﻿src\ZuLms.Web\Localization\SharedResource.ar.resx
+src\ZuLms.Web\Localization\SharedResource.en.resx
+src\ZuLms.Web\Pages\Shared\Directory.cshtml
+src\ZuLms.Web\Pages\Shared\_Layout.cshtml
+src\ZuLms.Web\wwwroot\js\directory.js
+src\ZuLms.Web\wwwroot\js\notifications.js
+src\ZuLms.Web\wwwroot\js\pickers.js
+src\ZuLms.Web\wwwroot\js\role-switcher.js
+src\ZuLms.Web\wwwroot\js\site.js

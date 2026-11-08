@@ -1,0 +1,34 @@
+@page "/shared/profile/{userId:long}"
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<ZuLms.Web.SharedResource> T
+@{ ViewData["Title"] = T["Profile.Title"]; }
+<div class="container py-4" id="profile-page" data-user-id="@ViewContext.RouteData.Values["userId"]"
+     data-verify="@T["Profile.Verify"]" data-hours="@T["Profile.Hours"]"
+     data-issued="@T["Profile.Issued"]" data-expires="@T["Profile.Expires"]"
+     data-expired="@T["Profile.Expired"]" data-pro-certs="@T["Profile.ProCerts"]"
+     data-empty="@T["Profile.Empty"]" data-error="@T["Profile.Error"]" aria-busy="true">
+  <div id="profile-loading" role="status" class="alert alert-info">@T["Profile.Loading"]</div>
+  <div id="profile-error" class="alert alert-danger d-none" role="alert"></div>
+  <button id="profile-retry" type="button" class="btn btn-outline-primary mb-3 d-none">@T["Profile.Retry"]</button>
+  <section id="profile-head" class="card card-body mb-4">
+    <h1 id="profile-name" class="h4 mb-1"></h1>
+    <div id="profile-sub" class="text-muted"></div>
+    <p id="profile-bio" class="mt-3 mb-2"></p>
+    <div id="profile-expertise" class="d-flex flex-wrap gap-2"></div>
+  </section>
+  <section class="mb-4" aria-labelledby="profile-certificates-title">
+    <h2 id="profile-certificates-title" class="h5 mb-3">@T["Profile.Certificates"]</h2>
+    <div id="profile-certificates" class="row g-3"></div>
+  </section>
+  <section class="mb-4" aria-labelledby="profile-participations-title">
+    <h2 id="profile-participations-title" class="h5 mb-3">سجل المشاركة في الدورات</h2>
+    <div id="profile-participations" class="row g-3"></div>
+  </section>
+  <section aria-labelledby="profile-procerts-title">
+    <h2 class="h5 mb-3" id="profile-procerts-title">@T["Profile.ProCerts"]</h2>
+    <div id="profile-procerts" class="row g-3"></div>
+  </section>
+</div>
+@section Scripts {
+  <script src="~/js/profile.js" asp-append-version="true"></script>
+}

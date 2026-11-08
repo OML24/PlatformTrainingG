@@ -1,0 +1,28 @@
+# Reverse proxy sample (11 §1): TLS termination in front of the app container.
+server {
+    listen 443 ssl;
+    server_name portal.zu.edu.jo;
+
+    ssl_certificate     /etc/letsencrypt/live/portal.zu.edu.jo/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/portal.zu.edu.jo/privkey.pem;
+    ssl_protocols       TLSv1.2 TLSv1.3;
+
+    # At least the largest files.max_mb value.
+    client_max_body_size 100m;
+
+    location / {
+        proxy_pass         http://127.0.0.1:8080;
+        proxy_set_header   Host              $host;
+        proxy_set_header   X-Forwarded-For   $proxy_add_x_forwarded_for;
+        proxy_set_header   X-Forwarded-Proto $scheme;
+        proxy_set_header   X-Forwarded-Host  $host;
+        # Synchronization and certificate generation can take a while.
+        proxy_read_timeout 120s;
+    }
+}
+
+server {
+    listen 80;
+    server_name portal.zu.edu.jo;
+    return 301 https://$host$request_uri;
+}

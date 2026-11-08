@@ -1,0 +1,57 @@
+@page "/dean/propose"
+@{
+    ViewData["Title"] = "اقتراح دورة";
+}
+<div class="container py-4" id="dean-propose-page">
+    <h1>اقتراح دورة وتكليف محاضر</h1>
+    <p class="text-muted">لطلب محاضر من كلية أخرى استخدم «رفع احتياج تدريبي».</p>
+    <div class="alert alert-danger d-none" id="proposal-error" role="alert"></div>
+    <div class="alert alert-success d-none" id="proposal-success" role="status"></div>
+    <form id="proposal-form" class="card card-body mb-4">
+        <h2 class="h5">بيانات الدورة</h2>
+        <div class="row g-3">
+            <div class="col-md-6"><label class="form-label" for="proposal-center">الكلية</label><select id="proposal-center" class="form-select" required zu-hint="course.target_center_id"></select></div>
+            <div class="col-md-6"><label class="form-label" for="proposal-track">المحور</label><select id="proposal-track" class="form-select" required zu-hint="course.track_id"></select></div>
+            <div class="col-md-6"><label class="form-label" for="proposal-title-ar">العنوان بالعربية</label><input id="proposal-title-ar" class="form-control" required maxlength="300" zu-hint="course.title_ar" /></div>
+            <div class="col-md-6"><label class="form-label" for="proposal-title-en">العنوان بالإنجليزية</label><input id="proposal-title-en" class="form-control" maxlength="300" zu-hint="course.title_en" /></div>
+            <div class="col-md-4"><label class="form-label" for="proposal-mode">نمط التنفيذ</label><select id="proposal-mode" class="form-select" zu-hint="course.delivery_mode"><option value="InPerson">وجاهي</option><option value="Online">أونلاين</option><option value="Blended">مدمج</option></select></div>
+            <div class="col-md-4"><label class="form-label" for="proposal-hours">الساعات</label><input id="proposal-hours" class="form-control" type="number" min="0.01" step="0.01" required zu-hint="course.total_hours" /></div>
+            <div class="col-md-4"><label class="form-label" for="proposal-audience">نوع المشاركين</label><select id="proposal-audience" class="form-select" zu-hint="course.audience_type"><option value="Faculty">تسجيل ذاتي لأعضاء كليتي</option><option value="Named">مشاركون محددون تضيفهم الجودة</option></select></div>
+            <partial name="_DateTimePicker" model='new DateTimePickerModel("proposal-start", "البداية المخططة", false, true, null, "course.planned_start_date")' />
+            <partial name="_DateTimePicker" model='new DateTimePickerModel("proposal-end", "النهاية المخططة", false, true, null, "course.planned_end_date")' />
+            <partial name="_DateTimePicker" model='new DateTimePickerModel("proposal-deadline", "آخر موعد للتسجيل", true, false, null, "course.registration_deadline")' />
+            <div class="col-md-6"><label class="form-label" for="proposal-max">الحد الأعلى للمشاركين</label><input id="proposal-max" class="form-control" type="number" min="1" zu-hint="course.max_participants" /></div>
+            <div class="col-md-6"><label class="form-label" for="proposal-objectives-ar">الأهداف بالعربية</label><textarea id="proposal-objectives-ar" class="form-control" required zu-hint="course.objectives_ar"></textarea></div>
+            <div class="col-md-6"><label class="form-label" for="proposal-objectives-en">الأهداف بالإنجليزية</label><textarea id="proposal-objectives-en" class="form-control" zu-hint="course.objectives_en"></textarea></div>
+            <div class="col-md-6"><label class="form-label" for="proposal-target-ar">الفئة المستهدفة بالعربية</label><textarea id="proposal-target-ar" class="form-control" required zu-hint="course.target_audience_ar"></textarea></div>
+            <div class="col-md-6"><label class="form-label" for="proposal-target-en">الفئة المستهدفة بالإنجليزية</label><textarea id="proposal-target-en" class="form-control" zu-hint="course.target_audience_en"></textarea></div>
+            <div class="col-md-6"><label class="form-check"><input id="proposal-exam" class="form-check-input" type="checkbox" zu-hint="course.has_exam" /><span class="form-check-label">تتضمن امتحاناً</span></label></div>
+            <fieldset class="col-12">
+                <legend class="form-label">نوع المحاضر</legend>
+                <div class="d-flex flex-wrap gap-3">
+                    <label class="form-check"><input class="form-check-input" type="radio" name="proposal-instructor-kind" value="Internal" checked /><span class="form-check-label">محاضر من أعضاء كليتي</span></label>
+                    <label class="form-check"><input class="form-check-input" type="radio" name="proposal-instructor-kind" value="External" /><span class="form-check-label">محاضر خارجي</span></label>
+                </div>
+            </fieldset>
+            <div class="col-md-6" id="proposal-internal-fields"><label class="form-label" for="proposal-member-search">المحاضر من أعضاء كليتي</label><input id="proposal-member-search" class="form-control mb-1" type="search" placeholder="ابحث بالاسم أو الرقم" /><select id="proposal-member" class="form-select" required zu-hint="course.instructor_user_id"></select></div>
+            <div class="col-12 d-none" id="proposal-external-fields">
+                <div class="row g-3">
+                    <div class="col-md-6"><label class="form-label" for="proposal-external-name-ar">اسم المحاضر بالعربية</label><input id="proposal-external-name-ar" class="form-control" maxlength="300" /></div>
+                    <div class="col-md-6"><label class="form-label" for="proposal-external-name-en">اسم المحاضر بالإنجليزية</label><input id="proposal-external-name-en" class="form-control" maxlength="300" /></div>
+                    <div class="col-md-6"><label class="form-label" for="proposal-external-org-ar">الجهة بالعربية</label><input id="proposal-external-org-ar" class="form-control" maxlength="300" /></div>
+                    <div class="col-md-6"><label class="form-label" for="proposal-external-org-en">الجهة بالإنجليزية</label><input id="proposal-external-org-en" class="form-control" maxlength="300" /></div>
+                    <div class="col-md-6"><label class="form-label" for="proposal-external-email">البريد الإلكتروني</label><input id="proposal-external-email" class="form-control" type="email" maxlength="254" /></div>
+                    <div class="col-md-6"><label class="form-label" for="proposal-letter">كتاب مجلس الكلية (PDF)</label><input id="proposal-letter" class="form-control" type="file" accept="application/pdf,.pdf" /><a id="proposal-letter-existing" class="d-none" target="_blank" rel="noopener">الكتاب المحفوظ</a></div>
+                    <div class="col-md-6"><label class="form-label" for="proposal-cv">السيرة الذاتية (PDF أو DOCX)</label><input id="proposal-cv" class="form-control" type="file" accept="application/pdf,.pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx" /><a id="proposal-cv-existing" class="d-none" target="_blank" rel="noopener">السيرة المحفوظة</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-3 d-flex gap-2"><button id="proposal-submit" class="btn btn-primary" type="submit">إرسال المقترح</button><button id="proposal-cancel-edit" class="btn btn-outline-secondary d-none" type="button">إلغاء التعديل</button></div>
+    </form>
+    <h2 class="h4">مقترحاتي</h2>
+    <div class="table-responsive"><table class="table table-striped"><thead><tr><th>الرقم</th><th>العنوان</th><th>الكلية</th><th>الحالة</th><th>النسخة</th><th>الملاحظة</th><th></th></tr></thead><tbody id="my-proposals"></tbody></table></div>
+    <div class="d-flex gap-2 align-items-center"><button id="my-proposals-prev" class="btn btn-outline-secondary" type="button">السابق</button><span id="my-proposals-page"></span><button id="my-proposals-next" class="btn btn-outline-secondary" type="button">التالي</button></div>
+</div>
+@section Scripts {
+    <script src="~/js/dean-proposals.js" asp-append-version="true"></script>
+}

@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms</value></resheader>
+  <data name="Auth.Login.Title" xml:space="preserve"><value>تسجيل الدخول</value></data>
+  <data name="Auth.Login.Subtitle" xml:space="preserve"><value>بوابة جامعة الزرقاء الإلكترونية</value></data>
+  <data name="Auth.Login.LoginName" xml:space="preserve"><value>رقم الدخول</value></data>
+  <data name="Auth.Login.Password" xml:space="preserve"><value>كلمة المرور</value></data>
+  <data name="Auth.Login.RememberMe" xml:space="preserve"><value>تذكرني</value></data>
+  <data name="Auth.Login.Submit" xml:space="preserve"><value>تسجيل الدخول عبر البوابة</value></data>
+  <data name="Auth.Login.Invalid" xml:space="preserve"><value>تعذر تسجيل الدخول. تحقق من البيانات وحاول مجددًا.</value></data>
+  <data name="Auth.Login.FirstTimeHelp" xml:space="preserve"><value>للدخول أول مرة، استخدم كلمة المرور المؤقتة التي أرسلتها الجامعة إلى بريدك. ستُطلب منك كلمة مرور جديدة قبل المتابعة.</value></data>
+  <data name="Auth.Login.ForgotPassword" xml:space="preserve"><value>نسيت كلمة المرور؟</value></data>
+  <data name="Auth.ChangePassword.Title" xml:space="preserve"><value>تعيين كلمة المرور الجديدة</value></data>
+  <data name="Auth.ChangePassword.Help" xml:space="preserve"><value>يجب تغيير كلمة المرور المؤقتة لإكمال الدخول.</value></data>
+  <data name="Auth.ChangePassword.NewPassword" xml:space="preserve"><value>كلمة المرور الجديدة</value></data>
+  <data name="Auth.ChangePassword.Confirmation" xml:space="preserve"><value>تأكيد كلمة المرور</value></data>
+  <data name="Auth.ChangePassword.Submit" xml:space="preserve"><value>حفظ كلمة المرور والمتابعة</value></data>
+  <data name="Auth.ChangePassword.Error" xml:space="preserve"><value>تعذر حفظ كلمة المرور. راجع المتطلبات وحاول مجددًا.</value></data>
+  <data name="Shared.Language.Ar" xml:space="preserve"><value>العربية</value></data>
+  <data name="Shared.Language.En" xml:space="preserve"><value>English</value></data>
+  <data name="Auth.Forgot.EmailSubject" xml:space="preserve"><value>استعادة كلمة المرور — منصة جامعة الزرقاء</value></data>
+  <data name="Auth.Forgot.EmailBody" xml:space="preserve"><value>&lt;html dir="rtl" lang="ar"&gt;&lt;body&gt;&lt;p&gt;مرحباً {0}،&lt;/p&gt;&lt;p&gt;كلمة المرور الحالية لحسابك: &lt;strong&gt;{1}&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;جامعة الزرقاء&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</value></data>
+  <data name="Auth.Forgot.Title" xml:space="preserve"><value>نسيت كلمة المرور</value></data>
+  <data name="Auth.Forgot.Help" xml:space="preserve"><value>أدخل رقمك الوظيفي وبريدك الجامعي.</value></data>
+  <data name="Auth.Forgot.LoginName" xml:space="preserve"><value>الرقم الوظيفي</value></data>
+  <data name="Auth.Forgot.Email" xml:space="preserve"><value>البريد الجامعي</value></data>
+  <data name="Auth.Forgot.Submit" xml:space="preserve"><value>إرسال كلمة المرور</value></data>
+  <data name="Auth.Forgot.Generic" xml:space="preserve"><value>إذا كانت بيانات الدخول الأول مطابقة فستصلك رسالة. إذا غيّرت كلمة المرور سابقاً، تواصل مع الإدارة لإعادة تعيينها.</value></data>
+  <data name="Auth.Forgot.BackToLogin" xml:space="preserve"><value>العودة لتسجيل الدخول</value></data>
+  <data name="Credentials.Initial.EmailSubject" xml:space="preserve"><value>بيانات الدخول إلى منصة التطوير والتدريب المهني — جامعة الزرقاء</value></data>
+  <data name="ExternalInstructor.EmailSubject" xml:space="preserve"><value>بيانات حساب المدرب الخارجي — جامعة الزرقاء</value></data>
+  <data name="ExternalInstructor.EmailBody" xml:space="preserve"><value>&lt;html dir="rtl" lang="ar"&gt;&lt;body&gt;&lt;p&gt;مرحباً {0}،&lt;/p&gt;&lt;p&gt;رقم الدخول: &lt;strong dir="ltr"&gt;{1}&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;كلمة المرور: &lt;code dir="ltr"&gt;{2}&lt;/code&gt;&lt;/p&gt;&lt;p&gt;&lt;a href="{3}"&gt;الدخول إلى المنصة&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</value></data>
+  <data name="Credentials.Initial.EmailBody" xml:space="preserve"><value>&lt;html dir="rtl" lang="ar"&gt;&lt;body style="font-family:Tajawal,Arial,sans-serif"&gt;&lt;header style="background:#022C5A;color:#fff;padding:20px"&gt;جامعة الزرقاء&lt;/header&gt;&lt;main style="padding:20px"&gt;&lt;p&gt;مرحباً {0}،&lt;/p&gt;&lt;p&gt;رقم الدخول: &lt;strong dir="ltr"&gt;{1}&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;كلمة المرور الأولية: &lt;code dir="ltr" style="display:inline-block;padding:12px;background:#eef2f6"&gt;{2}&lt;/code&gt;&lt;/p&gt;&lt;p&gt;&lt;a href="{3}"&gt;الدخول إلى المنصة&lt;/a&gt;&lt;/p&gt;&lt;p&gt;لا تشارك بياناتك مع أي شخص.&lt;/p&gt;&lt;/main&gt;&lt;/body&gt;&lt;/html&gt;</value></data>
+  <data name="Account.Password.Title" xml:space="preserve"><value>تغيير كلمة المرور</value></data>
+  <data name="Account.Password.Help" xml:space="preserve"><value>أدخل كلمة المرور الحالية ثم اختر كلمة مرور جديدة.</value></data>
+  <data name="Account.Password.Current" xml:space="preserve"><value>كلمة المرور الحالية</value></data>
+  <data name="Account.Password.Submit" xml:space="preserve"><value>حفظ كلمة المرور</value></data>
+  <data name="Account.Password.Error" xml:space="preserve"><value>تعذّر تغيير كلمة المرور. تحقق من الكلمة الحالية ومتطلبات الكلمة الجديدة.</value></data>
+  <data name="Policy.Title" xml:space="preserve"><value>سياسة كلمات المرور</value></data>
+  <data name="Policy.Help" xml:space="preserve"><value>تسري هذه القواعد عند إنشاء كلمة مرور أو تغييرها.</value></data>
+  <data name="Policy.Error" xml:space="preserve"><value>تعذّر إكمال العملية. راجع البيانات وحاول مجدداً.</value></data>
+  <data name="Policy.Rules" xml:space="preserve"><value>القواعد</value></data>
+  <data name="Policy.MinLength" xml:space="preserve"><value>الحد الأدنى للأحرف</value></data>
+  <data name="Policy.MaxLength" xml:space="preserve"><value>الحد الأعلى للأحرف</value></data>
+  <data name="Policy.RotationDays" xml:space="preserve"><value>مدة التدوير بالأيام (اختياري)</value></data>
+  <data name="Policy.allowSpaces" xml:space="preserve"><value>السماح بالمسافات</value></data>
+  <data name="Policy.allowArabic" xml:space="preserve"><value>السماح بالأحرف العربية</value></data>
+  <data name="Policy.blockCommon" xml:space="preserve"><value>حظر الكلمات الشائعة</value></data>
+  <data name="Policy.blockContext" xml:space="preserve"><value>حظر كلمات سياق المستخدم</value></data>
+  <data name="Policy.requireUpper" xml:space="preserve"><value>اشتراط حرف كبير</value></data>
+  <data name="Policy.requireLower" xml:space="preserve"><value>اشتراط حرف صغير</value></data>
+  <data name="Policy.requireDigit" xml:space="preserve"><value>اشتراط رقم</value></data>
+  <data name="Policy.requireSymbol" xml:space="preserve"><value>اشتراط رمز</value></data>
+  <data name="Policy.Save" xml:space="preserve"><value>حفظ السياسة</value></data>
+  <data name="Policy.Blocked" xml:space="preserve"><value>الكلمات المحظورة</value></data>
+  <data name="Policy.Word" xml:space="preserve"><value>الكلمة</value></data>
+  <data name="Policy.Source" xml:space="preserve"><value>المصدر</value></data>
+  <data name="Policy.Add" xml:space="preserve"><value>إضافة</value></data>
+  <data name="Policy.Search" xml:space="preserve"><value>بحث</value></data>
+  <data name="Policy.DeleteConfirm" xml:space="preserve"><value>حذف الكلمة المحظورة؟</value></data>
+  <data name="Policy.Previous" xml:space="preserve"><value>السابق</value></data>
+  <data name="Policy.Next" xml:space="preserve"><value>التالي</value></data>
+  <data name="Credentials.Title" xml:space="preserve"><value>دليل الحسابات وبيانات الدخول</value></data>
+  <data name="Credentials.Help" xml:space="preserve"><value>ابحث عن الحسابات وأرسل بيانات الدخول الأولية بأمر يدوي.</value></data>
+  <data name="Credentials.Error" xml:space="preserve"><value>تعذّر إكمال العملية. حدّث الصفحة وراجع بيانات الحساب.</value></data>
+  <data name="Credentials.Search" xml:space="preserve"><value>البحث بالاسم أو رقم الدخول</value></data>
+  <data name="Credentials.Filter" xml:space="preserve"><value>تصفية</value></data>
+  <data name="Credentials.Filter.All" xml:space="preserve"><value>الكل</value></data>
+  <data name="Credentials.Filter.NotSent" xml:space="preserve"><value>لم يُرسل</value></data>
+  <data name="Credentials.Filter.Sent" xml:space="preserve"><value>نجح الإرسال</value></data>
+  <data name="Credentials.Filter.Failed" xml:space="preserve"><value>فشل الإرسال</value></data>
+  <data name="Credentials.Filter.Uncertain" xml:space="preserve"><value>غير مؤكد</value></data>
+  <data name="Credentials.Filter.NoEmail" xml:space="preserve"><value>بلا بريد</value></data>
+  <data name="Credentials.Filter.FirstLoginPending" xml:space="preserve"><value>لم يكمل أول دخول</value></data>
+  <data name="Credentials.Filter.Disabled" xml:space="preserve"><value>معطّل</value></data>
+  <data name="Credentials.Name" xml:space="preserve"><value>الاسم</value></data>
+  <data name="Credentials.NameEn" xml:space="preserve"><value>الاسم الإنجليزي</value></data>
+  <data name="Credentials.Login" xml:space="preserve"><value>رقم الدخول</value></data>
+  <data name="Credentials.Type" xml:space="preserve"><value>النوع</value></data>
+  <data name="Credentials.Faculty" xml:space="preserve"><value>الكلية</value></data>
+  <data name="Credentials.Active" xml:space="preserve"><value>فعّال</value></data>
+  <data name="Credentials.EmployeeStatus" xml:space="preserve"><value>حالة الموظف</value></data>
+  <data name="Credentials.FirstLogin" xml:space="preserve"><value>أكمل أول دخول</value></data>
+  <data name="Credentials.Email" xml:space="preserve"><value>البريد الفعّال</value></data>
+  <data name="Credentials.EmailStatus" xml:space="preserve"><value>حالة إرسال البيانات</value></data>
+  <data name="Credentials.LastLogin" xml:space="preserve"><value>آخر دخول</value></data>
+  <data name="Credentials.Actions" xml:space="preserve"><value>إجراءات</value></data>
+  <data name="Credentials.Send" xml:space="preserve"><value>إرسال البيانات</value></data>
+  <data name="Credentials.Resend" xml:space="preserve"><value>إعادة الإرسال</value></data>
+  <data name="Credentials.ConfirmResend" xml:space="preserve"><value>تم الإرسال سابقاً. هل تريد إعادة الإرسال؟</value></data>
+  <data name="Credentials.MarkSent" xml:space="preserve"><value>تأكيد الوصول</value></data>
+  <data name="Credentials.MarkFailed" xml:space="preserve"><value>اعتباره فاشلاً</value></data>
+  <data name="Credentials.ConfirmSent" xml:space="preserve"><value>هل تأكدت من وصول الرسالة؟</value></data>
+  <data name="Credentials.ConfirmFailed" xml:space="preserve"><value>هل تريد اعتبار الرسالة فاشلة؟</value></data>
+  <data name="Credentials.BulkSend" xml:space="preserve"><value>إرسال جماعي</value></data>
+  <data name="Credentials.BulkConfirm" xml:space="preserve"><value>ملخص الإرسال الجماعي. هل تريد إرسال بيانات الدخول للمؤهلين؟</value></data>
+  <data name="Credentials.Eligible" xml:space="preserve"><value>المؤهلون</value></data>
+  <data name="Credentials.Sent" xml:space="preserve"><value>أُرسلت سابقاً</value></data>
+  <data name="Credentials.Uncertain" xml:space="preserve"><value>غير مؤكدة</value></data>
+  <data name="Credentials.NoEmail" xml:space="preserve"><value>بلا بريد</value></data>
+  <data name="Credentials.Pending" xml:space="preserve"><value>قيد الإرسال</value></data>
+  <data name="Credentials.Ineligible" xml:space="preserve"><value>غير مؤهلين</value></data>
+  <data name="Credentials.Yes" xml:space="preserve"><value>نعم</value></data>
+  <data name="Credentials.No" xml:space="preserve"><value>لا</value></data>
+  <data name="Credentials.CreateLocal" xml:space="preserve"><value>إنشاء حساب محلي</value></data>
+  <data name="Credentials.Password" xml:space="preserve"><value>كلمة المرور</value></data>
+  <data name="Credentials.Language" xml:space="preserve"><value>اللغة</value></data>
+  <data name="Credentials.Create" xml:space="preserve"><value>إنشاء</value></data>
+  <data name="Credentials.Cancel" xml:space="preserve"><value>إلغاء</value></data>
+  <data name="Credentials.Type.Employee" xml:space="preserve"><value>موظف</value></data>
+  <data name="Credentials.Type.ExternalInstructor" xml:space="preserve"><value>مدرب خارجي</value></data>
+  <data name="Credentials.Type.Local" xml:space="preserve"><value>حساب محلي</value></data>
+  <data name="Credentials.Status.NotSent" xml:space="preserve"><value>لم يُرسل</value></data>
+  <data name="Credentials.Status.Sent" xml:space="preserve"><value>أُرسل</value></data>
+  <data name="Credentials.Status.Failed" xml:space="preserve"><value>فشل</value></data>
+  <data name="Credentials.Status.Uncertain" xml:space="preserve"><value>غير مؤكد</value></data>
+  <data name="Credentials.Reveal" xml:space="preserve"><value>عرض الكلمات</value></data>
+  <data name="Credentials.ChangePassword" xml:space="preserve"><value>تغيير الكلمة</value></data>
+  <data name="Credentials.Edit" xml:space="preserve"><value>تعديل الحساب</value></data>
+  <data name="Credentials.Disable" xml:space="preserve"><value>تعطيل</value></data>
+  <data name="Credentials.Restore" xml:space="preserve"><value>استعادة</value></data>
+  <data name="Credentials.DisableReason" xml:space="preserve"><value>أدخل سبب تعطيل الحساب:</value></data>
+  <data name="Credentials.RestoreConfirm" xml:space="preserve"><value>هل تريد استعادة هذا الحساب؟</value></data>
+  <data name="Credentials.Copy" xml:space="preserve"><value>نسخ</value></data>
+  <data name="Credentials.EmailOverride" xml:space="preserve"><value>البريد البديل</value></data>
+  <data name="Credentials.AccessOverride" xml:space="preserve"><value>السماح بالدخول رغم الحالة الوظيفية</value></data>
+  <data name="Credentials.AccessReason" xml:space="preserve"><value>سبب تجاوز الدخول</value></data>
+  <data name="Credentials.Save" xml:space="preserve"><value>حفظ</value></data>
+  <data name="Credentials.RequireChange" xml:space="preserve"><value>إلزام المستخدم بتغيير الكلمة عند الدخول التالي</value></data>
+  <data name="Credentials.AdminPassword" xml:space="preserve"><value>كلمة مرور المسؤول للتحقق</value></data>
+  <data name="Credentials.Verify" xml:space="preserve"><value>تحقق</value></data>
+  <data name="Credentials.InitialPassword" xml:space="preserve"><value>الكلمة الأولية الشخصية</value></data>
+  <data name="Credentials.CurrentPassword" xml:space="preserve"><value>الكلمة الحالية</value></data>
+  <data name="Credentials.Close" xml:space="preserve"><value>إغلاق</value></data>
+  <data name="Credentials.Roles" xml:space="preserve"><value>الأدوار</value></data>
+  <data name="Credentials.Role" xml:space="preserve"><value>الدور</value></data>
+  <data name="Credentials.Role.Admin" xml:space="preserve"><value>مسؤول النظام</value></data>
+  <data name="Credentials.Role.Quality" xml:space="preserve"><value>مسؤول الجودة</value></data>
+  <data name="Credentials.Role.Dean" xml:space="preserve"><value>عميد الكلية</value></data>
+  <data name="Credentials.Role.Member" xml:space="preserve"><value>عضو</value></data>
+  <data name="Credentials.Role.Instructor" xml:space="preserve"><value>محاضر</value></data>
+  <data name="Credentials.Role.ExternalInstructor" xml:space="preserve"><value>مدرب خارجي</value></data>
+  <data name="Credentials.AssignRole" xml:space="preserve"><value>تعيين الدور</value></data>
+  <data name="Credentials.RemoveRole" xml:space="preserve"><value>سحب الدور</value></data>
+  <data name="Settings.Title" xml:space="preserve"><value>إعدادات النظام</value></data>
+  <data name="Settings.Help" xml:space="preserve"><value>تُطبَّق القيم المحفوظة على وظائف المنصة وفق نوع كل إعداد وحدوده.</value></data>
+  <data name="Settings.Error" xml:space="preserve"><value>تعذّر حفظ الإعداد. تحقق من القيمة وحدودها ثم حاول مجدداً.</value></data>
+  <data name="Settings.Save" xml:space="preserve"><value>حفظ</value></data>
+  <data name="Settings.True" xml:space="preserve"><value>نعم</value></data>
+  <data name="Settings.False" xml:space="preserve"><value>لا</value></data>
+  <data name="Settings.Secret" xml:space="preserve"><value>القيمة سرية؛ اترك الحقل فارغاً للإبقاء عليها، ما عدا كلمة الدخول المشتركة حيث يعني الفراغ إيقافها.</value></data>
+  <data name="Settings.Min" xml:space="preserve"><value>الحد الأدنى</value></data>
+  <data name="Settings.Max" xml:space="preserve"><value>الحد الأعلى</value></data>
+  <data name="Nav.Credentials" xml:space="preserve"><value>الحسابات</value></data>
+  <data name="Nav.PasswordPolicy" xml:space="preserve"><value>سياسة كلمات المرور</value></data>
+  <data name="Nav.Settings" xml:space="preserve"><value>الإعدادات</value></data>
+  <data name="Nav.MyPassword" xml:space="preserve"><value>كلمة مروري</value></data>
+  <data name="Nav.Dashboard" xml:space="preserve"><value>لوحة التحكم</value></data>
+  <data name="Nav.Hints" xml:space="preserve"><value>تلميحات الحقول</value></data>
+  <data name="Nav.Sync" xml:space="preserve"><value>المزامنة الجامعية</value></data>
+  <data name="Nav.Centers" xml:space="preserve"><value>المراكز</value></data>
+  <data name="Nav.AvailableCourses" xml:space="preserve"><value>الدورات المتاحة</value></data>
+  <data name="Nav.ProposeCourse" xml:space="preserve"><value>اقتراح دورة</value></data>
+  <data name="Nav.QualityProposals" xml:space="preserve"><value>مقترحات الدورات</value></data>
+  <data name="Nav.Users" xml:space="preserve"><value>المستخدمون</value></data>
+  <data name="Nav.ChangeLanguage" xml:space="preserve"><value>English</value></data>
+  <data name="Nav.Logout" xml:space="preserve"><value>تسجيل الخروج</value></data>
+  <data name="Hints.Title" xml:space="preserve"><value>تلميحات الحقول</value></data>
+  <data name="Hints.New" xml:space="preserve"><value>تلميح جديد</value></data>
+  <data name="Hints.FieldKey" xml:space="preserve"><value>مفتاح الحقل</value></data>
+  <data name="Hints.ContextKey" xml:space="preserve"><value>السياق</value></data>
+  <data name="Hints.HintAr" xml:space="preserve"><value>النص العربي</value></data>
+  <data name="Hints.HintEn" xml:space="preserve"><value>النص الإنجليزي</value></data>
+  <data name="Hints.Enabled" xml:space="preserve"><value>مفعّل</value></data>
+  <data name="Hints.Save" xml:space="preserve"><value>حفظ</value></data>
+  <data name="Hints.Deactivate" xml:space="preserve"><value>تعطيل</value></data>
+  <data name="Hints.Cancel" xml:space="preserve"><value>إلغاء</value></data>
+  <data name="Hints.Empty" xml:space="preserve"><value>لا توجد تلميحات بعد.</value></data>
+  <data name="Hints.Saved" xml:space="preserve"><value>تم حفظ التلميح.</value></data>
+  <data name="Hints.Deactivated" xml:space="preserve"><value>تم تعطيل التلميح.</value></data>
+  <data name="Credentials.Permissions" xml:space="preserve"><value>الصلاحيات</value></data>
+  <data name="Credentials.SearchPermission" xml:space="preserve"><value>البحث في الصلاحيات</value></data>
+  <data name="Credentials.Permission" xml:space="preserve"><value>الصلاحية</value></data>
+  <data name="Credentials.Effective" xml:space="preserve"><value>ممنوحة فعلياً</value></data>
+  <data name="Credentials.Override" xml:space="preserve"><value>الاستثناء</value></data>
+  <data name="Credentials.Mode.Inherit" xml:space="preserve"><value>حسب الدور</value></data>
+  <data name="Credentials.Mode.Allow" xml:space="preserve"><value>منح</value></data>
+  <data name="Credentials.Mode.Deny" xml:space="preserve"><value>منع</value></data>
+  <data name="RoleSwitcher.Label" xml:space="preserve"><value>الدور</value></data>
+  <data name="RoleSwitcher.DisplayOnly" xml:space="preserve"><value>بيئة هذا التبويب</value></data>
+  <data name="RoleSwitcher.Explanation" xml:space="preserve"><value>تتبع الصلاحيات الدور المختار في هذا التبويب.</value></data>
+  <data name="RoleSwitcher.Error" xml:space="preserve"><value>تعذّر تغيير البيئة.</value></data>
+  <data name="Profile.Title" xml:space="preserve"><value>الملف المهني</value></data>
+  <data name="Profile.Verify" xml:space="preserve"><value>تحقق من الشهادة</value></data>
+  <data name="Profile.Hours" xml:space="preserve"><value>الساعات</value></data>
+  <data name="Profile.Issued" xml:space="preserve"><value>أُصدرت</value></data>
+  <data name="Profile.Expires" xml:space="preserve"><value>تنتهي</value></data>
+  <data name="Profile.Expired" xml:space="preserve"><value>منتهية</value></data>
+  <data name="Profile.ProCerts" xml:space="preserve"><value>الشهادات المهنية</value></data>
+  <data name="Profile.Certificates" xml:space="preserve"><value>شهادات الدورات</value></data>
+  <data name="Profile.Empty" xml:space="preserve"><value>لا توجد شهادات لعرضها.</value></data>
+  <data name="Profile.Error" xml:space="preserve"><value>تعذّر تحميل الملف المهني.</value></data>
+  <data name="Profile.Loading" xml:space="preserve"><value>جارٍ تحميل الملف المهني…</value></data>
+  <data name="Profile.Retry" xml:space="preserve"><value>إعادة المحاولة</value></data>
+  <data name="Notifications.Title" xml:space="preserve"><value>الإشعارات</value></data>
+  <data name="Notifications.Empty" xml:space="preserve"><value>لا إشعارات</value></data>
+  <data name="Notifications.ReadAll" xml:space="preserve"><value>تعليم الكل مقروءاً</value></data>
+  <data name="Notifications.Error" xml:space="preserve"><value>تعذّر تحميل الإشعارات.</value></data>
+  <data name="Verify.Title" xml:space="preserve"><value>التحقق من شهادات الدورات — جامعة الزرقاء</value></data>
+  <data name="Verify.Reference" xml:space="preserve"><value>الرقم المرجعي للشهادة</value></data>
+  <data name="Verify.Submit" xml:space="preserve"><value>تحقق</value></data>
+  <data name="Verify.Required" xml:space="preserve"><value>أدخل الرقم المرجعي للشهادة</value></data>
+  <data name="Verify.Error" xml:space="preserve"><value>تعذّر التحقق الآن، حاول لاحقاً</value></data>
+  <data name="Verify.NotFound" xml:space="preserve"><value>لم يُعثر على شهادة بهذا الرقم</value></data>
+  <data name="Verify.Connection" xml:space="preserve"><value>تعذّر الاتصال بالخدمة</value></data>
+  <data name="Verify.Revoked" xml:space="preserve"><value>شهادة ملغاة</value></data>
+  <data name="Verify.Valid" xml:space="preserve"><value>شهادة سارية</value></data>
+  <data name="Verify.RevokedAt" xml:space="preserve"><value>تاريخ الإلغاء</value></data>
+  <data name="Verify.Holder" xml:space="preserve"><value>اسم الحاصل عليها</value></data>
+  <data name="Verify.Course" xml:space="preserve"><value>الدورة</value></data>
+  <data name="Verify.Period" xml:space="preserve"><value>فترة الدورة</value></data>
+  <data name="Verify.Hours" xml:space="preserve"><value>الساعات التدريبية</value></data>
+  <data name="Verify.Instructor" xml:space="preserve"><value>المحاضر</value></data>
+  <data name="Verify.Issued" xml:space="preserve"><value>تاريخ الإصدار</value></data>
+  <data name="Available.Title" xml:space="preserve"><value>الدورات المتاحة للتسجيل</value></data>
+  <data name="Available.Start" xml:space="preserve"><value>البداية</value></data>
+  <data name="Available.End" xml:space="preserve"><value>النهاية</value></data>
+  <data name="Available.Deadline" xml:space="preserve"><value>آخر موعد للتسجيل</value></data>
+  <data name="Available.Capacity" xml:space="preserve"><value>الحد الأقصى للمشاركين</value></data>
+  <data name="Available.Register" xml:space="preserve"><value>سجّلني</value></data>
+  <data name="Available.Registered" xml:space="preserve"><value>مسجّل</value></data>
+  <data name="Available.Closed" xml:space="preserve"><value>انتهى التسجيل</value></data>
+  <data name="Available.Error" xml:space="preserve"><value>تعذّر تحميل الدورات.</value></data>
+  <data name="Available.Empty" xml:space="preserve"><value>لا توجد دورات متاحة للتسجيل حالياً.</value></data>
+  <data name="Available.Loading" xml:space="preserve"><value>جارٍ تحميل الدورات…</value></data>
+  <data name="Available.Retry" xml:space="preserve"><value>إعادة المحاولة</value></data>
+  <data name="Available.Details" xml:space="preserve"><value>تفاصيل الدورة</value></data>
+  <data name="Available.Previous" xml:space="preserve"><value>السابق</value></data>
+  <data name="Available.Next" xml:space="preserve"><value>التالي</value></data>
+  <data name="Error.Title" xml:space="preserve"><value>تعذّر عرض الصفحة</value></data>
+  <data name="Error.Message" xml:space="preserve"><value>حدث خطأ أثناء معالجة الطلب. حاول مجدداً لاحقاً.</value></data>
+  <data name="Error.RequestId" xml:space="preserve"><value>معرّف الطلب:</value></data>
+  <data name="Error.Home" xml:space="preserve"><value>العودة إلى الرئيسية</value></data>
+  <data name="AccessDenied.Title" xml:space="preserve"><value>لا تملك صلاحية الوصول</value></data>
+  <data name="AccessDenied.Message" xml:space="preserve"><value>تواصل مع مسؤول النظام إذا كنت تعتقد أن هذا خطأ.</value></data>
+  <data name="Directory.Title" xml:space="preserve"><value>دليل الأعضاء</value></data>
+  <data name="Directory.All" xml:space="preserve"><value>كل الكليات</value></data>
+  <data name="Directory.Open" xml:space="preserve"><value>فتح الملف</value></data>
+  <data name="Directory.Empty" xml:space="preserve"><value>لا يوجد أعضاء يطابقون البحث.</value></data>
+  <data name="Directory.Error" xml:space="preserve"><value>تعذّر تحميل الدليل.</value></data>
+  <data name="Directory.Loading" xml:space="preserve"><value>جارٍ تحميل الأعضاء…</value></data>
+  <data name="Directory.Search" xml:space="preserve"><value>بحث بالاسم أو الخبرة</value></data>
+  <data name="Directory.Faculty" xml:space="preserve"><value>الكلية</value></data>
+  <data name="Directory.Submit" xml:space="preserve"><value>بحث</value></data>
+  <data name="Directory.Pages" xml:space="preserve"><value>صفحات دليل الأعضاء</value></data>
+  <data name="Directory.Previous" xml:space="preserve"><value>السابق</value></data>
+  <data name="Directory.Next" xml:space="preserve"><value>التالي</value></data>
+  <data name="Nav.Group.Home" xml:space="preserve"><value>الرئيسية</value></data>
+  <data name="Nav.Group.Courses" xml:space="preserve"><value>الدورات</value></data>
+  <data name="Nav.Group.NeedsEvaluation" xml:space="preserve"><value>الاحتياجات والتقييم</value></data>
+  <data name="Nav.Group.ImpactCertificates" xml:space="preserve"><value>الأثر والشهادات</value></data>
+  <data name="Nav.Group.System" xml:space="preserve"><value>المستخدمون والنظام</value></data>
+  <data name="Nav.Group.Audit" xml:space="preserve"><value>المستودع والتدقيق</value></data>
+  <data name="Nav.AdminDashboard" xml:space="preserve"><value>لوحة تحكم الأدمن</value></data>
+  <data name="Nav.QualityDashboard" xml:space="preserve"><value>لوحة تحكم الجودة</value></data>
+  <data name="Nav.DeanDashboard" xml:space="preserve"><value>لوحة تحكم العميد</value></data>
+  <data name="Nav.MemberDashboard" xml:space="preserve"><value>لوحة تحكم العضو</value></data>
+  <data name="Nav.Propose" xml:space="preserve"><value>تقديم مقترح دورة</value></data>
+  <data name="Nav.Proposals" xml:space="preserve"><value>مقترحات الدورات</value></data>
+  <data name="Nav.CreateCourse" xml:space="preserve"><value>إنشاء دورة</value></data>
+  <data name="Nav.Cancellations" xml:space="preserve"><value>طلبات الإلغاء</value></data>
+  <data name="Nav.AllCourses" xml:space="preserve"><value>جميع الدورات</value></data>
+  <data name="Nav.FacultyCourses" xml:space="preserve"><value>دورات كليتي</value></data>
+  <data name="Nav.InstructorCourses" xml:space="preserve"><value>دوراتي كمحاضر</value></data>
+  <data name="Nav.Enrolled" xml:space="preserve"><value>دوراتي المسجلة</value></data>
+  <data name="Nav.Available" xml:space="preserve"><value>الدورات المتاحة</value></data>
+  <data name="Nav.Tracks" xml:space="preserve"><value>المحاور التدريبية</value></data>
+  <data name="Nav.TrainingNeeds" xml:space="preserve"><value>الاحتياجات التدريبية</value></data>
+  <data name="Nav.Needs" xml:space="preserve"><value>الاحتياجات</value></data>
+  <data name="Nav.ManageNeeds" xml:space="preserve"><value>إدارة الاحتياجات</value></data>
+  <data name="Nav.EvalForm" xml:space="preserve"><value>نموذج التقييم</value></data>
+  <data name="Nav.Evaluations" xml:space="preserve"><value>نتائج التقييم</value></data>
+  <data name="Nav.Impact" xml:space="preserve"><value>الأثر التدريبي</value></data>
+  <data name="Nav.ReviewImpact" xml:space="preserve"><value>مراجعة الأثر</value></data>
+  <data name="Nav.HistoricalCourses" xml:space="preserve"><value>إدخال الدورات السابقة</value></data>
+  <data name="Nav.ExternalInstructors" xml:space="preserve"><value>المدربون الخارجيون</value></data>
+  <data name="Nav.RolesPermissions" xml:space="preserve"><value>الأدوار والصلاحيات</value></data>
+  <data name="Nav.UniversityStatistics" xml:space="preserve"><value>إحصاءات الجامعة</value></data>
+  <data name="Nav.FacultyStatistics" xml:space="preserve"><value>إحصاءات الكلية</value></data>
+  <data name="ImpactReview.Card.Title" xml:space="preserve"><value>مراجعة قياس الأثر</value></data>
+  <data name="ImpactReview.Card.Description" xml:space="preserve"><value>راجع طلبات قياس الأثر الموجهة إليك واعتمدها أو أعدها للمتدرب مع الملاحظات.</value></data>
+  <data name="ImpactReview.Card.Open" xml:space="preserve"><value>فتح طلبات المراجعة</value></data>
+  <data name="AdminActions.Historical.Title" xml:space="preserve"><value>إدخال الدورات والشهادات السابقة</value></data>
+  <data name="AdminActions.Historical.Description" xml:space="preserve"><value>وثّق دورة سابقة وحدد الناجحين المستحقين للشهادة مباشرة.</value></data>
+  <data name="AdminActions.Historical.Open" xml:space="preserve"><value>فتح الإدخال السابق</value></data>
+  <data name="AdminActions.Certificates.Title" xml:space="preserve"><value>إدارة وإصدار الشهادات</value></data>
+  <data name="AdminActions.Certificates.Description" xml:space="preserve"><value>أصدر الشهادات المعلقة أو أدخل شهادة استثنائية لموظف.</value></data>
+  <data name="AdminActions.Certificates.Open" xml:space="preserve"><value>فتح قسم الشهادات</value></data>
+  <data name="Nav.MyCertificates" xml:space="preserve"><value>شهاداتي</value></data>
+  <data name="Nav.Certificates" xml:space="preserve"><value>الشهادات</value></data>
+  <data name="Nav.CertificateTemplate" xml:space="preserve"><value>قالب الشهادة</value></data>
+  <data name="Nav.MyProCerts" xml:space="preserve"><value>شهاداتي المهنية</value></data>
+  <data name="Nav.ProCerts" xml:space="preserve"><value>الشهادات المهنية</value></data>
+  <data name="Nav.ProCertStats" xml:space="preserve"><value>إحصاءات الشهادات المهنية</value></data>
+  <data name="Nav.ExternalRequests" xml:space="preserve"><value>طلبات المدربين الخارجيين</value></data>
+  <data name="Nav.Vault" xml:space="preserve"><value>المستودع</value></data>
+  <data name="Nav.Audit" xml:space="preserve"><value>سجل التدقيق</value></data>
+  <data name="Nav.LiveFeed" xml:space="preserve"><value>البث الحي</value></data>
+  <data name="Shell.Platform" xml:space="preserve"><value>منصة التدريب</value></data>
+  <data name="Shell.University" xml:space="preserve"><value>جامعة الزرقاء</value></data>
+  <data name="Shell.Logo" xml:space="preserve"><value>شعار جامعة الزرقاء</value></data>
+  <data name="Shell.Navigation" xml:space="preserve"><value>التنقل الرئيسي</value></data>
+  <data name="Shell.Menu" xml:space="preserve"><value>القائمة</value></data>
+  <data name="Directory.Retry" xml:space="preserve"><value>إعادة المحاولة</value></data>
+  <data name="Notifications.Loading" xml:space="preserve"><value>جارٍ تحميل الإشعارات…</value></data>
+  <data name="Notifications.ReadError" xml:space="preserve"><value>تعذّر تعليم الإشعارات كمقروءة. أعد المحاولة.</value></data>
+  <data name="Directory.FilterError" xml:space="preserve"><value>تعذّر تحميل فلتر الكلية. يمكنك متابعة البحث بالاسم أو الخبرة.</value></data>
+  <data name="Picker.Clear" xml:space="preserve"><value>مسح التاريخ</value></data>
+  <data name="Picker.Invalid" xml:space="preserve"><value>أدخل تاريخاً صحيحاً بالصيغة المعروضة.</value></data>
+  <data name="Nav.Group.Members" xml:space="preserve"><value>الأعضاء</value></data>
+  <data name="Nav.EnterCode" xml:space="preserve"><value>إدخال كود الحضور</value></data>
+  <data name="Nav.Teaching" xml:space="preserve"><value>تكليفاتي كمحاضر</value></data>
+  <data name="Nav.FacultyMembers" xml:space="preserve"><value>أعضاء كليتي</value></data>
+  <data name="Lectures.ValidationError" xml:space="preserve"><value>تعذّر حفظ المحاضرة. راجع الحقول الموضّحة أدناه.</value></data>
+  <data name="Lectures.Error" xml:space="preserve"><value>تعذّر إكمال الطلب. أعد المحاولة.</value></data>
+</root>

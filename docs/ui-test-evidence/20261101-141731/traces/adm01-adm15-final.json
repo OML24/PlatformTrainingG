@@ -1,0 +1,22 @@
+{
+  "executedAt": "2026-11-02",
+  "credentialsIncluded": false,
+  "results": [
+    { "caseId": "ADM01", "status": "FAIL", "observed": { "coursesKpi": 2, "participantsKpi": 0, "certificatesKpi": 0, "finishedPercent": 0, "apiStatus": 200, "consoleErrors": 0 }, "defect": "The admin dashboard route renders the general statistics page; required last ten events, last synchronization, and linked KPI cards are absent." },
+    { "caseId": "ADM02", "status": "FAIL", "passed": ["directory columns", "name/login search", "email-state filters", "row actions"], "defect": "Required type, role, faculty and independent active-state filters are absent; only one combined status filter exists." },
+    { "caseId": "ADM03", "status": "FAIL", "passed": ["invalid pattern rejected 400", "weak password rejected 400", "valid Local created 201 with Admin role", "duplicate rejected 409", "no Employee creation control"], "defect": "No reserved-login rule exists in CreateLocalAsync, so the reserved-name requirement cannot pass." },
+    { "caseId": "ADM04", "status": "PASS", "checks": ["English name persisted", "email override persisted", "language persisted", "override cleared", "refresh showed effective source fallback", "university-owned fields were not editable"] },
+    { "caseId": "ADM05", "status": "PASS", "checks": ["cancel caused no request", "empty reason caused no request", "deactivate 200 with reason", "login returned AUTH_DISABLED", "restore 200", "refresh reflected both states"] },
+    { "caseId": "ADM06", "status": "BLOCKED", "blocker": "The required isolated last-admin fixture is not available. A1, A2 and the ADM03 Local account are active; destructively removing two admin paths in the shared UI round would violate fixture isolation." },
+    { "caseId": "ADM07", "status": "PASS", "checks": ["Dean without faculty rejected 400", "Dean with F1 accepted 200", "role withdrawn and re-added", "Instructor absent from manual assignment options", "temporary Dean assignment removed after testing"] },
+    { "caseId": "ADM08", "status": "FAIL", "passed": ["Inherit to Allow to Deny to Inherit each persisted 200", "final value restored"], "defect": "Changes save immediately per row; there is no preview-before-save, cancel, or batch-save flow required by the plan." },
+    { "caseId": "ADM09", "status": "FAIL", "passed": ["138 catalog permissions rendered", "search available", "role/effective state columns rendered"], "defect": "The user permission matrix has no preview dialog, cancel path, or multi-change save action." },
+    { "caseId": "ADM10", "status": "PASS", "checks": ["six roles and 138 permissions rendered", "Member audit.export changed through UI", "PUT returned 200", "role value restored", "user override remained independent"] },
+    { "caseId": "ADM11", "status": "FAIL", "passed": ["close before reauth revealed nothing", "wrong admin password rejected 401", "correct reauth revealed the target current credential", "copy control executed"], "defect": "Closing the reveal dialog left the revealed current value in the hidden DOM input and did not reset the revealed panel." },
+    { "caseId": "ADM12", "status": "BLOCKED", "completedChecks": ["post-first-login employee password changed through UI", "require-change option forced /change-password", "old sessions invalidated", "fixture completed replacement and was restored to usable state"], "blocker": "N1 and N2 had already completed first login during AUTH02/03; no untouched pre-first-login employee remained for the first branch." },
+    { "caseId": "ADM13", "status": "BLOCKED", "blocker": "No isolated SMTP inbox; Sent/Uncertain delivery-state decisions cannot be validated without violating the test contract." },
+    { "caseId": "ADM14", "status": "BLOCKED", "blocker": "No isolated SMTP inbox; bulk delivery, duplicate suppression and queue-versus-delivery evidence cannot receive a final judgment." },
+    { "caseId": "ADM15", "status": "BLOCKED", "completedChecks": ["shared initial changed through UI", "secret input cleared after reload", "old shared stopped", "new shared worked only before first-login completion"], "blocker": "Requires a fresh N1-style account and E1 external instructor; E1 must be created by the quality request workflow and is not available." }
+  ],
+  "summary": { "pass": 4, "fail": 6, "blocked": 5, "missing": 0 }
+}

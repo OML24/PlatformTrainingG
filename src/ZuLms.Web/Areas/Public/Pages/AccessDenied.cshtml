@@ -1,0 +1,29 @@
+@page "/access-denied"
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<ZuLms.Web.SharedResource> T
+@{
+    Layout = null;
+    ViewData["Title"] = T["AccessDenied.Title"];
+}
+<!doctype html>
+<html lang="@System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName" dir="@(System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "ar" ? "rtl" : "ltr")">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="~/js/session.js" asp-append-version="true"></script>
+    <title>@ViewData["Title"] — ZU-LMS</title>
+    <link rel="stylesheet" href="@(System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "ar" ? "/lib/bootstrap/dist/css/bootstrap.rtl.min.css" : "/lib/bootstrap/dist/css/bootstrap.min.css")" />
+    <link rel="stylesheet" href="~/css/tajawal.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/auth.css" asp-append-version="true" />
+</head>
+<body>
+    <main class="auth-shell">
+        <section class="auth-box text-center" aria-labelledby="denied-title">
+            <img class="brand-mark" src="~/img/logo.png" alt="" asp-append-version="true" />
+            <h1 id="denied-title">@T["AccessDenied.Title"]</h1>
+            <p>@T["AccessDenied.Message"]</p>
+            <a class="btn auth-submit w-100" href="/">@T["Error.Home"]</a>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مركز العرض والديمو — منصة التدريب | جامعة الزرقاء</title>
+  <meta name="description" content="منصة إدارة التدريب وتطوير أعضاء هيئة التدريس في جامعة الزرقاء - النسخة التجريبية للعرض">
+  <link rel="icon" type="image/png" href="logo.png">
+
+  <!-- Bootstrap 5 RTL -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css">
+
+  <!-- Icons from Template (Tabler Icons & Remix Icons) -->
+  <link href="template/paces/assets/css/vendors.min.css" rel="stylesheet" type="text/css">
+
+  <!-- Google Fonts: Tajawal -->
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet (Zarqa University White & #022C5A Theme) -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <style>
+    .demo-navbar {
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--border);
+      padding: 14px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(2, 44, 90, 0.04);
+    }
+    .demo-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 30px 20px 60px;
+    }
+    .workflow-step-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 22px;
+      text-align: center;
+      position: relative;
+      transition: var(--t);
+      box-shadow: var(--shadow-sm);
+    }
+    .workflow-step-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--zu-navy);
+      box-shadow: var(--shadow);
+    }
+    .workflow-step-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--zu-navy);
+      color: #FFFFFF;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 12px;
+      font-size: 13px;
+    }
+    .login-box-wrapper {
+      max-width: 460px;
+      margin: 0 auto;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 34px;
+      box-shadow: var(--shadow-lg);
+    }
+    .badge-demo {
+      background: #FEF3C7;
+      color: #B45309;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 99px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+  </style>
+<link rel="stylesheet" href="css/experience.css">
+</head>
+<body>
+
+  <!-- Top Academic Bar -->
+  <div class="zu-topbar-strip d-none d-md-flex">
+    <div class="d-flex align-items-center gap-3">
+      <span><i class="ti ti-calendar me-1"></i> العام الأكاديمي 2025/2026 — الفصل الدراسي الثاني</span>
+      <span class="opacity-50">|</span>
+      <span><i class="ti ti-map-pin me-1"></i> المملكة الأردنية الهاشمية — الزرقاء</span>
+    </div>
+    <div class="d-flex align-items-center gap-3">
+      <span class="badge-demo"><i class="ti ti-sparkles"></i> بيئة العرض التفاعلي (Interactive Demo)</span>
+      <a href="https://www.zu.edu.jo" target="_blank" class="text-white text-decoration-none"><i class="ti ti-world me-1"></i> الموقع الرسمي لجامعة الزرقاء</a>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="demo-navbar">
+    <div class="d-flex align-items-center gap-3">
+      <img src="logo.png" alt="شعار جامعة الزرقاء" style="height: 52px; width: auto;">
+      <div>
+        <h5 style="margin: 0; font-size: 18px; font-weight: 900; color: var(--zu-navy);">منصة التدريب والتطوير المهني</h5>
+        <small style="color: var(--text-2); font-weight: 600;">جامعة الزرقاء — Zarqa University</small>
+      </div>
+    </div>
+    <div class="d-flex align-items-center gap-2">
+      <button class="btn-s bs-navy" onclick="showTab('roles')"><i class="ti ti-layout-grid"></i> بوابات الأدوار</button>
+      <button class="btn-s" onclick="showTab('workflow')"><i class="ti ti-git-fork"></i> مسار التدريب</button>
+      <button class="btn-p" onclick="showTab('login')"><i class="ti ti-login"></i> تسجيل الدخول</button>
+    </div>
+  </nav>
+
+  <!-- Hero Presentation Header -->
+  <header class="demo-hero">
+    <div class="demo-hero-badge">
+      <i class="ti ti-school"></i> منصة معتمدة لإدارة كفاءات وتطوير أعضاء هيئة التدريس
+    </div>
+    <h1>منظومة التدريب والتطوير الجامعي الذكية</h1>
+    <p>
+      بوابة مركزية شاملة صممت خصيصاً لجامعة الزرقاء لربط حصر الاحتياجات التدريبية للكليات، واعتمادات العمداء والجودة، والتسجيل الذكي للحضور بالرمز الحي، وإصدار الشهادات الأكاديمية المعتمدة فورياً.
+    </p>
+
+    <!-- Platform Highlights Strip -->
+    <div class="demo-stats-strip">
+      <div class="demo-stat-pill">
+        <i class="ti ti-users-group"></i>
+        <div class="text-end">
+          <div class="num">5 أدوار</div>
+          <div class="lbl">صلاحيات تفاعلية مستقلة</div>
+        </div>
+      </div>
+      <div class="demo-stat-pill">
+        <i class="ti ti-user-check"></i>
+        <div class="text-end">
+          <div class="num">247</div>
+          <div class="lbl">عضو هيئة تدريس مسجل</div>
+        </div>
+      </div>
+      <div class="demo-stat-pill">
+        <i class="ti ti-book"></i>
+        <div class="text-end">
+          <div class="num">18 برنامج</div>
+          <div class="lbl">دورة تدريبية وورشة عمل</div>
+        </div>
+      </div>
+      <div class="demo-stat-pill">
+        <i class="ti ti-certificate"></i>
+        <div class="text-end">
+          <div class="num">98.4%</div>
+          <div class="lbl">مؤشر جودة ورضا المتدربين</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Showcase Container -->
+  <main class="demo-container">
+
+    <!-- Interactive Navigation Tabs -->
+    <div class="tab-nav mb-4" style="max-width: 650px; margin: 0 auto 35px;">
+      <button class="tab-btn active" id="tabBtn-roles" onclick="showTab('roles')">
+        <i class="ti ti-layout-grid"></i> استعراض أدوار المنصة (5 بوابات)
+      </button>
+      <button class="tab-btn" id="tabBtn-workflow" onclick="showTab('workflow')">
+        <i class="ti ti-route"></i> دورة حياة التدريب
+      </button>
+      <button class="tab-btn" id="tabBtn-login" onclick="showTab('login')">
+        <i class="ti ti-key"></i> تسجيل الدخول
+      </button>
+    </div>
+
+    <!-- TAB 1: ROLES & QUICK ACCESS CARDS -->
+    <div id="tab-roles">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+          <h4 style="color: var(--zu-navy); font-weight: 800; margin: 0;"><i class="ti ti-apps me-1"></i> بوابات النظام المخصصة للعرض</h4>
+          <p style="color: var(--text-2); font-size: 13.5px; margin-top: 3px;">اختر أي دور للدخول الفوري وتجربة الشاشات والوظائف المتاحة</p>
+        </div>
+        <span class="badge-s bs-info"><i class="ti ti-click"></i> دخول مباشر بنقرة واحدة</span>
+      </div>
+
+      <div class="role-showcase-grid">
+
+        <!-- 1. ADMIN -->
+        <div class="role-card-pro" style="--rc-color: #D97706; --rc-bg: #FEF3C7;">
+          <div class="role-card-header">
+            <div class="role-card-icon"><i class="ti ti-shield-lock"></i></div>
+            <div>
+              <h4>أحمد المسؤول</h4>
+              <span>مسؤول النظام (System Admin)</span>
+            </div>
+          </div>
+          <p class="role-card-desc">
+            إدارة المستخدمين والصلاحيات، حصر احتياجات الكليات، إقرار البرامج التدريبية المركزية ومتابعة تقارير الأداء.
+          </p>
+          <ul class="role-card-features">
+            <li><i class="ti ti-check"></i> إدارة حسابات الهيئة التدريسية</li>
+            <li><i class="ti ti-check"></i> استقبال وإقرار خطط الاحتياجات</li>
+            <li><i class="ti ti-check"></i> التحكم في إعدادات المنصة</li>
+          </ul>
+          <div class="mt-auto pt-3 border-top">
+            <a href="admin.html" class="btn-p w-full justify-content-center">
+              <i class="ti ti-external-link"></i> دخول لوحة المسؤول
+            </a>
+          </div>
+        </div>
+
+        <!-- 2. QUALITY -->
+        <div class="role-card-pro" style="--rc-color: #0284C7; --rc-bg: #E0F2FE;">
+          <div class="role-card-header">
+            <div class="role-card-icon"><i class="ti ti-award"></i></div>
+            <div>
+              <h4>سارة الجودة</h4>
+              <span>مسؤولة ضمان الجودة (Quality Assurance)</span>
+            </div>
+          </div>
+          <p class="role-card-desc">
+            مراجعة معايير جودة الحقائب التدريبية، اعتماد نتائج الدورات، ومتابعة استبيانات تقييم الأثر التدريبي.
+          </p>
+          <ul class="role-card-features">
+            <li><i class="ti ti-check"></i> تقييم ومطابقة معايير الاعتماد</li>
+            <li><i class="ti ti-check"></i> اعتماد المخرجات التدريبية</li>
+            <li><i class="ti ti-check"></i> رصد مؤشرات رضا المتدربين</li>
+          </ul>
+          <div class="mt-auto pt-3 border-top">
+            <a href="quality.html" class="btn-p w-full justify-content-center">
+              <i class="ti ti-external-link"></i> دخول لوحة الجودة
+            </a>
+          </div>
+        </div>
+
+        <!-- 3. DEAN -->
+        <div class="role-card-pro" style="--rc-color: #4F46E5; --rc-bg: #EEF2FF;">
+          <div class="role-card-header">
+            <div class="role-card-icon"><i class="ti ti-building-community"></i></div>
+            <div>
+              <h4>د. محمد العمري</h4>
+              <span>عميد كلية الهندسة والتكنولوجيا (Dean)</span>
+            </div>
+          </div>
+          <p class="role-card-desc">
+            رفع احتياجات الكلية السنوية، ترشيح أعضاء هيئة التدريس، ومتابعة سجل التطوير المهني لأقسام الكلية.
+          </p>
+          <ul class="role-card-features">
+            <li><i class="ti ti-check"></i> إرسال كتب الاحتياجات التدريبية</li>
+            <li><i class="ti ti-check"></i> اعتماد ترشيحات الكادر الأكاديمي</li>
+            <li><i class="ti ti-check"></i> متابعة التزام الأقسام بالخطة</li>
+          </ul>
+          <div class="mt-auto pt-3 border-top">
+            <a href="dean.html" class="btn-p w-full justify-content-center">
+              <i class="ti ti-external-link"></i> دخول لوحة العميد
+            </a>
+          </div>
+        </div>
+
+        <!-- 4. INSTRUCTOR -->
+        <div class="role-card-pro" style="--rc-color: #0D9488; --rc-bg: #E6F8F5;">
+          <div class="role-card-header">
+            <div class="role-card-icon"><i class="ti ti-presentation"></i></div>
+            <div>
+              <h4>د. خالد المحاضر</h4>
+              <span>عاقد الدورة / المدرب (Instructor)</span>
+            </div>
+          </div>
+          <p class="role-card-desc">
+            إدارة الجلسات التدريبية، توليد الرمز الذكي للتحضير اللحظي، رصد الحضور، وطلب إصدار الشهادات.
+          </p>
+          <ul class="role-card-features">
+            <li><i class="ti ti-check"></i> توليد رمز الحضور الذكي المتغير</li>
+            <li><i class="ti ti-check"></i> رصد حضور وغياب المتدربين</li>
+            <li><i class="ti ti-check"></i> رفع المواد التدريبية وملفات الدورة</li>
+          </ul>
+          <div class="mt-auto pt-3 border-top">
+            <a href="instructor.html" class="btn-p w-full justify-content-center">
+              <i class="ti ti-external-link"></i> دخول لوحة المدرب
+            </a>
+          </div>
+        </div>
+
+        <!-- 5. MEMBER -->
+        <div class="role-card-pro" style="--rc-color: #EA580C; --rc-bg: #FFEDD5;">
+          <div class="role-card-header">
+            <div class="role-card-icon"><i class="ti ti-user"></i></div>
+            <div>
+              <h4>م. رنا السلطاني</h4>
+              <span>عضو هيئة تدريس (Faculty Member)</span>
+            </div>
+          </div>
+          <p class="role-card-desc">
+            التسجيل في الدورات المطروحة، التحضير الفوري عبر إدخال الرمز، تقييم المحاضر، وتنزيل الشهادات المعتمدة.
+          </p>
+          <ul class="role-card-features">
+            <li><i class="ti ti-check"></i> استعراض الدورات المتاحة والتسجيل</li>
+            <li><i class="ti ti-check"></i> التحضير الذكي خلال الجلسة</li>
+            <li><i class="ti ti-check"></i> تحميل الشهادات الرقمية المعتمدة</li>
+          </ul>
+          <div class="mt-auto pt-3 border-top">
+            <a href="member.html" class="btn-p w-full justify-content-center">
+              <i class="ti ti-external-link"></i> دخول لوحة العضو
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TAB 2: TRAINING LIFECYCLE WORKFLOW -->
+    <div id="tab-workflow" style="display: none;">
+      <div class="data-card">
+        <div class="data-card-header">
+          <h5><i class="ti ti-git-commit me-1"></i> دورة حياة العمل المتكاملة في منصة تدريب جامعة الزرقاء</h5>
+          <span class="badge-s bs-info">5 مراحل رئيسية</span>
+        </div>
+        <div class="data-card-body">
+          <div class="row g-4">
+            <div class="col-md">
+              <div class="workflow-step-card">
+                <div class="workflow-step-badge">1</div>
+                <h6 style="color: var(--zu-navy); font-weight: 800;">حصر الاحتياجات</h6>
+                <p style="font-size: 12.5px; color: var(--text-2); margin: 0;">يقوم عمداء الكليات برفع احتياجات الأقسام التدريبية السنوية عبر كتب رسمية مدمجة.</p>
+                <div class="mt-3"><span class="badge-s bs-purple">العميد</span></div>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="workflow-step-card">
+                <div class="workflow-step-badge">2</div>
+                <h6 style="color: var(--zu-navy); font-weight: 800;">الاعتماد والجدولة</h6>
+                <p style="font-size: 12.5px; color: var(--text-2); margin: 0;">يقوم مسؤول النظام بالتعاون مع الجودة بجدولة الحقائب التدريبية وتحديد المدربين والقاعات.</p>
+                <div class="mt-3"><span class="badge-s bs-pending">المسؤول + الجودة</span></div>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="workflow-step-card">
+                <div class="workflow-step-badge">3</div>
+                <h6 style="color: var(--zu-navy); font-weight: 800;">التسجيل والترشيح</h6>
+                <p style="font-size: 12.5px; color: var(--text-2); margin: 0;">يتقدم أعضاء هيئة التدريس للدورة أو يتم ترشيحهم رسمياً من عميد الكلية.</p>
+                <div class="mt-3"><span class="badge-s bs-orange">عضو التدريس</span></div>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="workflow-step-card">
+                <div class="workflow-step-badge">4</div>
+                <h6 style="color: var(--zu-navy); font-weight: 800;">الانعقاد والتحضير الذكي</h6>
+                <p style="font-size: 12.5px; color: var(--text-2); margin: 0;">يعرض المدرب رمز الحضور المباشر ويثبت المتدربون حضورهم إلكترونياً بدقة وموثوقية.</p>
+                <div class="mt-3"><span class="badge-s bs-active">المدرب + العضو</span></div>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="workflow-step-card">
+                <div class="workflow-step-badge">5</div>
+                <h6 style="color: var(--zu-navy); font-weight: 800;">التقييم وإصدار الشهادات</h6>
+                <p style="font-size: 12.5px; color: var(--text-2); margin: 0;">اعتماد الجودة لنسب الحضور واستبيان الأثر، وتوليد الشهادات الموثقة برمز QR ورقم مرجعي.</p>
+                <div class="mt-3"><span class="badge-s bs-info">الجودة + النظام</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert-c a-info mt-4">
+            <i class="ti ti-info-circle fs-5"></i>
+            <div>
+              <strong>ملاحظة للمقيمين والإدارة:</strong> المنصة مترابطة تماماً، أي إجراء يتم في لوحة العميد (مثل إرسال كتاب احتياج) يظهر فورياً في لوحة المسؤول، وأي رمز حضور يولده المدرب يمكن للعضو إدخاله للتثبيت اللحظي.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: SSO LOGIN FORM -->
+    <div id="tab-login" style="display: none;">
+      <div class="login-box-wrapper">
+        <div class="text-center mb-4">
+          <img src="logo.png" alt="جامعة الزرقاء" style="height: 64px; margin-bottom: 12px;">
+          <h4 style="color: var(--zu-navy); font-weight: 800; margin-bottom: 4px;">تسجيل الدخول</h4>
+          <p style="color: var(--text-2); font-size: 13px;">بوابة جامعة الزرقاء الإلكترونية</p>
+        </div>
+
+        <form id="loginForm" onsubmit="handleLogin(event)">
+          <div class="form-group">
+            <label class="form-label" for="loginEmployee">الرقم الوظيفي</label>
+            <input type="text" id="loginEmployee" class="form-ctrl" placeholder="أدخل الرقم الوظيفي" autocomplete="username" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label"><i class="ti ti-lock me-1"></i> كلمة المرور</label>
+            <input type="password" id="loginPass" class="form-ctrl" placeholder="كلمة المرور" autocomplete="current-password" required>
+          </div>
+          <button type="submit" class="btn-p w-full justify-content-center" style="padding: 11px;">
+            <i class="ti ti-login"></i> تسجيل الدخول عبر البوابة
+          </button>
+        </form>
+        <p class="text-muted mt-3 text-sm">للدخول أول مرة، استخدم كلمة المرور المؤقتة التي أرسلتها الجامعة إلى بريدك. ستُطلب منك كلمة مرور جديدة قبل المتابعة.</p>
+        <form id="changePasswordForm" onsubmit="changeFirstPassword(event)" hidden>
+          <h5>تعيين كلمة المرور الجديدة</h5>
+          <p class="text-muted text-sm">هذه الخطوة مطلوبة للدخول أول مرة. ستستخدم الرقم الوظيفي وكلمة المرور الجديدة في المرات القادمة.</p>
+          <div class="form-group"><label class="form-label" for="newPassword">كلمة المرور الجديدة</label><input id="newPassword" type="password" class="form-ctrl" autocomplete="new-password" minlength="8" required><small>8 أحرف على الأقل</small></div>
+          <div class="form-group"><label class="form-label" for="confirmPassword">تأكيد كلمة المرور</label><input id="confirmPassword" type="password" class="form-ctrl" autocomplete="new-password" required></div>
+          <button type="submit" class="btn-p w-full justify-content-center">حفظ كلمة المرور والمتابعة</button>
+          <button type="button" class="btn-s mt-2" onclick="cancelPasswordChange()">العودة لتسجيل الدخول</button>
+        </form>
+        <p id="loginMessage" role="status" class="text-sm mt-3"></p>
+
+        <div class="divider"></div>
+
+        <div id="demoAccounts">
+          <small class="fw-bold text-muted d-block mb-2">أو اختر حساباً تجريبياً للتعبئة التلقائية:</small>
+          <div class="d-flex flex-wrap gap-2">
+            <button type="button" class="btn-s" onclick="quickFill('admin@zarqa.edu.jo')"><i class="ti ti-shield"></i> مسؤول</button>
+            <button type="button" class="btn-s" onclick="quickFill('quality@zarqa.edu.jo')"><i class="ti ti-award"></i> جودة</button>
+            <button type="button" class="btn-s" onclick="quickFill('dean@zarqa.edu.jo')"><i class="ti ti-building"></i> عميد</button>
+            <button type="button" class="btn-s" onclick="quickFill('instructor@zarqa.edu.jo')"><i class="ti ti-presentation"></i> مدرب</button>
+            <button type="button" class="btn-s" onclick="quickFill('member@zarqa.edu.jo')"><i class="ti ti-user"></i> عضو</button>
+          </div>
+          <p class="text-muted text-sm mt-3">حسابات عرض فقط. كلمة المرور المؤقتة: Demo1234. تغيير كلمة المرور محفوظ لهذا المتصفح؛ استخدم كلمة تجريبية.</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer style="background: #FFFFFF; border-top: 1px solid var(--border); padding: 24px 20px; text-align: center; color: var(--text-2); font-size: 13px;">
+    <div class="d-flex flex-column flex-md-row align-items-center justify-content-between max-w-1200 mx-auto px-4" style="max-width: 1200px;">
+      <div class="d-flex align-items-center gap-2 mb-2 mb-md-0">
+        <img src="logo.png" alt="logo" style="height: 32px;">
+        <span class="fw-bold" style="color: var(--zu-navy);">جامعة الزرقاء — Zarqa University &copy; 2026</span>
+      </div>
+      <div>
+        <span>مركز التعليم والتعلم والتطوير المهني والأكاديمي | جميع الحقوق محفوظة</span>
+        <a href="database-map.html" class="d-block mt-2">استعراض مخطط قاعدة البيانات والعلاقات</a>
+        <a href="members-directory.html" class="d-block mt-2">دليل أعضاء هيئة التدريس والملفات الشخصية</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function showTab(tabId) {
+      document.getElementById('tab-roles').style.display = tabId === 'roles' ? 'block' : 'none';
+      document.getElementById('tab-workflow').style.display = tabId === 'workflow' ? 'block' : 'none';
+      document.getElementById('tab-login').style.display = tabId === 'login' ? 'block' : 'none';
+
+      document.getElementById('tabBtn-roles').classList.toggle('active', tabId === 'roles');
+      document.getElementById('tabBtn-workflow').classList.toggle('active', tabId === 'workflow');
+      document.getElementById('tabBtn-login').classList.toggle('active', tabId === 'login');
+    }
+
+  </script>
+<script src="js/experience.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>

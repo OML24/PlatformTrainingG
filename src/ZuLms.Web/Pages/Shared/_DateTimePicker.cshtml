@@ -1,0 +1,16 @@
+@model ZuLms.Web.Pages.Shared.DateTimePickerModel
+@{
+    string pickerClass = Model.WithTime ? "zu-datetime" : "zu-date";
+    string placeholder = Model.WithTime ? "YYYY-MM-DD HH:mm" : "YYYY-MM-DD";
+}
+<div class="@Model.ColumnClass">
+    <label class="form-label" for="@Model.Id">@Model.Label</label>
+    <input id="@Model.Id" name="@Model.Id"
+           class="form-control @pickerClass"
+           value="@Model.Value"
+           inputmode="numeric"
+           autocomplete="off"
+           placeholder="@placeholder"
+           required="@Model.Required"
+           zu-hint="@Model.HintKey" />
+</div>

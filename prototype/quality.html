@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>لوحة الجودة والاعتماد | منصة تدريب جامعة الزرقاء</title>
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css">
+<!-- Icons from Template (Tabler Icons) -->
+<link href="template/paces/assets/css/vendors.min.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/experience.css">
+</head>
+<body>
+<div class="app-layout">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sidebar-brand">
+    <div class="brand-logo">
+      <img src="logo.png" alt="شعار جامعة الزرقاء">
+      <div class="brand-text">
+        <h6>منصة التدريب</h6>
+        <small>جامعة الزرقاء</small>
+      </div>
+    </div>
+  </div>
+  <div class="sidebar-user">
+    <div class="avatar av-blue">سج</div>
+    <div class="sidebar-user-info">
+      <h6>سارة الجودة</h6>
+      <small><i class="ti ti-award me-1"></i> مسؤولة ضمان الجودة والاعتماد</small>
+    </div>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="nav-section-title">الرئيسية والمؤشرات</div>
+    <button class="nav-item active" onclick="show('dashboard',this)"><i class="ti ti-layout-dashboard nav-icon"></i> لوحة التحكم والمؤشرات</button>
+    <div class="nav-section-title">الاعتمادات والموافقات</div>
+    <button class="nav-item" onclick="show('approvals',this)"><i class="ti ti-clipboard-check nav-icon"></i> طلبات الاعتماد المعلقة <span class="nav-badge">2</span></button>
+    <button class="nav-item" onclick="show('cancellations',this)"><i class="ti ti-ban nav-icon"></i> طلبات إلغاء الدورات <span class="nav-badge" style="background:var(--red);">1</span></button>
+    <button class="nav-item" onclick="show('courses',this)"><i class="ti ti-book-2 nav-icon"></i> سجل البرامج التدريبية</button>
+    <button class="nav-item" onclick="show('tracks',this)"><i class="ti ti-category-2 nav-icon"></i> محاور التدريب الاستراتيجية</button>
+    <div class="nav-section-title">المتابعة والتنسيق</div>
+    <button class="nav-item" onclick="show('exttrainer',this)"><i class="ti ti-user-plus nav-icon"></i> طلب مدرب خارجي للأدمن</button>
+    <button class="nav-item" onclick="show('evals',this)"><i class="ti ti-star nav-icon"></i> استبيانات قياس الأثر</button>
+    <button class="nav-item" onclick="show('needs',this)"><i class="ti ti-file-text nav-icon"></i> كتب الاحتياجات المدققة</button>
+    <button class="nav-item" onclick="show('certs',this)"><i class="ti ti-certificate nav-icon"></i> الشهادات المعتمدة</button>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="index.html" class="btn-demo-hub"><i class="ti ti-arrow-back-up"></i> مركز العرض والديمو</a>
+    <button class="btn-logout" onclick="location.href='index.html'"><i class="ti ti-logout"></i> تسجيل الخروج</button>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<div class="main-content">
+  <header class="header">
+    <div class="header-left">
+      <h4 id="pageTitle">لوحة التحكم والمؤشرات</h4>
+      <p>مرحباً سارة — مؤشرات الجودة الحية ونسب الاعتماد للعام الأكاديمي 2025/2026</p>
+    </div>
+    <div class="header-actions">
+      <!-- Quick Role Switcher for Demo -->
+      <div class="dropdown">
+        <button class="role-switcher-dropdown dropdown-toggle" type="button" data-bs-toggle="dropdown">
+          <i class="ti ti-switch-horizontal"></i> تبديل الدور (ديمو)
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow-sm border" style="font-size:13px;">
+          <li><a class="dropdown-item" href="admin.html"><i class="ti ti-shield text-warning me-1"></i> مسؤول النظام</a></li>
+          <li><a class="dropdown-item fw-bold" href="quality.html"><i class="ti ti-award text-info me-1"></i> مسؤولة الجودة</a></li>
+          <li><a class="dropdown-item" href="dean.html"><i class="ti ti-building text-primary me-1"></i> عميد الكلية</a></li>
+          <li><a class="dropdown-item" href="instructor.html"><i class="ti ti-presentation text-success me-1"></i> عاقد الدورة (المدرب)</a></li>
+          <li><a class="dropdown-item" href="member.html"><i class="ti ti-user text-danger me-1"></i> عضو هيئة التدريس</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item text-primary" href="index.html"><i class="ti ti-home me-1"></i> العودة للمركز الرئيسي</a></li>
+        </ul>
+      </div>
+
+      <div class="btn-notif" data-bs-toggle="modal" data-bs-target="#notifModal" title="الإشعارات">
+        <i class="ti ti-bell"></i><span class="notif-dot"></span>
+      </div>
+      <div class="avatar av-blue" style="cursor:pointer;">سج</div>
+    </div>
+  </header>
+
+  <div class="page-content">
+
+    <!-- DASHBOARD: RICH KPI GRAPHS & LIVE WOW FACTOR -->
+    <div id="sec-dashboard">
+      <!-- QUALITY WOW BANNER -->
+      <div class="card mb-4 border-0 shadow-sm" style="background: linear-gradient(135deg, #022C5A 0%, #03458C 100%); border-radius: var(--r); color: #FFFFFF; padding: 22px 26px;">
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+          <div style="display:flex;align-items:center;gap:16px;">
+            <div style="width:52px;height:52px;border-radius:14px;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-size:26px;color:#FFFFFF;flex-shrink:0;">
+              <i class="ti ti-award"></i>
+            </div>
+            <div>
+              <div style="font-size:18px;font-weight:800;letter-spacing:-0.3px;margin-bottom:3px;">منظومة الجودة وضمان معايير الاعتماد المؤسسي</div>
+              <div style="font-size:13px;opacity:0.85;">متابعة لحظية ومؤشرات بيانية شاملة لجميع برامج التدريب والكليات في جامعة الزرقاء</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <div style="background:rgba(255,255,255,0.12);backdrop-filter:blur(6px);padding:8px 16px;border-radius:10px;text-align:center;border:1px solid rgba(255,255,255,0.18);">
+              <div style="font-size:18px;font-weight:800;color:#38BDF8;">98.4%</div>
+              <div style="font-size:11px;opacity:0.9;">مؤشر الامتثال العام</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.12);backdrop-filter:blur(6px);padding:8px 16px;border-radius:10px;text-align:center;border:1px solid rgba(255,255,255,0.18);">
+              <div style="font-size:18px;font-weight:800;color:#4ADE80;">24 ساعة</div>
+              <div style="font-size:11px;opacity:0.9;">متوسط زمن الاعتماد</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.12);backdrop-filter:blur(6px);padding:8px 16px;border-radius:10px;text-align:center;border:1px solid rgba(255,255,255,0.18);">
+              <div style="font-size:18px;font-weight:800;color:#FDE047;">100%</div>
+              <div style="font-size:11px;opacity:0.9;">أثر تدريبي رقمي</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KPI Cards Row -->
+      <div class="row g-3 mb-4">
+        <div class="col-6 col-lg-3 fade-in delay-1">
+          <div class="stat-card ca-yellow">
+            <div class="stat-icon" style="background:var(--yellow-dim);color:var(--yellow);"><i class="ti ti-hourglass"></i></div>
+            <div class="stat-number">3</div>
+            <div class="stat-label">طلبات بانتظار الاعتماد</div>
+            <div class="stat-trend" style="color:var(--yellow-text);"><i class="ti ti-alert-circle"></i>مطلوب اتخاذ قرار</div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3 fade-in delay-2">
+          <div class="stat-card ca-blue">
+            <div class="stat-icon" style="background:var(--zu-navy-subtle);color:var(--zu-navy);"><i class="ti ti-book-2"></i></div>
+            <div class="stat-number">28</div>
+            <div class="stat-label">إجمالي البرامج المعتمدة</div>
+            <div class="stat-trend" style="color:var(--green);"><i class="ti ti-arrow-up-right"></i>5 هذا الشهر</div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3 fade-in delay-3">
+          <div class="stat-card ca-green">
+            <div class="stat-icon" style="background:var(--green-dim);color:var(--green);"><i class="ti ti-certificate"></i></div>
+            <div class="stat-number">184</div>
+            <div class="stat-label">شهادة مستوفية للمعايير</div>
+            <div class="stat-trend" style="color:var(--green);"><i class="ti ti-arrow-up-right"></i>98.4% نسبة المطابقة</div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3 fade-in delay-4">
+          <div class="stat-card ca-purple">
+            <div class="stat-icon" style="background:var(--purple-dim);color:var(--purple);"><i class="ti ti-star"></i></div>
+            <div class="stat-number">4.6<span style="font-size:16px;color:var(--text-2);">/5</span></div>
+            <div class="stat-label">مؤشر رضا المتدربين العام</div>
+            <div class="stat-trend" style="color:var(--purple);"><i class="ti ti-check"></i>معايير الاعتماد ممتازة</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAIN CHARTS ROW 1: Area Chart + Doughnut Chart -->
+      <div class="row g-3 mb-4">
+        <div class="col-lg-8">
+          <div class="data-card">
+            <div class="data-card-header">
+              <h5><i class="ti ti-chart-line" style="color:var(--zu-navy);"></i> منحنى جودة التدريب ومعدل إنجاز الدورات شهرياً — 2026</h5>
+              <span class="badge-s bs-info">تحديث لحظي</span>
+            </div>
+            <div class="data-card-body">
+              <div style="position:relative;height:250px;"><canvas id="qChart1"></canvas></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="data-card h-100">
+            <div class="data-card-header">
+              <h5><i class="ti ti-chart-pie" style="color:var(--purple);"></i> تصنيف البرامج التدريبية</h5>
+              <span class="badge-s bs-purple">الاعتماد المؤسسي</span>
+            </div>
+            <div class="data-card-body">
+              <div style="position:relative;height:230px;"><canvas id="qChart2"></canvas></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHARTS ROW 2: Bar Comparison across Colleges + Evaluation Ratings -->
+      <div class="row g-3 mb-4">
+        <div class="col-lg-6">
+          <div class="data-card">
+            <div class="data-card-header">
+              <h5><i class="ti ti-chart-bar" style="color:var(--green);"></i> متوسط تقييم جودة مخرجات الدورات التدريبية</h5>
+              <span class="badge-s bs-active">نتائج الاستبيانات</span>
+            </div>
+            <div class="data-card-body">
+              <div style="position:relative;height:230px;"><canvas id="evalChart"></canvas></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="data-card">
+            <div class="data-card-header">
+              <h5><i class="ti ti-building" style="color:var(--zu-navy);"></i> مؤشر التزام الكليات بنسبة المشاركة والاعتماد</h5>
+              <span class="badge-s bs-info">مقارنة الكليات</span>
+            </div>
+            <div class="data-card-body">
+              <div style="position:relative;height:230px;"><canvas id="complianceChart"></canvas></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LIVE ACTION QUEUE ON DASHBOARD: Pending approvals preview -->
+      <div class="row g-3">
+        <div class="col-lg-8">
+          <div class="data-card">
+            <div class="data-card-header">
+              <h5><i class="ti ti-hourglass" style="color:var(--yellow);"></i> قائمة الإجراءات السريعة — برامج بانتظار قرار الجودة</h5>
+              <button class="btn-s bs-navy" onclick="show('approvals',null)"><i class="ti ti-external-link"></i> كل الطلبات</button>
+            </div>
+            <div class="data-card-body">
+              <!-- Approval Card 1 -->
+              <div class="appr-card">
+                <div class="appr-card-top">
+                  <div>
+                    <div style="font-size:16px;font-weight:800;color:var(--zu-navy);margin-bottom:4px;">مهارات البحث العلمي والنشر في Scopus</div>
+                    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                      <span class="badge-s bs-purple">مرشحة من عميد</span>
+                      <span class="badge-s bs-info"><i class="ti ti-building me-1"></i>كلية الهندسة والتكنولوجيا</span>
+                    </div>
+                  </div>
+                  <span class="badge-s bs-pending"><i class="ti ti-clock"></i>بانتظار القرار</span>
+                </div>
+                <div class="row g-2" style="margin-bottom:14px;">
+                  <div class="col-6"><div class="text-muted text-sm"><i class="ti ti-user me-1"></i>العميد المنسق: د. محمد العمري</div></div>
+                  <div class="col-6"><div class="text-muted text-sm"><i class="ti ti-calendar me-1"></i>20-22 نوفمبر 2026</div></div>
+                  <div class="col-6"><div class="text-muted text-sm"><i class="ti ti-id me-1"></i>المحاضر: Michael Evans (خبير خارجي)</div></div>
+                  <div class="col-6"><div class="text-muted text-sm"><i class="ti ti-users me-1"></i>المستهدفون: 15 عضو هيئة تدريس</div></div>
+                </div>
+                <div class="alert-c a-info" style="margin-bottom:14px;">
+                  <i class="ti ti-file-text fs-5"></i>
+                  <div>
+                    <div style="font-size:13px;font-weight:700;">الكتاب الرسمي المرفق (مرفق إلزامي لوجود محاضر خارجي)</div>
+                    <div class="text-muted text-sm">research_course_request_signed.pdf</div>
+                  </div>
+                  <button class="btn-s bs-navy" style="margin-right:auto;flex-shrink:0;"><i class="ti ti-download"></i> معاينة الكتاب</button>
+                </div>
+                <div style="display:flex;gap:8px;">
+                  <button class="btn-p btn-green" onclick="approveCard(this)"><i class="ti ti-check"></i> اعتماد الدورة ونشرها</button>
+                  <button class="btn-p btn-red" onclick="rejectCard(this)"><i class="ti ti-x"></i> إعادة مع ملاحظات</button>
+                  <button class="btn-s" data-bs-toggle="modal" data-bs-target="#detailModal"><i class="ti ti-eye"></i> التفاصيل الكاملة</button>
+                </div>
+              </div>
+
+              <!-- Approval Card 2 -->
+              <div class="appr-card">
+                <div class="appr-card-top">
+                  <div>
+                    <div style="font-size:16px;font-weight:800;color:var(--zu-navy);margin-bottom:4px;">تطوير المناهج وتصميم نواتج التعلم (CLOs)</div>
+                    <div style="display:flex;gap:8px;">
+                      <span class="badge-s bs-purple">مرشحة من عميد</span>
+                      <span class="badge-s bs-info"><i class="ti ti-building me-1"></i>كلية الآداب</span>
+                    </div>
+                  </div>
+                  <span class="badge-s bs-pending"><i class="ti ti-clock"></i>بانتظار القرار</span>
+                </div>
+                <div class="alert-c a-warning" style="margin-bottom:14px;">
+                  <i class="ti ti-alert-triangle fs-5"></i>
+                  <div>
+                    <div style="font-size:13px;font-weight:700;">كتاب التوصية المرفق من مجلس الكلية</div>
+                    <div class="text-muted text-sm">curriculum_dev_request.pdf</div>
+                  </div>
+                  <button class="btn-s bs-navy" style="margin-right:auto;flex-shrink:0;"><i class="ti ti-download"></i> معاينة</button>
+                </div>
+                <div style="display:flex;gap:8px;">
+                  <button class="btn-p btn-green" onclick="approveCard(this)"><i class="ti ti-check"></i> اعتماد</button>
+                  <button class="btn-p btn-red" onclick="rejectCard(this)"><i class="ti ti-x"></i> رفض</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="data-card">
+            <div class="data-card-header">
+              <h5><i class="ti ti-star" style="color:var(--yellow);"></i> أحدث استبيانات الرضا</h5>
+            </div>
+            <div class="data-card-body" style="padding:0;">
+              <div style="padding:14px 18px;border-bottom:1px solid var(--border-light);">
+                <div style="font-size:13.5px;font-weight:700;color:var(--zu-navy);margin-bottom:4px;">مهارات التدريس الفعّال</div>
+                <div style="display:flex;align-items:center;gap:8px;"><span style="color:var(--yellow);font-size:15px;">★★★★☆</span><span class="text-sm text-muted">4.5/5 — 38 تقييم</span></div>
+              </div>
+              <div style="padding:14px 18px;border-bottom:1px solid var(--border-light);">
+                <div style="font-size:13.5px;font-weight:700;color:var(--zu-navy);margin-bottom:4px;">التعليم المدمج ومنصات التعلم</div>
+                <div style="display:flex;align-items:center;gap:8px;"><span style="color:var(--yellow);font-size:15px;">★★★★★</span><span class="text-sm text-muted">4.8/5 — 62 تقييم</span></div>
+              </div>
+              <div style="padding:14px 18px;">
+                <div style="font-size:13.5px;font-weight:700;color:var(--zu-navy);margin-bottom:4px;">إدارة الجودة الأكاديمية</div>
+                <div style="display:flex;align-items:center;gap:8px;"><span style="color:var(--yellow);font-size:15px;">★★★★☆</span><span class="text-sm text-muted">4.3/5 — 17 تقييم</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- APPROVALS -->
+    <div id="sec-approvals" style="display:none;">
+      <div class="section-title"><i class="ti ti-clipboard-check" style="color:var(--zu-navy);"></i> دراسة واعتماد طلبات البرامج التدريبية</div>
+      <div class="alert-c a-info" style="margin-bottom:20px;">
+        <i class="ti ti-info-circle fs-5"></i>
+        <span>جميع الدورات المرفوعة من عمداء الكليات تخضع لمعايير وحدة ضمان الجودة والاعتماد بجامعة الزرقاء قبل إدراجها بالجدول الرسمي.</span>
+      </div>
+
+      <div class="appr-card">
+        <div class="appr-card-top">
+          <div>
+            <div style="font-size:17px;font-weight:800;color:var(--zu-navy);margin-bottom:6px;">مهارات البحث العلمي والنشر في Scopus</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <span class="badge-s bs-purple">مرشحة من عميد</span>
+              <span class="badge-s bs-info">كلية الهندسة والتكنولوجيا</span>
+            </div>
+          </div>
+          <span class="badge-s bs-pending"><i class="ti ti-clock"></i>بانتظار القرار</span>
+        </div>
+        <div class="row g-3" style="margin-bottom:14px;">
+          <div class="col-md-6">
+            <div class="text-muted text-sm mb-1"><i class="ti ti-user me-1"></i><strong>العميد المنسق:</strong> د. محمد العمري</div>
+            <div class="text-muted text-sm mb-1"><i class="ti ti-id me-1"></i><strong>المحاضر:</strong> Michael Evans (خبير خارجي)</div>
+            <div class="text-muted text-sm"><i class="ti ti-calendar me-1"></i><strong>التاريخ:</strong> 20–22 نوفمبر 2026</div>
+          </div>
+          <div class="col-md-6">
+            <div class="text-muted text-sm mb-1"><i class="ti ti-clock me-1"></i><strong>الوقت:</strong> 9:00 ص — 2:00 م</div>
+            <div class="text-muted text-sm mb-1"><i class="ti ti-map-pin me-1"></i><strong>المكان:</strong> مجمع القاعات التدريبية A</div>
+            <div class="text-muted text-sm"><i class="ti ti-users me-1"></i><strong>المشاركون:</strong> 15 عضواً مرشحاً من الكلية</div>
+          </div>
+        </div>
+        <div class="alert-c a-info" style="margin-bottom:14px;">
+          <i class="ti ti-file-type-pdf" style="color:var(--red);font-size:22px;flex-shrink:0;"></i>
+          <div style="flex:1;">
+            <div style="font-size:13px;font-weight:700;">كتاب التكليف والترشيح الرسمي المعتمد</div>
+            <div class="text-muted text-sm">research_course_request_signed.pdf — 245 KB</div>
+          </div>
+          <button class="btn-s bs-navy" style="flex-shrink:0;"><i class="ti ti-download"></i> تنزيل الكتاب</button>
+        </div>
+        <div style="display:flex;gap:8px;">
+          <button class="btn-p btn-green" onclick="approveCard(this)"><i class="ti ti-check"></i> اعتماد ونشر بالخطة</button>
+          <button class="btn-p btn-red" data-bs-toggle="modal" data-bs-target="#rejectModal"><i class="ti ti-x"></i> إعادة مع ملاحظات</button>
+          <button class="btn-s"><i class="ti ti-edit"></i> طلب تعديل المحتوى</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CANCELLATIONS REQUESTS (POST-APPROVAL LIFECYCLE) -->
+    <div id="sec-cancellations" style="display:none;">
+      <div class="section-title"><i class="ti ti-ban" style="color:var(--red);"></i> طلبات إلغاء البرامج المعتمدة (من العمداء)</div>
+
+      <!-- Policy Banner -->
+      <div class="alert-c a-warning mb-4" style="background:#FFFBF0;border:1.5px solid #FDE047;padding:18px 22px;border-radius:var(--r);">
+        <div style="display:flex;align-items:flex-start;gap:14px;">
+          <i class="ti ti-alert-triangle fs-3 text-warning mt-1"></i>
+          <div>
+            <h6 class="fw-bold mb-1" style="color:#B45309;font-size:15px;">سياسة وضوابط إلغاء الدورات بعد الاعتماد</h6>
+            <p class="mb-0 text-muted" style="font-size:13.5px;line-height:1.7;">
+              وفقاً للتعليمات الأكاديمية، لا يمكن للعميد إلغاء أي دورة معتمدة بشكل أحادي. يتطلب ذلك تقديم <strong>طلب إلغاء رسمي مسبب مشفوع بكتاب موقع</strong> إلى وحدة الجودة.
+              عند موافقة الجودة، تُنقل الدورة تلقائياً إلى <strong>أرشيف الدورات الملغية</strong> وتُرسل إشعارات اعتذار فورية لجميع المتدربين المسجلين.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cancellation Card -->
+      <div class="data-card mb-4" style="border-top:4px solid var(--red);box-shadow:var(--shadow-sm);">
+        <div class="data-card-body p-4">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <span class="badge-s bs-rejected"><i class="ti ti-ban me-1"></i> طلب إلغاء دورة معتمدة</span>
+                <span class="badge-s bs-info">كلية العلوم وتكنولوجيا المعلومات</span>
+              </div>
+              <h4 class="fw-bold mb-1" style="color:var(--zu-navy);">الأمن السيبراني وحماية البيانات الأكاديمية</h4>
+              <small class="text-muted">مقدم الطلب: د. طارق الحوري (عميد كلية تكنولوجيا المعلومات) | تاريخ التقديم: 21 أكتوبر 2026</small>
+            </div>
+            <span class="badge-s bs-pending fs-6 py-2 px-3"><i class="ti ti-clock me-1"></i> بانتظار قرار الجودة</span>
+          </div>
+
+          <div class="row g-3 text-muted mb-3" style="font-size:13.5px;">
+            <div class="col-md-4"><i class="ti ti-calendar me-1 text-primary"></i> <strong>الموعد الأصلي المجدول:</strong> 25–27 نوفمبر 2026</div>
+            <div class="col-md-4"><i class="ti ti-users me-1 text-primary"></i> <strong>المسجلون المتأثرون:</strong> 24 عضو هيئة تدريس</div>
+            <div class="col-md-4"><i class="ti ti-user me-1 text-primary"></i> <strong>المحاضر المعتمد:</strong> د. يوسف العبادي</div>
+          </div>
+
+          <!-- Reason & Official Letter -->
+          <div class="p-3 mb-3 rounded" style="background:#FEF2F2;border:1.5px solid #FECACA;">
+            <div class="fw-bold text-danger mb-1" style="font-size:14px;"><i class="ti ti-notes me-1"></i> الأسباب والمبررات الرسمية للإلغاء:</div>
+            <p class="mb-0 text-dark" style="font-size:13.5px;line-height:1.6;">
+              "نحيطكم علماً باعتذار المحاضر د. يوسف العبادي عن تقديم البرنامج نظراً لتكليفه بمهمة بحثية رسمية طارئة ومؤتمر علمي خارج المملكة خلال نفس الفترة، مع تعذر تأمين محاضر بديل يحمل ذات التخصص الدقيق في الوقت الراهن."
+            </p>
+          </div>
+
+          <div class="alert-c a-info mb-4" style="background:#F8FAFC;border:1px solid var(--border);">
+            <i class="ti ti-file-type-pdf fs-3 text-danger"></i>
+            <div class="flex-grow-1">
+              <div class="fw-bold text-dark" style="font-size:13.5px;">الكتاب الرسمي الموقع من عمادة الكلية</div>
+              <small class="text-muted">cancellation_request_letter_signed.pdf (320 KB) — يتضمن موافقة مجلس الكلية</small>
+            </div>
+            <button class="btn-s bs-navy" onclick="alert('جاري تنزيل ومعاينة كتاب الإلغاء الرسمي...')"><i class="ti ti-download me-1"></i> معاينة الكتاب</button>
+          </div>
+
+          <!-- Actions -->
+          <div class="d-flex gap-2">
+            <button class="btn-p btn-red" onclick="alert('✅ تمت الموافقة على طلب الإلغاء. تم نقل الدورة إلى أرشيف الدورات الملغية وإرسال إشعار اعتذار لكافة المتدربين المسجلين.')"><i class="ti ti-check me-1"></i> الموافقة على الإلغاء ونقلها للأرشيف</button>
+            <button class="btn-s" onclick="alert('تم رفض طلب الإلغاء ومطالبة العمادة بتأمين محاضر بديل خلال 48 ساعة')"><i class="ti ti-x me-1"></i> رفض الطلب وإلزام الكلية بالانعقاد</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STRATEGIC TRAINING TRACKS -->
+    <div id="sec-tracks" style="display:none;">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+          <div class="section-title mb-1"><i class="ti ti-category-2" style="color:var(--zu-navy);"></i> محاور التدريب الاستراتيجية المعتمدة</div>
+          <small class="text-muted">تصنيف الدورات الأكاديمية والمهنية وتوزيع الساعات التدريبية السنوية</small>
+        </div>
+        <button class="btn-p" onclick="alert('نموذج إضافة مسار تدريبي استراتيجي جديد')"><i class="ti ti-plus me-1"></i> إضافة محور تدريبي</button>
+      </div>
+
+      <div class="row g-4 mb-4">
+        <!-- Track 1 -->
+        <div class="col-lg-4 col-md-6">
+          <div class="data-card h-100" style="border-top:4px solid var(--zu-navy);box-shadow:var(--shadow-sm);">
+            <div class="data-card-body p-4">
+              <span class="badge-s bs-info mb-2">المحور الأول</span>
+              <h5 class="fw-bold mb-2" style="color:var(--zu-navy);">طرائق التدريس والتعلم النشط والتقييم</h5>
+              <p class="text-muted text-sm mb-3">يشمل استراتيجيات التدريس الجامعي، القياس والتقويم، ونواتج التعلم المستهدفة (CLOs).</p>
+              <div class="d-flex justify-content-between text-sm border-top pt-3">
+                <span class="text-muted">البرامج المنفذة: <strong>8 برامج</strong></span>
+                <span class="text-success fw-bold">142 مستفيداً</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Track 2 -->
+        <div class="col-lg-4 col-md-6">
+          <div class="data-card h-100" style="border-top:4px solid var(--green);box-shadow:var(--shadow-sm);">
+            <div class="data-card-body p-4">
+              <span class="badge-s bs-active mb-2">المحور الثاني</span>
+              <h5 class="fw-bold mb-2" style="color:var(--green);">البحث العلمي والنشر في المجلات المصنفة</h5>
+              <p class="text-muted text-sm mb-3">مهارات النشر في Scopus و Web of Science، التمويل البحثي، وكتابة المقترحات.</p>
+              <div class="d-flex justify-content-between text-sm border-top pt-3">
+                <span class="text-muted">البرامج المنفذة: <strong>6 برامج</strong></span>
+                <span class="text-success fw-bold">96 مستفيداً</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Track 3 -->
+        <div class="col-lg-4 col-md-6">
+          <div class="data-card h-100" style="border-top:4px solid #4F46E5;box-shadow:var(--shadow-sm);">
+            <div class="data-card-body p-4">
+              <span class="badge-s bs-purple mb-2">المحور الثالث</span>
+              <h5 class="fw-bold mb-2" style="color:#4F46E5;">التعليم المدمج ومنصات التعلم والتحول الرقمي</h5>
+              <p class="text-muted text-sm mb-3">بيئات التعلم الافتراضية، Microsoft Teams، وتصميم المقررات التفاعلية المدمجة.</p>
+              <div class="d-flex justify-content-between text-sm border-top pt-3">
+                <span class="text-muted">البرامج المنفذة: <strong>5 برامج</strong></span>
+                <span class="text-success fw-bold">110 مستفيداً</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Track 4 -->
+        <div class="col-lg-4 col-md-6">
+          <div class="data-card h-100" style="border-top:4px solid var(--yellow);box-shadow:var(--shadow-sm);">
+            <div class="data-card-body p-4">
+              <span class="badge-s bs-pending mb-2">المحور الرابع</span>
+              <h5 class="fw-bold mb-2" style="color:var(--yellow-text);">الذكاء الاصطناعي والتكنولوجيا الحديثة</h5>
+              <p class="text-muted text-sm mb-3">توظيف أدوات الذكاء الاصطناعي في التدريس الأكاديمي والتحليل الإحصائي المتقدم.</p>
+              <div class="d-flex justify-content-between text-sm border-top pt-3">
+                <span class="text-muted">البرامج المنفذة: <strong>4 برامج</strong></span>
+                <span class="text-success fw-bold">88 مستفيداً</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Track 5 -->
+        <div class="col-lg-4 col-md-6">
+          <div class="data-card h-100" style="border-top:4px solid var(--purple);box-shadow:var(--shadow-sm);">
+            <div class="data-card-body p-4">
+              <span class="badge-s bs-purple mb-2">المحور الخامس</span>
+              <h5 class="fw-bold mb-2" style="color:var(--purple);">القيادة الأكاديمية وضمان الجودة والاعتماد</h5>
+              <p class="text-muted text-sm mb-3">معايير الاعتماد المؤسسي والبرامجي، الحوكمة الجامعية، والريادة والابتكار.</p>
+              <div class="d-flex justify-content-between text-sm border-top pt-3">
+                <span class="text-muted">البرامج المنفذة: <strong>5 برامج</strong></span>
+                <span class="text-success fw-bold">75 مستفيداً</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- REQUEST EXTERNAL TRAINER ACCOUNT FROM ADMIN -->
+    <div id="sec-exttrainer" style="display:none;">
+      <div class="section-title"><i class="ti ti-user-plus" style="color:var(--zu-navy);"></i> طلب إنشاء حساب مدرب خارجي (إلى مسؤول النظام)</div>
+
+      <div class="alert-c a-info mb-4" style="background:#F0F7FF;border:1.5px solid var(--zu-navy-border);padding:18px 22px;border-radius:var(--r);">
+        <div style="display:flex;align-items:flex-start;gap:14px;">
+          <i class="ti ti-shield-lock fs-3 text-primary mt-1"></i>
+          <div>
+            <h6 class="fw-bold mb-1" style="color:var(--zu-navy);font-size:15px;">مسار اعتماد المدربين الخارجيين</h6>
+            <p class="mb-0 text-muted" style="font-size:13.5px;line-height:1.7;">
+              عند الموافقة على دورة يقدمها خبير أو مدرب من خارج كادر الجامعة، تُرسل الجودة طلباً رسمياً إلى <strong>مسؤول النظام (Super Admin)</strong> لتوليد اسم مستخدم وكلمة مرور مؤقتة وتفعيل صلاحيات المدرب له في النظام.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="data-card" style="box-shadow:var(--shadow-sm);">
+        <div class="data-card-body p-4">
+          <form onsubmit="event.preventDefault();alert('✅ تم إرسال طلب إنشاء الحساب بنجاح إلى مسؤول النظام! ستصلك بيانات الدخول فور اعتمادها.');">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label fw-bold">اسم المدرب الخارجي (الكامل)</label>
+                <input type="text" class="form-ctrl" placeholder="مثال: د. مايكل إيفانز / Michael Evans" value="Michael Evans" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-bold">الجهة / المؤسسة الأكاديمية التابع لها</label>
+                <input type="text" class="form-ctrl" placeholder="مثال: جامعة مانشستر / خبير دولي معتمد" value="International Research Council" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-bold">البريد الإلكتروني للتواصل وتفعيل الحساب</label>
+                <input type="email" class="form-ctrl" placeholder="m.evans@example.com" value="m.evans@research-council.org" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-bold">رقم الهاتف / الواتساب الدولي</label>
+                <input type="tel" class="form-ctrl" placeholder="+44 7911 123456" value="+44 7911 123456">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-bold">الدورة المكلف بتدريبها</label>
+                <select class="form-ctrl">
+                  <option selected>مهارات البحث العلمي والنشر في Scopus</option>
+                  <option>استراتيجيات القيادة الأكاديمية المتقدمة</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-bold">الكلية المستفيدة</label>
+                <input type="text" class="form-ctrl" value="كلية الهندسة والتكنولوجيا" readonly>
+              </div>
+              <div class="col-12">
+                <label class="form-label fw-bold">كتاب الموافقة / السيرة الذاتية للمدرب</label>
+                <input type="file" class="form-ctrl">
+                <small class="text-muted">مرفق اختياري: السيرة الذاتية أو كتاب استضافة الخبير (PDF)</small>
+              </div>
+              <div class="col-12 mt-4">
+                <button type="submit" class="btn-p btn-green py-2 px-4" style="font-size:14.5px;">
+                  <i class="ti ti-send me-1"></i> إرسال طلب إنشاء الحساب للأدمن
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- COURSES -->
+    <div id="sec-courses" style="display:none;">
+      <div class="section-title"><i class="ti ti-book-2" style="color:var(--zu-navy);"></i> مراقبة الجودة لكافة البرامج التدريبية</div>
+      <div class="data-card">
+        <div class="data-card-body" style="padding:0;">
+          <table class="custom-table">
+            <thead><tr><th>اسم البرنامج التدريبي</th><th>النوع</th><th>المحاضر</th><th>التاريخ</th><th>المشاركون</th><th>الشهادات الصادرة</th><th>حالة الجودة</th><th></th></tr></thead>
+            <tbody>
+              <tr><td class="fw-bold">مهارات التدريس الفعّال</td><td><span class="badge-s bs-info">عامة</span></td><td>د. خالد المحاضر</td><td>1–3 نوفمبر</td><td>42</td><td><span style="color:var(--green);font-weight:700;">38</span></td><td><span class="badge-s bs-active">معتمدة ونشطة</span></td><td><button class="btn-s"><i class="ti ti-eye"></i></button></td></tr>
+              <tr><td class="fw-bold">إدارة الجودة الأكاديمية</td><td><span class="badge-s bs-purple">كلية العلوم</span></td><td>د. خالد المحاضر</td><td>10–12 نوفمبر</td><td>18</td><td>—</td><td><span class="badge-s bs-active">معتمدة ونشطة</span></td><td><button class="btn-s"><i class="ti ti-eye"></i></button></td></tr>
+              <tr><td class="fw-bold">مهارات البحث العلمي</td><td><span class="badge-s bs-purple">طلب عميد</span></td><td>M. Evans</td><td>20–22 نوفمبر</td><td>15</td><td>—</td><td><span class="badge-s bs-pending">قيد التدقيق</span></td><td><button class="btn-s"><i class="ti ti-eye"></i></button></td></tr>
+              <tr><td class="fw-bold">التعليم المدمج الحديث</td><td><span class="badge-s bs-info">عامة</span></td><td>د. سمر الخالدي</td><td>5–7 أكتوبر</td><td>67</td><td><span style="color:var(--green);font-weight:700;">61</span></td><td><span class="badge-s bs-ended">منتهية ومقيمة</span></td><td><button class="btn-s"><i class="ti ti-eye"></i></button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- EVALS -->
+    <div id="sec-evals" style="display:none;">
+      <div class="section-title"><i class="ti ti-star" style="color:var(--yellow);"></i> استبيانات قياس رضا المتدربين والأثر التدريبي</div>
+      <div class="alert-c a-info mb-4">
+        <i class="ti ti-info-circle fs-5"></i>
+        <span>مؤشرات التقييم مبنية على مدخلات أعضاء هيئة التدريس بعد حضور الجلسات وتطبيق الأثر التدريبي.</span>
+      </div>
+    </div>
+
+    <!-- NEEDS BOOKS -->
+    <div id="sec-needs" style="display:none;">
+      <div class="section-title"><i class="ti ti-file-text" style="color:var(--zu-navy);"></i> مطابقة كتب الاحتياجات لمعايير الاعتماد</div>
+      <div class="data-card">
+        <div class="data-card-body" style="padding:0;">
+          <table class="custom-table">
+            <thead><tr><th>المُقدِّم</th><th>الكلية / القسم</th><th>الاحتياج المطلوب</th><th>التاريخ</th><th>الملف</th><th>حالة المراجعة</th></tr></thead>
+            <tbody>
+              <tr><td>د. أحمد ناصر</td><td>الهندسة / الحاسوب</td><td>تقنيات التعليم الرقمي والذكاء الاصطناعي</td><td>15/10/2026</td><td><button class="btn-s bs-navy"><i class="ti ti-download"></i> معاينة</button></td><td><span class="badge-s bs-pending">مراجعة الجودة</span></td></tr>
+              <tr><td>د. سمر الخالدي</td><td>العلوم / الكيمياء</td><td>البحث العلمي المتقدم وكتابة الأوراق</td><td>14/10/2026</td><td><button class="btn-s bs-navy"><i class="ti ti-download"></i> معاينة</button></td><td><span class="badge-s bs-active">معتمد بالخطة</span></td></tr>
+              <tr><td>د. فيصل العبدالله</td><td>الطب / الجراحة</td><td>مهارات التواصل السريري والأكاديمي</td><td>12/10/2026</td><td><button class="btn-s bs-navy"><i class="ti ti-download"></i> معاينة</button></td><td><span class="badge-s bs-pending">مراجعة الجودة</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- CERTS -->
+    <div id="sec-certs" style="display:none;">
+      <div class="section-title"><i class="ti ti-certificate" style="color:var(--green);"></i> سجل الشهادات المعتمدة الصادرة رسمياً</div>
+      <div class="data-card">
+        <div class="data-card-body" style="padding:0;">
+          <table class="custom-table">
+            <thead><tr><th>اسم عضو هيئة التدريس</th><th>الكلية</th><th>البرنامج التدريبي</th><th>تاريخ الاعتماد</th><th>الرقم المرجعي الموثق</th><th></th></tr></thead>
+            <tbody>
+              <tr><td>م. رنا السلطاني</td><td>الهندسة</td><td>استراتيجيات التعليم المدمج</td><td>10/10/2026</td><td style="font-family:monospace;font-weight:700;color:var(--zu-navy);">ZU-2026-0184</td><td><button class="btn-s bs-navy"><i class="ti ti-qrcode"></i> رمز QR</button></td></tr>
+              <tr><td>د. أحمد ناصر</td><td>الهندسة</td><td>استراتيجيات التعليم المدمج</td><td>10/10/2026</td><td style="font-family:monospace;font-weight:700;color:var(--zu-navy);">ZU-2026-0183</td><td><button class="btn-s bs-navy"><i class="ti ti-qrcode"></i> رمز QR</button></td></tr>
+              <tr><td>د. سمر الخالدي</td><td>العلوم</td><td>مهارات التدريس الفعّال</td><td>08/10/2026</td><td style="font-family:monospace;font-weight:700;color:var(--zu-navy);">ZU-2026-0182</td><td><button class="btn-s bs-navy"><i class="ti ti-qrcode"></i> رمز QR</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- Reject Modal -->
+<div class="modal fade" id="rejectModal" tabindex="-1">
+  <div class="modal-dialog"><div class="modal-content modal-custom">
+    <div class="modal-header-custom"><h5><i class="ti ti-alert-triangle text-danger me-2"></i>إعادة الطلب مع ملاحظات الجودة</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+    <div class="modal-body-custom">
+      <div class="alert-c a-danger" style="margin-bottom:14px;"><i class="ti ti-info-circle fs-5"></i><span>ستُرسل الملاحظات فورياً إلى عميد الكلية لاستيفاء المتطلبات وإعادة التقديم.</span></div>
+      <div class="form-group"><label class="form-label">الملاحظات أو المتطلبات الناقصة</label><textarea class="form-ctrl" rows="4" placeholder="اكتب الملاحظات بدقة لمقدم الطلب..."></textarea></div>
+    </div>
+    <div class="modal-footer-custom"><button class="btn-p btn-red" onclick="alert('✅ تم إرسال الملاحظات للعميد بنجاح');bootstrap.Modal.getInstance(document.getElementById('rejectModal')).hide()"><i class="ti ti-send"></i> إرسال الملاحظات</button><button class="btn-s" data-bs-dismiss="modal">إلغاء</button></div>
+  </div></div>
+</div>
+
+<!-- Notifications Modal -->
+<div class="modal fade" id="notifModal" tabindex="-1">
+  <div class="modal-dialog" style="max-width:400px;margin:20px auto;"><div class="modal-content modal-custom">
+    <div class="modal-header-custom"><h5><i class="ti ti-bell" style="color:var(--zu-navy);margin-left:8px;"></i> الإشعارات والمهام</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+    <div style="padding:0;">
+      <div class="notif-item unread"><div class="notif-icon" style="background:var(--yellow-dim);color:var(--yellow);"><i class="ti ti-clipboard-check"></i></div><div><div style="font-size:13px;font-weight:700;">طلب اعتماد برنامج جديد</div><div class="text-muted text-sm">دورة "مهارات البحث العلمي" — عميد الهندسة</div><div class="text-sm" style="color:var(--text-3);margin-top:3px;">منذ ساعة</div></div></div>
+      <div class="notif-item unread"><div class="notif-icon" style="background:var(--green-dim);color:var(--green);"><i class="ti ti-certificate"></i></div><div><div style="font-size:13px;font-weight:700;">استبيان أثر تدريبي مكتمل</div><div class="text-muted text-sm">م. رنا السلطاني — دورة التعلم الإلكتروني</div><div class="text-sm" style="color:var(--text-3);margin-top:3px;">منذ 3 ساعات</div></div></div>
+    </div>
+  </div></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+const secs=['dashboard','approvals','cancellations','courses','tracks','exttrainer','needs','evals','certs'];
+function show(name,el){
+  secs.forEach(s=>{const e=document.getElementById('sec-'+s);if(e)e.style.display='none';});
+  const target=document.getElementById('sec-'+name);
+  if(target)target.style.display='';
+  document.querySelectorAll('.nav-item').forEach(i=>i.classList.remove('active'));
+  if(el)el.classList.add('active');
+  document.getElementById('pageTitle').textContent=el?el.textContent.trim():name;
+}
+
+function approveCard(btn){
+  const card=btn.closest('.appr-card');
+  card.style.opacity='0.6';
+  card.querySelector('.bs-pending').className='badge-s bs-active';
+  card.querySelector('.bs-active').textContent='✓ تم الاعتماد';
+  btn.parentElement.innerHTML='<span class="badge-s bs-active"><i class="ti ti-circle-check"></i> تم اعتماد البرنامج ونشره رسمياً</span>';
+}
+function rejectCard(btn){
+  const card=btn.closest('.appr-card');
+  card.style.opacity='0.6';
+}
+
+Chart.defaults.color='#475569';
+Chart.defaults.font.family='Tajawal';
+
+function initCharts(){
+  // 1. Line / Area Chart for Monthly Quality & Completion
+  const q1=document.getElementById('qChart1');
+  if(q1)new Chart(q1,{
+    type:'line',
+    data:{
+      labels:['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر'],
+      datasets:[
+        {
+          label:'البرامج المعتمدة',
+          data:[2,3,4,3,5,4,3,6,5,7],
+          borderColor:'#022C5A',
+          backgroundColor:'rgba(2,44,90,0.08)',
+          fill:true,
+          tension:0.35,
+          pointBackgroundColor:'#022C5A',
+          pointRadius:4
+        },
+        {
+          label:'معدل التوافق (%)',
+          data:[92,94,95,93,96,95,96,98,97,98.4],
+          borderColor:'#0D9488',
+          backgroundColor:'rgba(13,148,136,0.06)',
+          fill:true,
+          tension:0.35,
+          pointBackgroundColor:'#0D9488',
+          pointRadius:4,
+          yAxisID:'y1'
+        }
+      ]
+    },
+    options:{
+      responsive:true,
+      maintainAspectRatio:false,
+      interaction:{mode:'index',intersect:false},
+      plugins:{
+        legend:{position:'top',labels:{boxWidth:12,padding:12}}
+      },
+      scales:{
+        x:{grid:{color:'rgba(0,0,0,0.04)'}},
+        y:{grid:{color:'rgba(0,0,0,0.04)'},title:{display:true,text:'عدد البرامج'}},
+        y1:{position:'left',grid:{display:false},min:85,max:100,title:{display:true,text:'نسبة التوافق %'}}
+      }
+    }
+  });
+
+  // 2. Program Breakdown Doughnut
+  const q2=document.getElementById('qChart2');
+  if(q2)new Chart(q2,{
+    type:'doughnut',
+    data:{
+      labels:['عامة لكادر الجامعة','مخصصة لكلية محددة','بناءً على طلب عميد'],
+      datasets:[{
+        data:[14,8,6],
+        backgroundColor:['#022C5A','#0D9488','#D97706'],
+        borderWidth:2,
+        borderColor:'#ffffff'
+      }]
+    },
+    options:{
+      responsive:true,
+      maintainAspectRatio:false,
+      cutout:'62%',
+      plugins:{legend:{position:'bottom',labels:{color:'#475569',font:{size:11.5},boxWidth:12,padding:10}}}
+    }
+  });
+
+  // 3. Evaluations Bar
+  const e=document.getElementById('evalChart');
+  if(e)new Chart(e,{
+    type:'bar',
+    data:{
+      labels:['مهارات التدريس','التعليم المدمج','إدارة الجودة','البحث العلمي','التقييم الحديث'],
+      datasets:[{
+        label:'متوسط التقييم العام (من 5)',
+        data:[4.5,4.8,4.3,4.6,4.4],
+        backgroundColor:['#022C5A','#0D9488','#4F46E5','#D97706','#0284C7'],
+        borderRadius:6
+      }]
+    },
+    options:{
+      responsive:true,
+      maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{
+        x:{grid:{display:false}},
+        y:{min:0,max:5,grid:{color:'rgba(0,0,0,0.04)'}}
+      }
+    }
+  });
+
+  // 4. College Compliance Breakdown
+  const comp=document.getElementById('complianceChart');
+  if(comp)new Chart(comp,{
+    type:'bar',
+    data:{
+      labels:['الهندسة','العلوم','الطب','الآداب','الاقتصاد','الشريعة'],
+      datasets:[{
+        label:'نسبة الاستيفاء %',
+        data:[94,89,96,82,88,85],
+        backgroundColor:'#022C5A',
+        borderRadius:6
+      }]
+    },
+    options:{
+      responsive:true,
+      maintainAspectRatio:false,
+      indexAxis:'y',
+      plugins:{legend:{display:false}},
+      scales:{
+        x:{min:50,max:100,grid:{color:'rgba(0,0,0,0.04)'}},
+        y:{grid:{display:false}}
+      }
+    }
+  });
+}
+
+// Automatically initialize charts on page load immediately!
+window.addEventListener('DOMContentLoaded', initCharts);
+</script>
+<script src="js/experience.js"></script>
+</body>
+</html>

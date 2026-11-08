@@ -1,0 +1,14 @@
+{
+  "unit": "pt",
+  "origin": "top-left",
+  "fields": {
+    "holder_name":     { "x": 146, "y": 262, "w": 500, "font": "Tajawal", "size": 30, "weight": "bold", "color": "#000000", "align": "center", "dir": "rtl", "maxLines": 1, "shrinkToFit": true },
+    "course_title":    { "x": 146, "y": 358, "w": 500, "font": "Tajawal", "size": 22, "weight": "bold", "color": "#000000", "align": "center", "dir": "rtl", "maxLines": 2, "shrinkToFit": true },
+    "course_period":   { "x": 146, "y": 462, "w": 500, "font": "Tajawal", "size": 17, "color": "#000000", "align": "center", "dir": "ltr", "maxLines": 1, "shrinkToFit": true },
+    "instructor_name": { "x": 410, "y": 512, "w": 200, "font": "Tajawal", "size": 13, "color": "#000000", "align": "center", "dir": "rtl", "maxLines": 1, "shrinkToFit": true },
+    "course_hours":    { "x": 190, "y": 512, "w": 200, "font": "Tajawal", "size": 13, "color": "#000000", "align": "center", "dir": "ltr", "maxLines": 1, "shrinkToFit": true },
+    "issue_date":      { "x": 410, "y": 548, "w": 200, "font": "Tajawal", "size": 13, "color": "#000000", "align": "center", "dir": "ltr", "maxLines": 1, "shrinkToFit": true },
+    "reference_no":    { "x": 190, "y": 548, "w": 200, "font": "Tajawal", "size": 12, "color": "#000000", "align": "center", "dir": "ltr", "maxLines": 1, "shrinkToFit": true },
+    "qr":              { "x": 652, "y": 470, "size": 80 }
+  }
+}
