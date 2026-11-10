@@ -9,8 +9,8 @@ public sealed class CourseStatusHistoryConfiguration : IEntityTypeConfiguration<
     public void Configure(EntityTypeBuilder<CourseStatusHistory> builder)
     {
         builder.ToTable("course_status_history", AppDbContext.Schema);
-        builder.ToTable(t => t.HasCheckConstraint("ck_course_status_history_from_status", "from_status IN ('Proposed', 'Returned', 'Rejected', 'Approved', 'Finished', 'Cancelled')"));
-        builder.ToTable(t => t.HasCheckConstraint("ck_course_status_history_to_status", "to_status IN ('Proposed', 'Returned', 'Rejected', 'Approved', 'Finished', 'Cancelled')"));
+        builder.ToTable(t => t.HasCheckConstraint("ck_course_status_history_from_status", "from_status IN ('Proposed', 'Returned', 'Rejected', 'Approved', 'Finished', 'Cancelled', 'AwaitingAccount')"));
+        builder.ToTable(t => t.HasCheckConstraint("ck_course_status_history_to_status", "to_status IN ('Proposed', 'Returned', 'Rejected', 'Approved', 'Finished', 'Cancelled', 'AwaitingAccount')"));
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Id).UseIdentityAlwaysColumn();
         builder.Property(x => x.FromStatus).HasConversion<string>().HasMaxLength(20);

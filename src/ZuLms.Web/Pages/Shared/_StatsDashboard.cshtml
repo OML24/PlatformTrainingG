@@ -4,68 +4,204 @@
     var coursesHref = role == "admin" ? "/admin/courses" : role == "dean" ? "/dean/courses" : "/quality/courses";
     var participantsHref = coursesHref;
     var certificatesHref = role == "admin" ? "/quality/certificates" : coursesHref;
+    var directoryView = role == "dean" ? "Dean" : "All";
 }
-<div class="container py-4 stats-dashboard" id="stats-dashboard-page" data-role="@role">
-    <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-4">
-        <div>
-            <h1 class="h3 mb-1">@heading</h1>
-            <p class="text-muted mb-0">مؤشرات ورسوم بيانية مباشرة من بيانات النظام</p>
-        </div>
-        <span class="badge text-bg-light stats-scope" id="stats-scope">—</span>
-    </div>
+@* Redesign v2 (docs/FRONTEND-REDESIGN.md) — every original id kept for stats-dashboard.js *@
+<div class="container py-2 stats-dashboard zs stats-loading" id="stats-dashboard-page" data-role="@role" data-directory-view="@directoryView">
 
-    <form class="card mb-4 stats-filters" id="stats-filters">
-        <div class="card-body">
-            <div class="row g-3 align-items-end">
-                <div class="col-12 col-lg-4" data-faculty-filter>
-                    <label class="form-label" for="stats-center">الكلية</label>
-                    <select class="form-select" id="stats-center"><option value="">جميع الكليات</option></select>
-                </div>
-                <div class="col-12 col-lg-4" data-user-filter>
-                    <label class="form-label" for="stats-user-search">البحث عن شخص</label>
-                    <input class="form-control" id="stats-user-search" type="search" placeholder="ابحث بالاسم أو الرقم" autocomplete="off" />
-                </div>
-                <div class="col-12 col-lg-4" data-user-filter>
-                    <label class="form-label" for="stats-user">اختيار الشخص</label>
-                    <select class="form-select" id="stats-user"><option value="">جميع الأشخاص</option></select>
-                </div>
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <label class="form-label" for="stats-from">من تاريخ</label>
-                    <input class="form-control zu-date" id="stats-from" type="text" inputmode="numeric" />
-                </div>
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <label class="form-label" for="stats-to">إلى تاريخ</label>
-                    <input class="form-control zu-date" id="stats-to" type="text" inputmode="numeric" />
-                </div>
-                <div class="col-12 col-lg-4 d-flex gap-2">
-                    <button class="btn btn-primary flex-grow-1" type="submit"><i class="ti ti-filter"></i> تطبيق</button>
-                    <button class="btn btn-outline-secondary" id="stats-reset" type="button" aria-label="مسح الفلاتر"><i class="ti ti-refresh"></i></button>
+    <header class="zs-head">
+        <div class="zs-head-text">
+            <h1 id="zs-title">@heading</h1>
+            <p>نظرة تشغيلية على التدريب والتطوير المهني <span class="zs-scope"><i class="ti ti-map-pin" aria-hidden="true"></i><span class="stats-scope" id="stats-scope">—</span></span></p>
+        </div>
+        <div class="zs-head-actions">
+            <label class="zs-period" for="zs-range">
+                <i class="ti ti-calendar" aria-hidden="true"></i>
+                <span class="visually-hidden">الفترة الزمنية</span>
+                <select id="zs-range">
+                    <option value="all">كل الفترات</option>
+                    <option value="year">هذه السنة</option>
+                    <option value="quarter">آخر 3 أشهر</option>
+                    <option value="month">هذا الشهر</option>
+                    <option value="custom" hidden>فترة مخصصة</option>
+                </select>
+            </label>
+            <button type="button" class="zs-head-btn" id="zs-filter-toggle" aria-controls="zs-filters-wrap" aria-expanded="false"><i class="ti ti-adjustments-horizontal" aria-hidden="true"></i><span>تصفية</span><span class="zs-active-count d-none" id="zs-active-count"></span></button>
+            <button type="button" class="zs-head-btn zs-head-icon" id="zs-refresh" aria-label="تحديث البيانات" title="تحديث البيانات"><i class="ti ti-refresh" aria-hidden="true"></i></button>
+            <button type="button" class="zs-head-btn zs-head-icon" id="zs-print" aria-label="طباعة التقرير" title="طباعة التقرير"><i class="ti ti-printer" aria-hidden="true"></i></button>
+        </div>
+    </header>
+
+    <details class="card zs-filters" id="zs-filters-wrap">
+        <summary class="visually-hidden">تصفية متقدمة</summary>
+        <form class="stats-filters" id="stats-filters">
+            <div class="card-body">
+                <div class="row g-3 align-items-end">
+                    <div class="col-12 col-lg-4" data-faculty-filter>
+                        <label class="form-label" for="stats-center">الكلية</label>
+                        <select class="form-select" id="stats-center"><option value="">جميع الكليات</option></select>
+                    </div>
+                    <div class="col-12 col-lg-4" data-user-filter>
+                        <label class="form-label" for="stats-user-search">البحث عن شخص</label>
+                        <input class="form-control" id="stats-user-search" type="search" placeholder="ابحث بالاسم أو الرقم" autocomplete="off" />
+                    </div>
+                    <div class="col-12 col-lg-4" data-user-filter>
+                        <label class="form-label" for="stats-user">اختيار الشخص</label>
+                        <select class="form-select" id="stats-user"><option value="">جميع الأشخاص</option></select>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <label class="form-label" for="stats-from">من تاريخ</label>
+                        <input class="form-control zu-date" id="stats-from" type="text" inputmode="numeric" />
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <label class="form-label" for="stats-to">إلى تاريخ</label>
+                        <input class="form-control zu-date" id="stats-to" type="text" inputmode="numeric" />
+                    </div>
+                    <div class="col-12 col-lg-4 d-flex gap-2">
+                        <button class="btn btn-primary flex-grow-1" type="submit"><i class="ti ti-filter"></i> تطبيق</button>
+                        <button class="btn btn-outline-secondary" id="stats-reset" type="button" aria-label="مسح الفلاتر" title="مسح الفلاتر"><i class="ti ti-filter-off"></i></button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </details>
 
     <div class="alert alert-danger d-none" id="dashboard-error" role="alert"></div>
-    <div class="row g-3 mb-4" aria-live="polite">
-        <div class="col-6 col-xl-3"><a class="card kpi-card h-100 text-decoration-none text-reset" href="@coursesHref"><div class="card-body"><i class="ti ti-book-2 stats-kpi-icon"></i><div class="kpi-value" id="kpi-courses">—</div><div class="kpi-label">الدورات</div></div></a></div>
-        <div class="col-6 col-xl-3"><a class="card kpi-card h-100 text-decoration-none text-reset" href="@participantsHref"><div class="card-body"><i class="ti ti-users stats-kpi-icon"></i><div class="kpi-value" id="kpi-participants">—</div><div class="kpi-label">المشاركات</div></div></a></div>
-        <div class="col-6 col-xl-3"><a class="card kpi-card h-100 text-decoration-none text-reset" href="@certificatesHref"><div class="card-body"><i class="ti ti-certificate stats-kpi-icon"></i><div class="kpi-value" id="kpi-certificates">—</div><div class="kpi-label">الشهادات الصادرة</div></div></a></div>
-        <div class="col-6 col-xl-3"><a class="card kpi-card h-100 text-decoration-none text-reset" href="@coursesHref?status=Finished"><div class="card-body"><i class="ti ti-circle-check stats-kpi-icon"></i><div class="kpi-value"><span id="kpi-completion">—</span><small>%</small></div><div class="kpi-label">نسبة الدورات المنتهية</div></div></a></div>
+
+    <div class="zs-kpis" aria-live="polite">
+        <a class="zs-kpi kpi-card" data-tone="navy" href="@coursesHref">
+            <div class="zs-kpi-main">
+                <span class="zs-kpi-label kpi-label">الدورات</span>
+                <div class="kpi-value" id="kpi-courses">—</div>
+            </div>
+            <span class="zs-kpi-icon"><i class="ti ti-book-2" aria-hidden="true"></i></span>
+            <div class="zs-kpi-foot"><span class="zs-trend" id="trend-courses"></span><span class="zs-trend-note" data-trend-note>مقارنة بالشهر السابق</span></div>
+        </a>
+        <a class="zs-kpi kpi-card" data-tone="gold" href="@participantsHref">
+            <div class="zs-kpi-main">
+                <span class="zs-kpi-label kpi-label">المشاركات</span>
+                <div class="kpi-value" id="kpi-participants">—</div>
+            </div>
+            <span class="zs-kpi-icon"><i class="ti ti-users-group" aria-hidden="true"></i></span>
+            <div class="zs-kpi-foot"><span class="zs-trend" id="trend-participants"></span><span class="zs-trend-note" data-trend-note>مقارنة بالشهر السابق</span></div>
+        </a>
+        <a class="zs-kpi kpi-card" data-tone="teal" href="@certificatesHref">
+            <div class="zs-kpi-main">
+                <span class="zs-kpi-label kpi-label">الشهادات الصادرة</span>
+                <div class="kpi-value" id="kpi-certificates">—</div>
+            </div>
+            <span class="zs-kpi-icon"><i class="ti ti-certificate" aria-hidden="true"></i></span>
+            <div class="zs-kpi-foot"><span class="zs-trend-note" id="kpi-cert-ratio"></span></div>
+        </a>
+        <a class="zs-kpi kpi-card" data-tone="sky" href="@coursesHref?status=Finished">
+            <div class="zs-kpi-main">
+                <span class="zs-kpi-label kpi-label">الدورات المنتهية</span>
+                <div class="kpi-value"><span id="kpi-completion">—</span><small>%</small></div>
+            </div>
+            <span class="zs-kpi-icon"><i class="ti ti-rosette-discount-check" aria-hidden="true"></i></span>
+            <div class="zs-kpi-foot">
+                <span class="zs-meter" aria-hidden="true"><i id="zs-meter-bar"></i></span>
+                <span class="zs-trend-note" id="kpi-finished-note"></span>
+            </div>
+        </a>
     </div>
 
-    <div class="card mb-4 d-none" id="person-summary">
-        <div class="card-body d-flex flex-wrap justify-content-between gap-3">
-            <div><span class="text-muted">إحصائيات الشخص</span><h2 class="h5 mb-0" id="person-name">—</h2></div>
-            <div class="stats-person-values"><span><b id="person-courses">0</b> دورة</span><span><b id="person-finished">0</b> منتهية</span><span><b id="person-certificates">0</b> شهادة</span></div>
+    <div class="zs-person d-none" id="person-summary">
+        <span class="zs-person-avatar"><i class="ti ti-user" aria-hidden="true"></i></span>
+        <div><span class="text-muted small">إحصائيات الشخص</span><h2 class="h5 mb-0" id="person-name">—</h2></div>
+        <div class="stats-person-values">
+            <span><b id="person-courses">0</b> دورة</span>
+            <span><b id="person-finished">0</b> منتهية</span>
+            <span><b id="person-certificates">0</b> شهادة</span>
         </div>
     </div>
 
-    <div class="row g-4 mb-4">
-        <div class="col-12 col-xl-8"><div class="card h-100"><div class="card-header"><i class="ti ti-chart-line"></i> تطور الدورات والمشاركات</div><div class="card-body stats-chart"><canvas id="chart-monthly" aria-label="تطور الدورات والمشاركات"></canvas></div></div></div>
-        <div class="col-12 col-xl-4"><div class="card h-100"><div class="card-header"><i class="ti ti-chart-donut"></i> الدورات حسب الحالة</div><div class="card-body stats-chart"><canvas id="chart-status" aria-label="الدورات حسب الحالة"></canvas></div></div></div>
+    <div class="zs-grid">
+        <section class="zs-panel zs-span-5" data-panel="status" aria-labelledby="zs-h-status">
+            <div class="zs-panel-head">
+                <span class="zs-panel-icon"><i class="ti ti-chart-donut" aria-hidden="true"></i></span>
+                <div class="zs-panel-title"><h2 id="zs-h-status">الدورات حسب الحالة</h2><span class="zs-panel-sub">توزيع الدورات على مراحلها</span></div>
+                <div class="zs-tools">
+                    <button type="button" class="zs-tool" data-action="table" aria-label="عرض كجدول" title="عرض كجدول"><i class="ti ti-table"></i></button>
+                    <button type="button" class="zs-tool" data-action="download" aria-label="تنزيل صورة" title="تنزيل صورة"><i class="ti ti-download"></i></button>
+                    <button type="button" class="zs-tool" data-action="expand" aria-label="تكبير" title="تكبير"><i class="ti ti-maximize"></i></button>
+                </div>
+            </div>
+            <div class="zs-donut-wrap">
+                <div class="zs-panel-body zs-chart-donut stats-chart"><div class="zs-skeleton"></div><canvas id="chart-status" aria-label="الدورات حسب الحالة" role="img"></canvas><div class="zs-center-total" id="zs-status-total"></div></div>
+                <ul class="zs-legend" id="legend-status" aria-label="مفتاح الحالات"></ul>
+            </div>
+        </section>
+
+        <section class="zs-panel zs-span-7" data-panel="monthly" aria-labelledby="zs-h-monthly">
+            <div class="zs-panel-head">
+                <span class="zs-panel-icon"><i class="ti ti-chart-bar" aria-hidden="true"></i></span>
+                <div class="zs-panel-title"><h2 id="zs-h-monthly">التطور الشهري</h2><span class="zs-panel-sub" id="zs-sub-monthly">عدد الدورات لكل شهر</span></div>
+                <div class="zs-tools">
+                    <div class="zs-seg zs-seg-text" role="group" aria-label="المؤشر" data-seg="metric">
+                        <button type="button" data-value="courses" aria-pressed="true">الدورات</button>
+                        <button type="button" data-value="participants" aria-pressed="false">المشاركات</button>
+                    </div>
+                    <div class="zs-seg" role="group" aria-label="نوع الرسم" data-seg="type">
+                        <button type="button" data-value="bar" aria-pressed="true" aria-label="أعمدة" title="أعمدة"><i class="ti ti-chart-bar"></i></button>
+                        <button type="button" data-value="line" aria-pressed="false" aria-label="خطي" title="خطي"><i class="ti ti-chart-line"></i></button>
+                    </div>
+                    <button type="button" class="zs-tool" data-action="table" aria-label="عرض كجدول" title="عرض كجدول"><i class="ti ti-table"></i></button>
+                    <button type="button" class="zs-tool" data-action="download" aria-label="تنزيل صورة" title="تنزيل صورة"><i class="ti ti-download"></i></button>
+                    <button type="button" class="zs-tool" data-action="expand" aria-label="تكبير" title="تكبير"><i class="ti ti-maximize"></i></button>
+                </div>
+            </div>
+            <div class="zs-panel-body stats-chart"><div class="zs-skeleton"></div><canvas id="chart-monthly" aria-label="تطور الدورات والمشاركات" role="img"></canvas></div>
+        </section>
     </div>
-    <div class="row g-4">
-        <div class="col-12 col-xl-6"><div class="card h-100"><div class="card-header"><i class="ti ti-building"></i> التوزيع حسب الكلية</div><div class="card-body stats-chart"><canvas id="chart-faculty" aria-label="التوزيع حسب الكلية"></canvas></div></div></div>
-        <div class="col-12 col-xl-6"><div class="card h-100"><div class="card-header"><i class="ti ti-chart-bar"></i> التوزيع حسب المحور التدريبي</div><div class="card-body stats-chart"><canvas id="chart-track" aria-label="التوزيع حسب المحور التدريبي"></canvas></div></div></div>
+
+    <div class="zs-grid">
+        <section class="zs-panel zs-span-7" data-panel="faculty" aria-labelledby="zs-h-faculty">
+            <div class="zs-panel-head">
+                <span class="zs-panel-icon"><i class="ti ti-building" aria-hidden="true"></i></span>
+                <div class="zs-panel-title"><h2 id="zs-h-faculty">التوزيع حسب الكلية</h2><span class="zs-panel-sub zs-rank-hint d-none" id="zs-rank-hint">اضغط على أي كلية لعرض إحصائياتها فقط</span></div>
+                <div class="zs-tools">
+                    <div class="zs-seg" role="group" aria-label="طريقة العرض" data-seg="view">
+                        <button type="button" data-value="rank" aria-pressed="true" aria-label="ترتيب" title="ترتيب"><i class="ti ti-list-numbers"></i></button>
+                        <button type="button" data-value="bar" aria-pressed="false" aria-label="أعمدة" title="أعمدة"><i class="ti ti-chart-bar"></i></button>
+                    </div>
+                    <button type="button" class="zs-tool d-none" data-action="download" data-bar-only aria-label="تنزيل صورة" title="تنزيل صورة"><i class="ti ti-download"></i></button>
+                    <button type="button" class="zs-tool" data-action="expand" aria-label="تكبير" title="تكبير"><i class="ti ti-maximize"></i></button>
+                </div>
+            </div>
+            <ol class="zs-rank" id="rank-faculty" aria-label="ترتيب الكليات"></ol>
+            <div class="zs-panel-body stats-chart d-none" data-view-body="bar"><div class="zs-skeleton"></div><canvas id="chart-faculty" aria-label="التوزيع حسب الكلية" role="img"></canvas></div>
+        </section>
+
+        <section class="zs-panel zs-span-5" data-panel="track" aria-labelledby="zs-h-track">
+            <div class="zs-panel-head">
+                <span class="zs-panel-icon"><i class="ti ti-route" aria-hidden="true"></i></span>
+                <div class="zs-panel-title"><h2 id="zs-h-track">التوزيع حسب المحور التدريبي</h2><span class="zs-panel-sub">عدد الدورات في كل محور</span></div>
+                <div class="zs-tools">
+                    <div class="zs-seg" role="group" aria-label="نوع الرسم" data-seg="type">
+                        <button type="button" data-value="bar" aria-pressed="true" aria-label="أعمدة" title="أعمدة"><i class="ti ti-chart-bar"></i></button>
+                        <button type="button" data-value="doughnut" aria-pressed="false" aria-label="دائري" title="دائري"><i class="ti ti-chart-donut"></i></button>
+                    </div>
+                    <button type="button" class="zs-tool" data-action="table" aria-label="عرض كجدول" title="عرض كجدول"><i class="ti ti-table"></i></button>
+                    <button type="button" class="zs-tool" data-action="download" aria-label="تنزيل صورة" title="تنزيل صورة"><i class="ti ti-download"></i></button>
+                    <button type="button" class="zs-tool" data-action="expand" aria-label="تكبير" title="تكبير"><i class="ti ti-maximize"></i></button>
+                </div>
+            </div>
+            <div class="zs-panel-body stats-chart"><div class="zs-skeleton"></div><canvas id="chart-track" aria-label="التوزيع حسب المحور التدريبي" role="img"></canvas></div>
+        </section>
     </div>
+
+    <section class="zs-panel zs-recent" aria-labelledby="zs-h-recent">
+        <div class="zs-panel-head">
+            <span class="zs-panel-icon"><i class="ti ti-list-details" aria-hidden="true"></i></span>
+            <div class="zs-panel-title"><h2 id="zs-h-recent">أحدث الدورات</h2><span class="zs-panel-sub">آخر الدورات المضافة ضمن نطاقك</span></div>
+            <div class="zs-tools"><a class="zs-link" href="@coursesHref">عرض كل الدورات <i class="ti ti-arrow-left" aria-hidden="true"></i></a></div>
+        </div>
+        <div class="zs-recent-body">
+            <table class="zs-recent-table">
+                <thead><tr><th scope="col">رقم الدورة</th><th scope="col">العنوان</th><th scope="col">الكلية</th><th scope="col">المدرب</th><th scope="col">الحالة</th><th scope="col">المشاركون</th><th scope="col">تاريخ البدء</th></tr></thead>
+                <tbody id="zs-recent-rows"><tr><td colspan="7"><div class="zs-row-skeleton"></div></td></tr></tbody>
+            </table>
+        </div>
+    </section>
 </div>

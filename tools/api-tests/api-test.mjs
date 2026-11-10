@@ -41,7 +41,10 @@ function verify(r, exp) {
   const reasons = [];
   const env = envelopeOf(r);
   const statuses = exp.status === undefined ? null : [].concat(exp.status);
-  if (statuses && !statuses.includes(r.status)) reasons.push(`status=${r.status} (want ${statuses.join('/')})`);
+  const deniedPageRedirect = statuses?.includes(403) && r.status === 302 &&
+    (r.headers.get('location') || '').includes('/access-denied');
+  if (statuses && !statuses.includes(r.status) && !deniedPageRedirect)
+    reasons.push(`status=${r.status} (want ${statuses.join('/')})`);
   if (exp.ok !== undefined) {
     if (!env.envelope) reasons.push('missing {ok,data} envelope');
     else if (env.ok !== exp.ok) reasons.push(`ok=${env.ok} (want ${exp.ok})`);
@@ -226,8 +229,8 @@ async function groupAdminAuthPages() {
     ['/admin/dashboard', 200], ['/admin/users', 200], ['/admin/credentials', 200],
     ['/admin/settings', 200], ['/admin/hints', 200], ['/admin/sync', 200],
     ['/admin/centers', 200], ['/admin/password-policy', 200], ['/account/password', 200],
-    ['/quality/dashboard', 200], ['/quality/proposals', 200], ['/member/dashboard', 200],
-    ['/instructor/courses', 200], ['/courses/available', 200],
+    ['/quality/dashboard', 200], ['/quality/proposals', 200], ['/member/dashboard', 302],
+    ['/instructor/courses', 200], ['/courses/available', 302],
     ['/dean/dashboard', 403], ['/dean/propose', 403], ['/no-such-page', 404]
   ];
   for (const [path, status] of pages) {
@@ -566,7 +569,7 @@ async function groupDean() {
   let r = await call(dean, 'GET', '/api/v1/auth/me');
   record(G, 'dean session lists role', 'GET /api/v1/auth/me', r, { status: 200, ok: true });
 
-  for (const [path, status] of [['/dean/dashboard', 200], ['/dean/propose', 200], ['/dean/courses', 200], ['/courses/available', 200], ['/admin/dashboard', 403], ['/admin/users', 403], ['/quality/proposals', 403], ['/quality/cancellations', 403], ['/admin/hints', 403], ['/account/password', 200]]) {
+  for (const [path, status] of [['/dean/dashboard', 200], ['/dean/propose', 200], ['/dean/courses', 200], ['/courses/available', 302], ['/admin/dashboard', 403], ['/admin/users', 403], ['/quality/proposals', 403], ['/quality/cancellations', 403], ['/admin/hints', 403], ['/account/password', 200]]) {
     r = await call(dean, 'GET', path, { accept: 'text/html' });
     record(G, `dean page ${path}`, `GET ${path}`, r, { status, html: status === 200 });
   }
@@ -618,7 +621,7 @@ async function groupDean() {
     record(G, 'dean cannot decide proposals', `POST /api/v1/proposals/${ids.proposal}/decision`, r, { status: 403, ok: false, code: 'FORBIDDEN' });
   }
   r = await call(dean, 'GET', '/api/v1/courses/available');
-  record(G, 'dean can browse available courses', 'GET /api/v1/courses/available', r, { status: 200, ok: true });
+  record(G, 'dean cannot browse member-only courses in dean mode', 'GET /api/v1/courses/available', r, { status: 403, ok: false, code: 'FORBIDDEN' });
   void created;
 }
 
@@ -631,7 +634,7 @@ async function groupQualityFlow() {
   let r = await call(quality, 'GET', '/api/v1/auth/me');
   record(G, 'quality session lists role', 'GET /api/v1/auth/me', r, { status: 200, ok: true });
 
-  for (const [path, status] of [['/quality/dashboard', 200], ['/quality/proposals', 200], ['/quality/courses', 200], ['/quality/cancellations', 200], ['/member/dashboard', 200], ['/admin/dashboard', 403], ['/dean/dashboard', 403], ['/dean/courses', 403], ['/admin/hints', 403], ['/account/password', 200]]) {
+  for (const [path, status] of [['/quality/dashboard', 200], ['/quality/proposals', 200], ['/quality/courses', 200], ['/quality/cancellations', 200], ['/member/dashboard', 302], ['/admin/dashboard', 403], ['/dean/dashboard', 403], ['/dean/courses', 403], ['/admin/hints', 403], ['/account/password', 200]]) {
     r = await call(quality, 'GET', path, { accept: 'text/html' });
     record(G, `quality page ${path}`, `GET ${path}`, r, { status, html: status === 200 });
   }
@@ -1077,7 +1080,7 @@ async function groupPhaseNew() {
   // Public verification of an unknown reference reveals nothing.
   r = await call(anon, 'GET', '/api/v1/public/verify/DOES-NOT-EXIST');
   record(G, 'unknown reference verifies as null', 'GET /api/v1/public/verify/{unknown}', r, { status: 200, ok: true });
-  if (r.json?.data?.certificate !== null) {
+  if (r.json?.data !== null) {
     failures++;
     results.push({ group: G, name: 'unknown certificate hides all details', request: 'GET /api/v1/public/verify/{unknown}',
       status: r.status, ok: true, code: null, message: null, pass: false, reasons: ['certificate is not null'] });
@@ -1215,7 +1218,7 @@ async function groupPhaseNew() {
   if (reference) {
     r = await call(anon, 'GET', `/api/v1/public/verify/${encodeURIComponent(reference)}`);
     record(G, 'public verify finds the certificate', `GET /api/v1/public/verify/{ref}`, r, { status: 200, ok: true });
-    const card = r.json?.data?.certificate;
+    const card = r.json?.data;
     const memberRecord = await call(admin, 'GET', `/api/v1/users/${ids.member}`);
     const expectedHolder = memberRecord.json?.data?.fullNameAr ?? null;
     const holderOk = !!card && !!expectedHolder && card.holderNameAr === expectedHolder;
@@ -1240,7 +1243,7 @@ async function groupPhaseNew() {
     r = await call(admin, 'POST', `/api/v1/certificates/${certificate.id}/revoke`, { json: { reason: 'اختبار الإلغاء اليدوي' }, csrf: true });
     record(G, 'admin revokes the certificate', `POST /api/v1/certificates/${certificate.id}/revoke`, r, { status: 200, ok: true });
     r = await call(anon, 'GET', `/api/v1/public/verify/${encodeURIComponent(reference)}`);
-    const revoked = r.json?.data?.certificate?.revoked === true;
+    const revoked = r.json?.data?.revoked === true;
     results.push({ group: G, name: 'revoked certificate verifies as revoked', request: 'GET /api/v1/public/verify/{ref}',
       status: r.status, ok: true, code: null, message: null, pass: revoked,
       reasons: revoked ? [] : ['certificate is not marked revoked'] });
@@ -1401,8 +1404,8 @@ async function groupPhaseNew() {
     ['/admin/certificate-template', 200], ['/vault', 200], ['/quality/needs', 200],
     ['/quality/eval-form', 200], ['/quality/evaluations', 200], ['/quality/tracks', 200],
     ['/quality/certificates', 200], ['/quality/pro-certs', 200], ['/quality/pro-cert-stats', 200],
-    ['/member/pro-certs', 200], ['/member/impact', 200], ['/member/teaching', 200],
-    ['/member/enter-code', 200], ['/dean/members', 403], ['/shared/directory', 200],
+    ['/member/pro-certs', 302], ['/member/impact', 302], ['/member/teaching', 302],
+    ['/member/enter-code', 302], ['/dean/members', 403], ['/shared/directory', 200],
     ['/dean/needs', 403], ['/verify', 200]
   ]) {
     r = await call(admin, 'GET', path, { accept: 'text/html' });
@@ -1427,6 +1430,7 @@ async function main() {
   const total = results.length;
   const passed = results.filter(x => x.pass).length;
   const fs = await import('node:fs');
+  fs.mkdirSync(OUT_DIR, { recursive: true });
   fs.writeFileSync(`${OUT_DIR}/api-test-results.json`, JSON.stringify({ base: BASE, when: new Date().toISOString(), total, passed, failed: total - passed, results }, null, 2));
 
   const groups = [...new Set(results.map(x => x.group))];

@@ -21,7 +21,7 @@
     const message = document.createElement('p');
     message.className = 'mb-0';
     message.textContent = e?.code === 'VALIDATION_FAILED'
-      ? root.dataset.validationError : errors[e?.code] || e?.message || e?.code || root.dataset.error;
+      ? root.dataset.validationError : e?.message || errors[e?.code] || e?.code || root.dataset.error;
     error.append(message);
     let firstInvalid = null;
     if (e.fieldErrors) {

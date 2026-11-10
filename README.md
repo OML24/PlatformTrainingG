@@ -8,6 +8,7 @@ Training management system for Zarqa University, built with ASP.NET Core 10 and 
 - `tests/`: automated tests
 - `deploy/`: Docker and nginx deployment files
 - `docs/`: architecture, operations, and QA documentation
+- [دليل فلو الواجهة والموقع](docs/flow-guide.html): صفحة HTML عربية تربط الصفحات والكبسات باستدعاءات JavaScript وAPI وميثودات التطبيق. لتحديثها بعد تعديل الكود شغّل `py docs/generate-flow-guide.py`.
 - `template/` and `prototype/`: UI assets and prototype
 
 ## Build and test

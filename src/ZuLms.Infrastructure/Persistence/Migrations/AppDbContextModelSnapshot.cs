@@ -3744,7 +3744,7 @@ namespace ZuLms.Infrastructure.Persistence.Migrations
 
                             t.HasCheckConstraint("ck_courses_planned_dates", "planned_end_date >= planned_start_date");
 
-                            t.HasCheckConstraint("ck_courses_status", "status IN ('Proposed', 'Returned', 'Rejected', 'Approved', 'Finished', 'Cancelled')");
+                            t.HasCheckConstraint("ck_courses_status", "status IN ('Proposed', 'Returned', 'Rejected', 'Approved', 'Finished', 'Cancelled', 'AwaitingAccount')");
                         });
                 });
 
@@ -4246,9 +4246,9 @@ namespace ZuLms.Infrastructure.Persistence.Migrations
 
                     b.ToTable("course_status_history", "zulms_rebuild", t =>
                         {
-                            t.HasCheckConstraint("ck_course_status_history_from_status", "from_status IN ('Proposed', 'Returned', 'Rejected', 'Approved', 'Finished', 'Cancelled')");
+                            t.HasCheckConstraint("ck_course_status_history_from_status", "from_status IN ('Proposed', 'Returned', 'Rejected', 'Approved', 'Finished', 'Cancelled', 'AwaitingAccount')");
 
-                            t.HasCheckConstraint("ck_course_status_history_to_status", "to_status IN ('Proposed', 'Returned', 'Rejected', 'Approved', 'Finished', 'Cancelled')");
+                            t.HasCheckConstraint("ck_course_status_history_to_status", "to_status IN ('Proposed', 'Returned', 'Rejected', 'Approved', 'Finished', 'Cancelled', 'AwaitingAccount')");
                         });
                 });
 

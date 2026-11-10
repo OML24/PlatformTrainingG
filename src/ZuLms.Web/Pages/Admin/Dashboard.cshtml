@@ -6,10 +6,25 @@
 @await Html.PartialAsync("_StatsDashboard")
 @await Html.PartialAsync("_ImpactReviewCard")
 @await Html.PartialAsync("_AdminCertificateActions")
-<div class="container pb-4" id="admin-dashboard-activity">
-    <div class="row g-4">
-        <section class="col-12 col-xl-8"><div class="card h-100"><div class="card-header d-flex justify-content-between"><span>آخر 10 أحداث</span><a href="/admin/audit">فتح سجل التدقيق</a></div><div class="card-body"><div class="alert alert-danger d-none" id="admin-activity-error" role="alert"></div><ol class="list-group list-group-numbered" id="admin-recent-events"></ol></div></div></section>
-        <section class="col-12 col-xl-4"><div class="card h-100"><div class="card-header d-flex justify-content-between"><span>آخر مزامنة</span><a href="/admin/sync">فتح المزامنة</a></div><div class="card-body" id="admin-last-sync"><span class="text-muted">لا توجد مزامنة سابقة.</span></div></div></section>
+<div class="container pb-4 admin-dashboard-activity" id="admin-dashboard-activity">
+    <div class="zs-grid">
+        <section class="zs-panel zs-span-8" aria-labelledby="za-h-events">
+            <div class="zs-panel-head">
+                <h2 id="za-h-events"><i class="ti ti-activity" aria-hidden="true"></i> آخر 10 أحداث</h2>
+                <div class="zs-tools"><a class="btn btn-sm btn-outline-secondary" href="/admin/audit">فتح سجل التدقيق</a></div>
+            </div>
+            <div class="px-3 pb-3 pt-2">
+                <div class="alert alert-danger d-none" id="admin-activity-error" role="alert"></div>
+                <ol class="za-timeline" id="admin-recent-events"></ol>
+            </div>
+        </section>
+        <section class="zs-panel zs-span-4" aria-labelledby="za-h-sync">
+            <div class="zs-panel-head">
+                <h2 id="za-h-sync"><i class="ti ti-refresh" aria-hidden="true"></i> آخر مزامنة</h2>
+                <div class="zs-tools"><a class="btn btn-sm btn-outline-secondary" href="/admin/sync">فتح المزامنة</a></div>
+            </div>
+            <div class="px-3 pb-3 pt-2" id="admin-last-sync"><span class="text-muted">لا توجد مزامنة سابقة.</span></div>
+        </section>
     </div>
 </div>
 @section Scripts {

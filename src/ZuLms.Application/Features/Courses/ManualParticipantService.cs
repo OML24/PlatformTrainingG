@@ -87,7 +87,7 @@ public sealed class ManualParticipantService(IAppDbContext db, IClock clock,
             if (course is null) return Result.Failure("COURSE_NOT_FOUND");
             if (!await CanManageCourseAsync(actorUserId, course.ManagedByQuality, ct)) return Result.Failure("FORBIDDEN");
             if (course.IsHistorical) return Result.Failure("HISTORICAL_READ_ONLY");
-            if (course.Status == CourseStatus.Cancelled ||
+            if (course.Status is CourseStatus.AwaitingAccount or CourseStatus.Cancelled ||
                 course.Status == CourseStatus.Finished)
                 return Result.Failure("PARTICIPANTS_CLOSED");
             var users = await db.Users.AsNoTracking().Where(x => userIds.Contains(x.Id) &&
@@ -167,6 +167,7 @@ public sealed class ManualParticipantService(IAppDbContext db, IClock clock,
             var course = await db.Courses.SingleOrDefaultAsync(x => x.Id == courseId, ct);
             if (course is null) return Result.Failure("COURSE_NOT_FOUND");
             if (!await CanManageCourseAsync(actorUserId, course.ManagedByQuality, ct)) return Result.Failure("FORBIDDEN");
+            if (course.Status == CourseStatus.AwaitingAccount) return Result.Failure("PARTICIPANTS_CLOSED");
             var participant = await db.CourseParticipants.SingleOrDefaultAsync(x =>
                 x.CourseId == courseId && x.UserId == userId && x.IsActive, ct);
             if (participant is null) return Result.Failure("PARTICIPANT_NOT_FOUND");

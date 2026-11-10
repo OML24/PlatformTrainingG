@@ -28,11 +28,7 @@ public sealed record NeedLookupsDto(IReadOnlyList<NeedOptionDto> Tracks,
 public sealed record NeedInstructorOptionDto(long UserId, string NameAr, string? NameEn,
     string LoginName, long FacultyId, string FacultyNameAr, string? FacultyNameEn);
 
-public sealed record NeedInput(
-    string TitleAr, string? TitleEn, string DescriptionAr, string? DescriptionEn,
-    long? TrackId, int? ExpectedParticipants, string? PreferredTimeframeAr,
-    long? RequestedInstructorUserId, string? RequestedInstructorNoteAr,
-    long LetterFileId);
+public sealed record NeedInput(string TitleAr, string DescriptionAr, long LetterFileId);
 
 public sealed record NeedRowDto(long Id, string TitleAr, string CenterNameAr,
     string DeanNameAr, NeedStatus Status, int CurrentRevision,

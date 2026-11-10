@@ -6,6 +6,7 @@
   const english = document.documentElement.lang === 'en';
   let page = 1, pages = 1;
   const statusStyles = {
+    AwaitingAccount: [['\u0628\u0627\u0646\u062a\u0638\u0627\u0631 \u0625\u0646\u0634\u0627\u0621 \u062d\u0633\u0627\u0628 \u0627\u0644\u0645\u062f\u0631\u0628', 'Awaiting instructor account'], 'pending'],
     Proposed: [['مقترحة — بانتظار الجودة', 'Proposed — awaiting Quality'], 'pending'],
     Returned: [['معادة للتعديل', 'Returned for revision'], 'returned'],
     Rejected: [['مرفوضة', 'Rejected'], 'rejected'], Approved: [['معتمدة', 'Approved'], 'approved'],
@@ -76,7 +77,7 @@
         const actions = document.createElement('td'); actions.className = 'directory-actions';
         const actionList = document.createElement('div'); actionList.className = 'd-flex gap-1';
         actionList.append(link(`/courses/${row.id}?view=${view}`, english ? 'Details' : 'التفاصيل'));
-        if (view === 'All') actionList.append(link(`/courses/${row.id}/participants`, english ? 'Participants' : 'المشاركون'));
+        if (view === 'All' && row.status !== 'AwaitingAccount') actionList.append(link(`/courses/${row.id}/participants`, english ? 'Participants' : 'المشاركون'));
         if (view === 'Dean' && row.status === 'Approved')
           actionList.append(link(`/courses/${row.id}/cancel-request`, english ? 'Cancel request' : 'طلب إلغاء', 'btn btn-sm btn-outline-danger'));
         actions.append(actionList);

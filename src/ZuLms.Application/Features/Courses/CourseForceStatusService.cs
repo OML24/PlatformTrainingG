@@ -28,6 +28,7 @@ public sealed class CourseForceStatusService(IAppDbContext db, IClock clock,
             return Result.Failure("FORBIDDEN");
         if (!confirmed) return Result.Failure("CONFIRM_REQUIRED");
         if (!Enum.IsDefined(target)) return Result.Failure("STATUS_INVALID");
+        if (target == CourseStatus.AwaitingAccount) return Result.Failure("STATUS_INVALID");
         if (string.IsNullOrWhiteSpace(reason) || reason.Trim().Length > 1000)
             return Result.Failure("REASON_REQUIRED");
         return await db.InSerializableTransactionAsync(async () =>
@@ -38,6 +39,10 @@ public sealed class CourseForceStatusService(IAppDbContext db, IClock clock,
             if (course.Version != expectedVersion) return Result.Failure("CONFLICT");
             CourseStatus previous = course.Status;
             if (previous == target) return Result.Failure("STATUS_UNCHANGED");
+            if (previous == CourseStatus.AwaitingAccount && target == CourseStatus.Approved)
+                return Result.Failure("EXTERNAL_ACCOUNT_PENDING");
+            // This admin-only operation is the documented correction path for a
+            // mistaken status, including transitions outside the normal workflow.
             DateTimeOffset now = clock.UtcNow;
             string note = reason.Trim();
             int revoked = 0;
@@ -76,6 +81,19 @@ public sealed class CourseForceStatusService(IAppDbContext db, IClock clock,
             }
 
             course.Status = target;
+            if (previous == CourseStatus.AwaitingAccount && target != CourseStatus.AwaitingAccount)
+            {
+                var request = await db.ExternalInstructorAccountRequests.SingleOrDefaultAsync(x =>
+                    x.CourseId == courseId && x.Status == ExternalAccountRequestStatus.PendingAdmin, ct);
+                if (request is not null)
+                {
+                    request.Status = ExternalAccountRequestStatus.Rejected;
+                    request.HandledBy = actorUserId;
+                    request.HandledAt = now;
+                    request.UpdatedAt = now;
+                    request.UpdatedByUserId = actorUserId;
+                }
+            }
             course.StatusChangedAt = now;
             course.UpdatedAt = now;
             course.UpdatedByUserId = actorUserId;

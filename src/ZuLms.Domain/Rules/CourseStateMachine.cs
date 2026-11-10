@@ -7,9 +7,10 @@ public static class CourseStateMachine
     private static readonly IReadOnlyDictionary<CourseStatus, CourseStatus[]> Allowed =
         new Dictionary<CourseStatus, CourseStatus[]>
         {
-            [CourseStatus.Proposed] = [CourseStatus.Approved, CourseStatus.Returned, CourseStatus.Rejected],
+            [CourseStatus.Proposed] = [CourseStatus.Approved, CourseStatus.AwaitingAccount, CourseStatus.Returned, CourseStatus.Rejected],
             [CourseStatus.Returned] = [CourseStatus.Proposed],
             [CourseStatus.Approved] = [CourseStatus.Finished, CourseStatus.Cancelled],
+            [CourseStatus.AwaitingAccount] = [CourseStatus.Approved, CourseStatus.Returned, CourseStatus.Rejected, CourseStatus.Cancelled],
             [CourseStatus.Finished] = [CourseStatus.Approved]
         };
 

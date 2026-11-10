@@ -9,8 +9,12 @@ public sealed class PolicyAndFileTests
 {
     private static PasswordPolicy Policy() => new()
     {
-        MinLength = 15, MaxLength = 128, AllowSpaces = true, AllowArabic = true,
-        BlockCommon = true, BlockContext = true
+        MinLength = 15,
+        MaxLength = 128,
+        AllowSpaces = true,
+        AllowArabic = true,
+        BlockCommon = true,
+        BlockContext = true
     };
 
     [Theory]
@@ -66,16 +70,21 @@ public sealed class PolicyAndFileTests
         var allowed = new HashSet<(CourseStatus, CourseStatus)>
         {
             (CourseStatus.Proposed, CourseStatus.Approved),
+            (CourseStatus.Proposed, CourseStatus.AwaitingAccount),
             (CourseStatus.Proposed, CourseStatus.Returned),
             (CourseStatus.Proposed, CourseStatus.Rejected),
             (CourseStatus.Returned, CourseStatus.Proposed),
             (CourseStatus.Approved, CourseStatus.Finished),
             (CourseStatus.Approved, CourseStatus.Cancelled),
+            (CourseStatus.AwaitingAccount, CourseStatus.Approved),
+            (CourseStatus.AwaitingAccount, CourseStatus.Returned),
+            (CourseStatus.AwaitingAccount, CourseStatus.Rejected),
+            (CourseStatus.AwaitingAccount, CourseStatus.Cancelled),
             (CourseStatus.Finished, CourseStatus.Approved)
         };
         foreach (var from in Enum.GetValues<CourseStatus>())
-        foreach (var to in Enum.GetValues<CourseStatus>())
-            Assert.Equal(allowed.Contains((from, to)), CourseStateMachine.CanTransition(from, to));
+            foreach (var to in Enum.GetValues<CourseStatus>())
+                Assert.Equal(allowed.Contains((from, to)), CourseStateMachine.CanTransition(from, to));
     }
 
     [Fact]

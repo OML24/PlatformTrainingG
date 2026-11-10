@@ -1,39 +1,57 @@
 @page "/member/dashboard"
+@using System.Security.Claims
 @{
     ViewData["Title"] = "لوحة العضو";
+    string displayName = User.FindFirstValue("name") ?? User.Identity?.Name ?? string.Empty;
+    string firstName = displayName.Split(' ', StringSplitOptions.RemoveEmptyEntries).FirstOrDefault() ?? string.Empty;
 }
-<div class="container py-4" id="member-dashboard-page">
-    <h1 class="h3 mb-4">لوحة العضو</h1>
-    <div class="row g-3">
-        <div class="col-md-4">
-            <div class="card kpi-card h-100">
-                <div class="card-body">
-                    <div class="kpi-value" id="kpi-available">—</div>
-                    <div class="kpi-label">دورات متاحة للتسجيل</div>
-                </div>
-            </div>
+@* Redesign: docs/FRONTEND-REDESIGN.md — ids kept for member-dashboard.js *@
+<div class="container py-2 zs" id="member-dashboard-page">
+    <div class="zm-welcome">
+        <div>
+            <h1>أهلاً، <span data-no-auto-translate>@firstName</span></h1>
+            <p>نظرة سريعة على مسيرتك التدريبية</p>
         </div>
-        <div class="col-md-4">
-            <div class="card kpi-card h-100">
-                <div class="card-body">
-                    <div class="kpi-value" id="kpi-registered">—</div>
-                    <div class="kpi-label">مسجّل فيها حالياً</div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card kpi-card h-100">
-                <div class="card-body">
-                    <div class="kpi-value" id="kpi-open">—</div>
-                    <div class="kpi-label">شهاداتي الصادرة</div>
-                </div>
-            </div>
-        </div>
+        <span class="zm-date"><i class="ti ti-calendar" aria-hidden="true"></i><span id="zm-today"></span></span>
+    </div>
+
+    <div class="zs-kpis zm-kpis" aria-live="polite">
+        <a class="zs-kpi kpi-card" data-tone="navy" href="/courses/available">
+            <div class="zs-kpi-main"><span class="zs-kpi-label kpi-label">دورات متاحة للتسجيل</span><div class="kpi-value" id="kpi-available">—</div></div>
+            <span class="zs-kpi-icon"><i class="ti ti-calendar-event" aria-hidden="true"></i></span>
+            <div class="zs-kpi-foot"><span class="zs-trend-note">استعرض الدورات وسجّل فيها</span></div>
+        </a>
+        <a class="zs-kpi kpi-card" data-tone="gold" href="/member/courses">
+            <div class="zs-kpi-main"><span class="zs-kpi-label kpi-label">مسجّل فيها حالياً</span><div class="kpi-value" id="kpi-registered">—</div></div>
+            <span class="zs-kpi-icon"><i class="ti ti-school" aria-hidden="true"></i></span>
+            <div class="zs-kpi-foot"><span class="zs-trend-note">تابع الحضور والمحاضرات</span></div>
+        </a>
+        <a class="zs-kpi kpi-card" data-tone="teal" href="/member/certificates">
+            <div class="zs-kpi-main"><span class="zs-kpi-label kpi-label">شهاداتي الصادرة</span><div class="kpi-value" id="kpi-open">—</div></div>
+            <span class="zs-kpi-icon"><i class="ti ti-certificate" aria-hidden="true"></i></span>
+            <div class="zs-kpi-foot"><span class="zs-trend-note">اعرض شهاداتك ونزّلها</span></div>
+        </a>
     </div>
     <div class="alert alert-danger d-none mt-3" id="dashboard-error" role="alert"></div>
-    <div class="mt-4 d-flex flex-wrap gap-2">
-        <a class="btn btn-outline-primary" href="/courses/available">الدورات المتاحة</a>
-        <a class="btn btn-outline-primary" href="/account/password">كلمة المرور</a>
+
+    <h2 class="zm-section-title">وصول سريع</h2>
+    <div class="zm-actions">
+        <zu-if-permission key="participants.self_register">
+            <a class="zm-action" href="/courses/available"><i class="ti ti-calendar-event zm-action-icon" aria-hidden="true"></i><span>الدورات المتاحة<small>سجّل في دورة جديدة</small></span><i class="ti ti-chevron-right zm-go" aria-hidden="true"></i></a>
+        </zu-if-permission>
+        <zu-if-permission key="page.member.enrolled">
+            <a class="zm-action" href="/member/courses"><i class="ti ti-school zm-action-icon" aria-hidden="true"></i><span>دوراتي<small>الدورات التي أنت مسجّل فيها</small></span><i class="ti ti-chevron-right zm-go" aria-hidden="true"></i></a>
+        </zu-if-permission>
+        <zu-if-permission key="attendance.enter_code">
+            <a class="zm-action" href="/member/enter-code"><i class="ti ti-keyboard zm-action-icon" aria-hidden="true"></i><span>إدخال كود الحضور<small>سجّل حضورك في المحاضرة</small></span><i class="ti ti-chevron-right zm-go" aria-hidden="true"></i></a>
+        </zu-if-permission>
+        <zu-if-permission key="page.member.certificates">
+            <a class="zm-action" href="/member/certificates"><i class="ti ti-certificate zm-action-icon" aria-hidden="true"></i><span>شهاداتي<small>شهادات الدورات المكتملة</small></span><i class="ti ti-chevron-right zm-go" aria-hidden="true"></i></a>
+        </zu-if-permission>
+        <zu-if-permission key="page.member.pro_certs">
+            <a class="zm-action" href="/member/pro-certs"><i class="ti ti-award zm-action-icon" aria-hidden="true"></i><span>شهاداتي المهنية<small>أضف شهادة من جهة عالمية</small></span><i class="ti ti-chevron-right zm-go" aria-hidden="true"></i></a>
+        </zu-if-permission>
+        <a class="zm-action" href="/account/password" data-internal-only="true"><i class="ti ti-lock zm-action-icon" aria-hidden="true"></i><span>كلمة المرور<small>غيّر كلمة مرور حسابك</small></span><i class="ti ti-chevron-right zm-go" aria-hidden="true"></i></a>
     </div>
 </div>
 @section Scripts { <script src="~/js/member-dashboard.js" asp-append-version="true"></script> }

@@ -132,7 +132,7 @@
     for (const p of data.items) {
       const row = document.createElement('tr');
       if (p.status === 'Returned') row.className = 'table-danger';
-      const statusLabels = { Proposed: 'مقترحة', Returned: 'أُعيدت للتعديل', Rejected: 'مرفوضة',
+      const statusLabels = { AwaitingAccount: ZuLmsI18n.localize('\u0628\u0627\u0646\u062a\u0638\u0627\u0631 \u0625\u0646\u0634\u0627\u0621 \u062d\u0633\u0627\u0628 \u0627\u0644\u0645\u062f\u0631\u0628', 'Awaiting instructor account'), Proposed: 'مقترحة', Returned: 'أُعيدت للتعديل', Rejected: 'مرفوضة',
         Approved: 'معتمدة', Finished: 'منتهية', Cancelled: 'ملغية' };
       for (const text of [p.courseNo, ZuLmsI18n.field(p, 'title'), ZuLmsI18n.field(p, 'centerName'), statusLabels[p.status] || p.status,
         p.currentRevisionNo, p.lastReturnNotes || '—']) {
@@ -196,7 +196,7 @@
         await request('/api/v1/proposals', 'POST',
           { centerId: number('proposal-center'), input: payload });
       }
-      success.textContent = 'حُفظ المقترح وأُرسل إلى الجودة'; success.classList.remove('d-none');
+      success.textContent = '???? ??????? ?????? ??? ??????'; success.classList.remove('d-none');
       reset(); page = 1; await list();
     } catch (e2) { showError(e2); }
     finally { button.disabled = false; }

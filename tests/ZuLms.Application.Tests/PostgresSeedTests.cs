@@ -8,6 +8,7 @@ using ZuLms.Infrastructure;
 using ZuLms.Infrastructure.Persistence;
 using ZuLms.Infrastructure.Persistence.Seed;
 using ZuLms.Domain.Enums;
+using ZuLms.Domain.Rules;
 using ZuLms.Domain.Entities.Identity;
 using ZuLms.Domain.Entities.Org;
 using ZuLms.Application.Common.Abstractions;
@@ -615,16 +616,24 @@ public sealed class PostgresSeedTests(ITestOutputHelper output)
                     scope.ServiceProvider.GetRequiredService<IAuditLogger>());
                 Assert.Contains((await selfRegistration.ListAvailableAsync(firstUser.Id,
                     1, CancellationToken.None)).Value!.Items, x => x.Id == course.Id);
-                Assert.True((await selfRegistration.RegisterAsync(firstUser.Id, course.Id,
+                Assert.Equal("FORBIDDEN", (await selfRegistration.RegisterAsync(firstUser.Id, course.Id,
+                    CancellationToken.None)).Error?.Code);
+                Assert.True((await selfRegistration.RegisterAsync(provisionedUser.Id, course.Id,
                     CancellationToken.None)).Ok);
-                Assert.Equal("REG_FULL", (await selfRegistration.RegisterAsync(firstUser.Id,
+                Assert.Equal("REG_FULL", (await selfRegistration.RegisterAsync(provisionedUser.Id,
                     course.Id, CancellationToken.None)).Error?.Code);
-                Assert.Equal("REG_IS_INSTRUCTOR", (await selfRegistration.RegisterAsync(secondUser.Id,
+                Assert.Equal("FORBIDDEN", (await selfRegistration.RegisterAsync(secondUser.Id,
                     course.Id, CancellationToken.None)).Error?.Code);
                 Assert.True((await centerAdmin.UpdateAsync(firstUser.Id, center.Id,
                     center.Version, true, "ABC", true, CancellationToken.None)).Ok);
                 Assert.True((await users.AssignRoleAsync(firstUser.Id, firstUser.Id,
                     RoleCode.Dean, center.Id, true, firstUser.Version, CancellationToken.None)).Ok);
+                var activeMode = (NoActiveModeAccessor)scope.ServiceProvider.GetRequiredService<IActiveModeAccessor>();
+                activeMode.SelectedMode = RoleCode.Dean;
+                // The earlier sync-status scenario set this employee to inactive. A dean
+                // proposal requires an active faculty instructor.
+                importedRow.EmpStatus = UniversityOrganizationRules.ActiveEmployeeStatus;
+                await db.SaveChangesAsync();
                 var proposalService = new CourseProposalService(db,
                     scope.ServiceProvider.GetRequiredService<IClock>(),
                     scope.ServiceProvider.GetRequiredService<IPermissionService>(),
@@ -727,9 +736,11 @@ public sealed class PostgresSeedTests(ITestOutputHelper output)
                         20, false, ExternalInstructorDecision.RequestNewAccount, null),
                     CancellationToken.None);
                 Assert.True(externalApproved.Ok, externalApproved.Error?.Code);
+                Assert.Equal(CourseStatus.AwaitingAccount, externalCourse.Status);
                 Assert.True(await db.ExternalInstructorAccountRequests.AnyAsync(x =>
                     x.CourseId == externalCourse.Id &&
                     x.Status == ExternalAccountRequestStatus.PendingAdmin));
+                activeMode.SelectedMode = RoleCode.Admin;
                 var externalAccountService = new ExternalInstructorAccountService(db,
                     scope.ServiceProvider.GetRequiredService<IClock>(),
                     scope.ServiceProvider.GetRequiredService<IPermissionService>(),
@@ -741,12 +752,17 @@ public sealed class PostgresSeedTests(ITestOutputHelper output)
                 Assert.True(pendingExternal.Ok);
                 var accountRequest = Assert.Single(pendingExternal.Value!.Items, x =>
                     x.CourseId == externalCourse.Id);
+                Assert.Equal(CourseStatus.AwaitingAccount, accountRequest.CourseStatus);
                 var suggestedLogin = await externalAccountService.SuggestLoginAsync(firstUser.Id,
                     CancellationToken.None);
                 Assert.True(suggestedLogin.Ok);
                 var completedExternal = await externalAccountService.CompleteAsync(firstUser.Id,
                     accountRequest.Id, suggestedLogin.Value!, null, CancellationToken.None);
                 Assert.True(completedExternal.Ok, completedExternal.Error?.Code);
+                Assert.Equal(CourseStatus.Approved, externalCourse.Status);
+                Assert.False(await db.ExternalInstructorAccountRequests.AnyAsync(x =>
+                    x.CourseId == externalCourse.Id &&
+                    x.Status == ExternalAccountRequestStatus.PendingAdmin));
                 Assert.Equal(InstructorKind.ExternalAccount, externalCourse.InstructorKind);
                 Assert.False(externalCourse.ManagedByQuality);
                 Assert.True(await db.ExternalInstructorProfiles.AnyAsync(x =>
@@ -901,6 +917,16 @@ public sealed class PostgresSeedTests(ITestOutputHelper output)
                     CancellationToken.None)).Error?.Code);
                 Assert.True((await manualParticipants.AddAsync(firstUser.Id,
                     directCourse.Id, [secondUser.Id], false, CancellationToken.None)).Ok);
+                long attendanceMemberRoleId = await db.Roles.Where(x => x.Code == RoleCode.Member)
+                    .Select(x => x.Id).SingleAsync();
+                db.UserRoles.Add(new UserRole
+                {
+                    UserId = secondUser.Id, RoleId = attendanceMemberRoleId,
+                    IsActive = true, CreatedAt = DateTimeOffset.UtcNow
+                });
+                await db.SaveChangesAsync();
+                scope.ServiceProvider.GetRequiredService<IPermissionService>().Invalidate(secondUser.Id);
+                activeMode.SelectedMode = RoleCode.Member;
                 var codeEntry = new AttendanceCodeService(db,
                     scope.ServiceProvider.GetRequiredService<IClock>(),
                     scope.ServiceProvider.GetRequiredService<IPermissionService>(),
@@ -925,6 +951,7 @@ public sealed class PostgresSeedTests(ITestOutputHelper output)
                 Assert.True(await db.AttendanceRecords.AnyAsync(x =>
                     x.LectureId == lecture.Id && x.IsPresent &&
                     x.Participant!.UserId == secondUser.Id));
+                activeMode.SelectedMode = RoleCode.Admin;
                 var recalculation = new EligibilityRecalculationService(db,
                     scope.ServiceProvider.GetRequiredService<IClock>(),
                     new EligibilitySnapshotService(db, systemSettings),
@@ -968,6 +995,7 @@ public sealed class PostgresSeedTests(ITestOutputHelper output)
                 Assert.True((await materials.AttachAsync(firstUser.Id,
                     lecture.Id, materialUpload.Value!.Id,
                     "شرائح المحاضرة", CancellationToken.None)).Ok);
+                activeMode.SelectedMode = RoleCode.Member;
                 Assert.Contains((await materials.ListAsync(secondUser.Id,
                     lecture.Id, CancellationToken.None)).Value!, x =>
                     x.FileId == materialUpload.Value.Id);
@@ -975,6 +1003,7 @@ public sealed class PostgresSeedTests(ITestOutputHelper output)
                     materialUpload.Value.Id, CancellationToken.None);
                 Assert.True(materialDownload.Ok, materialDownload.Error?.Code);
                 await materialDownload.Value!.Content.DisposeAsync();
+                activeMode.SelectedMode = RoleCode.Admin;
                 var lectureDeactivation = new LectureDeactivationService(db,
                     scope.ServiceProvider.GetRequiredService<IClock>(),
                     scope.ServiceProvider.GetRequiredService<IPermissionService>(),
@@ -1032,7 +1061,7 @@ public sealed class PostgresSeedTests(ITestOutputHelper output)
                     scope.ServiceProvider.GetRequiredService<IPermissionService>(),
                     recalculation,
                     scope.ServiceProvider.GetRequiredService<IAuditLogger>());
-                Assert.Equal("EXAM_RESULTS_EXIST", (await requirements.ChangeAsync(
+                Assert.Equal("FORBIDDEN", (await requirements.ChangeAsync(
                     secondUser.Id, examCourseId, false, null,
                     CancellationToken.None)).Error?.Code);
                 Assert.Equal("DISABLE_REASON_REQUIRED", (await requirements.ChangeAsync(
@@ -1134,6 +1163,7 @@ public sealed class PostgresSeedTests(ITestOutputHelper output)
                     new EligibilitySnapshotService(db, systemSettings),
                     recalculation,
                     scope.ServiceProvider.GetRequiredService<IAuditLogger>());
+                activeMode.SelectedMode = RoleCode.Member;
                 var evaluationForm = await evaluations.GetFormAsync(secondUser.Id,
                     finishCourseId, CancellationToken.None);
                 Assert.True(evaluationForm.Ok, evaluationForm.Error?.Code);
@@ -1149,6 +1179,7 @@ public sealed class PostgresSeedTests(ITestOutputHelper output)
                 Assert.Equal("EVAL_ALREADY_SUBMITTED", (await evaluations.GetFormAsync(
                     secondUser.Id, finishCourseId,
                     CancellationToken.None)).Error?.Code);
+                activeMode.SelectedMode = RoleCode.Admin;
                 var evaluationPinning = new EvaluationPinningService(db,
                     scope.ServiceProvider.GetRequiredService<IClock>(),
                     new EligibilitySnapshotService(db, systemSettings),
@@ -1188,6 +1219,7 @@ public sealed class PostgresSeedTests(ITestOutputHelper output)
                     new EligibilitySnapshotService(db, systemSettings),
                     recalculation,
                     scope.ServiceProvider.GetRequiredService<IAuditLogger>());
+                activeMode.SelectedMode = RoleCode.Member;
                 var firstImpactFile = await fileUploads.UploadAsync(secondUser.Id,
                     FileKind.ImpactFile, "impact.pdf", new MemoryStream(pdf),
                     pdf.Length, CancellationToken.None);
@@ -1257,6 +1289,7 @@ public sealed class PostgresSeedTests(ITestOutputHelper output)
                 Assert.True(memberProgress.Value.Eligible);
                 Assert.Equal("FORBIDDEN", (await progress.GetMineAsync(firstUser.Id,
                     finishCourseId, CancellationToken.None)).Error?.Code);
+                activeMode.SelectedMode = RoleCode.Instructor;
                 var instructorProgress = await progress.GetRosterAsync(
                     provisionedUser.Id, finishCourseId, CancellationToken.None);
                 Assert.True(instructorProgress.Ok, instructorProgress.Error?.Code);
@@ -1271,17 +1304,22 @@ public sealed class PostgresSeedTests(ITestOutputHelper output)
                 await db.SaveChangesAsync();
                 var ammanToday = scope.ServiceProvider
                     .GetRequiredService<IClock>().TodayAmman;
-                Assert.Equal("EVAL_PERIOD_NOT_LATER",
+                activeMode.SelectedMode = RoleCode.Quality;
+                Assert.Equal("FORBIDDEN",
                     (await evaluationQueries.ExtendPeriodAsync(secondUser.Id,
                         finishCourseId, ammanToday.AddDays(-1),
                         CancellationToken.None)).Error?.Code);
-                Assert.True((await evaluationQueries.ExtendPeriodAsync(secondUser.Id,
+                Assert.True((await evaluationQueries.ExtendPeriodAsync(firstUser.Id,
+                    finishCourseId, ammanToday.AddDays(-1), CancellationToken.None)).Ok);
+                Assert.Equal(eligibilityVersion.Id, finishCourse.EvaluationFormVersionId);
+                Assert.True((await evaluationQueries.ExtendPeriodAsync(firstUser.Id,
                     finishCourseId, ammanToday.AddDays(1),
                     CancellationToken.None)).Ok);
                 Assert.Equal(ammanToday.AddDays(1), finishCourse.EvaluationEndDate);
                 Assert.True((await evaluationQueries.ExtendPeriodAsync(firstUser.Id,
                     finishCourseId, ammanToday,
                     CancellationToken.None)).Ok);
+                activeMode.SelectedMode = RoleCode.Admin;
                 Assert.Equal(ammanToday, finishCourse.EvaluationEndDate);
                 finishCourse.EvaluationEndDate = ammanToday.AddDays(-1);
                 await db.SaveChangesAsync();
@@ -1289,7 +1327,7 @@ public sealed class PostgresSeedTests(ITestOutputHelper output)
                     scope.ServiceProvider.GetRequiredService<IClock>(),
                     new EligibilitySnapshotService(db, systemSettings),
                     scope.ServiceProvider.GetRequiredService<IAuditLogger>());
-                Assert.True(await pinning.PinCompletedAsync(CancellationToken.None) >= 1);
+                Assert.Equal(0, await pinning.PinCompletedAsync(CancellationToken.None));
                 Assert.Equal(eligibilityVersion.Id,
                     finishCourse.EvaluationFormVersionId);
                 var formAdmin = new EvaluationFormAdminService(db,
@@ -1432,6 +1470,7 @@ public sealed class PostgresSeedTests(ITestOutputHelper output)
                         true, false), CancellationToken.None);
                 Assert.True(allCourses.Ok, allCourses.Error?.Code);
                 Assert.Contains(allCourses.Value!.Items, x => x.Id == directCourse.Id);
+                activeMode.SelectedMode = RoleCode.Dean;
                 var deanCourses = await courseDirectory.ListAsync(firstUser.Id,
                     new CourseDirectoryFilter(CourseDirectoryView.Dean, null,
                         null, null, null, null, null, null, null, null),
@@ -1450,7 +1489,8 @@ public sealed class PostgresSeedTests(ITestOutputHelper output)
                 await db.SaveChangesAsync();
                 scope.ServiceProvider.GetRequiredService<IPermissionService>()
                     .Invalidate(firstUser.Id);
-                var enrolledCourses = await courseDirectory.ListAsync(firstUser.Id,
+                activeMode.SelectedMode = RoleCode.Member;
+                var enrolledCourses = await courseDirectory.ListAsync(provisionedUser.Id,
                     new CourseDirectoryFilter(CourseDirectoryView.Member, null,
                         null, null, null, null, null, null, null, null),
                     CancellationToken.None);
@@ -1459,6 +1499,7 @@ public sealed class PostgresSeedTests(ITestOutputHelper output)
                 Assert.DoesNotContain(enrolledCourses.Value.Items, x => x.Id == directCourse.Id);
                 scope.ServiceProvider.GetRequiredService<IPermissionService>()
                     .Invalidate(provisionedUser.Id);
+                activeMode.SelectedMode = RoleCode.Instructor;
                 var instructorCourses = await courseDirectory.ListAsync(provisionedUser.Id,
                     new CourseDirectoryFilter(CourseDirectoryView.Instructor, null,
                         null, null, null, null, null, null, null, null),
@@ -1470,6 +1511,7 @@ public sealed class PostgresSeedTests(ITestOutputHelper output)
                     new CourseDirectoryFilter(CourseDirectoryView.All, null,
                         null, null, null, null, null, null, null, null),
                     CancellationToken.None)).Error?.Code);
+                activeMode.SelectedMode = RoleCode.Admin;
                 var courseDetails = await courseDirectory.GetAsync(firstUser.Id,
                     directCourse.Id, CourseDirectoryView.All, CancellationToken.None);
                 Assert.True(courseDetails.Ok, courseDetails.Error?.Code);
@@ -1512,7 +1554,7 @@ public sealed class PostgresSeedTests(ITestOutputHelper output)
                     RegistrationDeadline = new DateTimeOffset(2027, 4, 30,
                         12, 0, 0, TimeSpan.Zero)
                 };
-                Assert.True((await commonEdit.EditAsync(secondUser.Id,
+                Assert.True((await commonEdit.EditAsync(firstUser.Id,
                     directCourse.Id, qualityEdit, CancellationToken.None)).Ok);
                 Assert.Equal(AudienceType.Faculty, directCourse.AudienceType);
                 Assert.Equal(center.Id, directCourse.TargetCenterId);
@@ -1575,7 +1617,7 @@ public sealed class PostgresSeedTests(ITestOutputHelper output)
                 Assert.Equal("THRESHOLD_INVALID", (await thresholdService.ChangeAsync(
                     firstUser.Id, directCourse.Id, directCourse.Version,
                     101, CancellationToken.None)).Error?.Code);
-                Assert.True((await thresholdService.ChangeAsync(secondUser.Id,
+                Assert.True((await thresholdService.ChangeAsync(firstUser.Id,
                     directCourse.Id, directCourse.Version,
                     90, CancellationToken.None)).Ok);
                 Assert.Equal((short)90, directCourse.AttendanceThresholdPercentOverride);
@@ -1598,15 +1640,15 @@ public sealed class PostgresSeedTests(ITestOutputHelper output)
                 Assert.Equal("FORBIDDEN", (await instructorEdit.EditAsync(
                     provisionedUser.Id, directCourse.Id, instructorInput,
                     CancellationToken.None)).Error?.Code);
-                Assert.Contains((await instructorEdit.SearchAsync(secondUser.Id,
+                Assert.Contains((await instructorEdit.SearchAsync(firstUser.Id,
                     directCourse.Id, false, firstUser.LoginName,
                     CancellationToken.None)).Value!, x => x.UserId == firstUser.Id);
-                var instructorEdited = await instructorEdit.EditAsync(secondUser.Id,
+                var instructorEdited = await instructorEdit.EditAsync(firstUser.Id,
                     directCourse.Id, instructorInput, CancellationToken.None);
                 Assert.True(instructorEdited.Ok, instructorEdited.Error?.Code);
                 Assert.Equal(firstUser.Id, directCourse.InstructorUserId);
                 Assert.Equal("CONFLICT", (await instructorEdit.EditAsync(
-                    secondUser.Id, directCourse.Id, instructorInput,
+                    firstUser.Id, directCourse.Id, instructorInput,
                     CancellationToken.None)).Error?.Code);
                 Assert.Equal("FORBIDDEN", (await forceStatus.ChangeAsync(
                     provisionedUser.Id, historicCourse.Id, historicCourse.Version,
@@ -1688,7 +1730,7 @@ public sealed class PostgresSeedTests(ITestOutputHelper output)
                 instructorInput = new CourseInstructorEditInput(historicCourse.Version,
                     CourseInstructorChoice.ExternalNameOnly, null,
                     "مدرب مصحح", null, "جهة خارجية", null);
-                Assert.Equal("INSTRUCTOR_EDIT_FINISHED", (await instructorEdit.EditAsync(
+                Assert.Equal("FORBIDDEN", (await instructorEdit.EditAsync(
                     secondUser.Id, historicCourse.Id, instructorInput,
                     CancellationToken.None)).Error?.Code);
                 Assert.True((await instructorEdit.EditAsync(firstUser.Id,
@@ -1796,6 +1838,7 @@ public sealed class PostgresSeedTests(ITestOutputHelper output)
                     CancellationToken.None)).Ok);
                 Assert.Equal(CourseStatus.Approved, historicalCourse.Status);
                 Assert.Null(historicalCourse.FinalLecturesCount);
+                activeMode.SelectedMode = RoleCode.Dean;
                 var cancellationLetter = await fileUploads.UploadAsync(firstUser.Id,
                     FileKind.CancellationLetter, "cancel.pdf", new MemoryStream(pdf),
                     pdf.Length, CancellationToken.None);
@@ -1842,9 +1885,8 @@ public sealed class PostgresSeedTests(ITestOutputHelper output)
                     scope.ServiceProvider.GetRequiredService<IClock>(),
                     scope.ServiceProvider.GetRequiredService<IPermissionService>(),
                     systemSettings, scope.ServiceProvider.GetRequiredService<IAuditLogger>());
-                var needInput = new NeedInput("احتياج تجريبي", null,
-                    "وصف احتياج التدريب", null, directCourse.TrackId, 20,
-                    "الفصل القادم", null, null, needLetter.Value!.Id);
+                var needInput = new NeedInput("احتياج تجريبي",
+                    "وصف احتياج التدريب", needLetter.Value!.Id);
                 var createdNeed = await needService.CreateAsync(firstUser.Id,
                     needInput, CancellationToken.None);
                 Assert.True(createdNeed.Ok, createdNeed.Error?.Code);
@@ -1870,6 +1912,7 @@ public sealed class PostgresSeedTests(ITestOutputHelper output)
                 Assert.True(needDetails.Ok, needDetails.Error?.Code);
                 Assert.Equal(2, needDetails.Value!.CurrentRevision);
                 Assert.Equal(4, needDetails.Value.Events.Count);
+                activeMode.SelectedMode = RoleCode.Admin;
                 var qualityMinutesFile = await fileUploads.UploadAsync(firstUser.Id,
                     FileKind.QualityMinutes, "minutes.pdf", new MemoryStream(pdf),
                     pdf.Length, CancellationToken.None);
@@ -1923,7 +1966,7 @@ public sealed class PostgresSeedTests(ITestOutputHelper output)
 
     private sealed class NoActiveModeAccessor : IActiveModeAccessor
     {
-        public RoleCode? SelectedMode => null;
+        public RoleCode? SelectedMode { get; set; }
     }
 
     private sealed class FakeUserStateCache : IUserStateCache

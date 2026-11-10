@@ -83,6 +83,8 @@ public static class ApiMessages
             "The external instructor request was not found."),
         ["EXTERNAL_REQUEST_NOT_PENDING"] = ("الطلب لم يعد بانتظار المعالجة.",
             "The request is no longer pending."),
+        ["EXTERNAL_ACCOUNT_PENDING"] = ("الدورة بانتظار إنشاء حساب المدرب الخارجي؛ أكمل الطلب من إدارة المستخدمين.",
+            "The course is waiting for an external instructor account. Complete the request in user administration."),
         ["BLOCKED_PASSWORD_NOT_FOUND"] = ("كلمة المرور المحظورة غير موجودة.",
             "The blocked password was not found."),
         ["BLOCKED_PASSWORD_EXISTS"] = ("كلمة المرور محظورة مسبقاً.", "The password is already blocked."),

@@ -28,7 +28,7 @@ public sealed class ExternalInstructorAccountService(IAppDbContext db, IClock cl
         var rows = await query.OrderBy(x => x.Id).Skip((page - 1) * pageSize)
             .Take(pageSize).Select(x => new ExternalRequestDto(x.Id, x.CourseId,
                 x.Course!.CourseNo, x.FullNameAr, x.OrganizationAr,
-                x.Email, x.Status)).ToListAsync(ct);
+                x.Email, x.Status, x.Course.TitleAr, x.Course.Status, x.CreatedAt)).ToListAsync(ct);
         return Result<ExternalRequestPageDto>.Success(new(page, pageSize, total, rows));
     }
 
@@ -68,7 +68,7 @@ public sealed class ExternalInstructorAccountService(IAppDbContext db, IClock cl
                 .SingleOrDefaultAsync(x => x.Id == requestId, ct);
             if (request is null) return Result<ExternalAccountCreatedDto>.Failure("EXTERNAL_REQUEST_NOT_FOUND");
             if (request.Status != ExternalAccountRequestStatus.PendingAdmin ||
-                request.Course?.Status != CourseStatus.Approved ||
+                request.Course is null || !ExternalInstructorCourseStatus.CanCompleteAccountRequest(request.Course.Status) ||
                 request.Course.InstructorKind != InstructorKind.ExternalNameOnly)
                 return Result<ExternalAccountCreatedDto>.Failure("EXTERNAL_REQUEST_NOT_PENDING");
             if (await db.Users.IgnoreQueryFilters().AnyAsync(x => x.LoginName == login, ct))
@@ -96,25 +96,35 @@ public sealed class ExternalInstructorAccountService(IAppDbContext db, IClock cl
             var user = new User
             {
                 AccountType = AccountType.ExternalInstructor,
-                LoginName = login, FullNameAr = request.FullNameAr,
+                LoginName = login,
+                FullNameAr = request.FullNameAr,
                 FullNameEn = request.FullNameEn,
                 EmailOverride = request.Email.Trim().ToLowerInvariant(),
-                PasswordHash = hasher.Hash(secret), PasswordEnc = encryption.Encrypt(secret),
+                PasswordHash = hasher.Hash(secret),
+                PasswordEnc = encryption.Encrypt(secret),
                 InitialPasswordEnc = encryption.Encrypt(secret),
-                MustChangePassword = false, FirstLoginCompletedAt = now,
-                PasswordChangedAt = now, PasswordChangedBy = actorUserId,
-                SecurityStamp = Guid.NewGuid(), PreferredLanguage = UiLanguage.Ar,
+                MustChangePassword = false,
+                FirstLoginCompletedAt = now,
+                PasswordChangedAt = now,
+                PasswordChangedBy = actorUserId,
+                SecurityStamp = Guid.NewGuid(),
+                PreferredLanguage = UiLanguage.Ar,
                 CredentialsEmailStatus = CredentialsEmailStatus.NotSent,
                 SearchText = ArabicSearchNormalizer.Normalize($"{request.FullNameAr} {request.FullNameEn} {login}"),
-                IsActive = true, CreatedAt = now, CreatedByUserId = actorUserId
+                IsActive = true,
+                CreatedAt = now,
+                CreatedByUserId = actorUserId
             };
             db.Users.Add(user);
             long roleId = await db.Roles.Where(x => x.Code == RoleCode.ExternalInstructor)
                 .Select(x => x.Id).SingleAsync(ct);
             db.UserRoles.Add(new UserRole
             {
-                User = user, RoleId = roleId, IsActive = true,
-                CreatedAt = now, CreatedByUserId = actorUserId
+                User = user,
+                RoleId = roleId,
+                IsActive = true,
+                CreatedAt = now,
+                CreatedByUserId = actorUserId
             });
             long? cvFileId = await db.CourseFiles.Where(x => x.CourseId == request.CourseId &&
                 x.Purpose == "InstructorCv" && x.IsActive)
@@ -122,9 +132,11 @@ public sealed class ExternalInstructorAccountService(IAppDbContext db, IClock cl
                 .FirstOrDefaultAsync(ct);
             db.ExternalInstructorProfiles.Add(new ExternalInstructorProfile
             {
-                User = user, OrganizationAr = request.OrganizationAr,
+                User = user,
+                OrganizationAr = request.OrganizationAr,
                 OrganizationEn = request.OrganizationEn,
-                CvFileId = cvFileId, CreatedFromRequestId = request.Id
+                CvFileId = cvFileId,
+                CreatedFromRequestId = request.Id
             });
             request.CreatedUser = user;
             request.Status = ExternalAccountRequestStatus.Completed;
@@ -132,30 +144,69 @@ public sealed class ExternalInstructorAccountService(IAppDbContext db, IClock cl
             request.HandledAt = now;
             request.UpdatedAt = now;
             request.UpdatedByUserId = actorUserId;
+            CourseStatus previousCourseStatus = request.Course.Status;
             request.Course.InstructorUser = user;
             request.Course.InstructorKind = InstructorKind.ExternalAccount;
             request.Course.ManagedByQuality = false;
+            if (previousCourseStatus == CourseStatus.AwaitingAccount)
+            {
+                request.Course.Status = ExternalInstructorCourseStatus.AfterAccountCompletion(previousCourseStatus);
+                request.Course.StatusChangedAt = now;
+                db.CourseStatusHistorys.Add(new ZuLms.Domain.Entities.Training.CourseStatusHistory
+                {
+                    CourseId = request.CourseId,
+                    FromStatus = CourseStatus.AwaitingAccount,
+                    ToStatus = CourseStatus.Approved,
+                    ChangedBy = actorUserId,
+                    ChangedAt = now,
+                    Reason = "External instructor account created"
+                });
+            }
             request.Course.UpdatedAt = now;
             request.Course.UpdatedByUserId = actorUserId;
             var mail = emailContent.ExternalInstructorAccount(user.FullNameAr,
                 login, secret, user.PreferredLanguage);
             db.EmailOutboxs.Add(new EmailOutbox
             {
-                Kind = EmailKind.ExternalInstructorAccount, ToAddress = request.Email,
-                ToName = user.FullNameAr, Subject = mail.Subject,
-                BodyHtml = mail.BodyHtml, RelatedUser = user,
-                Status = OutboxStatus.Pending, CreatedAt = now,
+                Kind = EmailKind.ExternalInstructorAccount,
+                ToAddress = request.Email,
+                ToName = user.FullNameAr,
+                Subject = mail.Subject,
+                BodyHtml = mail.BodyHtml,
+                RelatedUser = user,
+                Status = OutboxStatus.Pending,
+                CreatedAt = now,
                 NextAttemptAt = now
             });
             db.Notifications.Add(new Notification
             {
-                UserId = request.RequestedByUserId, Type = NotificationType.ExtInstructorReady,
-                TitleAr = "حساب المدرب الخارجي جاهز", TitleEn = "External instructor account ready",
-                BodyAr = request.FullNameAr, BodyEn = request.FullNameEn,
+                UserId = request.RequestedByUserId,
+                Type = NotificationType.ExtInstructorReady,
+                TitleAr = "حساب المدرب الخارجي جاهز",
+                TitleEn = "External instructor account ready",
+                BodyAr = request.FullNameAr,
+                BodyEn = request.FullNameEn,
                 LinkUrl = $"/courses/{request.CourseId}",
-                RelatedEntityType = "Course", RelatedEntityId = request.CourseId,
-                CreatedAt = now, IsActive = true
+                RelatedEntityType = "Course",
+                RelatedEntityId = request.CourseId,
+                CreatedAt = now,
+                IsActive = true
             });
+            if (request.Course.ProposedByUserId is long deanId)
+                db.Notifications.Add(new Notification
+                {
+                    UserId = deanId,
+                    Type = NotificationType.ProposalDecision,
+                    TitleAr = "تم إنشاء حساب المدرب وتفعيل الدورة",
+                    TitleEn = "Instructor account created; course activated",
+                    BodyAr = request.Course.TitleAr,
+                    BodyEn = request.Course.TitleEn,
+                    LinkUrl = $"/courses/{request.CourseId}",
+                    RelatedEntityType = "Course",
+                    RelatedEntityId = request.CourseId,
+                    CreatedAt = now,
+                    IsActive = true
+                });
             await db.SaveChangesAsync(ct);
             await audit.LogAsync(new AuditEntry(AuditCategory.User, "user.create_external",
                 "إنشاء حساب مدرب خارجي", "External instructor account created",

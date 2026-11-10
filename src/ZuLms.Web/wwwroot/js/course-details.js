@@ -12,12 +12,15 @@
   const tabSections = ['overview', 'lectures', 'progress', 'evaluation', 'evaluation-results', 'impact', 'files', 'history'];
   let currentTab = 'overview';
   if (location.pathname.endsWith('/evaluation')) currentTab = 'evaluation-results';
-  const statusAr = { Proposed: 'مقترحة', Returned: 'معادة', Rejected: 'مرفوضة',
+  const statusAr = { AwaitingAccount: '\u0628\u0627\u0646\u062a\u0638\u0627\u0631 \u0625\u0646\u0634\u0627\u0621 \u062d\u0633\u0627\u0628 \u0627\u0644\u0645\u062f\u0631\u0628', Proposed: 'مقترحة', Returned: 'معادة', Rejected: 'مرفوضة',
     Approved: 'معتمدة', Finished: 'منتهية', Cancelled: 'ملغية' };
   const modeAr = { InPerson: 'وجاهي', Online: 'عن بُعد', Blended: 'مدمج' };
   const audienceAr = { General: 'عام', Faculty: 'كلية', Administrative: 'إداري', Named: 'محددون' };
-  const statusStyle = { Proposed: 'pending', Returned: 'returned', Rejected: 'rejected',
+  const statusStyle = { AwaitingAccount: 'pending', Proposed: 'pending', Returned: 'returned', Rejected: 'rejected',
     Approved: 'approved', Finished: 'finished', Cancelled: 'cancelled' };
+  const statusLabel = status => status === 'AwaitingAccount'
+    ? ZuLmsI18n.localize(statusAr[status], 'Awaiting instructor account')
+    : statusAr[status] || status;
   let actionGroup = 'navigation';
   const dateOnly = value => value ? String(value).match(/^\d{4}-\d{2}-\d{2}/)?.[0] || value : '—';
   function renderTabs() {
@@ -452,6 +455,7 @@
     try {
       const data = await ZuLms.api.request('GET', `/api/v1/courses/directory/${id}?view=${view}`);
       const c = data.course;
+      const awaitingAccount = c.status === 'AwaitingAccount';
       $('fields').replaceChildren(); $('actions').replaceChildren();
       actionGroup = 'navigation';
       $('history').replaceChildren(); $('files').replaceChildren();
@@ -461,7 +465,7 @@
       number.textContent = `#${c.id} · ${c.courseNo || '—'}`;
       const badge = document.createElement('span');
       badge.className = `zu-status zu-status-${statusStyle[c.status] || 'rejected'}`;
-      badge.textContent = statusAr[c.status] || c.status;
+      badge.textContent = statusLabel(c.status);
       meta.append(number, badge);
       field('المعرّف', `#${c.id} · ${c.courseNo || '—'}`);
       field('الحالة', statusAr[c.status] || c.status); field('المحور', ZuLmsI18n.field(c, 'trackName'));
@@ -484,13 +488,13 @@
       if (c.isHistorical) field('دورة تاريخية', data.historicalNotes || 'نعم');
       if (!c.isActive) field('حالة التفعيل', 'معطّلة');
       if (c.isArchived) field('الأرشفة', 'مؤرشفة');
-      if (view === 'All' || data.canAdminActions)
+      if (!awaitingAccount && (view === 'All' || data.canAdminActions))
         link(`/courses/${id}/participants`, 'إدارة المشاركين');
       if (view === 'Dean' && c.status === 'Approved')
         link(`/courses/${id}/cancel-request`, 'طلب إلغاء');
-      if (!c.isHistorical && (data.canAdminActions || view === 'Instructor'))
+      if (!awaitingAccount && !c.isHistorical && (data.canAdminActions || view === 'Instructor'))
         link(`/instructor/courses/${id}/lectures`, 'المحاضرات');
-      if (data.canAdminActions || view === 'Instructor')
+      if (!awaitingAccount && (data.canAdminActions || view === 'Instructor'))
         link(`/instructor/courses/${id}/participants`, 'استحقاق المشاركين');
       actionGroup = 'editing';
       if (data.canEditExamRequirement && ['Approved', 'Finished'].includes(c.status))
@@ -505,23 +509,26 @@
             { hasExam: target, disableReason: reason });
           showSuccess('تغيّر شرط الامتحان'); await load();
         });
-      if (data.canEditCourse)
+      if (data.canEditCourse && !awaitingAccount)
         actionButton('تعديل بيانات الدورة', () => openEdit(data));
-      if (data.canEditInstructor)
+      if (data.canEditInstructor && !awaitingAccount)
         actionButton('تعديل المحاضر', () => openInstructor(data));
-      if (data.canEditCourse) actionButton('نسبة الحضور', () => {
+      if (data.canEditCourse && !awaitingAccount) actionButton('نسبة الحضور', () => {
         currentVersion = c.version;
         $('threshold-percent').value = data.attendanceThresholdPercentOverride ?? '';
         $('threshold-dialog').showModal();
       });
-      if (data.canExtendEvaluation && data.evaluationEndDate)
+      if (data.canExtendEvaluation && data.evaluationEndDate && !awaitingAccount)
         actionButton('نهاية التقييم', () => {
           $('eval-period-date').value = data.evaluationEndDate;
           $('eval-period-dialog').showModal();
         });
       if (data.canForceStatus) actionButton('تغيير الحالة', () => {
         currentVersion = c.version;
-        $('force-target').value = c.status === 'Approved' ? 'Finished' : 'Approved';
+        const forceTarget = $('force-target');
+        const approvedOption = forceTarget.querySelector('option[value=Approved]');
+        if (approvedOption) approvedOption.disabled = awaitingAccount;
+        forceTarget.value = awaitingAccount ? 'Returned' : c.status === 'Approved' ? 'Finished' : 'Approved';
         $('force-reason').value = '';
         $('force-confirm').checked = false;
         $('force-dialog').showModal();
@@ -544,7 +551,8 @@
         a.textContent = `${file.purpose}: ${file.name}`; item.append(a); $('files').append(item);
       }
       $('files-section').classList.toggle('d-none', !data.files.length);
-      if (view === 'Member') { await memberLectures(); await memberEvaluation(); }
+      if (view === 'Member' && !awaitingAccount) { await memberLectures(); await memberEvaluation(); }
+      if (awaitingAccount) { $('lectures-section').classList.add('d-none'); $('progress-section').classList.add('d-none'); $('evaluation-section').classList.add('d-none'); }
       if (view === 'Instructor' || view === 'All' || data.canAdminActions)
         await instructorEvaluationResults(c);
       renderTabs();

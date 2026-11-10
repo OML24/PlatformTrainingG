@@ -119,7 +119,7 @@ public sealed class CourseProposalService(IAppDbContext db, IClock clock,
             }
             CourseStatus next = input.Decision switch
             {
-                ProposalDecision.Approved => CourseStatus.Approved,
+                ProposalDecision.Approved => ExternalInstructorCourseStatus.AfterApproval(input.ExternalDecision),
                 ProposalDecision.Returned => CourseStatus.Returned,
                 _ => CourseStatus.Rejected
             };
@@ -135,7 +135,7 @@ public sealed class CourseProposalService(IAppDbContext db, IClock clock,
             course.UpdatedAt = now;
             course.UpdatedByUserId = actorUserId;
             course.LastReturnNotes = next == CourseStatus.Returned ? input.Notes!.Trim() : null;
-            if (next == CourseStatus.Approved)
+            if (next is CourseStatus.Approved or CourseStatus.AwaitingAccount)
             {
                 course.ApprovedBy = actorUserId;
                 course.ApprovedAt = now;
@@ -409,6 +409,27 @@ public sealed class CourseProposalService(IAppDbContext db, IClock clock,
         if (course.ProposedByUserId is long deanId)
             AddNotification(deanId, NotificationType.ProposalDecision,
                 "قرار على مقترح دورة", "Course proposal decision", course);
+        if (status == CourseStatus.AwaitingAccount)
+        {
+            var admins = await db.UserRoles.AsNoTracking().Where(x => x.IsActive &&
+                x.Role!.Code == RoleCode.Admin && x.User!.IsActive)
+                .Select(x => x.UserId).Distinct().ToListAsync(ct);
+            foreach (long id in admins)
+                db.Notifications.Add(new Notification
+                {
+                    UserId = id,
+                    Type = NotificationType.ExtInstructorRequested,
+                    TitleAr = "طلب إنشاء حساب مدرب خارجي",
+                    TitleEn = "External instructor account requested",
+                    BodyAr = course.TitleAr,
+                    BodyEn = course.TitleEn,
+                    LinkUrl = "/admin/users",
+                    RelatedEntityType = "Course",
+                    RelatedEntityId = course.Id,
+                    CreatedAt = clock.UtcNow,
+                    IsActive = true
+                });
+        }
         if (status == CourseStatus.Approved && course.InstructorUserId is long instructorId)
             AddNotification(instructorId, NotificationType.CourseApproved,
                 "اعتماد دورة تدريبية", "Course approved", course);

@@ -20,7 +20,7 @@ public sealed class CourseConfiguration : IEntityTypeConfiguration<Course>
         builder.ToTable(t => t.HasCheckConstraint("ck_courses_delivery_mode", "delivery_mode IN ('InPerson', 'Online', 'Blended')"));
         builder.ToTable(t => t.HasCheckConstraint("ck_courses_origin", "origin IN ('DeanProposal', 'QualityCreated', 'AdminCreated', 'Historical')"));
         builder.ToTable(t => t.HasCheckConstraint("ck_courses_audience_type", "audience_type IN ('General', 'Faculty', 'Administrative', 'Named')"));
-        builder.ToTable(t => t.HasCheckConstraint("ck_courses_status", "status IN ('Proposed', 'Returned', 'Rejected', 'Approved', 'Finished', 'Cancelled')"));
+        builder.ToTable(t => t.HasCheckConstraint("ck_courses_status", "status IN ('Proposed', 'Returned', 'Rejected', 'Approved', 'Finished', 'Cancelled', 'AwaitingAccount')"));
         builder.ToTable(t => t.HasCheckConstraint("ck_courses_instructor_kind", "instructor_kind IN ('Internal', 'ExternalAccount', 'ExternalNameOnly', 'ManagedByQuality')"));
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Id).UseIdentityAlwaysColumn();

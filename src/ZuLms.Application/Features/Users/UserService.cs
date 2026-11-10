@@ -53,18 +53,17 @@ public sealed class UserService(IAppDbContext db, IClock clock, IPermissionServi
         roleIds = roleIds.Distinct().ToList();
         var rolePermissions = await db.RolePermissions.AsNoTracking().Where(x => roleIds.Contains(x.RoleId))
             .Select(x => new { x.PermissionId, x.Role!.Code }).ToListAsync(ct);
-        var inheritedKeys = catalog.Where(x => rolePermissions.Any(r => r.PermissionId == x.Id))
-            .Select(x => x.PermKey).ToHashSet(StringComparer.Ordinal);
-        PermissionSetRules.ApplyAccountType(user.AccountType, inheritedKeys);
-        var effectiveKeys = inheritedKeys.ToHashSet(StringComparer.Ordinal);
-        foreach (var (permissionId, mode) in overrides)
-        {
-            var key = catalog.FirstOrDefault(x => x.Id == permissionId)?.PermKey;
-            if (key is null) continue;
-            if (mode == OverrideMode.Allow) effectiveKeys.Add(key);
-            else effectiveKeys.Remove(key);
-        }
-        PermissionSetRules.ApplyAccountType(user.AccountType, effectiveKeys);
+        // The permissions page must report what this account can use in its selected
+        // workspace. Combining grants from every assigned role makes an override look
+        // effective even when the active role cannot own that permission.
+        var active = await permissions.GetEffectiveAsync(targetUserId, ct);
+        var inheritedKeys = active.ActiveMode is { } activeRole
+            ? PermissionSetRules.ForMode(activeRole,
+                catalog.Where(x => rolePermissions.Any(r => r.PermissionId == x.Id && r.Code == activeRole))
+                    .Select(x => x.PermKey),
+                Enumerable.Empty<(string Key, OverrideMode Mode)>(), user.AccountType)
+            : new HashSet<string>(StringComparer.Ordinal);
+        var effectiveKeys = active.Keys;
         IReadOnlyList<UserPermissionDto> rows = catalog.Select(x => new UserPermissionDto(
             x.PermKey, x.GroupKey, x.NameAr, x.NameEn,
             overrides.TryGetValue(x.Id, out var mode) ? mode : null,

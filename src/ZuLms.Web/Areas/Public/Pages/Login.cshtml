@@ -4,45 +4,95 @@
 @{
     Layout = null;
     ViewData["Title"] = T["Auth.Login.Title"];
+    string lang = System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
+    bool ar = lang == "ar";
+    string L(string arabic, string english) => ar ? arabic : english;
 }
 <!doctype html>
-<html lang="@System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName" dir="@(System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "ar" ? "rtl" : "ltr")">
+<html lang="@lang" dir="@(ar ? "rtl" : "ltr")">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#011b38" />
     <script src="~/js/session.js" asp-append-version="true"></script>
-    <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="@(System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "ar" ? "/lib/bootstrap/dist/css/bootstrap.rtl.min.css" : "/lib/bootstrap/dist/css/bootstrap.min.css")" />
+    <title>@ViewData["Title"] — ZU-LMS</title>
+    <link rel="icon" type="image/png" href="~/img/logo.png" asp-append-version="true" />
+    <link rel="stylesheet" href="@(ar ? "/lib/bootstrap/dist/css/bootstrap.rtl.min.css" : "/lib/bootstrap/dist/css/bootstrap.min.css")" />
     <link rel="stylesheet" href="~/css/tajawal.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/tabler/tabler-icons.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/auth.css" asp-append-version="true" />
     <script src="~/js/api.js" defer asp-append-version="true"></script>
     <script src="~/js/auth.js" defer asp-append-version="true"></script>
 </head>
 <body>
-    <main class="auth-shell">
-        <section class="auth-box" aria-labelledby="auth-title">
-            <img class="brand-mark" src="~/img/logo.png" alt="" asp-append-version="true" />
-            <h1 id="auth-title">@T["Auth.Login.Title"]</h1>
-            <p class="auth-subtitle">@T["Auth.Login.Subtitle"]</p>
-            <form id="login-form" method="post" data-api="/api/v1/auth/login" data-error="@T["Auth.Login.Invalid"]">
-                <div class="mb-3">
-                    <label class="form-label" for="login-name">@T["Auth.Login.LoginName"]</label>
-                    <input class="form-control" id="login-name" name="loginName" type="text" autocomplete="username" required />
+    <main class="auth-shell auth-split">
+        <aside class="auth-brand auth-photo" aria-hidden="true"></aside>
+
+        <div class="auth-panel">
+            <section class="auth-box" aria-labelledby="auth-title">
+                <div class="auth-panel-top">
+                    <div class="auth-lockup">
+                        <img src="~/img/logo.png" alt="@T["Shell.Logo"]" asp-append-version="true" />
+                        <span class="auth-lockup-text"><b>@T["Shell.University"]</b><span>@T["Shell.Platform"]</span></span>
+                    </div>
+                    <nav class="auth-lang" aria-label="@L("اللغة", "Language")">
+                        <a href="?culture=ar" aria-current="@(ar ? "true" : "false")">@T["Shared.Language.Ar"]</a>
+                        <a href="?culture=en" aria-current="@(ar ? "false" : "true")">@T["Shared.Language.En"]</a>
+                    </nav>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label" for="password">@T["Auth.Login.Password"]</label>
-                    <input class="form-control" id="password" name="password" type="password" autocomplete="current-password" required />
-                </div>
-                <div class="form-check mb-3">
-                    <input class="form-check-input" id="remember-me" name="rememberMe" type="checkbox" />
-                    <label class="form-check-label" for="remember-me">@T["Auth.Login.RememberMe"]</label>
-                </div>
-                <button class="btn auth-submit w-100" type="submit">@T["Auth.Login.Submit"]</button>
-                <p id="auth-message" class="auth-message" role="status"></p>
-            </form>
-            <p class="auth-help">@T["Auth.Login.FirstTimeHelp"]</p>
-            <div class="auth-links"><a href="/forgot-password">@T["Auth.Login.ForgotPassword"]</a><span><a href="?culture=ar">@T["Shared.Language.Ar"]</a> · <a href="?culture=en">@T["Shared.Language.En"]</a></span></div>
-        </section>
+                <h1 id="auth-title">@T["Auth.Login.Title"]</h1>
+                <p class="auth-subtitle">@T["Auth.Login.Subtitle"]</p>
+                <form id="login-form" method="post" data-api="/api/v1/auth/login" data-error="@T["Auth.Login.Invalid"]">
+                    <div class="mb-3">
+                        <label class="form-label" for="login-name">@T["Auth.Login.LoginName"]</label>
+                        <div class="auth-field">
+                            <svg class="auth-field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                            <input class="form-control" id="login-name" name="loginName" type="text" autocomplete="username" required autofocus />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="password">@T["Auth.Login.Password"]</label>
+                        <div class="auth-field">
+                            <svg class="auth-field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
+                            <input class="form-control has-eye" id="password" name="password" type="password" autocomplete="current-password" required />
+                            <button class="auth-eye" type="button" data-eye-for="password" aria-pressed="false"
+                                    aria-label="@L("إظهار كلمة المرور", "Show password")" data-label-show="@L("إظهار كلمة المرور", "Show password")" data-label-hide="@L("إخفاء كلمة المرور", "Hide password")">
+                                <svg class="eye-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+                                <svg class="eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 3l18 18"/><path d="M10.6 5.1A10.6 10.6 0 0112 5c6.4 0 10 7 10 7a17 17 0 01-3.2 4.2M6.6 6.6C3.8 8.4 2 12 2 12s3.6 7 10 7c1.8 0 3.4-.5 4.8-1.3"/><path d="M9.9 9.9a3 3 0 004.2 4.2"/></svg>
+                            </button>
+                        </div>
+                        <div class="auth-caps" id="caps-warning" role="status">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 4l8 8h-4v4H8v-4H4z"/><path d="M8 20h8"/></svg>
+                            @L("زر الأحرف الكبيرة (Caps Lock) مفعّل", "Caps Lock is on")
+                        </div>
+                    </div>
+                    <div class="auth-row mb-4">
+                        <div class="form-check m-0">
+                            <input class="form-check-input" id="remember-me" name="rememberMe" type="checkbox" />
+                            <label class="form-check-label" for="remember-me">@T["Auth.Login.RememberMe"]</label>
+                        </div>
+                        <a href="/forgot-password">@T["Auth.Login.ForgotPassword"]</a>
+                    </div>
+                    <button class="btn auth-submit w-100" type="submit">
+                        <span class="auth-spinner" aria-hidden="true"></span>
+                        <span>@T["Auth.Login.Submit"]</span>
+                        <svg class="auth-submit-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    </button>
+                    <p id="auth-message" class="auth-message" role="status" aria-live="polite"></p>
+                </form>
+                <p class="auth-help">@T["Auth.Login.FirstTimeHelp"]</p>
+                <footer class="auth-social">
+                    <span>@L("تابع جامعة الزرقاء", "Follow Zarqa University")</span>
+                    <ul>
+                        <li><a href="https://web.facebook.com/News.Zu/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook"><i class="ti ti-brand-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="https://www.instagram.com/news.zu/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"><i class="ti ti-brand-instagram" aria-hidden="true"></i></a></li>
+                        <li><a href="https://twitter.com/News_Zu" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" title="X (Twitter)"><i class="ti ti-brand-x" aria-hidden="true"></i></a></li>
+                        <li><a href="https://www.youtube.com/channel/UCEzwC8Db-Zq5n2SEZczvN6w" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube"><i class="ti ti-brand-youtube" aria-hidden="true"></i></a></li>
+                        <li><a href="https://wa.me/962780022880" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp"><i class="ti ti-brand-whatsapp" aria-hidden="true"></i></a></li>
+                    </ul>
+                </footer>
+            </section>
+        </div>
     </main>
 </body>
 </html>

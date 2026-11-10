@@ -14,7 +14,8 @@ public sealed class StatsService(IAppDbContext db, IPermissionService permission
     [
         (CourseStatus.Proposed, "مقترحة"), (CourseStatus.Returned, "معادة"),
         (CourseStatus.Rejected, "مرفوضة"), (CourseStatus.Approved, "معتمدة"),
-        (CourseStatus.Finished, "منتهية"), (CourseStatus.Cancelled, "ملغاة")
+        (CourseStatus.Finished, "منتهية"), (CourseStatus.Cancelled, "ملغاة"),
+        (CourseStatus.AwaitingAccount, "\u0628\u0627\u0646\u062a\u0638\u0627\u0631 \u0625\u0646\u0634\u0627\u0621 \u062d\u0633\u0627\u0628 \u0627\u0644\u0645\u062f\u0631\u0628")
     ];
 
     public async Task<Result<StatsLookupsDto>> LookupsAsync(long actorUserId,

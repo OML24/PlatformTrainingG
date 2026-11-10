@@ -7,6 +7,7 @@ public enum CourseStatus
     Rejected,
     Approved,
     Finished,
-    Cancelled
+    Cancelled,
+    AwaitingAccount
 }
 

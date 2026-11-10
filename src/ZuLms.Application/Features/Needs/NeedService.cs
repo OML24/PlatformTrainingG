@@ -73,14 +73,7 @@ public sealed class NeedService(IAppDbContext db, IClock clock,
                 CenterId = centerId!.Value,
                 SubmittedBy = actorUserId,
                 TitleAr = input.TitleAr.Trim(),
-                TitleEn = Clean(input.TitleEn),
                 DescriptionAr = input.DescriptionAr.Trim(),
-                DescriptionEn = Clean(input.DescriptionEn),
-                TrackId = input.TrackId,
-                ExpectedParticipants = input.ExpectedParticipants,
-                PreferredTimeframeAr = Clean(input.PreferredTimeframeAr),
-                RequestedInstructorUserId = input.RequestedInstructorUserId,
-                RequestedInstructorNoteAr = Clean(input.RequestedInstructorNoteAr),
                 LetterFileId = input.LetterFileId,
                 Status = NeedStatus.Submitted,
                 CurrentRevision = 1,
@@ -128,14 +121,14 @@ public sealed class NeedService(IAppDbContext db, IClock clock,
                 return Result.Failure("FORBIDDEN");
             if (need.Status != NeedStatus.Returned)
                 return Result.Failure("NEED_NOT_RETURNED");
-            need.TitleAr = input.TitleAr.Trim(); need.TitleEn = Clean(input.TitleEn);
+            need.TitleAr = input.TitleAr.Trim(); need.TitleEn = null;
             need.DescriptionAr = input.DescriptionAr.Trim();
-            need.DescriptionEn = Clean(input.DescriptionEn);
-            need.TrackId = input.TrackId;
-            need.ExpectedParticipants = input.ExpectedParticipants;
-            need.PreferredTimeframeAr = Clean(input.PreferredTimeframeAr);
-            need.RequestedInstructorUserId = input.RequestedInstructorUserId;
-            need.RequestedInstructorNoteAr = Clean(input.RequestedInstructorNoteAr);
+            need.DescriptionEn = null;
+            need.TrackId = null;
+            need.ExpectedParticipants = null;
+            need.PreferredTimeframeAr = null;
+            need.RequestedInstructorUserId = null;
+            need.RequestedInstructorNoteAr = null;
             need.LetterFileId = input.LetterFileId;
             need.Status = NeedStatus.Submitted;
             need.CurrentRevision++;
@@ -360,10 +353,6 @@ public sealed class NeedService(IAppDbContext db, IClock clock,
         if (string.IsNullOrWhiteSpace(input.TitleAr) || input.TitleAr.Trim().Length > 300 ||
             string.IsNullOrWhiteSpace(input.DescriptionAr))
             return "NEED_INVALID";
-        if (input.ExpectedParticipants is < 0 or > 100000) return "NEED_INVALID";
-        if (input.TrackId is long track &&
-            !await db.TrainingTracks.AnyAsync(x => x.Id == track && x.IsActive, ct))
-            return "TRACK_NOT_FOUND";
         if (input.LetterFileId is long letter)
         {
             bool valid = await db.StoredFiles.AnyAsync(x => x.Id == letter &&
@@ -372,17 +361,6 @@ public sealed class NeedService(IAppDbContext db, IClock clock,
             if (!valid) return "NEED_LETTER_INVALID";
         }
         else return "NEED_LETTER_REQUIRED";
-        if (input.RequestedInstructorUserId is long instructor)
-        {
-            long? deanCenterId = await DeanCenterAsync(actorUserId, ct);
-            if (deanCenterId is null || !await db.Users.AnyAsync(x => x.Id == instructor &&
-                x.IsActive && x.AccountType == AccountType.Employee && x.Employee != null &&
-                x.Employee.IsAcademic && x.Employee.CenterId != deanCenterId.Value &&
-                x.Employee.EmpStatus == UniversityOrganizationRules.ActiveEmployeeStatus &&
-                x.Employee.Center != null && x.Employee.Center.IsActive &&
-                x.Employee.Center.IsFaculty, ct))
-                return "INSTRUCTOR_NOT_FOUND";
-        }
         return null;
     }
 

@@ -116,7 +116,10 @@
     try {
       await request(`/api/v1/proposals/${selected.course.id}/decision`, 'POST',
         { expectedVersion: selected.course.version, input: payload });
-      success.textContent = 'حُفظ قرار الجودة'; success.classList.remove('d-none');
+      success.textContent = decision === 'Approved' && externalDecision === 'RequestNewAccount'
+        ? ZuLmsI18n.localize('\u062a\u0645 \u0627\u0639\u062a\u0645\u0627\u062f \u0627\u0644\u062f\u0648\u0631\u0629 \u0648\u0625\u0631\u0633\u0627\u0644 \u0637\u0644\u0628 \u0625\u0646\u0634\u0627\u0621 \u062d\u0633\u0627\u0628 \u0627\u0644\u0645\u062f\u0631\u0628 \u0644\u0644\u0623\u062f\u0645\u0646\u061b \u0633\u062a\u0628\u0642\u0649 \u0627\u0644\u062f\u0648\u0631\u0629 \u0645\u0639\u0644\u0642\u0629 \u062d\u062a\u0649 \u0625\u0646\u0634\u0627\u0621 \u0627\u0644\u062d\u0633\u0627\u0628.', 'Course approved. The account request was sent to administrators; the course remains pending until the account is created.')
+        : ZuLmsI18n.localize('\u062a\u0645 \u062a\u0633\u062c\u064a\u0644 \u0642\u0631\u0627\u0631 \u0627\u0644\u0645\u0642\u062a\u0631\u062d.', 'The proposal decision was recorded.');
+      success.classList.remove('d-none');
       selected = null; $('quality-proposal-details').classList.add('d-none');
       await list();
     } catch (e) { showError(e); }
