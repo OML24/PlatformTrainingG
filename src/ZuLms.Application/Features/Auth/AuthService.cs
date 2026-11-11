@@ -383,7 +383,7 @@ public sealed class AuthService(
     private static string Landing(IReadOnlySet<RoleCode> roles) =>
         roles.Contains(RoleCode.Admin) ? "/admin/dashboard" :
         roles.Contains(RoleCode.Quality) ? "/quality/dashboard" :
-        roles.Contains(RoleCode.Dean) ? "/dean/dashboard" :
+        roles.Contains(RoleCode.Dean) || roles.Contains(RoleCode.CenterManager) ? "/dean/dashboard" :
         roles.Contains(RoleCode.Instructor) ? "/instructor/courses" :
         roles.Contains(RoleCode.Member) ? "/member/dashboard" :
         roles.Contains(RoleCode.ExternalInstructor) ? "/instructor/courses" :

@@ -372,7 +372,8 @@
     try {
       const data = await ZuLms.api.get(`/api/v1/courses/directory?${query}`);
       body.replaceChildren();
-      (data.items || []).slice(0, 6).forEach(row => {
+      state.recent = (data.items || []).slice(0, 6);
+      state.recent.forEach(row => {
         const r = el('tr');
         const no = el('td'); const noSpan = el('span', 'zs-course-no', row.courseNo || `#${row.id}`); noSpan.dir = 'ltr'; no.append(noSpan);
         const title = el('td', 'zs-course-title'); const a = el('a', '', ZuLmsI18n.field(row, 'title') || '—');
@@ -391,6 +392,7 @@
       });
       if (!data.items?.length) recentState(L('لا توجد دورات بعد', 'No courses yet'));
     } catch (e) {
+      state.recent = null;
       if (e?.code === 'FORBIDDEN') root.querySelector('.zs-recent')?.classList.add('d-none');
       else recentState(e?.message || L('تعذّر تحميل الدورات', 'Courses could not be loaded'));
     }
@@ -569,6 +571,107 @@
   });
   $('zs-refresh')?.addEventListener('click', load);
   $('zs-print')?.addEventListener('click', () => window.print());
+
+  /* ---------------- PDF export: exactly what is on screen ---------------- */
+  const inTableView = key => root.querySelector(`[data-panel="${key}"] [data-action="table"]`)?.getAttribute('aria-pressed') === 'true';
+  const periodText = () => {
+    if (range.value !== 'custom' && range.value !== 'all') return range.selectedOptions[0].textContent.trim();
+    const f = $('stats-from').value, t = $('stats-to').value;
+    if (!f && !t) return L('كل الفترات', 'All time');
+    return `${f || '…'}  ←  ${t || '…'}`;
+  };
+  const trendNote = id => {
+    const n = $(id);
+    return n && !n.classList.contains('d-none') && n.textContent ? `${n.textContent} ${L('مقارنة بالشهر السابق', 'vs. previous month')}` : '';
+  };
+  // Draw a chart into the PDF from a high-density off-screen copy (no pixelation).
+  const sharp = (chart, drawFn) => {
+    const snap = window.ZuPdf?.snapshot ? ZuPdf.snapshot(chart, 3) : null;
+    try { drawFn(snap?.canvas || chart.canvas); } finally { snap?.dispose(); }
+  };
+  async function exportPdf(opts) {
+    const d = state.data;
+    if (!d) throw new Error(L('لا توجد بيانات بعد، انتظر اكتمال التحميل.', 'No data yet — wait for the dashboard to load.'));
+    const S = opts.sections;
+    const meta = [[L('النطاق', 'Scope'), tr(d.scopeLabel)], [L('الفترة', 'Period'), periodText()]];
+    if ($('stats-center').value) meta.push([L('الكلية', 'Faculty'), $('stats-center').selectedOptions[0].textContent]);
+    if ($('stats-user').value) meta.push([L('الشخص', 'Person'), $('stats-user').selectedOptions[0].textContent]);
+    const rep = await ZuPdf.create({ title: $('zs-title').textContent.trim(), subtitle: L('تقرير الإحصائيات', 'Statistics report'), meta, grayscale: opts.grayscale });
+    const rate = Number(d.completionRate) || 0;
+    if (S.has('kpis')) {
+      rep.section(L('المؤشرات الرئيسية', 'Key indicators'));
+      rep.kpis([
+        { label: L('الدورات', 'Courses'), value: fmt(d.courses), note: trendNote('trend-courses'), color: '#022c5a' },
+        { label: L('المشاركات', 'Participations'), value: fmt(d.participants), note: trendNote('trend-participants'), color: '#c9a227' },
+        { label: L('الشهادات الصادرة', 'Certificates issued'), value: fmt(d.certificates), note: $('kpi-cert-ratio')?.textContent || '', color: '#0f766e' },
+        { label: L('الدورات المنتهية', 'Finished courses'), value: `${fmt(rate, Number.isInteger(rate) ? 0 : 1)}%`, note: $('kpi-finished-note')?.textContent || '', color: '#0369a1' }
+      ]);
+      if (d.person) {
+        rep.section(L(`إحصائيات ${d.person.name}`, `Statistics for ${d.person.name}`));
+        rep.kpis([
+          { label: L('الدورات', 'Courses'), value: fmt(d.person.courses) },
+          { label: L('المنتهية', 'Finished'), value: fmt(d.person.finishedCourses) },
+          { label: L('الشهادات', 'Certificates'), value: fmt(d.person.certificates) }
+        ], 3);
+      }
+    }
+    const tableOf = key => { const t = tableRows(root.querySelector(`[data-panel="${key}"]`)); rep.table(t.head, t.rows, t.head.map((_, i) => (i === 0 ? 3 : 1))); };
+    if (S.has('status')) {
+      rep.section(L('الدورات حسب الحالة', 'Courses by status'));
+      const chart = charts['chart-status'];
+      if (inTableView('status') || !chart) tableOf('status');
+      else {
+        const rows = (d.byStatus || []).filter(r => r.value > 0);
+        const visible = rows.filter((r, i) => chart.getDataVisibility(i));
+        const total = visible.reduce((a, r) => a + r.value, 0);
+        const legend = visible.map(r => ({ color: statusColor(r.label), label: r.label, value: fmt(r.value), pct: `${fmt(total ? r.value / total * 100 : 0, 0)}%` }));
+        legend.push({ color: '#ffffff', label: L(`المجموع: ${fmt(total)} دورة`, `Total: ${fmt(total)} courses`), value: '', pct: '' });
+        sharp(chart, c => rep.chart(c, { height: 420, legend }));
+      }
+    }
+    if (S.has('monthly')) {
+      rep.section(L('التطور الشهري', 'Monthly trend'), `${state.monthlyMetric === 'courses' ? L('الدورات', 'Courses') : L('المشاركات', 'Participations')} — ${$('zs-sub-monthly')?.textContent || ''}`);
+      if (inTableView('monthly') || !charts['chart-monthly']) tableOf('monthly');
+      else sharp(charts['chart-monthly'], c => rep.chart(c, { height: 560 }));
+    }
+    if (S.has('faculty')) {
+      rep.section(L('التوزيع حسب الكلية', 'By faculty'));
+      const rows = [...(d.byFaculty || [])].sort((a, b) => b.value - a.value);
+      if (state.facultyView === 'bar' && charts['chart-faculty']) sharp(charts['chart-faculty'], c => rep.chart(c, { height: 900 }));
+      else if (rows.length) rep.bars(rows);
+      else rep.note(L('لا توجد بيانات', 'No data'));
+    }
+    if (S.has('track')) {
+      rep.section(L('التوزيع حسب المحور التدريبي', 'By training track'));
+      if (inTableView('track') || !charts['chart-track']) tableOf('track');
+      else sharp(charts['chart-track'], c => rep.chart(c, { height: state.trackType === 'doughnut' ? 560 : 820 }));
+    }
+    if (S.has('recent') && state.recent) {
+      rep.section(L('أحدث الدورات', 'Latest courses'));
+      rep.table([L('رقم الدورة', 'Course no.'), L('العنوان', 'Title'), L('الكلية', 'Faculty'), L('المدرب', 'Instructor'), L('الحالة', 'Status'), L('المشاركون', 'Participants'), L('البدء', 'Start')],
+        state.recent.map(row => {
+          const [label] = statusStyles[row.status] || [[row.status, row.status]];
+          return [row.courseNo || `#${row.id}`, ZuLmsI18n.field(row, 'title') || '—', (english ? row.centerNameEn : row.centerNameAr) || row.centerNameAr || '—',
+            (english ? row.instructorNameEn : row.instructorNameAr) || row.instructorNameAr || '—', L(label[0], label[1]), fmt(row.participantsCount ?? 0), row.plannedStartDate || '—'];
+        }), [1.7, 2.8, 1.9, 1.8, 1.2, 1.2, 1.2]);
+    }
+    const stamp = new Date().toISOString().slice(0, 10);
+    await rep.save(`zu-lms-stats-${root.dataset.role}-${stamp}.pdf`);
+  }
+  $('zs-export')?.addEventListener('click', () => {
+    if (!window.ZuPdf) return;
+    ZuPdf.openDialog({
+      sections: [
+        { key: 'kpis', label: L('المؤشرات الرئيسية', 'Key indicators') },
+        { key: 'status', label: L('الدورات حسب الحالة', 'Courses by status') },
+        { key: 'monthly', label: L('التطور الشهري', 'Monthly trend') },
+        { key: 'faculty', label: L('التوزيع حسب الكلية', 'By faculty') },
+        { key: 'track', label: L('التوزيع حسب المحور', 'By training track') },
+        { key: 'recent', label: L('أحدث الدورات', 'Latest courses'), checked: !!state.recent, disabled: !state.recent }
+      ],
+      onExport: exportPdf
+    });
+  });
 
   /* ---------------- filters (unchanged behaviour) ---------------- */
   const init = async () => {

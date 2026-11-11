@@ -9,6 +9,7 @@
   const historicalOnly = root.dataset.historicalOnly === 'true';
   let searchTimer;
   const historicalParticipants = new Map();
+  let historicalEmployeeRows = [];
   function historicalEvaluationRequired() {
     return historicalOnly && $('historical-evaluation-required').checked;
   }
@@ -62,7 +63,7 @@
   async function loadHistoricalEmployees() {
     if (!historicalOnly) return;
     const centerId = number('target-center'), body = $('historical-rows');
-    body.replaceChildren(); historicalParticipants.clear();
+    body.replaceChildren(); historicalParticipants.clear(); historicalEmployeeRows = [];
     if (centerId === null) {
       const tr = document.createElement('tr'); const td = document.createElement('td');
       td.colSpan = 4; td.className = 'text-muted'; td.textContent = 'اختر تصنيف المشاركين.';
@@ -76,6 +77,7 @@
     }
     for (const row of rows) {
       const tr = document.createElement('tr');
+      tr.dataset.search = `${ZuLmsI18n.field(row, 'name')} ${row.loginName}`.toLocaleLowerCase('ar');
       const pickCell = document.createElement('td'), pick = document.createElement('input');
       pick.type = 'checkbox'; pick.className = 'form-check-input'; pickCell.append(pick);
       const name = document.createElement('td');
@@ -96,7 +98,15 @@
       };
       pick.addEventListener('change', sync); status.addEventListener('change', sync);
       tr.append(pickCell, name, login, statusCell); body.append(tr);
+      historicalEmployeeRows.push(tr);
     }
+    filterHistoricalEmployees();
+  }
+  function filterHistoricalEmployees() {
+    if (!historicalOnly) return;
+    const query = value('historical-search').trim().toLocaleLowerCase('ar');
+    for (const row of historicalEmployeeRows)
+      row.classList.toggle('d-none', query !== '' && !row.dataset.search.includes(query));
   }
   async function upload(kind, file) {
     if (!file) return null;
@@ -106,15 +116,15 @@
   }
   function input(letter, cv) {
     const choice = value('choice'), existing = choice === 'Internal' || choice === 'ExistingExternal';
-    const deadline = nullable('deadline');
+    const deadline = historicalOnly ? null : nullable('deadline');
     const selectedAudience = historicalOnly && number('target-center') === 0
       ? 'Administrative' : value('audience');
     return {
       titleAr: value('title-ar'), titleEn: nullable('title-en'), trackId: number('track'),
       deliveryMode: value('mode'), objectivesAr: value('objectives-ar'),
-      objectivesEn: nullable('objectives-en'), targetAudienceAr: value('target-ar'),
-      targetAudienceEn: nullable('target-en'), totalHours: number('hours'),
-       plannedStartDate: value('start'), plannedEndDate: value('end'),
+      objectivesEn: nullable('objectives-en'), targetAudienceAr: null,
+      targetAudienceEn: null, totalHours: number('hours'),
+       plannedStartDate: nullable('start'), plannedEndDate: nullable('end'),
        audienceType: selectedAudience,
        targetCenterId: selectedAudience === 'Faculty' ? number('target-center') : null,
        relatedCenterId: number('related'), registrationDeadline: deadline,
@@ -140,6 +150,8 @@
   $('choice').addEventListener('change', toggle);
   if (historicalOnly)
     $('historical-evaluation-required').addEventListener('change', toggleHistoricalEvaluation);
+  if (historicalOnly)
+    $('historical-search').addEventListener('input', filterHistoricalEmployees);
   $('search').addEventListener('input', () => { clearTimeout(searchTimer); searchTimer = setTimeout(() => search().catch(showError), 250); });
   $('audience').addEventListener('change', () => {
     const faculty = value('audience') === 'Faculty';
@@ -156,8 +168,8 @@
       if (historicalOnly) {
         const end = value('end');
         const today = new Date(); today.setHours(0, 0, 0, 0);
-        const parsed = new Date(`${end}T00:00:00`);
-        if (!end || Number.isNaN(parsed.valueOf()) || parsed >= today)
+        const parsed = end ? new Date(`${end}T00:00:00`) : null;
+        if (parsed && (Number.isNaN(parsed.valueOf()) || parsed >= today))
           throw { code: 'يجب أن يكون تاريخ انتهاء الدورة السابقة قبل تاريخ اليوم' };
         if (historicalEvaluationRequired() && !nullable('evaluation'))
           throw { code: 'حدد آخر موعد للتقييم المطلوب' };

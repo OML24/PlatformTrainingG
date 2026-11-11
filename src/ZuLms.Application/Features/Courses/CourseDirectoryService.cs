@@ -8,7 +8,7 @@ using ZuLms.Domain.Rules;
 namespace ZuLms.Application.Features.Courses;
 
 public sealed class CourseDirectoryService(IAppDbContext db,
-    IPermissionService permissions, ISettingsService settings) : ICourseDirectoryService
+    IClock clock, IPermissionService permissions, ISettingsService settings) : ICourseDirectoryService
 {
     public async Task<Result<CourseDirectoryLookupsDto>> LookupsAsync(
         long actorUserId, CourseDirectoryView view, CancellationToken ct)
@@ -105,7 +105,7 @@ public sealed class CourseDirectoryService(IAppDbContext db,
             effective.Keys.Contains("page.quality.courses");
         bool canViewHistory = canViewFiles ||
             (view is CourseDirectoryView.Dean or CourseDirectoryView.Auto) &&
-            effective.Roles.Contains(RoleCode.Dean) &&
+            (effective.Roles.Contains(RoleCode.Dean) || effective.Roles.Contains(RoleCode.CenterManager)) &&
             effective.Keys.Contains("page.dean.courses");
         var history = canViewHistory
             ? await db.CourseStatusHistorys.AsNoTracking()
@@ -135,24 +135,23 @@ public sealed class CourseDirectoryService(IAppDbContext db,
             details.HistoricalNotes, history, files,
             effective.HasMode(RoleCode.Admin) &&
                 effective.Keys.Contains("page.admin.courses"),
+            // Course edit actions (exam requirement, data, instructor, threshold, evaluation end) are Admin-only.
             !row.IsHistorical && effective.Keys.Contains("exam.requirement.edit") &&
-                (effective.HasMode(RoleCode.Admin) || effective.HasMode(RoleCode.Quality)),
+                effective.HasMode(RoleCode.Admin),
             !row.IsHistorical && effective.Keys.Contains("course.edit") &&
-                (effective.HasMode(RoleCode.Admin) || effective.HasMode(RoleCode.Quality)),
+                effective.HasMode(RoleCode.Admin),
             effective.Keys.Contains("course.force_status") &&
                 effective.HasMode(RoleCode.Admin),
             details.TrackId, details.TargetCenterId,
             details.AttendanceThresholdPercentOverride,
             effective.Keys.Contains("evaluation.extend_period") &&
-                (effective.HasMode(RoleCode.Admin) || effective.HasMode(RoleCode.Quality)),
+                effective.HasMode(RoleCode.Admin),
             details.InstructorKind, details.HiddenEmployee ? null : details.InstructorUserId,
             details.HiddenEmployee ? null : details.InstructorNameEn,
             details.HiddenEmployee ? null : details.InstructorOrgAr,
             details.HiddenEmployee ? null : details.InstructorOrgEn,
             effective.Keys.Contains("course.edit") &&
-                (effective.HasMode(RoleCode.Admin) ||
-                 effective.HasMode(RoleCode.Quality) &&
-                 row.Status != CourseStatus.Finished)));
+                effective.HasMode(RoleCode.Admin)));
     }
 
     private async Task<IQueryable<Course>?> ScopeAsync(long actorUserId,
@@ -168,7 +167,7 @@ public sealed class CourseDirectoryService(IAppDbContext db,
                     effective.Keys.Contains("page.admin.courses") ||
                    quality && effective.Keys.Contains("page.quality.courses")
                 ? CourseDirectoryView.All
-                : effective.HasMode(RoleCode.Dean) &&
+                : effective.IsUnitHead &&
                   effective.Keys.Contains("page.dean.courses")
                     ? CourseDirectoryView.Dean
                     : effective.Keys.Contains("page.instructor.courses")
@@ -181,7 +180,7 @@ public sealed class CourseDirectoryService(IAppDbContext db,
             CourseDirectoryView.All when quality &&
                 effective.Keys.Contains("page.quality.courses") => query.Where(x => x.ManagedByQuality),
             CourseDirectoryView.Dean when
-                effective.HasMode(RoleCode.Dean) &&
+                effective.IsUnitHead &&
                 effective.Keys.Contains("page.dean.courses") =>
                 query.Where(x => x.ProposingCenterId.HasValue && deanCenters.Contains(x.ProposingCenterId.Value) ||
                     x.TargetCenterId.HasValue && deanCenters.Contains(x.TargetCenterId.Value)),
@@ -195,8 +194,29 @@ public sealed class CourseDirectoryService(IAppDbContext db,
                 effective.Keys.Contains("page.member.enrolled") =>
                 query.Where(x => db.CourseParticipants.Any(p => p.CourseId == x.Id &&
                     p.UserId == actorUserId && p.IsActive)),
+            CourseDirectoryView.Available when
+                effective.Roles.Contains(RoleCode.Member) &&
+                effective.Keys.Contains("participants.self_register") =>
+                await AvailableScopeAsync(query, actorUserId, ct),
             _ => null
         };
+    }
+
+    private async Task<IQueryable<Course>> AvailableScopeAsync(IQueryable<Course> query,
+        long actorUserId, CancellationToken ct)
+    {
+        var employee = await db.Users.AsNoTracking()
+            .Where(x => x.Id == actorUserId && x.IsActive &&
+                x.AccountType == AccountType.Employee && x.Employee != null &&
+                x.Employee.EmpStatus == UniversityOrganizationRules.ActiveEmployeeStatus)
+            .Select(x => new { x.Employee!.CenterId, x.Employee.IsAcademic })
+            .SingleOrDefaultAsync(ct);
+        if (employee is null) return query.Where(x => false);
+        DateTimeOffset now = clock.UtcNow;
+        DateOnly today = DateOnly.FromDateTime(TimeZoneInfo.ConvertTime(now,
+            clock.Amman).DateTime);
+        return SelfRegistrationCourseQuery.Apply(query, db, actorUserId,
+            employee.CenterId, employee.IsAcademic, now, today);
     }
 
     private static IQueryable<Course> ApplyFilter(IQueryable<Course> query,

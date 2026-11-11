@@ -54,7 +54,7 @@ public sealed class ImpactService(IAppDbContext db, IClock clock,
         var effective = await permissions.GetEffectiveAsync(actorId, ct);
         bool admin = effective.HasMode(RoleCode.Admin);
         bool quality = effective.HasMode(RoleCode.Quality);
-        bool dean = effective.HasMode(RoleCode.Dean);
+        bool dean = effective.IsUnitHead;
         if (!admin && !quality && !dean)
             return Result<IReadOnlyList<ImpactReviewCourseDto>>.Failure("FORBIDDEN");
         long[] deanCenters = dean ? effective.DeanScopeCenterIds.ToArray() : [];
@@ -149,7 +149,7 @@ public sealed class ImpactService(IAppDbContext db, IClock clock,
                 .Select(x => x.UserId).ToListAsync(ct);
             if (deanDestination)
                 recipients.AddRange(await db.UserRoles.AsNoTracking()
-                    .Where(x => x.IsActive && x.Role!.Code == RoleCode.Dean &&
+                    .Where(x => x.IsActive && (x.Role!.Code == RoleCode.Dean || x.Role!.Code == RoleCode.CenterManager) &&
                         x.ScopeCenterId == participant.Course.ProposingCenterId &&
                         x.User!.IsActive).Select(x => x.UserId).ToListAsync(ct));
             else
@@ -252,7 +252,7 @@ public sealed class ImpactService(IAppDbContext db, IClock clock,
             course.ManagedByQuality);
         if (!deanDestination)
             return effective.HasMode(RoleCode.Quality);
-        if (!effective.HasMode(RoleCode.Dean) ||
+        if (!effective.IsUnitHead ||
             course.ProposingCenterId is not long centerId) return false;
         return effective.DeanScopeCenterIds.Contains(centerId);
     }

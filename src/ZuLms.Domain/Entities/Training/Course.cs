@@ -15,8 +15,8 @@ public sealed class Course : BaseEntity, ISoftDeletable, IArchivable
     public string TargetAudienceAr { get; set; } = string.Empty;
     public string? TargetAudienceEn { get; set; }
     public decimal TotalHours { get; set; }
-    public DateOnly PlannedStartDate { get; set; }
-    public DateOnly PlannedEndDate { get; set; }
+    public DateOnly? PlannedStartDate { get; set; }
+    public DateOnly? PlannedEndDate { get; set; }
     public CourseOrigin Origin { get; set; }
     public long? ProposingCenterId { get; set; }
     public long? ProposedByUserId { get; set; }

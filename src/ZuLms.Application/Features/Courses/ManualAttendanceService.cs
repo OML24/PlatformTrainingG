@@ -61,6 +61,7 @@ public sealed class ManualAttendanceService(IAppDbContext db, IClock clock,
             var record = await db.AttendanceRecords.SingleOrDefaultAsync(x =>
                 x.LectureId == lectureId && x.ParticipantId == participantId, ct);
             bool? previous = record?.IsPresent;
+            AttendanceSource? previousSource = record?.Source;
             DateTimeOffset now = clock.UtcNow;
             if (record is null)
             {
@@ -90,12 +91,32 @@ public sealed class ManualAttendanceService(IAppDbContext db, IClock clock,
                 lecture.CourseId, participantId,
                 CertificateRevokeReason.AttendanceCorrection, actorId, ct);
             if (!result.Ok) return Result.Failure(result.Error!.Code);
+            string memberName = await db.Users.AsNoTracking()
+                .Where(x => x.Id == participant.UserId).Select(x => x.FullNameAr)
+                .SingleOrDefaultAsync(ct) ?? string.Empty;
+            string lectureLabel = lecture.TitleAr ?? lecture.Course.TitleAr;
+            bool cancelsCodeAttendance = previous == true &&
+                previousSource == AttendanceSource.Code && !isPresent;
+            bool marksPresentManually = previous != true && isPresent;
+            string action = cancelsCodeAttendance ? "attendance.override_code_absent"
+                : marksPresentManually ? "attendance.manual_present"
+                : isPresent ? "attendance.edit_manual" : "attendance.manual_absent";
+            string summary = cancelsCodeAttendance
+                ? $"ألغى حضور {memberName} رغم تسجيله بالباركود/الكود"
+                : marksPresentManually
+                    ? $"سجّل حضور {memberName} يدويًا دون باركود"
+                    : isPresent ? $"تعديل حضور يدوي لـ {memberName}"
+                    : $"سجّل غياب {memberName} يدويًا";
             await audit.LogAsync(new AuditEntry(AuditCategory.Attendance,
-                "attendance.edit_manual", "تعديل حضور يدوي",
-                "Manual attendance edit", "Lecture", lectureId,
-                lecture.TitleAr ?? lecture.Course.TitleAr,
+                action, $"{summary} — {lectureLabel} ({lecture.Course.TitleAr})",
+                cancelsCodeAttendance ? "Code attendance cancelled manually"
+                    : "Manual attendance edit", "Lecture", lectureId,
+                lectureLabel, CourseId: lecture.CourseId,
                 AfterJson: JsonSerializer.Serialize(new
-                { participantId, previous, isPresent, reason }),
+                {
+                    participantId, memberName, previous,
+                    previousSource = previousSource?.ToString(), isPresent, reason
+                }),
                 ActorUserId: actorId), ct);
             await db.SaveChangesAsync(ct);
             return Result.Success();

@@ -29,9 +29,9 @@ public enum DirectInstructorChoice
 
 public sealed record DirectCourseInput(
     string TitleAr, string? TitleEn, long TrackId, DeliveryMode DeliveryMode,
-    string ObjectivesAr, string? ObjectivesEn, string TargetAudienceAr,
-    string? TargetAudienceEn, decimal TotalHours, DateOnly PlannedStartDate,
-    DateOnly PlannedEndDate, AudienceType AudienceType, long? TargetCenterId,
+    string ObjectivesAr, string? ObjectivesEn, string? TargetAudienceAr,
+    string? TargetAudienceEn, decimal TotalHours, DateOnly? PlannedStartDate,
+    DateOnly? PlannedEndDate, AudienceType AudienceType, long? TargetCenterId,
     long? RelatedCenterId, DateTimeOffset? RegistrationDeadline,
     int? MaxParticipants, bool HasExam, DateOnly? EvaluationEndDate,
     DirectInstructorChoice InstructorChoice, long? InstructorUserId,

@@ -64,4 +64,30 @@ public sealed class ScopeGuardTests
         Assert.False(ScopeGuard.AllowsDeanCenterRead(dean, "need.submit", 13));
         Assert.False(ScopeGuard.AllowsDeanCenterRead(member, "need.submit", 12));
     }
+
+    [Fact]
+    public void CenterManagerActsLikeDeanOnlyOverOwnCenter()
+    {
+        var manager = new EffectivePermissionSet(7, RoleCode.CenterManager,
+            new HashSet<RoleCode> { RoleCode.CenterManager },
+            new HashSet<string> { "need.submit" }, new HashSet<long> { 40 });
+        Assert.True(manager.IsUnitHead);
+        Assert.True(ScopeGuard.AllowsDeanCenterRead(manager, "need.submit", 40));
+        Assert.False(ScopeGuard.AllowsDeanCenterRead(manager, "need.submit", 12));
+        Assert.True(ScopeGuard.Allows(manager, PermissionScope.OwnFaculty, centerId: 40));
+        Assert.False(ScopeGuard.Allows(manager, PermissionScope.OwnFaculty, centerId: 12));
+    }
+
+    [Fact]
+    public void CenterManagerOwnsTheDeanWorkspaceKeys()
+    {
+        var keys = Features.Permissions.PermissionSetRules.ForMode(RoleCode.CenterManager,
+            ["page.dean.propose", "course.propose", "need.submit", "impact.review", "page.admin.users"],
+            [], AccountType.Employee);
+        Assert.Contains("page.dean.propose", keys);
+        Assert.Contains("course.propose", keys);
+        Assert.Contains("need.submit", keys);
+        Assert.Contains("impact.review", keys);
+        Assert.DoesNotContain("page.admin.users", keys);
+    }
 }

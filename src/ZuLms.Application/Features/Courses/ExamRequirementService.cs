@@ -18,8 +18,7 @@ public sealed class ExamRequirementService(IAppDbContext db, IClock clock,
             return Result.Failure("FORBIDDEN");
         var effective = await permissions.GetEffectiveAsync(actorId, ct);
         bool admin = effective.HasMode(RoleCode.Admin);
-        if (!admin && !effective.HasMode(RoleCode.Quality))
-            return Result.Failure("FORBIDDEN");
+        if (!admin) return Result.Failure("FORBIDDEN");
         if (disableReason?.Trim().Length > 1000)
             return Result.Failure("REASON_TOO_LONG");
         return await db.InSerializableTransactionAsync(async () =>

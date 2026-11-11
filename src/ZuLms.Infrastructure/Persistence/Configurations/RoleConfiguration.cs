@@ -9,7 +9,7 @@ public sealed class RoleConfiguration : IEntityTypeConfiguration<Role>
     public void Configure(EntityTypeBuilder<Role> builder)
     {
         builder.ToTable("roles", AppDbContext.Schema);
-        builder.ToTable(t => t.HasCheckConstraint("ck_roles_code", "code IN ('Admin', 'Quality', 'Dean', 'Instructor', 'Member', 'ExternalInstructor')"));
+        builder.ToTable(t => t.HasCheckConstraint("ck_roles_code", "code IN ('Admin', 'Quality', 'Dean', 'Instructor', 'Member', 'ExternalInstructor', 'CenterManager')"));
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Id).UseIdentityAlwaysColumn();
         builder.Property(x => x.Code).HasConversion<string>().HasMaxLength(30);

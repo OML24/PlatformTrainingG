@@ -91,15 +91,6 @@ public static class AuthEndpoints
             return Results.Ok();
         });
 
-        routes.MapPost("/api/v1/auth/forgot-password", async (HttpContext http,
-            ForgotPasswordRequest request, IAuthService auth, IAntiforgery antiforgery) =>
-        {
-            if (!await ValidCsrf(http, antiforgery)) return Results.BadRequest(new { code = "CSRF_INVALID" });
-            await auth.ForgotPasswordAsync(request.LoginName, request.Email,
-                http.Connection.RemoteIpAddress?.ToString() ?? string.Empty, http.RequestAborted);
-            return Results.Ok(new { code = "AUTH_FORGOT_GENERIC" });
-        });
-
         routes.MapGet("/api/v1/auth/me", async (HttpContext http, IPermissionService permissions) =>
         {
             if (http.User.Identity?.IsAuthenticated != true) return Results.Unauthorized();
@@ -147,6 +138,5 @@ public static class AuthEndpoints
 
     public sealed record ChangePasswordRequest(string NewPassword, string Confirmation);
     public sealed record AccountPasswordRequest(string CurrentPassword, string NewPassword, string Confirmation);
-    public sealed record ForgotPasswordRequest(string LoginName, string Email);
     public sealed record LanguageRequest(string Language);
 }

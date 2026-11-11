@@ -2,6 +2,12 @@
   'use strict';
   const translations = {
   /* frontend redesign (docs/FRONTEND-REDESIGN.md) */
+  "تنزيل PDF": "Download PDF",
+  "المستحقون للشهادة": "Eligible for certificate",
+  "متوسط الحضور": "Average attendance",
+  "أكملوا الاستبيان": "Survey completed",
+  "قائمة المشاركين": "Participants list",
+  "الحضور والامتحان والاستبيان والاستحقاق لكل مشارك": "Attendance, exam, survey and eligibility per participant",
   "آخر الدورات المضافة ضمن نطاقك": "Latest courses added within your scope",
   "أحدث الدورات": "Latest courses",
   "الدورات المنتهية": "Finished courses",

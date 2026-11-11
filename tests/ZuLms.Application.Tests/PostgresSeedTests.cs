@@ -885,14 +885,22 @@ public sealed class PostgresSeedTests(ITestOutputHelper output)
                     historicInput with
                     {
                         IsHistorical = true,
+                        PlannedStartDate = null,
+                        PlannedEndDate = null,
+                        RegistrationDeadline = new DateTimeOffset(2027, 1, 1, 12, 0, 0,
+                            TimeSpan.Zero),
                         HistoricalNotes = "قبل النظام",
                         AudienceType = AudienceType.Administrative,
                         HistoricalParticipants = [new HistoricalParticipantInput(secondUser.Id, true)]
                     },
                     CancellationToken.None);
                 Assert.True(historicCreated.Ok, historicCreated.Error?.Code);
-                Assert.True(await db.Courses.AnyAsync(x => x.Id == historicCreated.Value &&
-                    x.IsHistorical));
+                var historicalCourseWithoutDates = await db.Courses.SingleAsync(x =>
+                    x.Id == historicCreated.Value);
+                Assert.True(historicalCourseWithoutDates.IsHistorical);
+                Assert.Null(historicalCourseWithoutDates.PlannedStartDate);
+                Assert.Null(historicalCourseWithoutDates.PlannedEndDate);
+                Assert.Null(historicalCourseWithoutDates.RegistrationDeadline);
                 var directExternal = await directCourses.CreateAsync(firstUser.Id,
                     directInput with
                     {
@@ -1462,6 +1470,7 @@ public sealed class PostgresSeedTests(ITestOutputHelper output)
                     directCourse.Id && x.UserId == secondUser.Id && !x.IsActive &&
                     x.RemovalReason == "اختبار"));
                 var courseDirectory = new CourseDirectoryService(db,
+                    scope.ServiceProvider.GetRequiredService<IClock>(),
                     scope.ServiceProvider.GetRequiredService<IPermissionService>(),
                     systemSettings);
                 var allCourses = await courseDirectory.ListAsync(firstUser.Id,
@@ -1524,8 +1533,8 @@ public sealed class PostgresSeedTests(ITestOutputHelper output)
                     directCourse.TitleAr, directCourse.TitleEn,
                     "أهداف محدّثة", directCourse.ObjectivesEn,
                     directCourse.TargetAudienceAr, directCourse.TargetAudienceEn,
-                    directCourse.TotalHours, directCourse.PlannedStartDate,
-                    directCourse.PlannedEndDate, directCourse.MaxParticipants,
+                    directCourse.TotalHours, directCourse.PlannedStartDate!.Value,
+                    directCourse.PlannedEndDate!.Value, directCourse.MaxParticipants,
                     directCourse.TrackId, directCourse.DeliveryMode,
                     directCourse.AudienceType, directCourse.TargetCenterId,
                     directCourse.RegistrationDeadline);

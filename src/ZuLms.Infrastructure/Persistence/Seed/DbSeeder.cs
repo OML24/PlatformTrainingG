@@ -38,7 +38,8 @@ public sealed class DbSeeder(
             (RoleCode.Dean, "عميد الكلية", "Dean", true),
             (RoleCode.Instructor, "محاضر الدورة", "Instructor", false),
             (RoleCode.Member, "عضو / متدرب", "Member", true),
-            (RoleCode.ExternalInstructor, "مدرب خارجي", "External instructor", false)
+            (RoleCode.ExternalInstructor, "مدرب خارجي", "External instructor", false),
+            (RoleCode.CenterManager, "مدير مركز / دائرة", "Center manager", true)
         };
         var existing = await db.Roles.Select(x => x.Code).ToListAsync(ct);
         foreach (var (code, ar, en, assignable) in roles)

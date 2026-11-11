@@ -87,7 +87,7 @@ a:hover { color: var(--zu-navy-light); }
   .header-actions .role-switcher-note { display: none; }
   .header-actions .btn-outline-navy, .header-actions .btn-notif { min-width: 38px; min-height: 38px; padding: 5px; }
   .header-actions #role-switcher { gap: 0 !important; }
-  .header-actions #role-switcher-select { max-width: 100px; min-height: 38px; }
+  .header-actions #role-switcher-select, .header-actions #role-switcher .zu-select-btn { max-width: 110px; min-height: 38px; }
   .header-title h4 { max-width: 105px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .page-content { padding: 22px 16px; }
   .data-card-header, .data-card-body { padding: 16px; }

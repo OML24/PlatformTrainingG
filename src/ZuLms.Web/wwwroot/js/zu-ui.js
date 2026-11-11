@@ -36,3 +36,30 @@
 
   window.ZuUi = { countUp, format: fmt, reducedMotion: () => reduced.matches };
 })();
+
+// Center managers reuse the dean pages (/dean/*): swap faculty wording for center wording.
+(() => {
+  'use strict';
+  if (document.body.dataset.unitMode !== 'center' || !location.pathname.startsWith('/dean')) return;
+  const pairs = [
+    ['أعضاء كليتي', 'موظفي مركزي'], ['أعضاء الكلية', 'موظفو المركز'], ['مجلس الكلية', 'إدارة المركز'],
+    ['لكليتي', 'لمركزي'], ['كليتي', 'مركزي'], ['إحصائيات الكلية', 'إحصائيات المركز'],
+    ['إحصاءات الكلية', 'إحصاءات المركز'], ['الكلية', 'المركز']
+  ];
+  const swap = text => pairs.reduce((value, [from, to]) => value.split(from).join(to), text);
+  function walk(root) {
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+      if (!/كلي/.test(node.nodeValue)) continue;
+      const next = swap(node.nodeValue);
+      if (next !== node.nodeValue) node.nodeValue = next;
+    }
+  }
+  const content = document.querySelector('.page-content') || document.body;
+  walk(content);
+  document.title = swap(document.title);
+  document.querySelectorAll('.header-title h4').forEach(walk);
+  new MutationObserver(records => records.forEach(record => {
+    record.addedNodes.forEach(node => node.nodeType === 1 ? walk(node) : node.nodeType === 3 && walk(node.parentNode || content));
+  })).observe(content, { childList: true, subtree: true });
+})();

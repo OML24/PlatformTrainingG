@@ -105,7 +105,9 @@ public sealed class AuditQueryService(IAppDbContext db, IPermissionService permi
             string raw = filter.Search.Trim();
             query = query.Where(x => x.SummaryAr.Contains(raw) ||
                 x.ActionCode.Contains(raw) || x.EntityLabel != null &&
-                x.EntityLabel.Contains(raw));
+                x.EntityLabel.Contains(raw) ||
+                x.ActorName != null && x.ActorName.Contains(raw) ||
+                x.ActorLogin != null && x.ActorLogin.Contains(raw));
         }
         if (filter.Category is { } category) query = query.Where(x => x.Category == category);
         if (!string.IsNullOrWhiteSpace(filter.ActionCode))

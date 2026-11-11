@@ -43,19 +43,5 @@
       tr.append(actions); body.append(tr);
     }
   }
-  $('direct-form').addEventListener('submit', async event => {
-    event.preventDefault();
-    const button = $('direct-submit'); button.disabled = true;
-    try {
-      if (!await ZuLms.ui.confirm('سيُلغى اعتماد الدورة وتُلغى شهاداتها الصادرة. هل تريد المتابعة؟')) return;
-      const file = $('letter').files[0];
-      const form = new FormData(); form.append('kind', 'CancellationLetter'); form.append('file', file);
-      const uploaded = await ZuLms.api.upload('/api/v1/files', form);
-      await request('POST', `/api/v1/courses/${Number($('course-id').value)}/cancellation/direct`,
-        { reason: $('reason').value, letterFileId: uploaded.id });
-      message('success', 'أُلغيت الدورة'); $('direct-form').reset(); await load();
-    } catch (e) { showError(e); }
-    finally { button.disabled = false; }
-  });
   load().catch(showError);
 })();

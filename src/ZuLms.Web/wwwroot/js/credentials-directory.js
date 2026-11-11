@@ -9,6 +9,7 @@
   let selectedAccount = null;
   let revealUserId = null;
   let faculties = [];
+  let managedCenters = [];
   let userPermissions = [];
   const pendingPermissions = new Map();
   const pathUserId = location.pathname.match(/^\/admin\/users\/(\d+)\/?$/)?.[1];
@@ -106,7 +107,8 @@
       }));
       actions.append(actionButton(root.dataset.roles, async () => {
         selectedAccount = await request(`/api/v1/users/${row.id}`);
-        faculties = await request('/api/v1/users/faculties');
+        [faculties, managedCenters] = await Promise.all([request('/api/v1/users/faculties'),
+          request('/api/v1/users/centers')]);
         renderRoles();
         rolesDialog.showModal();
       }));
@@ -290,6 +292,7 @@
   function roleLabel(code) {
     const labels = { Admin: root.dataset.roleAdmin, Quality: root.dataset.roleQuality,
       Dean: root.dataset.roleDean, Member: root.dataset.roleMember,
+      CenterManager: root.dataset.roleCenterManager,
       Instructor: root.dataset.roleInstructor,
       ExternalInstructor: root.dataset.roleExternalInstructor };
     return labels[code] ?? code;
@@ -300,11 +303,13 @@
     selectedAccount.roles.forEach(assignment => {
       const item = document.createElement('li');
       item.className = 'list-group-item d-flex justify-content-between align-items-center gap-2';
-      const faculty = faculties.find(x => x.id === assignment.scopeCenterId);
+      const faculty = assignment.role === 'CenterManager'
+        ? managedCenters.find(x => x.id === assignment.scopeCenterId)
+        : faculties.find(x => x.id === assignment.scopeCenterId);
       const label = document.createElement('span');
       label.textContent = roleLabel(assignment.role) + (faculty ? ` — ${ZuLmsI18n.field(faculty, 'name')}` : '');
       item.append(label);
-      if (['Admin', 'Quality', 'Dean', 'Member'].includes(assignment.role)) {
+      if (['Admin', 'Quality', 'Dean', 'CenterManager', 'Member'].includes(assignment.role)) {
         const remove = actionButton(root.dataset.removeRole, async () => {
           await request(`/api/v1/users/${selectedAccount.id}/roles`, 'PUT',
             { expectedVersion: selectedAccount.version, role: assignment.role,
@@ -319,39 +324,62 @@
     const code = rolesForm.elements.role;
     for (const option of code.options) {
       option.disabled = selectedAccount.accountType === 'Local' && option.value !== 'Admin' ||
-        selectedAccount.accountType === 'ExternalInstructor' && option.value === 'Member';
+        selectedAccount.accountType === 'ExternalInstructor' && ['Member', 'CenterManager'].includes(option.value);
     }
     if (code.selectedOptions[0].disabled) code.value = 'Admin';
-    const facultySelect = rolesForm.elements.scopeCenterId;
-    facultySelect.replaceChildren();
+    renderScopeOptions();
+  }
+  // Dean -> faculty list; center manager -> administrative centers with their current manager.
+  function renderScopeOptions() {
+    const role = rolesForm.elements.role.value;
+    const manager = role === 'CenterManager';
+    const scoped = role === 'Dean' || manager;
+    const scopeSelect = rolesForm.elements.scopeCenterId;
+    const label = document.getElementById('role-scope-label');
+    label.textContent = manager ? label.dataset.center : label.dataset.faculty;
+    scopeSelect.replaceChildren();
     const blank = document.createElement('option');
     blank.value = '';
-    facultySelect.append(blank);
-    faculties.filter(faculty => Number(faculty.id) > 0).forEach(faculty => {
+    scopeSelect.append(blank);
+    const rows = manager ? managedCenters : faculties.filter(faculty => Number(faculty.id) > 0);
+    rows.forEach(row => {
       const option = document.createElement('option');
-      option.value = String(faculty.id);
-      option.textContent = ZuLmsI18n.field(faculty, 'name');
-      facultySelect.append(option);
+      option.value = String(row.id);
+      option.textContent = ZuLmsI18n.field(row, 'name') +
+        (manager && row.managerNameAr ? ` — المدير الحالي: ${row.managerNameAr}` : '');
+      scopeSelect.append(option);
     });
-    facultySelect.disabled = code.value !== 'Dean';
-    facultySelect.required = code.value === 'Dean';
+    scopeSelect.disabled = !scoped;
+    scopeSelect.required = scoped;
+    updateScopeHint();
   }
-  rolesForm.elements.role.addEventListener('change', () => {
-    const dean = rolesForm.elements.role.value === 'Dean';
-    rolesForm.elements.scopeCenterId.disabled = !dean;
-    rolesForm.elements.scopeCenterId.required = dean;
-    if (!dean) rolesForm.elements.scopeCenterId.value = '';
-  });
+  function updateScopeHint() {
+    const hint = document.getElementById('role-scope-hint');
+    hint.textContent = '';
+    if (rolesForm.elements.role.value !== 'CenterManager') return;
+    const center = managedCenters.find(x => String(x.id) === rolesForm.elements.scopeCenterId.value);
+    if (center && center.managerNameAr && center.managerUserId !== selectedAccount?.id)
+      hint.textContent = `سيحلّ محل المدير الحالي (${center.managerNameAr}) — لكل مركز مدير واحد فقط.`;
+  }
+  rolesForm.elements.role.addEventListener('change', renderScopeOptions);
+  rolesForm.elements.scopeCenterId.addEventListener('change', updateScopeHint);
   rolesForm.addEventListener('submit', async event => {
     event.preventDefault();
     if (!selectedAccount) return;
     const role = rolesForm.elements.role.value;
-    const scopeCenterId = role === 'Dean' ? Number(rolesForm.elements.scopeCenterId.value) : null;
+    const scopeCenterId = role === 'Dean' || role === 'CenterManager'
+      ? Number(rolesForm.elements.scopeCenterId.value) : null;
+    if (role === 'CenterManager') {
+      const center = managedCenters.find(x => x.id === scopeCenterId);
+      if (center && center.managerNameAr && center.managerUserId !== selectedAccount.id &&
+        !await ZuLms.ui.confirm(`سيتم استبدال المدير الحالي (${center.managerNameAr}) لـ ${center.nameAr}. متابعة؟`)) return;
+    }
     try {
       clearError();
       await request(`/api/v1/users/${selectedAccount.id}/roles`, 'PUT',
         { expectedVersion: selectedAccount.version, role, scopeCenterId, enabled: true });
       selectedAccount = await request(`/api/v1/users/${selectedAccount.id}`);
+      managedCenters = await request('/api/v1/users/centers');
       renderRoles();
       await load();
     } catch (error) { showError(error); }

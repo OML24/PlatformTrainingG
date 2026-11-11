@@ -10,7 +10,7 @@ public static class ScopeGuard
 
     public static bool AllowsDeanCenterRead(EffectivePermissionSet permissions,
         string permissionKey, long centerId) =>
-        permissions.HasMode(RoleCode.Dean) && permissions.Keys.Contains(permissionKey) &&
+        permissions.IsUnitHead && permissions.Keys.Contains(permissionKey) &&
         permissions.DeanScopeCenterIds.Contains(centerId);
 
     public static bool AllowsQualityManagedCourse(EffectivePermissionSet permissions, bool managedByQuality) =>

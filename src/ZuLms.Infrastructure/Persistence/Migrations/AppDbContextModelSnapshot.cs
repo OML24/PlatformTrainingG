@@ -1516,7 +1516,7 @@ namespace ZuLms.Infrastructure.Persistence.Migrations
 
                     b.ToTable("roles", "zulms_rebuild", t =>
                         {
-                            t.HasCheckConstraint("ck_roles_code", "code IN ('Admin', 'Quality', 'Dean', 'Instructor', 'Member', 'ExternalInstructor')");
+                            t.HasCheckConstraint("ck_roles_code", "code IN ('Admin', 'Quality', 'Dean', 'Instructor', 'Member', 'ExternalInstructor', 'CenterManager')");
                         });
                 });
 
@@ -3593,11 +3593,11 @@ namespace ZuLms.Infrastructure.Persistence.Migrations
                         .HasColumnType("character varying(20)")
                         .HasColumnName("origin");
 
-                    b.Property<DateOnly>("PlannedEndDate")
+                    b.Property<DateOnly?>("PlannedEndDate")
                         .HasColumnType("date")
                         .HasColumnName("planned_end_date");
 
-                    b.Property<DateOnly>("PlannedStartDate")
+                    b.Property<DateOnly?>("PlannedStartDate")
                         .HasColumnType("date")
                         .HasColumnName("planned_start_date");
 

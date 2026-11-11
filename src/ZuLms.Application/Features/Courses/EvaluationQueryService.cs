@@ -114,8 +114,7 @@ public sealed class EvaluationQueryService(IAppDbContext db, IClock clock,
             return Result.Failure("FORBIDDEN");
         var effective = await permissions.GetEffectiveAsync(actorUserId, ct);
         bool admin = effective.HasMode(RoleCode.Admin);
-        if (!admin && !effective.HasMode(RoleCode.Quality))
-            return Result.Failure("FORBIDDEN");
+        if (!admin) return Result.Failure("FORBIDDEN");
         DateTimeOffset now = clock.UtcNow;
         var result = await db.InSerializableTransactionAsync(async () =>
         {

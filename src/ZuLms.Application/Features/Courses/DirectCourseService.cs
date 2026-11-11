@@ -112,7 +112,7 @@ public sealed class DirectCourseService(IAppDbContext db, IClock clock,
                 DeliveryMode = input.DeliveryMode,
                 ObjectivesAr = input.ObjectivesAr.Trim(),
                 ObjectivesEn = Clean(input.ObjectivesEn),
-                TargetAudienceAr = input.TargetAudienceAr.Trim(),
+                TargetAudienceAr = input.TargetAudienceAr?.Trim() ?? string.Empty,
                 TargetAudienceEn = Clean(input.TargetAudienceEn),
                 TotalHours = input.TotalHours,
                 PlannedStartDate = input.PlannedStartDate,
@@ -123,7 +123,7 @@ public sealed class DirectCourseService(IAppDbContext db, IClock clock,
                 AudienceType = input.AudienceType,
                 TargetCenterId = input.AudienceType == AudienceType.Faculty
                     ? input.TargetCenterId : null,
-                RegistrationDeadline = input.RegistrationDeadline,
+                RegistrationDeadline = input.IsHistorical ? null : input.RegistrationDeadline,
                 MaxParticipants = input.MaxParticipants,
                 // A historical result is the authoritative attendance/exam decision.
                 HasExam = input.IsHistorical ? false : input.HasExam,
@@ -273,13 +273,16 @@ public sealed class DirectCourseService(IAppDbContext db, IClock clock,
         if (string.IsNullOrWhiteSpace(input.TitleAr) || input.TitleAr.Trim().Length > 300 ||
             input.TitleEn?.Trim().Length > 300 ||
             string.IsNullOrWhiteSpace(input.ObjectivesAr) ||
-            string.IsNullOrWhiteSpace(input.TargetAudienceAr) ||
             input.TotalHours <= 0 || input.TotalHours > 9999.99m ||
             decimal.Round(input.TotalHours, 2) != input.TotalHours ||
-            input.PlannedStartDate == default ||
-            input.PlannedEndDate < input.PlannedStartDate ||
             !Enum.IsDefined(input.DeliveryMode) || !Enum.IsDefined(input.AudienceType) ||
             !Enum.IsDefined(input.InstructorChoice) || input.MaxParticipants is <= 0)
+            return "COURSE_INVALID";
+        if (!input.IsHistorical &&
+            (!input.PlannedStartDate.HasValue || !input.PlannedEndDate.HasValue ||
+             input.PlannedEndDate < input.PlannedStartDate) ||
+            input.IsHistorical && input.PlannedStartDate.HasValue && input.PlannedEndDate.HasValue &&
+            input.PlannedEndDate < input.PlannedStartDate)
             return "COURSE_INVALID";
         DateOnly today = DateOnly.FromDateTime(TimeZoneInfo.ConvertTime(clock.UtcNow,
             TimeZoneInfo.FindSystemTimeZoneById("Asia/Amman")).DateTime);
@@ -291,15 +294,16 @@ public sealed class DirectCourseService(IAppDbContext db, IClock clock,
             input.IsHistorical && input.HistoricalEvaluationRequired &&
             input.EvaluationEndDate < today)
             return "COURSE_DATE_PAST";
-        if (input.RegistrationDeadline is { } deadline &&
+        if (!input.IsHistorical && input.RegistrationDeadline is { } deadline &&
             DateOnly.FromDateTime(TimeZoneInfo.ConvertTime(deadline,
-                TimeZoneInfo.FindSystemTimeZoneById("Asia/Amman")).DateTime) >= input.PlannedStartDate)
+                TimeZoneInfo.FindSystemTimeZoneById("Asia/Amman")).DateTime) >= input.PlannedStartDate!.Value)
             return "REGISTRATION_DEADLINE_INVALID";
-        if (input.EvaluationEndDate is { } evaluationEnd && evaluationEnd < input.PlannedEndDate)
+        if (input.EvaluationEndDate is { } evaluationEnd && input.PlannedEndDate is { } plannedEnd &&
+            evaluationEnd < plannedEnd)
             return "EVALUATION_END_INVALID";
         if (input.IsHistorical)
         {
-            if (input.PlannedEndDate >= today)
+            if (input.PlannedStartDate >= today || input.PlannedEndDate >= today)
                 return "HISTORICAL_DATE_REQUIRED";
             var historical = input.HistoricalParticipants;
             if (input.AudienceType is not (AudienceType.Faculty or AudienceType.Administrative) ||

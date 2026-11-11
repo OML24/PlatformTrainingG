@@ -17,7 +17,7 @@ public sealed record CourseDirectoryLookupsDto(
     IReadOnlyList<DeanCenterOptionDto> Faculties,
     IReadOnlyList<TrackOptionDto> Tracks);
 
-public enum CourseDirectoryView { Auto, All, Dean, Instructor, Member }
+public enum CourseDirectoryView { Auto, All, Dean, Instructor, Member, Available }
 
 public sealed record CourseDirectoryFilter(
     CourseDirectoryView View, string? Search, CourseStatus? Status,
@@ -28,8 +28,8 @@ public sealed record CourseDirectoryFilter(
 public sealed record CourseDirectoryRowDto(long Id, string CourseNo,
     string TitleAr, string? TitleEn, CourseStatus Status,
     CourseOrigin Origin, string? CenterNameAr, string TrackNameAr,
-    string InstructorNameAr, DateOnly PlannedStartDate,
-    DateOnly PlannedEndDate, bool IsHistorical, bool IsActive,
+    string InstructorNameAr, DateOnly? PlannedStartDate,
+    DateOnly? PlannedEndDate, bool IsHistorical, bool IsActive,
     bool IsArchived, int ParticipantsCount, uint Version);
 
 public sealed record CourseDirectoryPageDto(int Page, int PageSize,

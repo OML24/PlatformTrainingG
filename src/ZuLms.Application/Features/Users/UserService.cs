@@ -75,6 +75,26 @@ public sealed class UserService(IAppDbContext db, IClock clock, IPermissionServi
         return Result<IReadOnlyList<UserPermissionDto>>.Success(rows);
     }
 
+    /// <summary>Non-faculty centers/departments that can get a center manager, with the current manager.</summary>
+    public async Task<Result<IReadOnlyList<ManagedCenterOptionDto>>> ListManagedCentersAsync(long actorUserId,
+        CancellationToken ct)
+    {
+        if (!await permissions.HasAsync(actorUserId, "user.roles.assign", ct))
+            return Result<IReadOnlyList<ManagedCenterOptionDto>>.Failure("FORBIDDEN");
+        var managers = await db.UserRoles.AsNoTracking()
+            .Where(x => x.IsActive && x.ScopeCenterId != null && x.Role!.Code == RoleCode.CenterManager &&
+                x.User!.IsActive)
+            .Select(x => new { CenterId = x.ScopeCenterId!.Value, x.UserId, x.User!.FullNameAr })
+            .ToListAsync(ct);
+        var rows = await db.Centers.AsNoTracking().Where(x => !x.IsFaculty && x.IsActive)
+            .OrderBy(x => x.NameAr).Select(x => new { x.Id, x.NameAr, x.NameEn }).ToListAsync(ct);
+        return Result<IReadOnlyList<ManagedCenterOptionDto>>.Success(rows.Select(x =>
+        {
+            var manager = managers.FirstOrDefault(m => m.CenterId == x.Id);
+            return new ManagedCenterOptionDto(x.Id, x.NameAr, x.NameEn, manager?.UserId, manager?.FullNameAr);
+        }).ToList());
+    }
+
     public async Task<Result<IReadOnlyList<FacultyOptionDto>>> ListFacultiesAsync(long actorUserId,
         CancellationToken ct)
     {
@@ -311,6 +331,13 @@ public sealed class UserService(IAppDbContext db, IClock clock, IPermissionServi
                 if (scopeCenterId is null || !await db.Centers.AnyAsync(x => x.Id == scopeCenterId && x.IsFaculty, ct))
                     return Result.Failure("DEAN_FACULTY_REQUIRED");
             }
+            else if (roleCode == RoleCode.CenterManager)
+            {
+                if (scopeCenterId is null || !await db.Centers.AnyAsync(x =>
+                        x.Id == scopeCenterId && !x.IsFaculty && x.IsActive, ct))
+                    return Result.Failure("MANAGER_CENTER_REQUIRED");
+                if (user.AccountType != AccountType.Employee) return Result.Failure("ROLE_NOT_ASSIGNABLE");
+            }
             else if (scopeCenterId is not null) return Result.Failure("ROLE_SCOPE_INVALID");
             if (user.AccountType == AccountType.ExternalInstructor && roleCode == RoleCode.Member)
                 return Result.Failure("ROLE_NOT_ASSIGNABLE");
@@ -321,6 +348,22 @@ public sealed class UserService(IAppDbContext db, IClock clock, IPermissionServi
             if (enabled && assignment is not null || !enabled && assignment is null) return Result.Success();
             if (!enabled && roleCode == RoleCode.Admin && await IsLastAdminAsync(targetUserId, ct))
                 return Result.Failure("LAST_ADMIN");
+            var replacedManagers = new List<long>();
+            if (enabled && roleCode == RoleCode.CenterManager)
+            {
+                // One manager per center: the new assignment replaces the previous manager.
+                var previous = await db.UserRoles.Where(x => x.RoleId == role.Id &&
+                    x.ScopeCenterId == scopeCenterId && x.IsActive && x.UserId != targetUserId).ToListAsync(ct);
+                foreach (var old in previous)
+                {
+                    old.IsActive = false;
+                    old.RevokedAt = clock.UtcNow;
+                    old.RevokedBy = actorUserId;
+                    replacedManagers.Add(old.UserId);
+                    var oldUser = await db.Users.IgnoreQueryFilters().SingleOrDefaultAsync(x => x.Id == old.UserId, ct);
+                    if (oldUser is not null) oldUser.SecurityStamp = Guid.NewGuid();
+                }
+            }
             if (enabled)
                 db.UserRoles.Add(new UserRole
                 {
@@ -341,10 +384,11 @@ public sealed class UserService(IAppDbContext db, IClock clock, IPermissionServi
             await audit.LogAsync(new AuditEntry(AuditCategory.Permission, "user.roles.assign",
                 "تعديل دور مستخدم", "User role changed", "User", user.Id, user.FullNameAr,
                 BeforeJson: JsonSerializer.Serialize(new { role = roleCode.ToString(), enabled = !enabled, scopeCenterId }),
-                AfterJson: JsonSerializer.Serialize(new { role = roleCode.ToString(), enabled, scopeCenterId }),
+                AfterJson: JsonSerializer.Serialize(new { role = roleCode.ToString(), enabled, scopeCenterId, replacedManagers }),
                 ActorUserId: actorUserId), ct);
             await db.SaveChangesAsync(ct);
             Invalidate(user.Id);
+            foreach (long replaced in replacedManagers) Invalidate(replaced);
             return Result.Success();
         }, ct);
     }

@@ -15,7 +15,7 @@ public interface ICourseProposalService
 
 public sealed record CourseProposalInput(
     string TitleAr, string? TitleEn, long TrackId, DeliveryMode DeliveryMode,
-    string ObjectivesAr, string? ObjectivesEn, string TargetAudienceAr,
+    string ObjectivesAr, string? ObjectivesEn, string? TargetAudienceAr,
     string? TargetAudienceEn, decimal TotalHours, DateOnly PlannedStartDate,
     DateOnly PlannedEndDate, AudienceType AudienceType,
     DateTimeOffset? RegistrationDeadline, int? MaxParticipants, bool HasExam,

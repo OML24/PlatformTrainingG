@@ -7,6 +7,7 @@ public enum RoleCode
     Dean,
     Instructor,
     Member,
-    ExternalInstructor
+    ExternalInstructor,
+    CenterManager
 }
 

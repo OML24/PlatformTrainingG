@@ -248,7 +248,7 @@ public sealed class FileUploadService(IAppDbContext db, IClock clock,
                 if (await db.TrainingNeeds.AsNoTracking().AnyAsync(x => x.LetterFileId == fileId &&
                     (effective.HasMode(RoleCode.Admin) || effective.HasMode(RoleCode.Quality)) &&
                     effective.Keys.Contains("need.review"), ct)) return true;
-                return effective.HasMode(RoleCode.Dean) && effective.Keys.Contains("need.submit") &&
+                return effective.IsUnitHead && effective.Keys.Contains("need.submit") &&
                     await db.TrainingNeeds.AsNoTracking().AnyAsync(x => x.LetterFileId == fileId &&
                         effective.DeanScopeCenterIds.Contains(x.CenterId), ct);
 
@@ -288,7 +288,7 @@ public sealed class FileUploadService(IAppDbContext db, IClock clock,
         if (linked && effective.HasMode(RoleCode.Quality) &&
             effective.Keys.Contains("page.quality.courses") &&
             await courses.AnyAsync(x => x.ManagedByQuality, ct)) return true;
-        if (linked && effective.HasMode(RoleCode.Dean) && effective.Keys.Contains("course.propose") &&
+        if (linked && effective.IsUnitHead && effective.Keys.Contains("course.propose") &&
             await courses.AnyAsync(x =>
                 x.ProposingCenterId != null && effective.DeanScopeCenterIds.Contains(x.ProposingCenterId.Value) ||
                 x.TargetCenterId != null && effective.DeanScopeCenterIds.Contains(x.TargetCenterId.Value), ct))
@@ -324,7 +324,7 @@ public sealed class FileUploadService(IAppDbContext db, IClock clock,
             impactCourse.ManagedByQuality);
         return effective.HasMode(RoleCode.Admin) ||
             !deanDestination && effective.HasMode(RoleCode.Quality) ||
-            deanDestination && effective.HasMode(RoleCode.Dean) &&
+            deanDestination && effective.IsUnitHead &&
             impactCourse.ProposingCenterId is long centerId &&
             effective.DeanScopeCenterIds.Contains(centerId);
     }
@@ -343,7 +343,7 @@ public sealed class FileUploadService(IAppDbContext db, IClock clock,
               x.Course.InstructorUser.Employee != null &&
               x.Course.InstructorUser.Employee.EmpStatus == UniversityOrganizationRules.ActiveEmployeeStatus)), ct))
             return true;
-        if (!effective.HasMode(RoleCode.Dean) ||
+        if (!effective.IsUnitHead ||
             !effective.Keys.Contains("certificates.view.faculty")) return false;
         return await db.Certificates.AsNoTracking().AnyAsync(x => x.PdfFileId == fileId &&
             x.User != null && x.User.Employee != null &&

@@ -34,8 +34,7 @@ public sealed class CourseInstructorEditService(IAppDbContext db, IClock clock,
         CancellationToken ct)
     {
         var access = await permissions.GetEffectiveAsync(actorUserId, ct);
-        if (!access.Keys.Contains("course.edit") ||
-            !access.HasMode(RoleCode.Admin) && !access.HasMode(RoleCode.Quality))
+        if (!access.Keys.Contains("course.edit") || !access.HasMode(RoleCode.Admin))
             return Result<IReadOnlyList<InstructorOptionDto>>.Failure("FORBIDDEN");
         if (search?.Length > 100)
             return Result<IReadOnlyList<InstructorOptionDto>>.Failure("QUERY_INVALID");
@@ -67,8 +66,7 @@ public sealed class CourseInstructorEditService(IAppDbContext db, IClock clock,
     {
         var access = await permissions.GetEffectiveAsync(actorUserId, ct);
         bool admin = access.HasMode(RoleCode.Admin);
-        if (!access.Keys.Contains("course.edit") ||
-            !admin && !access.HasMode(RoleCode.Quality))
+        if (!access.Keys.Contains("course.edit") || !admin)
             return Result.Failure("FORBIDDEN");
         if (!Enum.IsDefined(input.Choice)) return Result.Failure("INSTRUCTOR_INVALID");
         bool account = input.Choice is CourseInstructorChoice.Internal or

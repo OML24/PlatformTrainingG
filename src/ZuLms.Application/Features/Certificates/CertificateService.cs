@@ -88,7 +88,9 @@ public sealed class CertificateService(IAppDbContext db, IClock clock,
             .Where(x => x.CourseId == courseId && x.IsActive)
             .Select(x => x.StartsAt).ToListAsync(ct);
         string periodText = bounds.Count == 0
-            ? $"{course.PlannedStartDate:dd/MM/yyyy} – {course.PlannedEndDate:dd/MM/yyyy}"
+            ? course.PlannedStartDate is { } start && course.PlannedEndDate is { } end
+                ? $"{start:dd/MM/yyyy} – {end:dd/MM/yyyy}"
+                : "—"
             : $"{TimeZoneInfo.ConvertTime(bounds.Min(), clock.Amman):dd/MM/yyyy} – {TimeZoneInfo.ConvertTime(bounds.Max(), clock.Amman):dd/MM/yyyy}";
 
         string verifyBase = await CertificateVerificationUrl.BaseAsync(settings, ct);
@@ -372,7 +374,7 @@ public sealed class CertificateService(IAppDbContext db, IClock clock,
         var effective = await permissions.GetEffectiveAsync(actorUserId, ct);
         bool all = (effective.HasMode(RoleCode.Admin) || effective.HasMode(RoleCode.Quality)) &&
             effective.Keys.Contains("certificates.view.all");
-        bool faculty = !all && effective.HasMode(RoleCode.Dean) &&
+        bool faculty = !all && effective.IsUnitHead &&
             effective.Keys.Contains("certificates.view.faculty");
         if (!all && !faculty) return Result<CertificatePageDto>.Failure("FORBIDDEN");
         var scope = all ? null : effective.DeanScopeCenterIds.Cast<long?>().ToList();

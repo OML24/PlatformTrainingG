@@ -94,6 +94,6 @@ public sealed class TabSessionMiddleware(RequestDelegate next)
         path.StartsWithSegments("/fonts") || path.StartsWithSegments("/img") ||
         path.Value?.EndsWith(".styles.css", StringComparison.OrdinalIgnoreCase) == true;
 
-    private static bool IsPublicPage(PathString path) => path == "/login" || path == "/forgot-password" ||
+    private static bool IsPublicPage(PathString path) => path == "/login" ||
         path == "/verify" || path == "/access-denied" || path == "/Error" || path == "/health";
 }

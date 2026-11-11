@@ -19,15 +19,13 @@
     <div class="row g-3">
       <div class="col-md-6"><label for="d-objectives-ar" class="form-label">الأهداف بالعربية</label><textarea id="d-objectives-ar" class="form-control" required></textarea></div>
       <div class="col-md-6"><label for="d-objectives-en" class="form-label">الأهداف بالإنجليزية</label><textarea id="d-objectives-en" class="form-control"></textarea></div>
-      <div class="col-md-6"><label for="d-target-ar" class="form-label">الفئة المستهدفة بالعربية</label><textarea id="d-target-ar" class="form-control" required></textarea></div>
-      <div class="col-md-6"><label for="d-target-en" class="form-label">الفئة المستهدفة بالإنجليزية</label><textarea id="d-target-en" class="form-control"></textarea></div>
     </div></section>
     <section class="direct-course-section">
     <h2><i class="ti ti-calendar" aria-hidden="true"></i> المواعيد</h2>
     <div class="row g-3">
       <div class="col-md-3"><label for="d-hours" class="form-label">الساعات</label><input id="d-hours" class="form-control" type="number" min="0.01" max="9999.99" step="0.01" required></div>
-       <div class="col-md-3"><label for="d-start" class="form-label">البداية</label><input id="d-start" class="form-control zu-date" type="text" inputmode="numeric" required></div>
-       <div class="col-md-3"><label for="d-end" class="form-label">النهاية</label><input id="d-end" class="form-control zu-date" type="text" inputmode="numeric" required></div>
+       <div class="col-md-3"><label for="d-start" class="form-label">البداية@(historicalOnly ? " (اختياري)" : "")</label><input id="d-start" class="form-control zu-date" type="text" inputmode="numeric" required="@(historicalOnly ? null : "required")"></div>
+       <div class="col-md-3"><label for="d-end" class="form-label">النهاية@(historicalOnly ? " (اختياري)" : "")</label><input id="d-end" class="form-control zu-date" type="text" inputmode="numeric" required="@(historicalOnly ? null : "required")"></div>
         @if (historicalOnly) {
           <div class="col-md-3"><label class="form-check mt-4"><input id="d-historical-evaluation-required" class="form-check-input" type="checkbox"> التقييم مطلوب قبل إصدار الشهادة</label></div>
         }
@@ -38,7 +36,9 @@
     <div class="row g-3">
       <div class="col-md-4"><label for="d-audience" class="form-label">نوع المشاركين</label><select id="d-audience" class="form-select"><option value="General">عام</option><option value="Faculty">كلية محددة</option><option value="Administrative">الإداريون</option><option value="Named">أسماء محددة</option></select></div>
       <div class="col-md-4 d-none" id="d-target-center-wrap"><label for="d-target-center" class="form-label">كلية المشاركين</label><select id="d-target-center" class="form-select"></select></div>
-       <div class="col-md-4"><label for="d-deadline" class="form-label">آخر موعد للتسجيل</label><input id="d-deadline" class="form-control zu-datetime" type="text" inputmode="numeric"></div>
+      @if (!historicalOnly) {
+        <div class="col-md-4"><label for="d-deadline" class="form-label">آخر موعد للتسجيل</label><input id="d-deadline" class="form-control zu-datetime" type="text" inputmode="numeric"></div>
+      }
       <div class="col-md-4"><label for="d-max" class="form-label">الحد الأعلى للمشاركين</label><input id="d-max" class="form-control" type="number" min="1"></div>
       @if (!historicalOnly) {
         <div class="col-md-4"><label class="form-check mt-4"><input id="d-exam" class="form-check-input" type="checkbox"> تتضمن امتحاناً</label></div>
@@ -68,6 +68,8 @@
       <section class="card card-body mt-4 border-primary-subtle">
         <h2 class="h5">المشاركون ونتيجة الدورة</h2>
         <p class="text-muted">قرار الجودة أو الأدمن هو النتيجة النهائية: الناجح مستوفٍ ضمنياً للحضور والامتحان، وغير الناجح غير مستحق. لا تُنشأ محاضرات أو امتحانات للدورة السابقة. إذا اخترت أن التقييم مطلوب، يبقى هو الشرط الوحيد قبل إصدار الشهادة.</p>
+        <label for="d-historical-search" class="form-label">بحث عن مشارك</label>
+        <input id="d-historical-search" class="form-control mb-3" type="search" autocomplete="off" placeholder="ابحث بالاسم أو رقم الدخول">
         <div id="d-historical-employees" class="table-responsive">
           <table class="table table-striped align-middle"><thead><tr><th>إضافة</th><th>العضو</th><th>رقم الدخول</th><th>الحالة</th></tr></thead><tbody id="d-historical-rows"><tr><td colspan="4" class="text-muted">اختر كلية المشاركين.</td></tr></tbody></table>
         </div>

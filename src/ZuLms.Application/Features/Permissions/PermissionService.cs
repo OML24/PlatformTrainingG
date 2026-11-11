@@ -25,14 +25,22 @@ public sealed class PermissionService(IAppDbContext db, IActiveModeAccessor acti
             roleIds.Add(await db.Roles.Where(x => x.Code == RoleCode.Instructor).Select(x => x.Id).SingleAsync(ct));
         if (user.AccountType == AccountType.ExternalInstructor)
             roleIds.Add(await db.Roles.Where(x => x.Code == RoleCode.ExternalInstructor).Select(x => x.Id).SingleAsync(ct));
-        var roles = await db.Roles.AsNoTracking().Where(x => roleIds.Contains(x.Id)).Select(x => x.Code).ToListAsync(ct);
-        var scopes = assignments.Where(x => x.ScopeCenterId.HasValue).Select(x => x.ScopeCenterId!.Value).ToHashSet();
+        var roleCodes = await db.Roles.AsNoTracking().Where(x => roleIds.Contains(x.Id))
+            .Select(x => new { x.Id, x.Code }).ToListAsync(ct);
+        var roles = roleCodes.Select(x => x.Code).ToList();
+        long? managerRoleId = roleCodes.Where(x => x.Code == RoleCode.CenterManager).Select(x => (long?)x.Id).FirstOrDefault();
+        // Center-manager scopes are kept apart so a person who is both dean and manager
+        // never sees the manager's center while acting as dean (and vice versa).
+        var managerScopes = assignments.Where(x => x.ScopeCenterId.HasValue && x.RoleId == managerRoleId)
+            .Select(x => x.ScopeCenterId!.Value).ToHashSet();
+        var scopes = assignments.Where(x => x.ScopeCenterId.HasValue && x.RoleId != managerRoleId)
+            .Select(x => x.ScopeCenterId!.Value).ToHashSet();
         if (scopes.Count == 0 && user.EmployeeId.HasValue)
         {
             long? center = await db.Employees.Where(x => x.Id == user.EmployeeId).Select(x => x.CenterId).SingleOrDefaultAsync(ct);
             if (center.HasValue) scopes.Add(center.Value);
         }
-        return new(userId, user.AccountType, roles.ToHashSet(), scopes, true);
+        return new(userId, user.AccountType, roles.ToHashSet(), scopes, true, managerScopes);
     }
 
     public async Task<EffectivePermissionSet> GetEffectiveAsync(long userId, CancellationToken ct)
@@ -51,7 +59,9 @@ public sealed class PermissionService(IAppDbContext db, IActiveModeAccessor acti
             .Where(x => valid.Keys.Contains(x.PermissionId)).Select(x => new { x.PermissionId, x.Mode }).ToListAsync(ct);
         var effectiveOverrides = overrides.Select(x => (valid[x.PermissionId], x.Mode));
         var keys = PermissionSetRules.ForMode(mode.Value, granted, effectiveOverrides, account.AccountType);
-        var scopes = mode == RoleCode.Dean ? account.DeanScopeCenterIds : new HashSet<long>();
+        IReadOnlySet<long> scopes = mode == RoleCode.Dean ? account.DeanScopeCenterIds
+            : mode == RoleCode.CenterManager ? account.ManagerScopeCenterIds ?? new HashSet<long>()
+            : new HashSet<long>();
         var result = new EffectivePermissionSet(userId, mode, new HashSet<RoleCode> { mode.Value }, keys, scopes);
         cache[(userId, mode)] = result;
         return result;

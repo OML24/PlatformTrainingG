@@ -4,7 +4,12 @@
 @{ ViewData["Title"] = "محاضرات الدورة"; }
 <div class="container py-4" id="lectures-page" data-course-id="@RouteData.Values["courseId"]"
      data-validation-error="@T["Lectures.ValidationError"]" data-error="@T["Lectures.Error"]">
-  <h1>محاضرات الدورة</h1>
+  <div class="lectures-page-head d-flex flex-wrap align-items-center justify-content-between gap-3 mb-3">
+    <h1 class="mb-0">محاضرات الدورة</h1>
+    <button id="lectures-finish" type="button" class="btn btn-danger lectures-finish-btn" title="بعد الإنهاء لن تتمكن من إضافة محاضرات جديدة">
+      <i class="ti ti-flag-check" aria-hidden="true"></i> إنهاء الدورة
+    </button>
+  </div>
   <div id="lectures-error" class="alert alert-danger d-none" role="alert"></div>
   <div id="lectures-success" class="alert alert-success d-none" role="status"></div>
   <div id="lectures-code" class="alert alert-info d-none" role="status"></div>
@@ -24,7 +29,6 @@
   </form>
   <h2 class="h5">المحاضرات</h2>
   <div class="table-responsive"><table class="table table-striped"><thead><tr><th>العنوان</th><th>النمط</th><th>البداية</th><th>النهاية</th><th>المكان أو الرابط</th><th></th></tr></thead><tbody id="lectures-rows"></tbody></table></div>
-  <button id="lectures-finish" type="button" class="btn btn-outline-danger mt-2">إنهاء الدورة</button>
   <section id="lectures-roster-section" class="card card-body mt-4 d-none">
     <h2 id="lectures-roster-title" class="h5">كشف الحضور</h2>
     <div class="mb-3"><label for="lectures-roster-reason" class="form-label">سبب التعديل (اختياري)</label><input id="lectures-roster-reason" class="form-control" maxlength="1000" /></div>

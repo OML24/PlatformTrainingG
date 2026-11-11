@@ -1,8 +1,49 @@
 @page "/instructor/courses/{courseId:long}/participants"
 @{ ViewData["Title"] = "استحقاق المشاركين"; }
-<div class="container py-4" id="instructor-progress-page" data-course-id="@RouteData.Values["courseId"]">
-  <h1>استحقاق المشاركين</h1>
+@* Redesign: summary cards + PDF export (docs/FRONTEND-REDESIGN.md). Original ids kept. *@
+<div class="container py-2 zs" id="instructor-progress-page" data-course-id="@RouteData.Values["courseId"]">
+  <header class="zs-head">
+    <div class="zs-head-text">
+      <h1 id="ip-title">استحقاق المشاركين</h1>
+      <p><span id="ip-course">—</span></p>
+    </div>
+    <div class="zs-head-actions">
+      <button type="button" class="zs-head-btn zs-head-primary" id="ip-export" disabled><i class="ti ti-file-download" aria-hidden="true"></i><span>تنزيل PDF</span></button>
+    </div>
+  </header>
   <div id="instructor-progress-error" class="alert alert-danger d-none" role="alert"></div>
-  <div class="table-responsive"><table class="table table-striped"><thead><tr><th>المشارك</th><th>الحضور</th><th>النسبة</th><th>الامتحان</th><th>الاستبيان</th><th>الأثر</th><th>الاستحقاق</th><th>الشهادة</th></tr></thead><tbody id="instructor-progress-rows"></tbody></table></div>
+
+  <div class="zs-kpis" aria-live="polite">
+    <div class="zs-kpi" data-tone="navy">
+      <div class="zs-kpi-main"><span class="zs-kpi-label">المشاركون</span><div class="kpi-value" id="ip-total">—</div></div>
+      <span class="zs-kpi-icon"><i class="ti ti-users" aria-hidden="true"></i></span>
+      <div class="zs-kpi-foot"><span class="zs-trend-note" id="ip-total-note"></span></div>
+    </div>
+    <div class="zs-kpi" data-tone="teal">
+      <div class="zs-kpi-main"><span class="zs-kpi-label">المستحقون للشهادة</span><div class="kpi-value" id="ip-eligible">—</div></div>
+      <span class="zs-kpi-icon"><i class="ti ti-certificate" aria-hidden="true"></i></span>
+      <div class="zs-kpi-foot"><span class="zs-meter" aria-hidden="true"><i id="ip-eligible-bar"></i></span><span class="zs-trend-note" id="ip-eligible-note"></span></div>
+    </div>
+    <div class="zs-kpi" data-tone="gold">
+      <div class="zs-kpi-main"><span class="zs-kpi-label">متوسط الحضور</span><div class="kpi-value"><span id="ip-attendance">—</span><small>%</small></div></div>
+      <span class="zs-kpi-icon"><i class="ti ti-calendar-check" aria-hidden="true"></i></span>
+      <div class="zs-kpi-foot"><span class="zs-meter" aria-hidden="true"><i id="ip-attendance-bar"></i></span><span class="zs-trend-note" id="ip-attendance-note"></span></div>
+    </div>
+    <div class="zs-kpi" data-tone="sky">
+      <div class="zs-kpi-main"><span class="zs-kpi-label">أكملوا الاستبيان</span><div class="kpi-value" id="ip-survey">—</div></div>
+      <span class="zs-kpi-icon"><i class="ti ti-clipboard-check" aria-hidden="true"></i></span>
+      <div class="zs-kpi-foot"><span class="zs-trend-note" id="ip-survey-note"></span></div>
+    </div>
+  </div>
+
+  <section class="zs-panel zs-recent" aria-labelledby="ip-h-list">
+    <div class="zs-panel-head">
+      <span class="zs-panel-icon"><i class="ti ti-list-details" aria-hidden="true"></i></span>
+      <div class="zs-panel-title"><h2 id="ip-h-list">قائمة المشاركين</h2><span class="zs-panel-sub">الحضور والامتحان والاستبيان والاستحقاق لكل مشارك</span></div>
+    </div>
+    <div class="zs-recent-body">
+      <div class="table-responsive"><table class="table table-striped"><thead><tr><th>المشارك</th><th>الحضور</th><th>النسبة</th><th>الامتحان</th><th>الاستبيان</th><th>الأثر</th><th>الاستحقاق</th><th>الشهادة</th></tr></thead><tbody id="instructor-progress-rows"></tbody></table></div>
+    </div>
+  </section>
 </div>
 @section Scripts { <script src="~/js/instructor-progress.js" asp-append-version="true"></script> }

@@ -13,6 +13,7 @@ public static class ContextEndpoints
         (RoleCode.Admin, "/admin/dashboard"),
         (RoleCode.Quality, "/quality/dashboard"),
         (RoleCode.Dean, "/dean/dashboard"),
+        (RoleCode.CenterManager, "/dean/dashboard"),
         (RoleCode.Instructor, "/instructor/courses"),
         (RoleCode.Member, "/member/dashboard"),
         (RoleCode.ExternalInstructor, "/instructor/courses")

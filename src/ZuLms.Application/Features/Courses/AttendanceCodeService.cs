@@ -1,3 +1,4 @@
+using System.Text.Json;
 using System.Security.Cryptography;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
@@ -60,6 +61,7 @@ public sealed class AttendanceCodeService(IAppDbContext db, IClock clock,
             var record = await db.AttendanceRecords.SingleOrDefaultAsync(x =>
                 x.LectureId == lectureId && x.ParticipantId == participant.Id, ct);
             bool? previous = record?.IsPresent;
+            AttendanceSource? previousSource = record?.Source;
             if (record is null)
             {
                 record = new AttendanceRecord
@@ -84,10 +86,28 @@ public sealed class AttendanceCodeService(IAppDbContext db, IClock clock,
                 attempt.WrongCount = 0; attempt.LockedUntil = null;
                 attempt.LastAttemptAt = now;
             }
+            string memberName = await db.Users.AsNoTracking()
+                .Where(x => x.Id == actorId).Select(x => x.FullNameAr)
+                .SingleOrDefaultAsync(ct) ?? string.Empty;
+            string lectureLabel = lecture.TitleAr ?? lecture.Course.TitleAr;
+            // The member scanned/entered the code after staff had marked them absent manually.
+            bool overridesManualAbsence = previous == false &&
+                previousSource == AttendanceSource.Manual;
             await audit.LogAsync(new AuditEntry(AuditCategory.Attendance,
-                "attendance.enter_code", "إدخال كود حضور",
-                "Attendance code entered", "Lecture", lectureId,
-                lecture.TitleAr ?? lecture.Course.TitleAr,
+                overridesManualAbsence ? "attendance.code_after_manual_absent" : "attendance.enter_code",
+                overridesManualAbsence
+                    ? $"سجّل {memberName} حضوره بالباركود/الكود رغم تسجيله غائبًا يدويًا — {lectureLabel} ({lecture.Course.TitleAr})"
+                    : $"سجّل {memberName} حضوره بالباركود/الكود — {lectureLabel} ({lecture.Course.TitleAr})",
+                overridesManualAbsence
+                    ? "Attendance code entered after manual absence"
+                    : "Attendance code entered", "Lecture", lectureId,
+                lectureLabel, CourseId: lecture.CourseId,
+                AfterJson: JsonSerializer.Serialize(new
+                {
+                    participantId = participant.Id, memberName, previous,
+                    previousSource = previousSource?.ToString(), isPresent = true,
+                    source = "Code"
+                }),
                 ActorUserId: actorId), ct);
             await db.SaveChangesAsync(ct);
             return Result.Success();

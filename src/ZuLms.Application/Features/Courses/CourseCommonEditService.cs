@@ -10,7 +10,7 @@ namespace ZuLms.Application.Features.Courses;
 
 public sealed record CourseCommonEditInput(uint ExpectedVersion, string TitleAr,
     string? TitleEn, string ObjectivesAr, string? ObjectivesEn,
-    string TargetAudienceAr, string? TargetAudienceEn, decimal TotalHours,
+    string? TargetAudienceAr, string? TargetAudienceEn, decimal TotalHours,
     DateOnly PlannedStartDate, DateOnly PlannedEndDate, int? MaxParticipants,
     long TrackId, DeliveryMode DeliveryMode, AudienceType AudienceType,
     long? TargetCenterId, DateTimeOffset? RegistrationDeadline);
@@ -28,13 +28,12 @@ public sealed class CourseCommonEditService(IAppDbContext db, IClock clock,
         CourseCommonEditInput input, CancellationToken ct)
     {
         var access = await permissions.GetEffectiveAsync(actorUserId, ct);
-        if (!access.Keys.Contains("course.edit") ||
-            !access.HasMode(RoleCode.Admin) && !access.HasMode(RoleCode.Quality))
+        // Editing an existing course is Admin-only; Quality cannot change it.
+        if (!access.Keys.Contains("course.edit") || !access.HasMode(RoleCode.Admin))
             return Result.Failure("FORBIDDEN");
         if (string.IsNullOrWhiteSpace(input.TitleAr) || input.TitleAr.Trim().Length > 300 ||
             input.TitleEn?.Trim().Length > 300 ||
             string.IsNullOrWhiteSpace(input.ObjectivesAr) ||
-            string.IsNullOrWhiteSpace(input.TargetAudienceAr) ||
             input.TotalHours <= 0 || input.TotalHours > 9999.99m ||
             decimal.Round(input.TotalHours, 2) != input.TotalHours ||
             input.PlannedStartDate == default ||
@@ -86,8 +85,9 @@ public sealed class CourseCommonEditService(IAppDbContext db, IClock clock,
             course.TitleEn = input.TitleEn?.Trim();
             course.ObjectivesAr = input.ObjectivesAr.Trim();
             course.ObjectivesEn = input.ObjectivesEn?.Trim();
-            course.TargetAudienceAr = input.TargetAudienceAr.Trim();
-            course.TargetAudienceEn = input.TargetAudienceEn?.Trim();
+            // Target audience is no longer collected in the UI; keep the stored value unless supplied.
+            if (input.TargetAudienceAr is not null) course.TargetAudienceAr = input.TargetAudienceAr.Trim();
+            if (input.TargetAudienceEn is not null) course.TargetAudienceEn = input.TargetAudienceEn.Trim();
             course.TotalHours = input.TotalHours;
             course.PlannedStartDate = input.PlannedStartDate;
             course.PlannedEndDate = input.PlannedEndDate;

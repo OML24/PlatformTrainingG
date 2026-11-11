@@ -112,11 +112,13 @@ public sealed class StatsService(IAppDbContext db, IPermissionService permission
                 .Where(x => courseIds.Contains(x.CourseId) && x.IsActive &&
                     (userId == null || x.UserId == userId))
                 .Select(x => new { x.CourseId, x.JoinedAt }).ToListAsync(ct);
-        var monthKeys = courses.Select(x => (x.StartDate.Year, x.StartDate.Month))
+        var monthKeys = courses.Where(x => x.StartDate.HasValue)
+            .Select(x => (x.StartDate!.Value.Year, x.StartDate.Value.Month))
             .Concat(participantMonths.Select(x => (x.JoinedAt.Year, x.JoinedAt.Month)))
             .Distinct().OrderBy(x => x.Year).ThenBy(x => x.Month).TakeLast(12).ToList();
         var monthly = monthKeys.Select(m => new StatsMonthlyDto($"{m.Month:D2}/{m.Year}",
-            courses.Count(x => x.StartDate.Year == m.Year && x.StartDate.Month == m.Month),
+            courses.Count(x => x.StartDate.HasValue && x.StartDate.Value.Year == m.Year &&
+                x.StartDate.Value.Month == m.Month),
             participantMonths.Count(x => x.JoinedAt.Year == m.Year && x.JoinedAt.Month == m.Month)))
             .ToList();
 
@@ -164,7 +166,7 @@ public sealed class StatsService(IAppDbContext db, IPermissionService permission
             contextRole == RoleCode.Quality && effective.HasMode(RoleCode.Quality) &&
                 effective.Keys.Contains("page.quality.dashboard");
         if (global) return new(true, [], []);
-        if (contextRole != RoleCode.Dean || !effective.HasMode(RoleCode.Dean) ||
+        if (contextRole != RoleCode.Dean || !effective.IsUnitHead ||
             !effective.Keys.Contains("page.dean.stats")) return null;
         var allowedCenters = effective.DeanScopeCenterIds.ToArray();
         var centers = await db.Centers.AsNoTracking().Where(x => allowedCenters.Contains(x.Id))
@@ -176,7 +178,7 @@ public sealed class StatsService(IAppDbContext db, IPermissionService permission
     private sealed record StatsAccess(bool Global, IReadOnlyCollection<long> CenterIds,
         IReadOnlyCollection<string> CenterNames);
     private sealed record CourseStatRow(long Id, CourseStatus Status, AudienceType AudienceType,
-        DateOnly StartDate,
+        DateOnly? StartDate,
         long? ProposingCenterId, string? ProposingCenterName, long? TargetCenterId,
         string? TargetCenterName, string TrackName);
 }

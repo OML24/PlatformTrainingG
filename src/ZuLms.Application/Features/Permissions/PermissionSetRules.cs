@@ -112,6 +112,16 @@ public static class PermissionSetRules
             evaluation.submit certificates.view.faculty certificates.view.own certificates.download.own stats.faculty
             procert.submit procert.withdraw procert.download.own profile.edit.own faculty.members.view
             """);
+        // Center/department managers act like a dean over their (non-faculty) center.
+        Add(RoleCode.CenterManager, """
+            page.dean.dashboard page.dean.courses page.dean.propose page.dean.members page.dean.needs page.dean.stats
+            page.instructor.impact page.instructor.certificates page.member.dashboard page.member.available
+            page.member.enrolled page.member.certificates page.member.impact page.member.teaching page.member.pro_certs
+            page.shared.directory page.shared.profile course.propose proposal.resubmit cancellation.request need.submit
+            need.resubmit participants.view.faculty participants.self_register attendance.enter_code impact.submit impact.review
+            evaluation.submit certificates.view.faculty certificates.view.own certificates.download.own stats.faculty
+            procert.submit procert.withdraw procert.download.own profile.edit.own faculty.members.view
+            """);
         Add(RoleCode.Instructor, """
             page.instructor.courses page.instructor.course page.instructor.lectures page.instructor.attendance
             page.instructor.participants page.instructor.exam page.instructor.evaluation page.member.teaching

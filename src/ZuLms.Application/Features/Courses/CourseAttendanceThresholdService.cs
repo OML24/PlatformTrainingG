@@ -21,8 +21,7 @@ public sealed class CourseAttendanceThresholdService(IAppDbContext db, IClock cl
         uint expectedVersion, short? percent, CancellationToken ct)
     {
         var access = await permissions.GetEffectiveAsync(actorUserId, ct);
-        if (!access.Keys.Contains("course.edit") ||
-            !access.HasMode(RoleCode.Admin) && !access.HasMode(RoleCode.Quality))
+        if (!access.Keys.Contains("course.edit") || !access.HasMode(RoleCode.Admin))
             return Result.Failure("FORBIDDEN");
         if (percent is <= 0 or > 100) return Result.Failure("THRESHOLD_INVALID");
         return await db.InSerializableTransactionAsync(async () =>

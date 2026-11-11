@@ -173,7 +173,6 @@ public sealed class CourseProposalService(IAppDbContext db, IClock clock,
         if (string.IsNullOrWhiteSpace(input.TitleAr) || input.TitleAr.Trim().Length > 300 ||
             input.TitleEn?.Trim().Length > 300) return "PROPOSAL_TITLE_INVALID";
         if (string.IsNullOrWhiteSpace(input.ObjectivesAr)) return "PROPOSAL_OBJECTIVES_INVALID";
-        if (string.IsNullOrWhiteSpace(input.TargetAudienceAr)) return "PROPOSAL_AUDIENCE_INVALID";
         if (input.TotalHours <= 0 || decimal.Round(input.TotalHours, 2) != input.TotalHours)
             return "PROPOSAL_HOURS_INVALID";
         if (input.PlannedStartDate == default || input.PlannedEndDate < input.PlannedStartDate)
@@ -183,7 +182,8 @@ public sealed class CourseProposalService(IAppDbContext db, IClock clock,
             return "PROPOSAL_INVALID";
         if (!await db.TrainingTracks.AnyAsync(x => x.Id == input.TrackId && x.IsActive, ct))
             return "TRACK_NOT_FOUND";
-        if (!await db.Centers.AnyAsync(x => x.Id == centerId && x.IsFaculty && x.IsActive, ct))
+        // Faculty for a dean, administrative center for a center manager (scope checked by the caller).
+        if (!await db.Centers.AnyAsync(x => x.Id == centerId && x.IsActive, ct))
             return "DEAN_FACULTY_REQUIRED";
         if (input.InternalInstructorUserId is long instructorId)
         {
@@ -229,7 +229,7 @@ public sealed class CourseProposalService(IAppDbContext db, IClock clock,
     private async Task<bool> IsDeanOfAsync(long userId, long centerId, CancellationToken ct)
     {
         var effective = await permissions.GetEffectiveAsync(userId, ct);
-        return effective.HasMode(RoleCode.Dean) && effective.DeanScopeCenterIds.Contains(centerId);
+        return effective.IsUnitHead && effective.DeanScopeCenterIds.Contains(centerId);
     }
 
     private async Task ApplyInputAsync(Course course, CourseProposalInput input, CancellationToken ct)
@@ -240,7 +240,7 @@ public sealed class CourseProposalService(IAppDbContext db, IClock clock,
         course.DeliveryMode = input.DeliveryMode;
         course.ObjectivesAr = input.ObjectivesAr.Trim();
         course.ObjectivesEn = Clean(input.ObjectivesEn);
-        course.TargetAudienceAr = input.TargetAudienceAr.Trim();
+        course.TargetAudienceAr = input.TargetAudienceAr?.Trim() ?? string.Empty;
         course.TargetAudienceEn = Clean(input.TargetAudienceEn);
         course.TotalHours = input.TotalHours;
         course.PlannedStartDate = input.PlannedStartDate;
@@ -332,7 +332,7 @@ public sealed class CourseProposalService(IAppDbContext db, IClock clock,
             return "APPROVAL_INVALID";
         if (input.AudienceType == AudienceType.Faculty &&
             (input.TargetCenterId is null || !await db.Centers.AnyAsync(x =>
-                x.Id == input.TargetCenterId && x.IsFaculty && x.IsActive, ct)))
+                x.Id == input.TargetCenterId && x.IsActive, ct)))
             return "TARGET_FACULTY_REQUIRED";
         if (course.InstructorKind == InstructorKind.Internal)
             return input.ExternalDecision is null ? null : "EXTERNAL_DECISION_NOT_ALLOWED";

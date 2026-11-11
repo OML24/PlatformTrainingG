@@ -58,7 +58,6 @@ builder.Services.AddRazorPages(options =>
 {
     options.Conventions.AddAreaPageRoute("Public", "/Login", "/login");
     options.Conventions.AddAreaPageRoute("Public", "/ChangePassword", "/change-password");
-    options.Conventions.AddAreaPageRoute("Public", "/ForgotPassword", "/forgot-password");
     options.Conventions.AddPageRoute("/Admin/Credentials", "/admin/users/{id:long}");
     options.Conventions.AddPageRoute("/Courses/Details", "/admin/courses/{courseId:long}");
     options.Conventions.AddPageRoute("/Courses/Details", "/quality/courses/{courseId:long}");

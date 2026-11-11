@@ -140,6 +140,7 @@
   <data name="Credentials.Role.Admin" xml:space="preserve"><value>System administrator</value></data>
   <data name="Credentials.Role.Quality" xml:space="preserve"><value>Quality officer</value></data>
   <data name="Credentials.Role.Dean" xml:space="preserve"><value>Dean</value></data>
+  <data name="Credentials.Role.CenterManager" xml:space="preserve"><value>Center manager</value></data>
   <data name="Credentials.Role.Member" xml:space="preserve"><value>Member</value></data>
   <data name="Credentials.Role.Instructor" xml:space="preserve"><value>Instructor</value></data>
   <data name="Credentials.Role.ExternalInstructor" xml:space="preserve"><value>External instructor</value></data>

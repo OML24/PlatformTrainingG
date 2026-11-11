@@ -112,7 +112,7 @@ public sealed class SilentRefreshMiddleware(RequestDelegate next)
 
     private static bool IsAuthPath(PathString path) => path.StartsWithSegments("/api/v1/auth")
         || path.StartsWithSegments("/login") || path.StartsWithSegments("/logout")
-        || path.StartsWithSegments("/forgot-password") || path.StartsWithSegments("/lib")
+        || path.StartsWithSegments("/lib")
         || path.StartsWithSegments("/css") || path.StartsWithSegments("/js")
         || path.StartsWithSegments("/fonts");
 

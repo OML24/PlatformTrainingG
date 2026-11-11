@@ -15,6 +15,8 @@ public interface IUserService
         CancellationToken cancellationToken);
     Task<Result<long>> CreateLocalAsync(long actorUserId, string loginName, string fullNameAr,
         string? fullNameEn, string password, UiLanguage language, CancellationToken cancellationToken);
+    Task<Result<IReadOnlyList<ManagedCenterOptionDto>>> ListManagedCentersAsync(long actorUserId,
+        CancellationToken ct);
     Task<Result<IReadOnlyList<FacultyOptionDto>>> ListFacultiesAsync(long actorUserId,
         CancellationToken cancellationToken);
     Task<Result<IReadOnlyList<UserPermissionDto>>> ListPermissionsAsync(long actorUserId,
@@ -49,6 +51,8 @@ public sealed record CredentialsDirectoryPageDto(int Page, int PageSize, int Tot
     IReadOnlyList<CredentialsDirectoryRowDto> Items);
 
 public sealed record FacultyOptionDto(long Id, string NameAr, string? NameEn);
+public sealed record ManagedCenterOptionDto(long Id, string NameAr, string? NameEn,
+    long? ManagerUserId, string? ManagerNameAr);
 
 public sealed record UserPermissionDto(string Key, string Group, string NameAr,
     string? NameEn, OverrideMode? Mode, bool Effective, bool InheritedEffective,

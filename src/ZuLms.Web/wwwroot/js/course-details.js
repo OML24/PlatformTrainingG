@@ -154,8 +154,6 @@
     const fields = {
       titleAr: course.titleAr, titleEn: course.titleEn,
       objectivesAr: data.objectivesAr, objectivesEn: data.objectivesEn,
-      targetAudienceAr: data.targetAudienceAr,
-      targetAudienceEn: data.targetAudienceEn,
       totalHours: data.totalHours,
       plannedStartDate: course.plannedStartDate,
       plannedEndDate: course.plannedEndDate,
@@ -475,7 +473,6 @@
       field('التواريخ', `${dateOnly(c.plannedStartDate)} — ${dateOnly(c.plannedEndDate)}`);
       field('الساعات', String(data.totalHours));
       field('الأهداف', ZuLmsI18n.field(data, 'objectives'));
-      field('الفئة المستهدفة', ZuLmsI18n.field(data, 'targetAudience'));
       field('نوع المشاركين', audienceAr[data.audienceType] || data.audienceType);
       field('كلية المشاركين', data.targetCenterNameAr);
       field('نهاية التقييم', dateOnly(data.evaluationEndDate));
@@ -655,8 +652,6 @@
         expectedVersion: currentVersion,
         titleAr: value('titleAr'), titleEn: value('titleEn') || null,
         objectivesAr: value('objectivesAr'), objectivesEn: value('objectivesEn') || null,
-        targetAudienceAr: value('targetAudienceAr'),
-        targetAudienceEn: value('targetAudienceEn') || null,
         totalHours: Number(value('totalHours')),
         plannedStartDate: value('plannedStartDate'),
         plannedEndDate: value('plannedEndDate'),

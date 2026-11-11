@@ -10,7 +10,7 @@ public interface IActiveModeAccessor
 public static class ActiveModeResolver
 {
     private static readonly RoleCode[] DefaultOrder =
-    [RoleCode.Admin, RoleCode.Quality, RoleCode.Dean, RoleCode.Instructor, RoleCode.Member, RoleCode.ExternalInstructor];
+    [RoleCode.Admin, RoleCode.Quality, RoleCode.Dean, RoleCode.CenterManager, RoleCode.Instructor, RoleCode.Member, RoleCode.ExternalInstructor];
 
     public static RoleCode? Resolve(IReadOnlySet<RoleCode> accountRoles, RoleCode? selected) =>
         selected is { } mode && accountRoles.Contains(mode)

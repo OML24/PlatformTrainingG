@@ -20,6 +20,15 @@ public sealed class UsersController(IUserService users) : ControllerBase
         return result.Ok ? Ok(result.Value) : Error(result);
     }
 
+    [HttpGet("centers")]
+    [RequirePermission("user.roles.assign")]
+    public async Task<IActionResult> ManagedCenters(CancellationToken ct)
+    {
+        if (!TryActor(out long actor)) return Unauthorized();
+        var result = await users.ListManagedCentersAsync(actor, ct);
+        return result.Ok ? Ok(result.Value) : Error(result);
+    }
+
     [HttpGet("{id:long}/permissions")]
     [RequirePermission("user.permissions.override")]
     public async Task<IActionResult> Permissions(long id, CancellationToken ct)

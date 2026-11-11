@@ -65,7 +65,7 @@
       titleAr: value('proposal-title-ar'), titleEn: nullable('proposal-title-en'),
       trackId: number('proposal-track'), deliveryMode: value('proposal-mode'),
       objectivesAr: value('proposal-objectives-ar'), objectivesEn: nullable('proposal-objectives-en'),
-      targetAudienceAr: value('proposal-target-ar'), targetAudienceEn: nullable('proposal-target-en'),
+      targetAudienceAr: null, targetAudienceEn: null,
       totalHours: number('proposal-hours'), plannedStartDate: value('proposal-start'),
       plannedEndDate: value('proposal-end'), audienceType: value('proposal-audience'),
       registrationDeadline: deadline,
@@ -89,8 +89,6 @@
     $('proposal-mode').value = p.deliveryMode;
     $('proposal-objectives-ar').value = p.objectivesAr;
     $('proposal-objectives-en').value = p.objectivesEn || '';
-    $('proposal-target-ar').value = p.targetAudienceAr;
-    $('proposal-target-en').value = p.targetAudienceEn || '';
     $('proposal-hours').value = p.totalHours;
     $('proposal-start').value = p.plannedStartDate;
     $('proposal-end').value = p.plannedEndDate;

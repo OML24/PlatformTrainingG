@@ -38,7 +38,7 @@
     $('quality-proposal-fields').replaceChildren();
     line('الكلية', selected.course.centerNameAr);
     line('المحاضر', selected.instructorLoginName || p.externalNameAr || '—');
-    line('الأهداف', p.objectivesAr); line('الفئة المستهدفة', p.targetAudienceAr);
+    line('الأهداف', p.objectivesAr);
     line('الساعات', String(p.totalHours));
     line('التواريخ', `${p.plannedStartDate} — ${p.plannedEndDate}`);
     line('نوع المشاركين', p.audienceType);

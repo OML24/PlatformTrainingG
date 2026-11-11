@@ -4,20 +4,9 @@
   <h1>طلبات إلغاء الدورات</h1>
   <div id="cancellations-error" class="alert alert-danger d-none" role="alert"></div>
   <div id="cancellations-success" class="alert alert-success d-none" role="status"></div>
-  <div class="table-responsive mb-4"><table class="table table-striped">
+  <div class="table-responsive"><table class="table table-striped">
     <thead><tr><th>الدورة</th><th>مقدم الطلب</th><th>السبب</th><th>التاريخ</th><th>الكتاب</th><th>القرار</th></tr></thead>
     <tbody id="cancellations-rows"></tbody>
   </table></div>
-  <section class="card card-body">
-    <h2 class="h5">إلغاء مباشر من الجودة</h2>
-    <form id="cancellations-direct-form">
-      <div class="row g-3">
-        <div class="col-md-4"><label for="cancellations-course-id" class="form-label">معرّف الدورة المعتمدة</label><input id="cancellations-course-id" class="form-control" type="number" min="1" required /></div>
-        <div class="col-md-8"><label for="cancellations-reason" class="form-label">سبب الإلغاء</label><textarea id="cancellations-reason" class="form-control" maxlength="1000" required></textarea></div>
-        <div class="col-md-6"><label for="cancellations-letter" class="form-label">كتاب رسمي موقّع (PDF)</label><input id="cancellations-letter" class="form-control" type="file" accept=".pdf,application/pdf" required /></div>
-      </div>
-      <button id="cancellations-direct-submit" class="btn btn-danger mt-3" type="submit">إلغاء الدورة</button>
-    </form>
-  </section>
 </div>
 @section Scripts { <script src="~/js/quality-cancellations.js" asp-append-version="true"></script> }

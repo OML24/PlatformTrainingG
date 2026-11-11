@@ -9,6 +9,7 @@
     error.classList.add('d-none');
     const params = new URLSearchParams({ page: String(page) });
     const search = $('search').value.trim(); if (search) params.set('search', search);
+    const category = $('category').value; if (category) params.set('category', category);
     const action = $('action').value.trim(); if (action) params.set('actionCode', action);
     const course = $('course').value.trim(); if (course) params.set('courseId', course);
     const success = $('success').value; if (success) params.set('success', success);
@@ -76,5 +77,15 @@
   }
 
   $('filters').addEventListener('submit', event => { event.preventDefault(); page = 1; load(); });
+  $('category').addEventListener('change', () => { page = 1; load(); });
+  root.querySelectorAll('[data-audit-preset]').forEach(button => button.addEventListener('click', () => {
+    const code = button.dataset.auditPreset;
+    $('action').value = code;
+    $('category').value = code ? 'Attendance' : '';
+    if (!code) $('search').value = '';
+    root.querySelectorAll('[data-audit-preset]').forEach(other =>
+      other.classList.toggle('active', !!code && other === button));
+    page = 1; load();
+  }));
   load();
 })();

@@ -75,6 +75,10 @@
          (Context.Request.Path.StartsWithSegments("/quality") && !hasQualityRole &&
           !(Context.Request.Path.Value?.Equals("/quality/certificates", StringComparison.OrdinalIgnoreCase) == true && canIssuePendingCertificates) &&
           !(Context.Request.Path.Value?.Equals("/quality/courses/new-historical", StringComparison.OrdinalIgnoreCase) == true && canHistorical)));
+    bool isInstructorMode = effectivePermissions?.ActiveMode is ZuLms.Domain.Enums.RoleCode.Instructor
+        or ZuLms.Domain.Enums.RoleCode.ExternalInstructor;
+    bool isCenterManagerMode = effectivePermissions?.ActiveMode == ZuLms.Domain.Enums.RoleCode.CenterManager;
+    string UnitLabel(string facultyLabel, string centerLabel) => isCenterManagerMode ? centerLabel : facultyLabel;
     bool canQualityDashboardForLink = canQualityDashboard && hasQualityRole;
     string? csrfToken = authenticated ? Antiforgery.GetAndStoreTokens(Context).RequestToken : null;
     string displayName = User.FindFirstValue("name") ?? User.Identity?.Name ?? string.Empty;
@@ -84,6 +88,7 @@
         ZuLms.Domain.Enums.RoleCode.Admin => T["Credentials.Role.Admin"],
         ZuLms.Domain.Enums.RoleCode.Quality => T["Credentials.Role.Quality"],
         ZuLms.Domain.Enums.RoleCode.Dean => T["Credentials.Role.Dean"],
+        ZuLms.Domain.Enums.RoleCode.CenterManager => T["Credentials.Role.CenterManager"],
         ZuLms.Domain.Enums.RoleCode.Instructor => T["Credentials.Role.Instructor"],
         ZuLms.Domain.Enums.RoleCode.ExternalInstructor => T["Credentials.Role.ExternalInstructor"],
         ZuLms.Domain.Enums.RoleCode.Member => T["Credentials.Role.Member"],
@@ -110,7 +115,7 @@
 
     AddItem(T["Nav.Group.Home"], canAdminDashboard, "/admin/dashboard", "ti-layout-dashboard", T["Nav.AdminDashboard"]);
     AddItem(T["Nav.Group.Home"], canQualityDashboardForLink, "/quality/dashboard", "ti-layout-dashboard", T["Nav.QualityDashboard"]);
-    AddItem(T["Nav.Group.Home"], canDeanDashboard, "/dean/dashboard", "ti-layout-dashboard", T["Nav.DeanDashboard"]);
+    AddItem(T["Nav.Group.Home"], canDeanDashboard, "/dean/dashboard", "ti-layout-dashboard", UnitLabel(T["Nav.DeanDashboard"], "لوحة مدير المركز"));
     AddItem(T["Nav.Group.Home"], canMemberDashboard && hasMemberRole, "/member/dashboard", "ti-layout-dashboard", T["Nav.MemberDashboard"]);
 
     AddItem(T["Nav.Group.Courses"], canPropose, "/dean/propose", "ti-file-plus", T["Nav.Propose"]);
@@ -121,12 +126,12 @@
     AddItem(T["Nav.Group.Courses"], canCancellations && hasQualityRole, "/quality/cancellations", "ti-ban", T["Nav.Cancellations"]);
     AddItem(T["Nav.Group.Courses"], canAdminCourses, "/admin/courses", "ti-book-2", T["Nav.AllCourses"]);
     AddItem(T["Nav.Group.Courses"], canQualityCourses && hasQualityRole && !canAdminCourses, "/quality/courses", "ti-book-2", T["Nav.AllCourses"]);
-    AddItem(T["Nav.Group.Courses"], canDeanCourses, "/dean/courses", "ti-book-2", T["Nav.FacultyCourses"]);
-    AddItem(T["Nav.Group.Courses"], canInstructorCourses, "/instructor/courses", "ti-presentation", T["Nav.InstructorCourses"]);
+    AddItem(T["Nav.Group.Courses"], canDeanCourses, "/dean/courses", "ti-book-2", UnitLabel(T["Nav.FacultyCourses"], "دورات مركزي"));
+    AddItem(T["Nav.Group.Courses"], canInstructorCourses && isInstructorMode, "/instructor/courses", "ti-presentation", T["Nav.InstructorCourses"]);
     AddItem(T["Nav.Group.Courses"], canMemberCourses && hasMemberRole, "/member/courses", "ti-school", T["Nav.Enrolled"]);
     AddItem(T["Nav.Group.Courses"], canRegister && hasMemberRole, "/courses/available", "ti-calendar-event", T["Nav.Available"]);
     AddItem(T["Nav.Group.Courses"], canEnterCode && hasMemberRole, "/member/enter-code", "ti-keyboard", T["Nav.EnterCode"]);
-    AddItem(T["Nav.Group.Courses"], canTeaching && hasMemberRole, "/member/teaching", "ti-presentation", T["Nav.Teaching"]);
+    // Teaching is done from the instructor environment only (switch role), not from member/dean/quality.
     AddItem(T["Nav.Group.Courses"], canTracks && hasQualityRole, "/quality/tracks", "ti-route", T["Nav.Tracks"]);
     AddItem(T["Nav.Group.Courses"], canExternalInstructors && hasQualityRole, "/quality/external-instructors", "ti-user-star", T["Nav.ExternalInstructors"]);
 
@@ -154,9 +159,9 @@
     AddItem(T["Nav.Group.System"], canCenters, "/admin/centers", "ti-building", T["Nav.Centers"]);
     AddItem(T["Nav.Group.System"], canRoles, "/admin/roles", "ti-shield-cog", T["Nav.RolesPermissions"]);
     AddItem(T["Nav.Group.System"], canAdminStats, "/admin/stats", "ti-chart-bar", T["Nav.UniversityStatistics"]);
-    AddItem(T["Nav.Group.System"], canDeanStats, "/dean/stats", "ti-chart-bar", T["Nav.FacultyStatistics"]);
+    AddItem(T["Nav.Group.System"], canDeanStats, "/dean/stats", "ti-chart-bar", UnitLabel(T["Nav.FacultyStatistics"], "إحصائيات المركز"));
 
-    AddItem(T["Nav.Group.Members"], canDeanMembers, "/dean/members", "ti-users", T["Nav.FacultyMembers"]);
+    AddItem(T["Nav.Group.Members"], canDeanMembers, "/dean/members", "ti-users", UnitLabel(T["Nav.FacultyMembers"], "موظفو المركز"));
     AddItem(T["Nav.Group.Members"], canDirectory, "/shared/directory", "ti-address-book", T["Directory.Title"]);
 
     AddItem(T["Nav.Group.Audit"], canVault, "/vault", "ti-archive", T["Nav.Vault"]);
@@ -195,7 +200,7 @@
     <link rel="stylesheet" href="~/css/zu-theme.css" asp-append-version="true" />
     @await RenderSectionAsync("Styles", required: false)
 </head>
-<body class="@(authenticated ? "app-authenticated" : "")" data-picker-clear="@T["Picker.Clear"]" data-picker-invalid="@T["Picker.Invalid"]">
+<body class="@(authenticated ? "app-authenticated" : "")" data-unit-mode="@(isCenterManagerMode ? "center" : null)" data-picker-clear="@T["Picker.Clear"]" data-picker-invalid="@T["Picker.Invalid"]">
 @if (authenticated)
 {
     <div class="app-layout">
@@ -230,7 +235,7 @@
             </nav>
             <div class="sidebar-footer">
                 <a class="nav-item" href="/account/settings"><i class="ti ti-adjustments nav-icon"></i><span>إعدادات الحساب</span></a>
-                <a class="nav-item" href="/account/password" data-internal-only="true"><i class="ti ti-lock nav-icon"></i><span>@T["Nav.MyPassword"]</span></a>
+                <a class="nav-item" href="/account/password" data-internal-only="true" data-password-modal><i class="ti ti-lock nav-icon"></i><span>@T["Nav.MyPassword"]</span></a>
             </div>
         </aside>
         <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
@@ -283,6 +288,44 @@ else
 {
     <main role="main" class="page-content">@RenderBody()</main>
 }
+@if (authenticated)
+{
+    <div class="modal fade zu-password-modal" id="password-modal" tabindex="-1" aria-labelledby="password-modal-title" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <form class="modal-content" id="password-modal-form" novalidate
+                  data-error="@T["Account.Password.Error"]" data-mismatch="كلمتا المرور غير متطابقتين."
+                  data-success="تم تغيير كلمة المرور بنجاح.">
+                <div class="modal-header">
+                    <span class="zu-password-modal-icon" aria-hidden="true"><i class="ti ti-lock"></i></span>
+                    <div class="me-auto ms-2">
+                        <h5 class="modal-title mb-0" id="password-modal-title">@T["Account.Password.Title"]</h5>
+                        <small class="text-muted">@T["Account.Password.Help"]</small>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="إغلاق"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label" for="pm-current">@T["Account.Password.Current"]</label>
+                        <div class="zu-password-field"><input class="form-control" id="pm-current" name="currentPassword" type="password" autocomplete="current-password" required /><button type="button" class="zu-eye" data-pm-eye="pm-current" aria-label="إظهار"><i class="ti ti-eye"></i></button></div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="pm-new">@T["Auth.ChangePassword.NewPassword"]</label>
+                        <div class="zu-password-field"><input class="form-control" id="pm-new" name="newPassword" type="password" autocomplete="new-password" required /><button type="button" class="zu-eye" data-pm-eye="pm-new" aria-label="إظهار"><i class="ti ti-eye"></i></button></div>
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label" for="pm-confirmation">@T["Auth.ChangePassword.Confirmation"]</label>
+                        <div class="zu-password-field"><input class="form-control" id="pm-confirmation" name="confirmation" type="password" autocomplete="new-password" required /><button type="button" class="zu-eye" data-pm-eye="pm-confirmation" aria-label="إظهار"><i class="ti ti-eye"></i></button></div>
+                    </div>
+                    <div id="password-modal-message" class="alert alert-danger py-2 mt-3 mb-0 d-none" role="alert"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">إلغاء</button>
+                    <button type="submit" class="btn btn-primary" id="password-modal-submit"><i class="ti ti-device-floppy"></i> @T["Account.Password.Submit"]</button>
+                </div>
+            </form>
+        </div>
+    </div>
+}
 <div class="zu-toast-host" id="zu-toasts"></div>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -297,7 +340,10 @@ else
 <script src="~/js/site.js" asp-append-version="true"></script>
 <script src="~/js/shell.js" asp-append-version="true"></script>
 <script src="~/js/zu-ui.js" asp-append-version="true"></script>
+<script src="~/js/zu-pdf.js" asp-append-version="true"></script>
 <script src="~/js/role-switcher.js" asp-append-version="true"></script>
+<script src="~/js/password-modal.js" asp-append-version="true"></script>
+<script src="~/js/zu-select.js" asp-append-version="true"></script>
 <script src="~/js/notifications.js" asp-append-version="true"></script>
 @await RenderSectionAsync("Scripts", required: false)
 </body>

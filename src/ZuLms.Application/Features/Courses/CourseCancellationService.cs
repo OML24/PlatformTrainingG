@@ -30,7 +30,7 @@ public sealed class CourseCancellationService(IAppDbContext db, IClock clock,
             var course = await db.Courses.SingleOrDefaultAsync(x => x.Id == courseId, ct);
             if (course is null) return Result<long>.Failure("COURSE_NOT_FOUND");
             var actorPermissions = await permissions.GetEffectiveAsync(actorUserId, ct);
-            bool dean = actorPermissions.HasMode(RoleCode.Dean) &&
+            bool dean = actorPermissions.IsUnitHead &&
                 (course.ProposingCenterId is long proposing && actorPermissions.DeanScopeCenterIds.Contains(proposing) ||
                  course.TargetCenterId is long target && actorPermissions.DeanScopeCenterIds.Contains(target));
             if (!dean) return Result<long>.Failure("FORBIDDEN");

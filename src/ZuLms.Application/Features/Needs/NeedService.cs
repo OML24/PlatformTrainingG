@@ -106,7 +106,7 @@ public sealed class NeedService(IAppDbContext db, IClock clock,
         if (!await permissions.HasAsync(actorUserId, "need.resubmit", ct))
             return Result.Failure("FORBIDDEN");
         var effective = await permissions.GetEffectiveAsync(actorUserId, ct);
-        if (!effective.HasMode(RoleCode.Dean) ||
+        if (!effective.IsUnitHead ||
             !effective.Keys.Contains("need.resubmit"))
             return Result.Failure("FORBIDDEN");
         string? error = await ValidateAsync(input, actorUserId, ct);
@@ -212,7 +212,7 @@ public sealed class NeedService(IAppDbContext db, IClock clock,
         var effective = await permissions.GetEffectiveAsync(actorUserId, ct);
         bool reviewer = (effective.HasMode(RoleCode.Admin) || effective.HasMode(RoleCode.Quality)) &&
             effective.Keys.Contains("need.review");
-        long[] deanCenters = effective.HasMode(RoleCode.Dean) &&
+        long[] deanCenters = effective.IsUnitHead &&
             effective.Keys.Contains("need.submit")
             ? effective.DeanScopeCenterIds.ToArray() : [];
         bool dean = deanCenters.Length > 0;
@@ -367,7 +367,7 @@ public sealed class NeedService(IAppDbContext db, IClock clock,
     private async Task<long?> DeanCenterAsync(long actorUserId, CancellationToken ct)
     {
         var effective = await permissions.GetEffectiveAsync(actorUserId, ct);
-        if (!effective.HasMode(RoleCode.Dean) ||
+        if (!effective.IsUnitHead ||
             !effective.Keys.Contains("need.submit")) return null;
         return effective.DeanScopeCenterIds.Order().Cast<long?>().FirstOrDefault();
     }

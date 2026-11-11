@@ -41,7 +41,7 @@
     if (course.registrationDeadline) label(body, text.deadline, ZuLmsDates.display(course.registrationDeadline));
     if (course.maxParticipants != null) label(body, text.capacity, String(course.maxParticipants));
     const actions = document.createElement('div'); actions.className = 'd-flex flex-wrap gap-2 mt-auto pt-3';
-    const detail = document.createElement('a'); detail.href = `/courses/${course.id}?view=Member`;
+    const detail = document.createElement('a'); detail.href = `/courses/${course.id}?view=Available`;
     detail.className = 'btn btn-outline-primary'; detail.textContent = text.details;
     actions.append(detail);
     const button = document.createElement('button'); button.type = 'button';

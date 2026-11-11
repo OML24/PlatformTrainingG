@@ -140,6 +140,7 @@
   <data name="Credentials.Role.Admin" xml:space="preserve"><value>مسؤول النظام</value></data>
   <data name="Credentials.Role.Quality" xml:space="preserve"><value>مسؤول الجودة</value></data>
   <data name="Credentials.Role.Dean" xml:space="preserve"><value>عميد الكلية</value></data>
+  <data name="Credentials.Role.CenterManager" xml:space="preserve"><value>مدير مركز / دائرة</value></data>
   <data name="Credentials.Role.Member" xml:space="preserve"><value>عضو</value></data>
   <data name="Credentials.Role.Instructor" xml:space="preserve"><value>محاضر</value></data>
   <data name="Credentials.Role.ExternalInstructor" xml:space="preserve"><value>مدرب خارجي</value></data>

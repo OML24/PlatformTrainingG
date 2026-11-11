@@ -102,8 +102,9 @@ public sealed class CourseProposalQueryService(IAppDbContext db,
         if (!await permissions.HasAsync(actorUserId, "page.dean.propose", ct))
             return Result<DeanProposalLookupsDto>.Failure("FORBIDDEN");
         var effective = await permissions.GetEffectiveAsync(actorUserId, ct);
+        // Scope already limits a dean to their faculty and a center manager to their center.
         var centers = await db.Centers.AsNoTracking().Where(x => effective.DeanScopeCenterIds.Contains(x.Id) &&
-            x.IsActive && x.IsFaculty).Select(x => new DeanCenterOptionDto(x.Id, x.NameAr)).ToListAsync(ct);
+            x.IsActive).Select(x => new DeanCenterOptionDto(x.Id, x.NameAr)).ToListAsync(ct);
         var tracks = await db.TrainingTracks.AsNoTracking()
             .Where(x => x.IsActive && !x.IsArchived)
             .OrderBy(x => x.SortOrder).ThenBy(x => x.NameAr)
@@ -115,7 +116,7 @@ public sealed class CourseProposalQueryService(IAppDbContext db,
         long actorUserId, long centerId, string? search, CancellationToken ct)
     {
         var effective = await permissions.GetEffectiveAsync(actorUserId, ct);
-        bool allowed = effective.HasMode(RoleCode.Dean) &&
+        bool allowed = effective.IsUnitHead &&
             (effective.Keys.Contains("page.dean.propose") || effective.Keys.Contains("faculty.members.view"));
         if (!allowed)
             return Result<IReadOnlyList<InstructorOptionDto>>.Failure("FORBIDDEN");
@@ -160,8 +161,9 @@ public sealed class CourseProposalQueryService(IAppDbContext db,
     {
         if (!await permissions.HasAsync(actorUserId, "page.quality.proposals", ct))
             return Result<IReadOnlyList<DeanCenterOptionDto>>.Failure("FORBIDDEN");
-        var rows = await db.Centers.AsNoTracking().Where(x => x.IsFaculty && x.IsActive)
-            .OrderBy(x => x.NameAr)
+        // Faculties first, then administrative centers/departments (center-manager proposals target those).
+        var rows = await db.Centers.AsNoTracking().Where(x => x.IsActive)
+            .OrderByDescending(x => x.IsFaculty).ThenBy(x => x.NameAr)
             .Select(x => new DeanCenterOptionDto(x.Id, x.NameAr)).ToListAsync(ct);
         return Result<IReadOnlyList<DeanCenterOptionDto>>.Success(rows);
     }

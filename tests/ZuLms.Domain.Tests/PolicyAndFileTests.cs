@@ -1,5 +1,6 @@
 using System.IO.Compression;
 using ZuLms.Domain.Entities.Identity;
+using ZuLms.Domain.Entities.Training;
 using ZuLms.Domain.Enums;
 using ZuLms.Domain.Rules;
 
@@ -85,6 +86,55 @@ public sealed class PolicyAndFileTests
         foreach (var from in Enum.GetValues<CourseStatus>())
             foreach (var to in Enum.GetValues<CourseStatus>())
                 Assert.Equal(allowed.Contains((from, to)), CourseStateMachine.CanTransition(from, to));
+    }
+
+    [Fact]
+    public void SelfRegistrationRequiresAnOpenMatchingCourse()
+    {
+        var now = new DateTimeOffset(2026, 11, 10, 10, 0, 0, TimeSpan.Zero);
+        var today = new DateOnly(2026, 11, 10);
+        var course = new Course
+        {
+            Status = CourseStatus.Approved,
+            IsActive = true,
+            PlannedEndDate = today.AddDays(1),
+            AudienceType = AudienceType.General
+        };
+
+        SelfRegistrationEligibility Evaluate(bool academic = true, long centerId = 10,
+            int participants = 0) => SelfRegistrationRules.Evaluate(course, 7, centerId,
+                academic, UniversityOrganizationRules.ActiveEmployeeStatus, now, today,
+                participants);
+
+        Assert.Equal(SelfRegistrationEligibility.Eligible, Evaluate());
+
+        course.AudienceType = AudienceType.Faculty;
+        course.TargetCenterId = 10;
+        Assert.Equal(SelfRegistrationEligibility.Eligible, Evaluate(centerId: 10));
+        Assert.Equal(SelfRegistrationEligibility.NotEligible, Evaluate(centerId: 11));
+
+        course.AudienceType = AudienceType.Administrative;
+        Assert.Equal(SelfRegistrationEligibility.Eligible, Evaluate(academic: false));
+        Assert.Equal(SelfRegistrationEligibility.NotEligible, Evaluate(academic: true));
+
+        course.AudienceType = AudienceType.Named;
+        Assert.Equal(SelfRegistrationEligibility.NotEligible, Evaluate());
+
+        course.AudienceType = AudienceType.General;
+        course.RegistrationDeadline = now.AddSeconds(-1);
+        Assert.Equal(SelfRegistrationEligibility.Closed, Evaluate());
+        course.RegistrationDeadline = null;
+
+        course.PlannedEndDate = today.AddDays(-1);
+        Assert.Equal(SelfRegistrationEligibility.NotEligible, Evaluate());
+        course.PlannedEndDate = today.AddDays(1);
+
+        course.InstructorUserId = 7;
+        Assert.Equal(SelfRegistrationEligibility.Instructor, Evaluate());
+        course.InstructorUserId = null;
+
+        course.MaxParticipants = 1;
+        Assert.Equal(SelfRegistrationEligibility.Full, Evaluate(participants: 1));
     }
 
     [Fact]
